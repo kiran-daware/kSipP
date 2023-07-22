@@ -1,0 +1,26 @@
+<!-- run_script_template.html -->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Modify XML</title>
+</head>
+<body>
+    <h1>Modify XML</h1>
+
+    <form method="post" action="{% url 'modify-xml' %}">
+        {% csrf_token %}
+        <input type="hidden" name="xmlName" value="UAS">
+        <input type="submit" value="Modify UAS">
+    </form>
+
+    <form method="post" action="{% url 'modify-xml' %}">
+        {% csrf_token %}
+        <input type="hidden" name="xmlName" value="UAC">
+        <input type="submit" value="Modify UAC">
+    </form>
+
+    <!-- Add more forms for other scripts as needed -->
+
+</body>
+</html>
