@@ -1,7 +1,7 @@
 from django.http import HttpResponse
 from django.shortcuts import render
 from django.conf import settings
-from .forms import ConfigForm
+from .forms import ConfigForm, xmlForm
 import configparser
 import os
 import subprocess
@@ -20,16 +20,25 @@ def index(request):
 
 def modifyXml(request):
     if request.method == 'POST':
-        whichXml = request.POST.get('xmlName')
-        modifyXml_script = str(settings.BASE_DIR / 'kSipP' / 'scripts' / 'modifyHeader.py')
-        try:
-            result = subprocess.run(['python', modifyXml_script], capture_output=True, text=True)
-            return HttpResponse(result)
-        except subprocess.CalledProcessError as e:
-            # Handle any errors that may occur when running the script
-            return HttpResponse(f"Error occurred: {e}")
-        
-    return render(request, 'modify_xml.html')
+        if 'submitType' in request.POST:
+            submit_type = request.POST['submitType']
+            if submit_type =='selectXml':
+                modifyXmlForm = xmlForm(request.POST)
+                scenario =  modifyXmlForm['selectUAS']
+                return HttpResponse(f"Selected Scenario {scenario}")
+            
+        if 'xmlName' in request.POST:
+            xmlName = request.POST.get('xmlName')
+            modifyXml_script = str(settings.BASE_DIR / 'kSipP' / 'scripts' / 'modifyHeader.py')
+            try:
+                result = subprocess.run(['python', modifyXml_script], capture_output=True, text=True)
+                return HttpResponse(result)
+            except subprocess.CalledProcessError as e:
+                # Handle any errors that may occur when running the script
+                return HttpResponse(f"Error occurred: {e}")
+
+    modifyXmlForm = xmlForm()
+    return render(request, 'modify_xml.html', {'form': modifyXmlForm})
 
 
 
