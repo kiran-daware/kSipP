@@ -1,10 +1,18 @@
 import lxml.etree as LE
 import os
+import configparser
 import logging
 cwd = os.path.dirname(os.path.abspath(__file__))
-LogDir = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-modifyHeaderLog = os.path.join(LogDir, 'Logs', 'modifyHeader.log')
+baseDir = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+modifyHeaderLog = os.path.join(baseDir, 'Logs', 'modifyHeader.log')
 logging.basicConfig(filename= modifyHeaderLog, filemode='w', level=logging.DEBUG)
+
+# Fetching Variables from Config File
+config_file = os.path.join(baseDir, 'config.ini')
+config = configparser.ConfigParser()
+config.read(config_file)
+configd = config['DEFAULT']
+
 
 # Open SipP scenario.xml file
 def openXML(xml_file):
@@ -49,8 +57,10 @@ def modifyHeader(xml_file, header, newHeader):
             f.write(LE.tostring(root, encoding="utf-8", xml_declaration=True))
             # f.write(root, encoding="utf-8", xml_declaration=True)
 
-# Example usage:
+
+#Modify Header 
 xml_file_path = os.path.join(cwd, 'xml', 'Basic_UAC.xml')
+new_xml_file = os.path.join(cwd, 'xml', 'Basic_UAC_new.xml')
 header = "From"
 newHeader = "kiran <sip:123@10.122.217.27:5060>"
 modifyHeader(xml_file_path, header, newHeader)
@@ -64,5 +74,7 @@ newLineBeforeCdata = xml_content.replace('<![CDATA[', '\n\n    <![CDATA[')
 newLineAfterCdata = newLineBeforeCdata.replace(']]>', '    ]]>')
 modifiedXML = newLineAfterCdata.replace('</send>', '\n\n  </send>')
 # Write the modified XML content back to the same file
-with open(xml_file_path, 'w') as file:
+with open(new_xml_file, 'w') as file:
     file.write(modifiedXML)
+
+
