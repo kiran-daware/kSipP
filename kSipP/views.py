@@ -1,6 +1,8 @@
 from django.http import HttpResponse
 from django.shortcuts import render
 from django.conf import settings
+from .forms import ConfigForm
+import os
 import subprocess
 
 def index(request):
@@ -29,5 +31,38 @@ def modifyXml(request):
         # Handle any errors that may occur when running the script
         return HttpResponse(f"Error occurred: {e}")
 
+
+
+def write_config(request):
+    if request.method == 'POST':
+        form = ConfigForm(request.POST)
+        if form.is_valid():
+            # Get the configuration data from the form
+            remoteAddr = form.cleaned_data['remoteAddr']
+            remotePort = form.cleaned_data['remotePort']
+            srcAddr = form.cleaned_data['srcAddr']
+            srcPort = form.cleaned_data['srcPort']
+
+            # Get more settings from the form as needed
+
+            # Create the configuration content
+            config_content = f'''[DEFAULT]\n
+remoteAddr = {remoteAddr}\nremotePort = {remotePort}
+srcAddr = {srcAddr}\nsrcPort = {srcPort}'''
+
+            # Add more settings to the config_content as needed
+
+            # Define the path to the config file
+            config_file_path = os.path.join(settings.BASE_DIR, 'config.ini')
+
+            # Write the configuration to the file
+            with open(config_file_path, 'w') as file:
+                file.write(config_content)
+
+            return render(request, 'success_template.html')
+    else:
+        form = ConfigForm()
+
+    return render(request, 'config_template.html', {'form': form})
 
 
