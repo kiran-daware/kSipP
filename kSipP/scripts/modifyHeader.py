@@ -59,8 +59,8 @@ def modifyHeader(xml_file, header, newHeader):
 
 
 #Modify Header 
-xml_file_path = os.path.join(cwd, 'xml', 'Basic_UAC.xml')
-new_xml_file = os.path.join(cwd, 'xml', 'Basic_UAC_new.xml')
+xml_file_path = os.path.join(baseDir, 'kSipP', 'sipp', 'UAC_orig.xml')
+new_xml_file = os.path.join(baseDir, 'kSipP', 'sipp', 'UAC.xml')
 header = "From"
 newHeader = "kiran <sip:123@10.122.217.27:5060>"
 modifyHeader(xml_file_path, header, newHeader)

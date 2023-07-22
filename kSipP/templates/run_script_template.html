@@ -1,13 +1,26 @@
+<!-- run_script_template.html -->
+
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Run Script</title>
+    <title>Run Scripts</title>
 </head>
 <body>
-    <h1>Click the button to run the script</h1>
-    <form method="post">
+    <h1>Run Scripts</h1>
+
+    <form method="post" action="{% url 'run-script' %}">
         {% csrf_token %}
-        <input type="submit" value="Run Script">
+        <input type="hidden" name="script" value="UAS">
+        <input type="submit" value="Run UAS">
     </form>
+
+    <form method="post" action="{% url 'run-script' %}">
+        {% csrf_token %}
+        <input type="hidden" name="script" value="UAC">
+        <input type="submit" value="Run UAC">
+    </form>
+
+    <!-- Add more forms for other scripts as needed -->
+
 </body>
 </html>
