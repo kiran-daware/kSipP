@@ -1118,3 +1118,7 @@ INFO 2023-07-23 16:33:22,618 autoreload C:\Office\GitProject\EasySipPwithPythonD
 INFO 2023-07-23 16:33:22,618 autoreload C:\Office\GitProject\EasySipPwithPythonDjango\EasySipP\kSipP\views.py changed, reloading.
 INFO 2023-07-23 16:33:24,618 autoreload Watching for file changes with StatReloader
 INFO 2023-07-23 16:33:24,618 autoreload Watching for file changes with StatReloader
+INFO 2023-07-23 16:33:43,286 basehttp "GET / HTTP/1.1" 200 2826
+INFO 2023-07-23 16:33:43,286 basehttp "GET / HTTP/1.1" 200 2826
+INFO 2023-07-23 16:33:51,863 basehttp "POST / HTTP/1.1" 200 2826
+INFO 2023-07-23 16:33:51,863 basehttp "POST / HTTP/1.1" 200 2826
