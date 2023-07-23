@@ -1,51 +1,73 @@
 from django.http import HttpResponse
+from django.views.decorators.cache import never_cache
 from django.shortcuts import render
 from django.conf import settings
-from .forms import ConfigForm, xmlForm
+from .forms import configForm, xmlForm
 import configparser
 import os
 import subprocess
 
-config_file = os.path.join(str(settings.BASE_DIR), 'config.ini')
-config = configparser.ConfigParser()
-config.read(config_file)
-configd = config['DEFAULT']
-configx = config['XML']
 
-config_data = {
-    'remoteAddr': configd.get('remoteAddr'),
-    'remotePort': configd.get('remotePort'),
-    'srcAddrUac': configd.get('srcAddrUac'),
-    'srcPortUac': configd.get('srcPortUac'),
-    'srcAddrUas': configd.get('srcAddrUas'),
-    'srcPortUas': configd.get('srcPortUas'),
-}
-xml_data = {
-    'selectUAC':configx.get('uac_script'),
-    'selectUAS':configx.get('uas_script')
-}
-
+@never_cache
 def index(request):
+    
+    # Read initial data from config file
+    config_file = os.path.join(str(settings.BASE_DIR), 'config.ini')
+    config = configparser.ConfigParser()
+    config.read(config_file)
+    configd = config['DEFAULT']
+    configx = config['XML']
+
+    config_data = {
+        'remoteAddr': configd.get('remote_address'),
+        'remotePort': configd.get('remote_port'),
+        'localAddr': configd.get('local_address'),
+        'srcPortUac': configd.get('uac_port'),
+        'srcPortUas': configd.get('uas_port'),
+    }
+    xml_data = {
+        'selectUAC':configx.get('uac_script'),
+        'selectUAS':configx.get('uas_script')
+    }
+        
+
     selectXml = xmlForm(initial=xml_data)
-    configForm = ConfigForm(initial=config_data)
+    ipConfig = configForm(initial=config_data)
     if request.method == 'POST':
         if 'submitType' in request.POST:
             submit_type = request.POST['submitType']
-            if submit_type =='selectXml':
+            if submit_type =='config':
                 selectXml = xmlForm(request.POST)
-                if selectXml.is_valid():
+                ipConfig = configForm(request.POST)
+                if selectXml.is_valid() & ipConfig.is_valid():
+
                     selectUAC = selectXml.cleaned_data['selectUAC']
                     selectUAS = selectXml.cleaned_data['selectUAS']
                     config.set('XML','uac_script', selectUAC)
                     config.set('XML','uas_script', selectUAS)
 
-                    xmlConfigFile = os.path.join(settings.BASE_DIR, 'config.ini')
-                    with open(xmlConfigFile, 'w') as configfile:
+                    remoteAddr = ipConfig.cleaned_data['remoteAddr']
+                    remotePort = ipConfig.cleaned_data['remotePort']
+                    localAddr = ipConfig.cleaned_data['localAddr']
+                    srcPortUac = ipConfig.cleaned_data['srcPortUac']
+                    srcPortUas = ipConfig.cleaned_data['srcPortUas']
+
+                    config.set('DEFAULT', 'remote_address', remoteAddr)
+                    config.set('DEFAULT', 'remote_port', str(remotePort))
+                    config.set('DEFAULT', 'local_address', localAddr)
+                    config.set('DEFAULT', 'uac_port', str(srcPortUac))
+                    config.set('DEFAULT', 'uas_port', str(srcPortUas))
+                    
+                    # Update the config file
+                    ConfigFile = os.path.join(settings.BASE_DIR, 'config.ini')
+                    with open(ConfigFile, 'w') as configfile:
                         config.write(configfile)
 
-                    return render(request, 'index.html', {'selectXmlForm': selectXml,'configForm': configForm})
-    
-    return render(request, 'index.html', {'selectXmlForm': selectXml, 'configForm': configForm})
+                    return render(request, 'index.html', {'selectXmlForm': selectXml, 'configForm': ipConfig})
+
+    return render(request, 'index.html', {'selectXmlForm': selectXml, 'configForm': ipConfig})
+
+
 
 
 def modifyXml(request):
@@ -84,9 +106,11 @@ UAS = {selectUAS}
 
 
 
+
+
 def write_config(request):
     if request.method == 'POST':
-        form = ConfigForm(request.POST)
+        form = configForm(request.POST)
         if form.is_valid():
             # Get the configuration data from the form
             remoteAddr = form.cleaned_data['remoteAddr']
@@ -115,7 +139,7 @@ srcAddrUas = {srcAddrUas}\nsrcPortUAS = {srcPortUas}'''
 
             return render(request, 'success_template.html')
     else:
-        form = ConfigForm(initial=config_data)
+        form = configForm(initial=config_data)
 
     return render(request, 'config_template.html', {'form': form})
 

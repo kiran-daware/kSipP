@@ -7,18 +7,12 @@
     <h2>Hi! this is Kiran,</h2>
     <p>Trying out a new idea which may make SipP easier for everyone.</p>
 
+    <a href="/modify-xml">Modify XML</a>
     <form method="post">
         {% csrf_token %}
         {{ selectXmlForm.as_p }}
-        <button type="submit" name="submitType" value="selectXml">Submit</button>
-    </form>
-
-    <a href="/modify-xml">Modify XML</a>
-
-    <form method="post">
-        {% csrf_token %}
         {{ configForm.as_p }}
-        <button type="submit" name="submitType" value="configForm">Submit</button>
+        <button type="submit" name="submitType" value="config">Submit</button>
     </form>
     {% include 'run_script_template.html' %}
     
