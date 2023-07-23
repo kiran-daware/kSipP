@@ -7,6 +7,8 @@ import configparser
 import os
 import subprocess
 
+from .scripts.showXmlFlow import showXmlFlowScript
+
 
 # Read initial data from config file
 config_file = os.path.join(str(settings.BASE_DIR), 'config.ini')
@@ -37,6 +39,25 @@ def index(request):
         'selectUAS':configx.get('uas_script')
     }
     
+
+    ##### Check XML file call Flow
+    if request.method =="POST":
+        if 'submitType' in request.POST:
+            submit_type = request.POST['submitType']
+            if submit_type == 'checkFlow':
+                selectXml = xmlForm(request.POST)
+                if selectXml.is_valid():
+                    selectUAC = selectXml.cleaned_data['selectUAC']
+                    selectUAS = selectXml.cleaned_data['selectUAS']
+                    xml_file_path = str(settings.BASE_DIR / 'kSipP' / 'xml' / 'uac.xml')
+
+                    uacflow = showXmlFlowScript(selectUAC)
+                    uasflow = showXmlFlowScript(selectUAS)
+                    return render(request, 'show_xml_flow.html', locals())
+
+
+
+
     remote=f"{config_data['remoteAddr']}:{config_data['remotePort']}"
     uacSrc=f"-i {config_data['localAddr']} -p {config_data['srcPortUac']}"
     uasSrc=f"-i {config_data['localAddr']} -p {config_data['srcPortUas']}"
@@ -172,18 +193,34 @@ def run_script_view(request):
 
     if request.method == 'POST':
         scriptName = request.POST.get('script')
+
         if scriptName == 'UAC':
             try:
                 uacCommand = f"{sipp} -sf {uacXml} {remote} {uacSrc} -m 1"
-                subprocess.Popen(["start", "cmd.exe", "/K", uacCommand], shell=True)
+                uacProc=subprocess.Popen(["start", "cmd.exe", "/K", uacCommand], shell=True,)
             except Exception as e:
                 print(f"Error: {e}")
+            
+            while uacProc.poll() is None:
+                uacStatus=f"UAC script is running"
             
         if scriptName =='UAS':
             try:
                 uasCommand = f"{sipp} -sf {uasXml} {remote} {uasSrc}"
-                subprocess.Popen(["start", "cmd.exe", "/K", uasCommand], shell=True)
+                uasProc=subprocess.Popen(["start", "cmd.exe", "/K", uasCommand], shell=True)
             except Exception as e:
                 print(f"Error: {e}")
+            
+            while uasProc.poll() is None:
+                uasStatus=f"UAS script is running"
 
     return render(request, 'run_script_template.html', locals())
+
+
+
+def showXmlFlow(request):
+
+    xml_file_path = str(settings.BASE_DIR / 'kSipP' / 'xml' / 'uac.xml')
+    output_lines = showXmlFlowScript(xml_file_path)
+
+    return render(request, 'show_xml_flow.html', {'output_lines': output_lines})

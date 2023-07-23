@@ -11,6 +11,7 @@
     <form method="post">
         {% csrf_token %}
         {{ selectXml.as_p }}
+        <button type="submit" name="submitType" value="checkFlow">Check XML Call Flow</button>
         {{ ipConfig.as_p }}
         <button type="submit" name="submitType" value="config">Submit</button>
     </form>

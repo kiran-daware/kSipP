@@ -1122,3 +1122,1309 @@ INFO 2023-07-23 16:33:43,286 basehttp "GET / HTTP/1.1" 200 2826
 INFO 2023-07-23 16:33:43,286 basehttp "GET / HTTP/1.1" 200 2826
 INFO 2023-07-23 16:33:51,863 basehttp "POST / HTTP/1.1" 200 2826
 INFO 2023-07-23 16:33:51,863 basehttp "POST / HTTP/1.1" 200 2826
+INFO 2023-07-23 17:14:33,066 autoreload C:\Office\GitProject\EasySipPwithPythonDjango\EasySipP\kSipP\urls.py changed, reloading.
+INFO 2023-07-23 17:14:33,066 autoreload C:\Office\GitProject\EasySipPwithPythonDjango\EasySipP\kSipP\urls.py changed, reloading.
+INFO 2023-07-23 17:14:35,304 autoreload Watching for file changes with StatReloader
+INFO 2023-07-23 17:14:35,304 autoreload Watching for file changes with StatReloader
+INFO 2023-07-23 17:14:58,575 autoreload C:\Office\GitProject\EasySipPwithPythonDjango\EasySipP\kSipP\urls.py changed, reloading.
+INFO 2023-07-23 17:14:58,575 autoreload C:\Office\GitProject\EasySipPwithPythonDjango\EasySipP\kSipP\urls.py changed, reloading.
+INFO 2023-07-23 17:15:01,058 autoreload Watching for file changes with StatReloader
+INFO 2023-07-23 17:15:01,058 autoreload Watching for file changes with StatReloader
+INFO 2023-07-23 17:22:08,494 autoreload C:\Office\GitProject\EasySipPwithPythonDjango\EasySipP\kSipP\views.py changed, reloading.
+INFO 2023-07-23 17:22:08,494 autoreload C:\Office\GitProject\EasySipPwithPythonDjango\EasySipP\kSipP\views.py changed, reloading.
+INFO 2023-07-23 17:22:10,477 autoreload Watching for file changes with StatReloader
+INFO 2023-07-23 17:22:10,477 autoreload Watching for file changes with StatReloader
+INFO 2023-07-23 17:22:10,743 showXmlFlow XML file name is C:\Office\GitProject\EasySipPwithPythonDjango\EasySipP\kSipP\xml\uac.xml
+INFO 2023-07-23 17:22:34,520 autoreload C:\Office\GitProject\EasySipPwithPythonDjango\EasySipP\kSipP\views.py changed, reloading.
+INFO 2023-07-23 17:22:34,520 autoreload C:\Office\GitProject\EasySipPwithPythonDjango\EasySipP\kSipP\views.py changed, reloading.
+INFO 2023-07-23 17:22:36,620 autoreload Watching for file changes with StatReloader
+INFO 2023-07-23 17:22:36,620 autoreload Watching for file changes with StatReloader
+INFO 2023-07-23 17:22:36,754 showXmlFlow XML file name is C:\Office\GitProject\EasySipPwithPythonDjango\EasySipP\kSipP\xml\uac.xml
+INFO 2023-07-23 17:23:24,020 basehttp "GET / HTTP/1.1" 200 2826
+INFO 2023-07-23 17:23:24,020 basehttp "GET / HTTP/1.1" 200 2826
+WARNING 2023-07-23 17:23:29,627 log Not Found: /show-xml
+WARNING 2023-07-23 17:23:29,627 log Not Found: /show-xml
+WARNING 2023-07-23 17:23:29,631 basehttp "GET /show-xml HTTP/1.1" 404 2798
+WARNING 2023-07-23 17:23:29,631 basehttp "GET /show-xml HTTP/1.1" 404 2798
+ERROR 2023-07-23 17:23:46,108 log Internal Server Error: /show-xml-flow
+Traceback (most recent call last):
+  File "C:\Users\kiran.daware\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\kiran.daware\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Office\GitProject\EasySipPwithPythonDjango\EasySipP\kSipP\scripts\showXmlFlow.py", line 33, in showXmlFlow
+    root = openXML(xml_file)
+           ^^^^^^^^^^^^^^^^^
+  File "C:\Office\GitProject\EasySipPwithPythonDjango\EasySipP\kSipP\scripts\showXmlFlow.py", line 15, in openXML
+    with open(xml_file, "r") as f:
+         ^^^^^^^^^^^^^^^^^^^
+TypeError: expected str, bytes or os.PathLike object, not WSGIRequest
+ERROR 2023-07-23 17:23:46,108 log Internal Server Error: /show-xml-flow
+Traceback (most recent call last):
+  File "C:\Users\kiran.daware\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\kiran.daware\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Office\GitProject\EasySipPwithPythonDjango\EasySipP\kSipP\scripts\showXmlFlow.py", line 33, in showXmlFlow
+    root = openXML(xml_file)
+           ^^^^^^^^^^^^^^^^^
+  File "C:\Office\GitProject\EasySipPwithPythonDjango\EasySipP\kSipP\scripts\showXmlFlow.py", line 15, in openXML
+    with open(xml_file, "r") as f:
+         ^^^^^^^^^^^^^^^^^^^
+TypeError: expected str, bytes or os.PathLike object, not WSGIRequest
+ERROR 2023-07-23 17:23:46,116 basehttp "GET /show-xml-flow HTTP/1.1" 500 68895
+ERROR 2023-07-23 17:23:46,116 basehttp "GET /show-xml-flow HTTP/1.1" 500 68895
+INFO 2023-07-23 17:29:11,702 autoreload C:\Office\GitProject\EasySipPwithPythonDjango\EasySipP\kSipP\scripts\showXmlFlow.py changed, reloading.
+INFO 2023-07-23 17:29:11,702 autoreload C:\Office\GitProject\EasySipPwithPythonDjango\EasySipP\kSipP\scripts\showXmlFlow.py changed, reloading.
+INFO 2023-07-23 17:29:13,696 autoreload Watching for file changes with StatReloader
+INFO 2023-07-23 17:29:13,696 autoreload Watching for file changes with StatReloader
+INFO 2023-07-23 17:29:13,906 showXmlFlow XML file name is C:\Office\GitProject\EasySipPwithPythonDjango\EasySipP\kSipP\xml\uac.xml
+ERROR 2023-07-23 17:29:16,467 log Internal Server Error: /show-xml-flow
+Traceback (most recent call last):
+  File "C:\Users\kiran.daware\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\kiran.daware\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Office\GitProject\EasySipPwithPythonDjango\EasySipP\kSipP\scripts\showXmlFlow.py", line 34, in showXmlFlow
+    root = openXML(xml_file)
+           ^^^^^^^^^^^^^^^^^
+  File "C:\Office\GitProject\EasySipPwithPythonDjango\EasySipP\kSipP\scripts\showXmlFlow.py", line 15, in openXML
+    with open(xml_file, "r") as f:
+         ^^^^^^^^^^^^^^^^^^^
+TypeError: expected str, bytes or os.PathLike object, not WSGIRequest
+ERROR 2023-07-23 17:29:16,467 log Internal Server Error: /show-xml-flow
+Traceback (most recent call last):
+  File "C:\Users\kiran.daware\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\kiran.daware\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Office\GitProject\EasySipPwithPythonDjango\EasySipP\kSipP\scripts\showXmlFlow.py", line 34, in showXmlFlow
+    root = openXML(xml_file)
+           ^^^^^^^^^^^^^^^^^
+  File "C:\Office\GitProject\EasySipPwithPythonDjango\EasySipP\kSipP\scripts\showXmlFlow.py", line 15, in openXML
+    with open(xml_file, "r") as f:
+         ^^^^^^^^^^^^^^^^^^^
+TypeError: expected str, bytes or os.PathLike object, not WSGIRequest
+ERROR 2023-07-23 17:29:16,473 basehttp "GET /show-xml-flow HTTP/1.1" 500 69011
+ERROR 2023-07-23 17:29:16,473 basehttp "GET /show-xml-flow HTTP/1.1" 500 69011
+INFO 2023-07-23 17:29:41,596 autoreload C:\Office\GitProject\EasySipPwithPythonDjango\EasySipP\kSipP\scripts\showXmlFlow.py changed, reloading.
+INFO 2023-07-23 17:29:41,596 autoreload C:\Office\GitProject\EasySipPwithPythonDjango\EasySipP\kSipP\scripts\showXmlFlow.py changed, reloading.
+INFO 2023-07-23 17:29:43,986 autoreload Watching for file changes with StatReloader
+INFO 2023-07-23 17:29:43,986 autoreload Watching for file changes with StatReloader
+INFO 2023-07-23 17:29:44,146 showXmlFlow XML file name is C:\Office\GitProject\EasySipPwithPythonDjango\EasySipP\kSipP\xml\uac.xml
+ERROR 2023-07-23 17:29:48,648 log Internal Server Error: /show-xml-flow
+Traceback (most recent call last):
+  File "C:\Users\kiran.daware\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\kiran.daware\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Office\GitProject\EasySipPwithPythonDjango\EasySipP\kSipP\scripts\showXmlFlow.py", line 34, in showXmlFlow
+    root = openXML(xml_file)
+           ^^^^^^^^^^^^^^^^^
+  File "C:\Office\GitProject\EasySipPwithPythonDjango\EasySipP\kSipP\scripts\showXmlFlow.py", line 15, in openXML
+    with open(xml_file, "r") as f:
+         ^^^^^^^^^^^^^^^^^^^
+TypeError: expected str, bytes or os.PathLike object, not WSGIRequest
+ERROR 2023-07-23 17:29:48,648 log Internal Server Error: /show-xml-flow
+Traceback (most recent call last):
+  File "C:\Users\kiran.daware\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\kiran.daware\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Office\GitProject\EasySipPwithPythonDjango\EasySipP\kSipP\scripts\showXmlFlow.py", line 34, in showXmlFlow
+    root = openXML(xml_file)
+           ^^^^^^^^^^^^^^^^^
+  File "C:\Office\GitProject\EasySipPwithPythonDjango\EasySipP\kSipP\scripts\showXmlFlow.py", line 15, in openXML
+    with open(xml_file, "r") as f:
+         ^^^^^^^^^^^^^^^^^^^
+TypeError: expected str, bytes or os.PathLike object, not WSGIRequest
+ERROR 2023-07-23 17:29:48,655 basehttp "GET /show-xml-flow HTTP/1.1" 500 68874
+ERROR 2023-07-23 17:29:48,655 basehttp "GET /show-xml-flow HTTP/1.1" 500 68874
+INFO 2023-07-23 17:36:03,635 autoreload C:\Office\GitProject\EasySipPwithPythonDjango\EasySipP\kSipP\scripts\showXmlFlow.py changed, reloading.
+INFO 2023-07-23 17:36:03,635 autoreload C:\Office\GitProject\EasySipPwithPythonDjango\EasySipP\kSipP\scripts\showXmlFlow.py changed, reloading.
+INFO 2023-07-23 17:36:04,653 autoreload Watching for file changes with StatReloader
+INFO 2023-07-23 17:36:04,653 autoreload Watching for file changes with StatReloader
+INFO 2023-07-23 17:36:39,427 autoreload Watching for file changes with StatReloader
+INFO 2023-07-23 17:36:39,427 autoreload Watching for file changes with StatReloader
+INFO 2023-07-23 17:44:33,689 autoreload C:\Office\GitProject\EasySipPwithPythonDjango\EasySipP\kSipP\scripts\showXmlFlow.py changed, reloading.
+INFO 2023-07-23 17:44:33,689 autoreload C:\Office\GitProject\EasySipPwithPythonDjango\EasySipP\kSipP\scripts\showXmlFlow.py changed, reloading.
+INFO 2023-07-23 17:44:34,602 autoreload Watching for file changes with StatReloader
+INFO 2023-07-23 17:44:34,602 autoreload Watching for file changes with StatReloader
+INFO 2023-07-23 17:44:34,707 showXmlFlow XML file name is C:\Office\GitProject\EasySipPwithPythonDjango\EasySipP\kSipP\xml\uac.xml
+ERROR 2023-07-23 17:44:37,336 log Internal Server Error: /show-xml-flow
+Traceback (most recent call last):
+  File "C:\Users\kiran.daware\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\kiran.daware\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Office\GitProject\EasySipPwithPythonDjango\EasySipP\kSipP\scripts\showXmlFlow.py", line 33, in showXmlFlow
+    root = openXML(xml_file)
+           ^^^^^^^^^^^^^^^^^
+  File "C:\Office\GitProject\EasySipPwithPythonDjango\EasySipP\kSipP\scripts\showXmlFlow.py", line 15, in openXML
+    with open(xml_file, "r") as f:
+         ^^^^^^^^^^^^^^^^^^^
+TypeError: expected str, bytes or os.PathLike object, not WSGIRequest
+ERROR 2023-07-23 17:44:37,336 log Internal Server Error: /show-xml-flow
+Traceback (most recent call last):
+  File "C:\Users\kiran.daware\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\kiran.daware\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Office\GitProject\EasySipPwithPythonDjango\EasySipP\kSipP\scripts\showXmlFlow.py", line 33, in showXmlFlow
+    root = openXML(xml_file)
+           ^^^^^^^^^^^^^^^^^
+  File "C:\Office\GitProject\EasySipPwithPythonDjango\EasySipP\kSipP\scripts\showXmlFlow.py", line 15, in openXML
+    with open(xml_file, "r") as f:
+         ^^^^^^^^^^^^^^^^^^^
+TypeError: expected str, bytes or os.PathLike object, not WSGIRequest
+ERROR 2023-07-23 17:44:37,340 basehttp "GET /show-xml-flow HTTP/1.1" 500 69036
+ERROR 2023-07-23 17:44:37,340 basehttp "GET /show-xml-flow HTTP/1.1" 500 69036
+INFO 2023-07-23 17:50:18,970 autoreload C:\Office\GitProject\EasySipPwithPythonDjango\EasySipP\kSipP\views.py changed, reloading.
+INFO 2023-07-23 17:50:18,970 autoreload C:\Office\GitProject\EasySipPwithPythonDjango\EasySipP\kSipP\views.py changed, reloading.
+INFO 2023-07-23 17:50:20,156 autoreload Watching for file changes with StatReloader
+INFO 2023-07-23 17:50:20,156 autoreload Watching for file changes with StatReloader
+INFO 2023-07-23 17:50:20,279 showXmlFlow XML file name is C:\Office\GitProject\EasySipPwithPythonDjango\EasySipP\kSipP\xml\uac.xml
+INFO 2023-07-23 17:50:41,087 autoreload Watching for file changes with StatReloader
+INFO 2023-07-23 17:50:41,087 autoreload Watching for file changes with StatReloader
+INFO 2023-07-23 17:50:41,114 showXmlFlow XML file name is C:\Office\GitProject\EasySipPwithPythonDjango\EasySipP\kSipP\xml\uac.xml
+ERROR 2023-07-23 17:50:44,927 log Internal Server Error: /show-xml-flow
+Traceback (most recent call last):
+  File "C:\Users\kiran.daware\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\kiran.daware\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Office\GitProject\EasySipPwithPythonDjango\EasySipP\kSipP\scripts\showXmlFlow.py", line 33, in showXmlFlow
+    root = openXML(xml_file)
+           ^^^^^^^^^^^^^^^^^
+  File "C:\Office\GitProject\EasySipPwithPythonDjango\EasySipP\kSipP\scripts\showXmlFlow.py", line 15, in openXML
+    with open(xml_file, "r") as f:
+         ^^^^^^^^^^^^^^^^^^^
+TypeError: expected str, bytes or os.PathLike object, not WSGIRequest
+ERROR 2023-07-23 17:50:44,927 log Internal Server Error: /show-xml-flow
+Traceback (most recent call last):
+  File "C:\Users\kiran.daware\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\kiran.daware\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Office\GitProject\EasySipPwithPythonDjango\EasySipP\kSipP\scripts\showXmlFlow.py", line 33, in showXmlFlow
+    root = openXML(xml_file)
+           ^^^^^^^^^^^^^^^^^
+  File "C:\Office\GitProject\EasySipPwithPythonDjango\EasySipP\kSipP\scripts\showXmlFlow.py", line 15, in openXML
+    with open(xml_file, "r") as f:
+         ^^^^^^^^^^^^^^^^^^^
+TypeError: expected str, bytes or os.PathLike object, not WSGIRequest
+ERROR 2023-07-23 17:50:44,930 basehttp "GET /show-xml-flow HTTP/1.1" 500 69036
+ERROR 2023-07-23 17:50:44,930 basehttp "GET /show-xml-flow HTTP/1.1" 500 69036
+INFO 2023-07-23 17:51:38,439 autoreload C:\Office\GitProject\EasySipPwithPythonDjango\EasySipP\kSipP\scripts\showXmlFlow.py changed, reloading.
+INFO 2023-07-23 17:51:38,439 autoreload C:\Office\GitProject\EasySipPwithPythonDjango\EasySipP\kSipP\scripts\showXmlFlow.py changed, reloading.
+INFO 2023-07-23 17:51:39,256 autoreload Watching for file changes with StatReloader
+INFO 2023-07-23 17:51:39,256 autoreload Watching for file changes with StatReloader
+INFO 2023-07-23 17:51:39,316 showXmlFlow XML file name is C:\Office\GitProject\EasySipPwithPythonDjango\EasySipP\kSipP\xml\uac.xml
+ERROR 2023-07-23 17:51:41,585 log Internal Server Error: /show-xml-flow
+Traceback (most recent call last):
+  File "C:\Users\kiran.daware\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\kiran.daware\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Office\GitProject\EasySipPwithPythonDjango\EasySipP\kSipP\scripts\showXmlFlow.py", line 34, in showXmlFlow
+    root = openXML(xmlFileName)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Office\GitProject\EasySipPwithPythonDjango\EasySipP\kSipP\scripts\showXmlFlow.py", line 15, in openXML
+    with open(xml_file, "r") as f:
+         ^^^^^^^^^^^^^^^^^^^
+OSError: [Errno 22] Invalid argument: "<WSGIRequest: GET '/show-xml-flow'>"
+ERROR 2023-07-23 17:51:41,585 log Internal Server Error: /show-xml-flow
+Traceback (most recent call last):
+  File "C:\Users\kiran.daware\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\kiran.daware\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Office\GitProject\EasySipPwithPythonDjango\EasySipP\kSipP\scripts\showXmlFlow.py", line 34, in showXmlFlow
+    root = openXML(xmlFileName)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Office\GitProject\EasySipPwithPythonDjango\EasySipP\kSipP\scripts\showXmlFlow.py", line 15, in openXML
+    with open(xml_file, "r") as f:
+         ^^^^^^^^^^^^^^^^^^^
+OSError: [Errno 22] Invalid argument: "<WSGIRequest: GET '/show-xml-flow'>"
+ERROR 2023-07-23 17:51:41,588 basehttp "GET /show-xml-flow HTTP/1.1" 500 69338
+ERROR 2023-07-23 17:51:41,588 basehttp "GET /show-xml-flow HTTP/1.1" 500 69338
+INFO 2023-07-23 17:52:31,476 autoreload C:\Office\GitProject\EasySipPwithPythonDjango\EasySipP\kSipP\views.py changed, reloading.
+INFO 2023-07-23 17:52:31,476 autoreload C:\Office\GitProject\EasySipPwithPythonDjango\EasySipP\kSipP\views.py changed, reloading.
+INFO 2023-07-23 17:52:32,323 autoreload Watching for file changes with StatReloader
+INFO 2023-07-23 17:52:32,323 autoreload Watching for file changes with StatReloader
+INFO 2023-07-23 17:52:32,381 showXmlFlow XML file name is C:\Office\GitProject\EasySipPwithPythonDjango\EasySipP\kSipP\xml\uac.xml
+ERROR 2023-07-23 17:52:35,124 log Internal Server Error: /show-xml-flow
+Traceback (most recent call last):
+  File "C:\Users\kiran.daware\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\kiran.daware\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Office\GitProject\EasySipPwithPythonDjango\EasySipP\kSipP\scripts\showXmlFlow.py", line 34, in showXmlFlow
+    root = openXML(xmlFileName)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Office\GitProject\EasySipPwithPythonDjango\EasySipP\kSipP\scripts\showXmlFlow.py", line 15, in openXML
+    with open(xml_file, "r") as f:
+         ^^^^^^^^^^^^^^^^^^^
+OSError: [Errno 22] Invalid argument: "<WSGIRequest: GET '/show-xml-flow'>"
+ERROR 2023-07-23 17:52:35,124 log Internal Server Error: /show-xml-flow
+Traceback (most recent call last):
+  File "C:\Users\kiran.daware\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\kiran.daware\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Office\GitProject\EasySipPwithPythonDjango\EasySipP\kSipP\scripts\showXmlFlow.py", line 34, in showXmlFlow
+    root = openXML(xmlFileName)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Office\GitProject\EasySipPwithPythonDjango\EasySipP\kSipP\scripts\showXmlFlow.py", line 15, in openXML
+    with open(xml_file, "r") as f:
+         ^^^^^^^^^^^^^^^^^^^
+OSError: [Errno 22] Invalid argument: "<WSGIRequest: GET '/show-xml-flow'>"
+ERROR 2023-07-23 17:52:35,126 basehttp "GET /show-xml-flow HTTP/1.1" 500 69338
+ERROR 2023-07-23 17:52:35,126 basehttp "GET /show-xml-flow HTTP/1.1" 500 69338
+INFO 2023-07-23 17:53:53,783 autoreload C:\Office\GitProject\EasySipPwithPythonDjango\EasySipP\kSipP\scripts\showXmlFlow.py changed, reloading.
+INFO 2023-07-23 17:53:53,783 autoreload C:\Office\GitProject\EasySipPwithPythonDjango\EasySipP\kSipP\scripts\showXmlFlow.py changed, reloading.
+INFO 2023-07-23 17:53:54,726 autoreload Watching for file changes with StatReloader
+INFO 2023-07-23 17:53:54,726 autoreload Watching for file changes with StatReloader
+INFO 2023-07-23 17:53:54,796 showXmlFlow XML file name is C:\Office\GitProject\EasySipPwithPythonDjango\EasySipP\kSipP\xml\uac.xml
+INFO 2023-07-23 17:53:54,802 showXmlFlow XML file name is C:\Office\GitProject\EasySipPwithPythonDjango\EasySipP\kSipP\xml\uac.xml
+INFO 2023-07-23 17:54:01,283 autoreload C:\Office\GitProject\EasySipPwithPythonDjango\EasySipP\kSipP\scripts\showXmlFlow.py changed, reloading.
+INFO 2023-07-23 17:54:01,283 autoreload C:\Office\GitProject\EasySipPwithPythonDjango\EasySipP\kSipP\scripts\showXmlFlow.py changed, reloading.
+INFO 2023-07-23 17:54:02,134 autoreload Watching for file changes with StatReloader
+INFO 2023-07-23 17:54:02,134 autoreload Watching for file changes with StatReloader
+INFO 2023-07-23 17:54:02,220 showXmlFlow XML file name is C:\Office\GitProject\EasySipPwithPythonDjango\EasySipP\kSipP\xml\uac.xml
+INFO 2023-07-23 17:54:02,226 showXmlFlow XML file name is C:\Office\GitProject\EasySipPwithPythonDjango\EasySipP\kSipP\xml\uac.xml
+INFO 2023-07-23 17:54:21,897 autoreload Watching for file changes with StatReloader
+INFO 2023-07-23 17:54:21,897 autoreload Watching for file changes with StatReloader
+INFO 2023-07-23 17:54:21,936 showXmlFlow XML file name is C:\Office\GitProject\EasySipPwithPythonDjango\EasySipP\kSipP\xml\uac.xml
+INFO 2023-07-23 17:54:21,941 showXmlFlow XML file name is C:\Office\GitProject\EasySipPwithPythonDjango\EasySipP\kSipP\xml\uac.xml
+INFO 2023-07-23 17:55:57,517 autoreload C:\Office\GitProject\EasySipPwithPythonDjango\EasySipP\kSipP\scripts\showXmlFlow.py changed, reloading.
+INFO 2023-07-23 17:55:57,517 autoreload C:\Office\GitProject\EasySipPwithPythonDjango\EasySipP\kSipP\scripts\showXmlFlow.py changed, reloading.
+INFO 2023-07-23 17:55:58,361 autoreload Watching for file changes with StatReloader
+INFO 2023-07-23 17:55:58,361 autoreload Watching for file changes with StatReloader
+INFO 2023-07-23 17:55:58,421 showXmlFlow XML file name is C:\Office\GitProject\EasySipPwithPythonDjango\EasySipP\kSipP\xml\uac.xml
+INFO 2023-07-23 17:56:06,026 autoreload C:\Office\GitProject\EasySipPwithPythonDjango\EasySipP\kSipP\scripts\showXmlFlow.py changed, reloading.
+INFO 2023-07-23 17:56:06,026 autoreload C:\Office\GitProject\EasySipPwithPythonDjango\EasySipP\kSipP\scripts\showXmlFlow.py changed, reloading.
+INFO 2023-07-23 17:56:06,984 autoreload Watching for file changes with StatReloader
+INFO 2023-07-23 17:56:06,984 autoreload Watching for file changes with StatReloader
+INFO 2023-07-23 17:56:07,052 showXmlFlow XML file name is C:\Office\GitProject\EasySipPwithPythonDjango\EasySipP\kSipP\xml\uac.xml
+ERROR 2023-07-23 17:56:08,143 log Internal Server Error: /show-xml-flow
+Traceback (most recent call last):
+  File "C:\Users\kiran.daware\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\kiran.daware\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Office\GitProject\EasySipPwithPythonDjango\EasySipP\kSipP\scripts\showXmlFlow.py", line 33, in showXmlFlow
+    with open(xml_file, "r") as f:
+         ^^^^^^^^^^^^^^^^^^^
+TypeError: expected str, bytes or os.PathLike object, not WSGIRequest
+ERROR 2023-07-23 17:56:08,143 log Internal Server Error: /show-xml-flow
+Traceback (most recent call last):
+  File "C:\Users\kiran.daware\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\kiran.daware\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Office\GitProject\EasySipPwithPythonDjango\EasySipP\kSipP\scripts\showXmlFlow.py", line 33, in showXmlFlow
+    with open(xml_file, "r") as f:
+         ^^^^^^^^^^^^^^^^^^^
+TypeError: expected str, bytes or os.PathLike object, not WSGIRequest
+ERROR 2023-07-23 17:56:08,146 basehttp "GET /show-xml-flow HTTP/1.1" 500 65285
+ERROR 2023-07-23 17:56:08,146 basehttp "GET /show-xml-flow HTTP/1.1" 500 65285
+INFO 2023-07-23 18:00:50,600 autoreload C:\Office\GitProject\EasySipPwithPythonDjango\EasySipP\kSipP\views.py changed, reloading.
+INFO 2023-07-23 18:00:50,600 autoreload C:\Office\GitProject\EasySipPwithPythonDjango\EasySipP\kSipP\views.py changed, reloading.
+INFO 2023-07-23 18:00:51,538 autoreload Watching for file changes with StatReloader
+INFO 2023-07-23 18:00:51,538 autoreload Watching for file changes with StatReloader
+INFO 2023-07-23 18:00:51,623 showXmlFlow XML file name is C:\Office\GitProject\EasySipPwithPythonDjango\EasySipP\kSipP\xml\uac.xml
+ERROR 2023-07-23 18:01:13,251 log Internal Server Error: /show-xml-flow
+Traceback (most recent call last):
+  File "C:\Users\kiran.daware\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\kiran.daware\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Office\GitProject\EasySipPwithPythonDjango\EasySipP\kSipP\scripts\showXmlFlow.py", line 33, in showXmlFlow
+    with open(xml_file, "r") as f:
+         ^^^^^^^^^^^^^^^^^^^
+TypeError: expected str, bytes or os.PathLike object, not WSGIRequest
+ERROR 2023-07-23 18:01:13,251 log Internal Server Error: /show-xml-flow
+Traceback (most recent call last):
+  File "C:\Users\kiran.daware\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\kiran.daware\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Office\GitProject\EasySipPwithPythonDjango\EasySipP\kSipP\scripts\showXmlFlow.py", line 33, in showXmlFlow
+    with open(xml_file, "r") as f:
+         ^^^^^^^^^^^^^^^^^^^
+TypeError: expected str, bytes or os.PathLike object, not WSGIRequest
+ERROR 2023-07-23 18:01:13,256 basehttp "GET /show-xml-flow HTTP/1.1" 500 65285
+ERROR 2023-07-23 18:01:13,256 basehttp "GET /show-xml-flow HTTP/1.1" 500 65285
+ERROR 2023-07-23 18:01:14,791 log Internal Server Error: /show-xml-flow
+Traceback (most recent call last):
+  File "C:\Users\kiran.daware\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\kiran.daware\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Office\GitProject\EasySipPwithPythonDjango\EasySipP\kSipP\scripts\showXmlFlow.py", line 33, in showXmlFlow
+    with open(xml_file, "r") as f:
+         ^^^^^^^^^^^^^^^^^^^
+TypeError: expected str, bytes or os.PathLike object, not WSGIRequest
+ERROR 2023-07-23 18:01:14,791 log Internal Server Error: /show-xml-flow
+Traceback (most recent call last):
+  File "C:\Users\kiran.daware\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\kiran.daware\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Office\GitProject\EasySipPwithPythonDjango\EasySipP\kSipP\scripts\showXmlFlow.py", line 33, in showXmlFlow
+    with open(xml_file, "r") as f:
+         ^^^^^^^^^^^^^^^^^^^
+TypeError: expected str, bytes or os.PathLike object, not WSGIRequest
+ERROR 2023-07-23 18:01:14,795 basehttp "GET /show-xml-flow HTTP/1.1" 500 65285
+ERROR 2023-07-23 18:01:14,795 basehttp "GET /show-xml-flow HTTP/1.1" 500 65285
+INFO 2023-07-23 18:04:20,224 autoreload C:\Office\GitProject\EasySipPwithPythonDjango\EasySipP\kSipP\views.py changed, reloading.
+INFO 2023-07-23 18:04:20,224 autoreload C:\Office\GitProject\EasySipPwithPythonDjango\EasySipP\kSipP\views.py changed, reloading.
+INFO 2023-07-23 18:04:21,172 autoreload Watching for file changes with StatReloader
+INFO 2023-07-23 18:04:21,172 autoreload Watching for file changes with StatReloader
+INFO 2023-07-23 18:04:21,267 showXmlFlow XML file name is C:\Office\GitProject\EasySipPwithPythonDjango\EasySipP\kSipP\xml\uac.xml
+INFO 2023-07-23 18:04:57,252 autoreload C:\Office\GitProject\EasySipPwithPythonDjango\EasySipP\kSipP\scripts\showXmlFlow.py changed, reloading.
+INFO 2023-07-23 18:04:57,252 autoreload C:\Office\GitProject\EasySipPwithPythonDjango\EasySipP\kSipP\scripts\showXmlFlow.py changed, reloading.
+INFO 2023-07-23 18:04:58,080 autoreload Watching for file changes with StatReloader
+INFO 2023-07-23 18:04:58,080 autoreload Watching for file changes with StatReloader
+INFO 2023-07-23 18:05:09,604 autoreload Watching for file changes with StatReloader
+INFO 2023-07-23 18:05:09,604 autoreload Watching for file changes with StatReloader
+INFO 2023-07-23 18:07:58,337 autoreload C:\Office\GitProject\EasySipPwithPythonDjango\EasySipP\kSipP\scripts\showXmlFlow.py changed, reloading.
+INFO 2023-07-23 18:07:58,337 autoreload C:\Office\GitProject\EasySipPwithPythonDjango\EasySipP\kSipP\scripts\showXmlFlow.py changed, reloading.
+INFO 2023-07-23 18:07:59,112 autoreload Watching for file changes with StatReloader
+INFO 2023-07-23 18:07:59,112 autoreload Watching for file changes with StatReloader
+ERROR 2023-07-23 18:08:04,981 log Internal Server Error: /show-xml-flow
+Traceback (most recent call last):
+  File "C:\Users\kiran.daware\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\kiran.daware\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Office\GitProject\EasySipPwithPythonDjango\EasySipP\kSipP\scripts\showXmlFlow.py", line 33, in showXmlFlow
+    with open(xml_file, "r") as f:
+         ^^^^^^^^^^^^^^^^^^^
+TypeError: expected str, bytes or os.PathLike object, not WSGIRequest
+ERROR 2023-07-23 18:08:04,981 log Internal Server Error: /show-xml-flow
+Traceback (most recent call last):
+  File "C:\Users\kiran.daware\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\kiran.daware\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Office\GitProject\EasySipPwithPythonDjango\EasySipP\kSipP\scripts\showXmlFlow.py", line 33, in showXmlFlow
+    with open(xml_file, "r") as f:
+         ^^^^^^^^^^^^^^^^^^^
+TypeError: expected str, bytes or os.PathLike object, not WSGIRequest
+ERROR 2023-07-23 18:08:04,986 basehttp "GET /show-xml-flow HTTP/1.1" 500 65285
+ERROR 2023-07-23 18:08:04,986 basehttp "GET /show-xml-flow HTTP/1.1" 500 65285
+INFO 2023-07-23 18:10:58,713 autoreload C:\Office\GitProject\EasySipPwithPythonDjango\EasySipP\kSipP\views.py changed, reloading.
+INFO 2023-07-23 18:10:58,713 autoreload C:\Office\GitProject\EasySipPwithPythonDjango\EasySipP\kSipP\views.py changed, reloading.
+INFO 2023-07-23 18:10:59,517 autoreload Watching for file changes with StatReloader
+INFO 2023-07-23 18:10:59,517 autoreload Watching for file changes with StatReloader
+INFO 2023-07-23 18:11:14,572 autoreload C:\Office\GitProject\EasySipPwithPythonDjango\EasySipP\kSipP\views.py changed, reloading.
+INFO 2023-07-23 18:11:14,572 autoreload C:\Office\GitProject\EasySipPwithPythonDjango\EasySipP\kSipP\views.py changed, reloading.
+INFO 2023-07-23 18:11:15,598 autoreload Watching for file changes with StatReloader
+INFO 2023-07-23 18:11:15,598 autoreload Watching for file changes with StatReloader
+INFO 2023-07-23 18:11:21,219 autoreload C:\Office\GitProject\EasySipPwithPythonDjango\EasySipP\kSipP\views.py changed, reloading.
+INFO 2023-07-23 18:11:21,219 autoreload C:\Office\GitProject\EasySipPwithPythonDjango\EasySipP\kSipP\views.py changed, reloading.
+INFO 2023-07-23 18:11:22,010 autoreload Watching for file changes with StatReloader
+INFO 2023-07-23 18:11:22,010 autoreload Watching for file changes with StatReloader
+INFO 2023-07-23 18:11:39,902 autoreload C:\Office\GitProject\EasySipPwithPythonDjango\EasySipP\kSipP\scripts\showXmlFlow.py changed, reloading.
+INFO 2023-07-23 18:11:39,902 autoreload C:\Office\GitProject\EasySipPwithPythonDjango\EasySipP\kSipP\scripts\showXmlFlow.py changed, reloading.
+INFO 2023-07-23 18:11:40,855 autoreload Watching for file changes with StatReloader
+INFO 2023-07-23 18:11:40,855 autoreload Watching for file changes with StatReloader
+INFO 2023-07-23 18:11:58,729 autoreload C:\Office\GitProject\EasySipPwithPythonDjango\EasySipP\kSipP\views.py changed, reloading.
+INFO 2023-07-23 18:11:58,729 autoreload C:\Office\GitProject\EasySipPwithPythonDjango\EasySipP\kSipP\views.py changed, reloading.
+INFO 2023-07-23 18:11:59,538 autoreload Watching for file changes with StatReloader
+INFO 2023-07-23 18:11:59,538 autoreload Watching for file changes with StatReloader
+INFO 2023-07-23 18:12:00,781 autoreload C:\Office\GitProject\EasySipPwithPythonDjango\EasySipP\kSipP\views.py changed, reloading.
+INFO 2023-07-23 18:12:00,781 autoreload C:\Office\GitProject\EasySipPwithPythonDjango\EasySipP\kSipP\views.py changed, reloading.
+INFO 2023-07-23 18:12:01,688 autoreload Watching for file changes with StatReloader
+INFO 2023-07-23 18:12:01,688 autoreload Watching for file changes with StatReloader
+INFO 2023-07-23 18:12:16,747 autoreload Watching for file changes with StatReloader
+INFO 2023-07-23 18:12:16,747 autoreload Watching for file changes with StatReloader
+INFO 2023-07-23 18:12:35,623 autoreload C:\Office\GitProject\EasySipPwithPythonDjango\EasySipP\kSipP\views.py changed, reloading.
+INFO 2023-07-23 18:12:35,623 autoreload C:\Office\GitProject\EasySipPwithPythonDjango\EasySipP\kSipP\views.py changed, reloading.
+INFO 2023-07-23 18:12:36,502 autoreload Watching for file changes with StatReloader
+INFO 2023-07-23 18:12:36,502 autoreload Watching for file changes with StatReloader
+INFO 2023-07-23 18:12:38,250 showXmlFlow XML file name is C:\Office\GitProject\EasySipPwithPythonDjango\EasySipP\kSipP\xml\uac.xml
+INFO 2023-07-23 18:12:38,259 basehttp "GET /show-xml-flow HTTP/1.1" 200 499
+INFO 2023-07-23 18:12:38,259 basehttp "GET /show-xml-flow HTTP/1.1" 200 499
+INFO 2023-07-23 18:14:10,498 showXmlFlow XML file name is C:\Office\GitProject\EasySipPwithPythonDjango\EasySipP\kSipP\xml\uac.xml
+INFO 2023-07-23 18:14:10,501 basehttp "GET /show-xml-flow HTTP/1.1" 200 499
+INFO 2023-07-23 18:14:10,501 basehttp "GET /show-xml-flow HTTP/1.1" 200 499
+INFO 2023-07-23 18:14:12,174 showXmlFlow XML file name is C:\Office\GitProject\EasySipPwithPythonDjango\EasySipP\kSipP\xml\uac.xml
+INFO 2023-07-23 18:14:12,177 basehttp "GET /show-xml-flow HTTP/1.1" 200 499
+INFO 2023-07-23 18:14:12,177 basehttp "GET /show-xml-flow HTTP/1.1" 200 499
+INFO 2023-07-23 18:14:13,086 showXmlFlow XML file name is C:\Office\GitProject\EasySipPwithPythonDjango\EasySipP\kSipP\xml\uac.xml
+INFO 2023-07-23 18:14:13,088 basehttp "GET /show-xml-flow HTTP/1.1" 200 499
+INFO 2023-07-23 18:14:13,088 basehttp "GET /show-xml-flow HTTP/1.1" 200 499
+INFO 2023-07-23 18:14:15,658 basehttp "GET / HTTP/1.1" 200 2826
+INFO 2023-07-23 18:14:15,658 basehttp "GET / HTTP/1.1" 200 2826
+INFO 2023-07-23 18:20:23,625 basehttp "GET / HTTP/1.1" 200 2826
+INFO 2023-07-23 18:20:23,625 basehttp "GET / HTTP/1.1" 200 2826
+INFO 2023-07-23 18:29:13,519 basehttp "GET / HTTP/1.1" 200 2921
+INFO 2023-07-23 18:29:13,519 basehttp "GET / HTTP/1.1" 200 2921
+INFO 2023-07-23 18:29:15,573 basehttp "POST / HTTP/1.1" 200 2921
+INFO 2023-07-23 18:29:15,573 basehttp "POST / HTTP/1.1" 200 2921
+INFO 2023-07-23 18:29:19,117 basehttp "POST / HTTP/1.1" 200 2921
+INFO 2023-07-23 18:29:19,117 basehttp "POST / HTTP/1.1" 200 2921
+INFO 2023-07-23 18:29:23,622 basehttp "POST / HTTP/1.1" 200 2921
+INFO 2023-07-23 18:29:23,622 basehttp "POST / HTTP/1.1" 200 2921
+INFO 2023-07-23 18:29:25,212 basehttp "POST / HTTP/1.1" 200 2921
+INFO 2023-07-23 18:29:25,212 basehttp "POST / HTTP/1.1" 200 2921
+INFO 2023-07-23 18:40:58,159 autoreload C:\Office\GitProject\EasySipPwithPythonDjango\EasySipP\kSipP\views.py changed, reloading.
+INFO 2023-07-23 18:40:58,159 autoreload C:\Office\GitProject\EasySipPwithPythonDjango\EasySipP\kSipP\views.py changed, reloading.
+INFO 2023-07-23 18:40:59,171 autoreload Watching for file changes with StatReloader
+INFO 2023-07-23 18:40:59,171 autoreload Watching for file changes with StatReloader
+INFO 2023-07-23 18:41:03,752 basehttp "GET / HTTP/1.1" 200 2921
+INFO 2023-07-23 18:41:03,752 basehttp "GET / HTTP/1.1" 200 2921
+ERROR 2023-07-23 18:41:05,294 log Internal Server Error: /
+Traceback (most recent call last):
+  File "C:\Users\kiran.daware\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\kiran.daware\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\kiran.daware\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\views\decorators\cache.py", line 62, in _wrapper_view_func
+    response = view_func(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Office\GitProject\EasySipPwithPythonDjango\EasySipP\kSipP\views.py", line 45, in index
+    if submit_type in request.POST:
+       ^^^^^^^^^^^
+UnboundLocalError: cannot access local variable 'submit_type' where it is not associated with a value
+ERROR 2023-07-23 18:41:05,294 log Internal Server Error: /
+Traceback (most recent call last):
+  File "C:\Users\kiran.daware\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\kiran.daware\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\kiran.daware\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\views\decorators\cache.py", line 62, in _wrapper_view_func
+    response = view_func(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Office\GitProject\EasySipPwithPythonDjango\EasySipP\kSipP\views.py", line 45, in index
+    if submit_type in request.POST:
+       ^^^^^^^^^^^
+UnboundLocalError: cannot access local variable 'submit_type' where it is not associated with a value
+ERROR 2023-07-23 18:41:05,298 basehttp "POST / HTTP/1.1" 500 71458
+ERROR 2023-07-23 18:41:05,298 basehttp "POST / HTTP/1.1" 500 71458
+INFO 2023-07-23 18:41:38,857 autoreload C:\Office\GitProject\EasySipPwithPythonDjango\EasySipP\kSipP\views.py changed, reloading.
+INFO 2023-07-23 18:41:38,857 autoreload C:\Office\GitProject\EasySipPwithPythonDjango\EasySipP\kSipP\views.py changed, reloading.
+INFO 2023-07-23 18:41:39,878 autoreload Watching for file changes with StatReloader
+INFO 2023-07-23 18:41:39,878 autoreload Watching for file changes with StatReloader
+INFO 2023-07-23 18:41:41,024 basehttp "GET / HTTP/1.1" 200 2921
+INFO 2023-07-23 18:41:41,024 basehttp "GET / HTTP/1.1" 200 2921
+INFO 2023-07-23 18:41:42,495 basehttp "POST / HTTP/1.1" 200 2921
+INFO 2023-07-23 18:41:42,495 basehttp "POST / HTTP/1.1" 200 2921
+INFO 2023-07-23 18:41:44,830 basehttp "POST / HTTP/1.1" 200 2921
+INFO 2023-07-23 18:41:44,830 basehttp "POST / HTTP/1.1" 200 2921
+INFO 2023-07-23 18:41:47,908 basehttp "POST / HTTP/1.1" 200 2921
+INFO 2023-07-23 18:41:47,908 basehttp "POST / HTTP/1.1" 200 2921
+INFO 2023-07-23 18:41:50,238 basehttp "POST / HTTP/1.1" 200 2921
+INFO 2023-07-23 18:41:50,238 basehttp "POST / HTTP/1.1" 200 2921
+INFO 2023-07-23 18:42:26,996 showXmlFlow XML file name is C:\Office\GitProject\EasySipPwithPythonDjango\EasySipP\kSipP\xml\uac.xml
+INFO 2023-07-23 18:42:27,008 basehttp "GET /show-xml-flow HTTP/1.1" 200 499
+INFO 2023-07-23 18:42:27,008 basehttp "GET /show-xml-flow HTTP/1.1" 200 499
+INFO 2023-07-23 18:43:59,521 autoreload C:\Office\GitProject\EasySipPwithPythonDjango\EasySipP\kSipP\views.py changed, reloading.
+INFO 2023-07-23 18:43:59,521 autoreload C:\Office\GitProject\EasySipPwithPythonDjango\EasySipP\kSipP\views.py changed, reloading.
+INFO 2023-07-23 18:44:00,429 autoreload Watching for file changes with StatReloader
+INFO 2023-07-23 18:44:00,429 autoreload Watching for file changes with StatReloader
+INFO 2023-07-23 18:44:04,738 basehttp "GET / HTTP/1.1" 200 2921
+INFO 2023-07-23 18:44:04,738 basehttp "GET / HTTP/1.1" 200 2921
+INFO 2023-07-23 18:44:06,606 basehttp "POST / HTTP/1.1" 200 2921
+INFO 2023-07-23 18:44:06,606 basehttp "POST / HTTP/1.1" 200 2921
+INFO 2023-07-23 18:44:07,414 basehttp "POST / HTTP/1.1" 200 2921
+INFO 2023-07-23 18:44:07,414 basehttp "POST / HTTP/1.1" 200 2921
+INFO 2023-07-23 18:44:25,195 autoreload C:\Office\GitProject\EasySipPwithPythonDjango\EasySipP\kSipP\views.py changed, reloading.
+INFO 2023-07-23 18:44:25,195 autoreload C:\Office\GitProject\EasySipPwithPythonDjango\EasySipP\kSipP\views.py changed, reloading.
+INFO 2023-07-23 18:44:26,171 autoreload Watching for file changes with StatReloader
+INFO 2023-07-23 18:44:26,171 autoreload Watching for file changes with StatReloader
+INFO 2023-07-23 18:44:27,749 basehttp "GET / HTTP/1.1" 200 2921
+INFO 2023-07-23 18:44:27,749 basehttp "GET / HTTP/1.1" 200 2921
+ERROR 2023-07-23 18:44:29,319 log Internal Server Error: /
+Traceback (most recent call last):
+  File "C:\Users\kiran.daware\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\kiran.daware\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\kiran.daware\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\views\decorators\cache.py", line 62, in _wrapper_view_func
+    response = view_func(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Office\GitProject\EasySipPwithPythonDjango\EasySipP\kSipP\views.py", line 49, in index
+    selectUAC = selectXml.cleaned_data['selectUAC']
+                ^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'xmlForm' object has no attribute 'cleaned_data'
+ERROR 2023-07-23 18:44:29,319 log Internal Server Error: /
+Traceback (most recent call last):
+  File "C:\Users\kiran.daware\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\kiran.daware\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\kiran.daware\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\views\decorators\cache.py", line 62, in _wrapper_view_func
+    response = view_func(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Office\GitProject\EasySipPwithPythonDjango\EasySipP\kSipP\views.py", line 49, in index
+    selectUAC = selectXml.cleaned_data['selectUAC']
+                ^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'xmlForm' object has no attribute 'cleaned_data'
+ERROR 2023-07-23 18:44:29,321 basehttp "POST / HTTP/1.1" 500 72008
+ERROR 2023-07-23 18:44:29,321 basehttp "POST / HTTP/1.1" 500 72008
+INFO 2023-07-23 18:46:50,382 basehttp "GET / HTTP/1.1" 200 2921
+INFO 2023-07-23 18:46:50,382 basehttp "GET / HTTP/1.1" 200 2921
+INFO 2023-07-23 18:46:52,287 basehttp "POST / HTTP/1.1" 200 2921
+INFO 2023-07-23 18:46:52,287 basehttp "POST / HTTP/1.1" 200 2921
+ERROR 2023-07-23 18:46:54,138 log Internal Server Error: /
+Traceback (most recent call last):
+  File "C:\Users\kiran.daware\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\kiran.daware\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\kiran.daware\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\views\decorators\cache.py", line 62, in _wrapper_view_func
+    response = view_func(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Office\GitProject\EasySipPwithPythonDjango\EasySipP\kSipP\views.py", line 49, in index
+    selectUAC = selectXml.cleaned_data['selectUAC']
+                ^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'xmlForm' object has no attribute 'cleaned_data'
+ERROR 2023-07-23 18:46:54,138 log Internal Server Error: /
+Traceback (most recent call last):
+  File "C:\Users\kiran.daware\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\kiran.daware\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\kiran.daware\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\views\decorators\cache.py", line 62, in _wrapper_view_func
+    response = view_func(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Office\GitProject\EasySipPwithPythonDjango\EasySipP\kSipP\views.py", line 49, in index
+    selectUAC = selectXml.cleaned_data['selectUAC']
+                ^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'xmlForm' object has no attribute 'cleaned_data'
+ERROR 2023-07-23 18:46:54,140 basehttp "POST / HTTP/1.1" 500 72008
+ERROR 2023-07-23 18:46:54,140 basehttp "POST / HTTP/1.1" 500 72008
+INFO 2023-07-23 18:47:59,787 autoreload C:\Office\GitProject\EasySipPwithPythonDjango\EasySipP\kSipP\views.py changed, reloading.
+INFO 2023-07-23 18:47:59,787 autoreload C:\Office\GitProject\EasySipPwithPythonDjango\EasySipP\kSipP\views.py changed, reloading.
+INFO 2023-07-23 18:48:00,710 autoreload Watching for file changes with StatReloader
+INFO 2023-07-23 18:48:00,710 autoreload Watching for file changes with StatReloader
+INFO 2023-07-23 18:48:08,281 autoreload Watching for file changes with StatReloader
+INFO 2023-07-23 18:48:08,281 autoreload Watching for file changes with StatReloader
+INFO 2023-07-23 18:48:11,617 autoreload C:\Office\GitProject\EasySipPwithPythonDjango\EasySipP\kSipP\views.py changed, reloading.
+INFO 2023-07-23 18:48:11,617 autoreload C:\Office\GitProject\EasySipPwithPythonDjango\EasySipP\kSipP\views.py changed, reloading.
+INFO 2023-07-23 18:48:12,514 autoreload Watching for file changes with StatReloader
+INFO 2023-07-23 18:48:12,514 autoreload Watching for file changes with StatReloader
+INFO 2023-07-23 18:48:12,835 basehttp "GET / HTTP/1.1" 200 2921
+INFO 2023-07-23 18:48:12,835 basehttp "GET / HTTP/1.1" 200 2921
+INFO 2023-07-23 18:48:15,185 showXmlFlow XML file name is C:\Office\GitProject\EasySipPwithPythonDjango\EasySipP\kSipP\xml\uac.xml
+INFO 2023-07-23 18:48:15,189 basehttp "POST / HTTP/1.1" 200 499
+INFO 2023-07-23 18:48:15,189 basehttp "POST / HTTP/1.1" 200 499
+INFO 2023-07-23 18:48:18,231 basehttp "GET / HTTP/1.1" 200 2921
+INFO 2023-07-23 18:48:18,231 basehttp "GET / HTTP/1.1" 200 2921
+INFO 2023-07-23 18:48:19,552 showXmlFlow XML file name is C:\Office\GitProject\EasySipPwithPythonDjango\EasySipP\kSipP\xml\uac.xml
+INFO 2023-07-23 18:48:19,556 basehttp "POST / HTTP/1.1" 200 499
+INFO 2023-07-23 18:48:19,556 basehttp "POST / HTTP/1.1" 200 499
+INFO 2023-07-23 18:48:20,654 basehttp "GET / HTTP/1.1" 200 2921
+INFO 2023-07-23 18:48:20,654 basehttp "GET / HTTP/1.1" 200 2921
+INFO 2023-07-23 18:48:31,464 showXmlFlow XML file name is C:\Office\GitProject\EasySipPwithPythonDjango\EasySipP\kSipP\xml\uac.xml
+INFO 2023-07-23 18:48:31,467 basehttp "POST / HTTP/1.1" 200 499
+INFO 2023-07-23 18:48:31,467 basehttp "POST / HTTP/1.1" 200 499
+INFO 2023-07-23 18:49:05,727 autoreload C:\Office\GitProject\EasySipPwithPythonDjango\EasySipP\kSipP\views.py changed, reloading.
+INFO 2023-07-23 18:49:05,727 autoreload C:\Office\GitProject\EasySipPwithPythonDjango\EasySipP\kSipP\views.py changed, reloading.
+INFO 2023-07-23 18:49:06,778 autoreload Watching for file changes with StatReloader
+INFO 2023-07-23 18:49:06,778 autoreload Watching for file changes with StatReloader
+INFO 2023-07-23 18:49:09,025 basehttp "GET / HTTP/1.1" 200 2921
+INFO 2023-07-23 18:49:09,025 basehttp "GET / HTTP/1.1" 200 2921
+INFO 2023-07-23 18:49:11,042 showXmlFlow XML file name is C:\Office\GitProject\EasySipPwithPythonDjango\EasySipP\kSipP\xml\uac.xml
+INFO 2023-07-23 18:49:11,056 basehttp "POST / HTTP/1.1" 200 499
+INFO 2023-07-23 18:49:11,056 basehttp "POST / HTTP/1.1" 200 499
+INFO 2023-07-23 18:49:13,352 basehttp "GET / HTTP/1.1" 200 2921
+INFO 2023-07-23 18:49:13,352 basehttp "GET / HTTP/1.1" 200 2921
+INFO 2023-07-23 18:49:30,576 autoreload C:\Office\GitProject\EasySipPwithPythonDjango\EasySipP\kSipP\views.py changed, reloading.
+INFO 2023-07-23 18:49:30,576 autoreload C:\Office\GitProject\EasySipPwithPythonDjango\EasySipP\kSipP\views.py changed, reloading.
+INFO 2023-07-23 18:49:31,576 autoreload Watching for file changes with StatReloader
+INFO 2023-07-23 18:49:31,576 autoreload Watching for file changes with StatReloader
+INFO 2023-07-23 18:49:32,465 basehttp "GET / HTTP/1.1" 200 2921
+INFO 2023-07-23 18:49:32,465 basehttp "GET / HTTP/1.1" 200 2921
+INFO 2023-07-23 18:49:33,781 showXmlFlow XML file name is C:\Office\GitProject\EasySipPwithPythonDjango\EasySipP\kSipP\xml\uas.xml
+INFO 2023-07-23 18:49:33,785 basehttp "POST / HTTP/1.1" 200 308
+INFO 2023-07-23 18:49:33,785 basehttp "POST / HTTP/1.1" 200 308
+INFO 2023-07-23 18:49:56,054 basehttp "GET / HTTP/1.1" 200 2921
+INFO 2023-07-23 18:49:56,054 basehttp "GET / HTTP/1.1" 200 2921
+INFO 2023-07-23 18:49:59,319 showXmlFlow XML file name is C:\Office\GitProject\EasySipPwithPythonDjango\EasySipP\kSipP\xml\uas.xml
+INFO 2023-07-23 18:49:59,322 basehttp "POST / HTTP/1.1" 200 308
+INFO 2023-07-23 18:49:59,322 basehttp "POST / HTTP/1.1" 200 308
+INFO 2023-07-23 18:50:39,629 autoreload C:\Office\GitProject\EasySipPwithPythonDjango\EasySipP\kSipP\views.py changed, reloading.
+INFO 2023-07-23 18:50:39,629 autoreload C:\Office\GitProject\EasySipPwithPythonDjango\EasySipP\kSipP\views.py changed, reloading.
+INFO 2023-07-23 18:50:40,532 autoreload Watching for file changes with StatReloader
+INFO 2023-07-23 18:50:40,532 autoreload Watching for file changes with StatReloader
+INFO 2023-07-23 18:50:45,783 basehttp "GET / HTTP/1.1" 200 2921
+INFO 2023-07-23 18:50:45,783 basehttp "GET / HTTP/1.1" 200 2921
+INFO 2023-07-23 18:50:47,026 showXmlFlow XML file name is C:\Office\GitProject\EasySipPwithPythonDjango\EasySipP\kSipP\xml\uac.xml
+INFO 2023-07-23 18:50:47,031 basehttp "POST / HTTP/1.1" 200 499
+INFO 2023-07-23 18:50:47,031 basehttp "POST / HTTP/1.1" 200 499
+INFO 2023-07-23 18:51:19,229 basehttp "GET / HTTP/1.1" 200 2921
+INFO 2023-07-23 18:51:19,229 basehttp "GET / HTTP/1.1" 200 2921
+INFO 2023-07-23 18:51:25,412 autoreload C:\Office\GitProject\EasySipPwithPythonDjango\EasySipP\kSipP\views.py changed, reloading.
+INFO 2023-07-23 18:51:25,412 autoreload C:\Office\GitProject\EasySipPwithPythonDjango\EasySipP\kSipP\views.py changed, reloading.
+INFO 2023-07-23 18:51:26,388 autoreload Watching for file changes with StatReloader
+INFO 2023-07-23 18:51:26,388 autoreload Watching for file changes with StatReloader
+INFO 2023-07-23 18:51:28,025 showXmlFlow XML file name is C:\Office\GitProject\EasySipPwithPythonDjango\EasySipP\kSipP\xml\uas.xml
+INFO 2023-07-23 18:51:28,033 basehttp "POST / HTTP/1.1" 200 308
+INFO 2023-07-23 18:51:28,033 basehttp "POST / HTTP/1.1" 200 308
+INFO 2023-07-23 18:52:08,072 autoreload C:\Office\GitProject\EasySipPwithPythonDjango\EasySipP\kSipP\views.py changed, reloading.
+INFO 2023-07-23 18:52:08,072 autoreload C:\Office\GitProject\EasySipPwithPythonDjango\EasySipP\kSipP\views.py changed, reloading.
+INFO 2023-07-23 18:52:08,899 autoreload Watching for file changes with StatReloader
+INFO 2023-07-23 18:52:08,899 autoreload Watching for file changes with StatReloader
+INFO 2023-07-23 18:58:58,587 autoreload C:\Office\GitProject\EasySipPwithPythonDjango\EasySipP\kSipP\scripts\showXmlFlow.py changed, reloading.
+INFO 2023-07-23 18:58:58,587 autoreload C:\Office\GitProject\EasySipPwithPythonDjango\EasySipP\kSipP\scripts\showXmlFlow.py changed, reloading.
+INFO 2023-07-23 18:58:59,461 autoreload Watching for file changes with StatReloader
+INFO 2023-07-23 18:58:59,461 autoreload Watching for file changes with StatReloader
+INFO 2023-07-23 19:02:57,243 autoreload C:\Office\GitProject\EasySipPwithPythonDjango\EasySipP\kSipP\scripts\showXmlFlow.py changed, reloading.
+INFO 2023-07-23 19:02:57,243 autoreload C:\Office\GitProject\EasySipPwithPythonDjango\EasySipP\kSipP\scripts\showXmlFlow.py changed, reloading.
+INFO 2023-07-23 19:02:58,086 autoreload Watching for file changes with StatReloader
+INFO 2023-07-23 19:02:58,086 autoreload Watching for file changes with StatReloader
+INFO 2023-07-23 19:03:50,522 autoreload C:\Office\GitProject\EasySipPwithPythonDjango\EasySipP\kSipP\scripts\showXmlFlow.py changed, reloading.
+INFO 2023-07-23 19:03:50,522 autoreload C:\Office\GitProject\EasySipPwithPythonDjango\EasySipP\kSipP\scripts\showXmlFlow.py changed, reloading.
+INFO 2023-07-23 19:03:51,546 autoreload Watching for file changes with StatReloader
+INFO 2023-07-23 19:03:51,546 autoreload Watching for file changes with StatReloader
+INFO 2023-07-23 19:03:53,913 basehttp "GET / HTTP/1.1" 200 2921
+INFO 2023-07-23 19:03:53,913 basehttp "GET / HTTP/1.1" 200 2921
+INFO 2023-07-23 19:03:55,940 basehttp "POST / HTTP/1.1" 200 146
+INFO 2023-07-23 19:03:55,940 basehttp "POST / HTTP/1.1" 200 146
+INFO 2023-07-23 19:03:58,326 basehttp "GET / HTTP/1.1" 200 2921
+INFO 2023-07-23 19:03:58,326 basehttp "GET / HTTP/1.1" 200 2921
+INFO 2023-07-23 19:04:12,084 autoreload C:\Office\GitProject\EasySipPwithPythonDjango\EasySipP\kSipP\views.py changed, reloading.
+INFO 2023-07-23 19:04:12,084 autoreload C:\Office\GitProject\EasySipPwithPythonDjango\EasySipP\kSipP\views.py changed, reloading.
+INFO 2023-07-23 19:04:13,115 autoreload Watching for file changes with StatReloader
+INFO 2023-07-23 19:04:13,115 autoreload Watching for file changes with StatReloader
+INFO 2023-07-23 19:04:14,563 basehttp "GET / HTTP/1.1" 200 2921
+INFO 2023-07-23 19:04:14,563 basehttp "GET / HTTP/1.1" 200 2921
+INFO 2023-07-23 19:04:15,794 basehttp "POST / HTTP/1.1" 200 499
+INFO 2023-07-23 19:04:15,794 basehttp "POST / HTTP/1.1" 200 499
+INFO 2023-07-23 19:04:28,346 autoreload C:\Office\GitProject\EasySipPwithPythonDjango\EasySipP\kSipP\views.py changed, reloading.
+INFO 2023-07-23 19:04:28,346 autoreload C:\Office\GitProject\EasySipPwithPythonDjango\EasySipP\kSipP\views.py changed, reloading.
+INFO 2023-07-23 19:04:29,200 autoreload Watching for file changes with StatReloader
+INFO 2023-07-23 19:04:29,200 autoreload Watching for file changes with StatReloader
+INFO 2023-07-23 19:07:37,450 autoreload C:\Office\GitProject\EasySipPwithPythonDjango\EasySipP\kSipP\scripts\showXmlFlow.py changed, reloading.
+INFO 2023-07-23 19:07:37,450 autoreload C:\Office\GitProject\EasySipPwithPythonDjango\EasySipP\kSipP\scripts\showXmlFlow.py changed, reloading.
+INFO 2023-07-23 19:07:38,268 autoreload Watching for file changes with StatReloader
+INFO 2023-07-23 19:07:38,268 autoreload Watching for file changes with StatReloader
+INFO 2023-07-23 19:07:46,724 basehttp "GET / HTTP/1.1" 200 2921
+INFO 2023-07-23 19:07:46,724 basehttp "GET / HTTP/1.1" 200 2921
+ERROR 2023-07-23 19:07:48,432 log Internal Server Error: /
+Traceback (most recent call last):
+  File "C:\Users\kiran.daware\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\kiran.daware\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\kiran.daware\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\views\decorators\cache.py", line 62, in _wrapper_view_func
+    response = view_func(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Office\GitProject\EasySipPwithPythonDjango\EasySipP\kSipP\views.py", line 54, in index
+    output_lines = showXmlFlowScript(selectUAS)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Office\GitProject\EasySipPwithPythonDjango\EasySipP\kSipP\scripts\showXmlFlow.py", line 53, in showXmlFlowScript
+    output_lines.append(f"-----send----->   {first_word}")
+                                             ^^^^^^^^^^
+UnboundLocalError: cannot access local variable 'first_word' where it is not associated with a value
+ERROR 2023-07-23 19:07:48,432 log Internal Server Error: /
+Traceback (most recent call last):
+  File "C:\Users\kiran.daware\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\kiran.daware\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\kiran.daware\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\views\decorators\cache.py", line 62, in _wrapper_view_func
+    response = view_func(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Office\GitProject\EasySipPwithPythonDjango\EasySipP\kSipP\views.py", line 54, in index
+    output_lines = showXmlFlowScript(selectUAS)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Office\GitProject\EasySipPwithPythonDjango\EasySipP\kSipP\scripts\showXmlFlow.py", line 53, in showXmlFlowScript
+    output_lines.append(f"-----send----->   {first_word}")
+                                             ^^^^^^^^^^
+UnboundLocalError: cannot access local variable 'first_word' where it is not associated with a value
+ERROR 2023-07-23 19:07:48,437 basehttp "POST / HTTP/1.1" 500 84793
+ERROR 2023-07-23 19:07:48,437 basehttp "POST / HTTP/1.1" 500 84793
+INFO 2023-07-23 19:08:36,152 autoreload C:\Office\GitProject\EasySipPwithPythonDjango\EasySipP\kSipP\scripts\showXmlFlow.py changed, reloading.
+INFO 2023-07-23 19:08:36,152 autoreload C:\Office\GitProject\EasySipPwithPythonDjango\EasySipP\kSipP\scripts\showXmlFlow.py changed, reloading.
+INFO 2023-07-23 19:08:37,067 autoreload Watching for file changes with StatReloader
+INFO 2023-07-23 19:08:37,067 autoreload Watching for file changes with StatReloader
+INFO 2023-07-23 19:08:39,990 basehttp "GET / HTTP/1.1" 200 2921
+INFO 2023-07-23 19:08:39,990 basehttp "GET / HTTP/1.1" 200 2921
+INFO 2023-07-23 19:08:42,000 basehttp "POST / HTTP/1.1" 200 287
+INFO 2023-07-23 19:08:42,000 basehttp "POST / HTTP/1.1" 200 287
+INFO 2023-07-23 19:11:41,278 autoreload C:\Office\GitProject\EasySipPwithPythonDjango\EasySipP\kSipP\scripts\showXmlFlow.py changed, reloading.
+INFO 2023-07-23 19:11:41,278 autoreload C:\Office\GitProject\EasySipPwithPythonDjango\EasySipP\kSipP\scripts\showXmlFlow.py changed, reloading.
+INFO 2023-07-23 19:11:42,172 autoreload Watching for file changes with StatReloader
+INFO 2023-07-23 19:11:42,172 autoreload Watching for file changes with StatReloader
+INFO 2023-07-23 19:11:44,563 basehttp "GET / HTTP/1.1" 200 2921
+INFO 2023-07-23 19:11:44,563 basehttp "GET / HTTP/1.1" 200 2921
+INFO 2023-07-23 19:11:45,881 basehttp "POST / HTTP/1.1" 200 310
+INFO 2023-07-23 19:11:45,881 basehttp "POST / HTTP/1.1" 200 310
+INFO 2023-07-23 19:13:51,527 autoreload C:\Office\GitProject\EasySipPwithPythonDjango\EasySipP\kSipP\scripts\showXmlFlow.py changed, reloading.
+INFO 2023-07-23 19:13:51,527 autoreload C:\Office\GitProject\EasySipPwithPythonDjango\EasySipP\kSipP\scripts\showXmlFlow.py changed, reloading.
+INFO 2023-07-23 19:13:52,516 autoreload Watching for file changes with StatReloader
+INFO 2023-07-23 19:13:52,516 autoreload Watching for file changes with StatReloader
+INFO 2023-07-23 19:13:53,687 basehttp "GET / HTTP/1.1" 200 2921
+INFO 2023-07-23 19:13:53,687 basehttp "GET / HTTP/1.1" 200 2921
+INFO 2023-07-23 19:13:55,179 basehttp "POST / HTTP/1.1" 200 463
+INFO 2023-07-23 19:13:55,179 basehttp "POST / HTTP/1.1" 200 463
+INFO 2023-07-23 19:15:58,070 autoreload C:\Office\GitProject\EasySipPwithPythonDjango\EasySipP\kSipP\scripts\showXmlFlow.py changed, reloading.
+INFO 2023-07-23 19:15:58,070 autoreload C:\Office\GitProject\EasySipPwithPythonDjango\EasySipP\kSipP\scripts\showXmlFlow.py changed, reloading.
+INFO 2023-07-23 19:15:58,894 autoreload Watching for file changes with StatReloader
+INFO 2023-07-23 19:15:58,894 autoreload Watching for file changes with StatReloader
+INFO 2023-07-23 19:16:04,825 basehttp "GET / HTTP/1.1" 200 2921
+INFO 2023-07-23 19:16:04,825 basehttp "GET / HTTP/1.1" 200 2921
+INFO 2023-07-23 19:16:06,828 basehttp "POST / HTTP/1.1" 200 445
+INFO 2023-07-23 19:16:06,828 basehttp "POST / HTTP/1.1" 200 445
+INFO 2023-07-23 19:17:30,187 basehttp "GET / HTTP/1.1" 200 2921
+INFO 2023-07-23 19:17:30,187 basehttp "GET / HTTP/1.1" 200 2921
+INFO 2023-07-23 19:17:31,890 basehttp "POST / HTTP/1.1" 200 223
+INFO 2023-07-23 19:17:31,890 basehttp "POST / HTTP/1.1" 200 223
+INFO 2023-07-23 19:19:26,341 autoreload C:\Office\GitProject\EasySipPwithPythonDjango\EasySipP\kSipP\views.py changed, reloading.
+INFO 2023-07-23 19:19:26,341 autoreload C:\Office\GitProject\EasySipPwithPythonDjango\EasySipP\kSipP\views.py changed, reloading.
+INFO 2023-07-23 19:19:27,280 autoreload Watching for file changes with StatReloader
+INFO 2023-07-23 19:19:27,280 autoreload Watching for file changes with StatReloader
+INFO 2023-07-23 19:19:30,524 basehttp "GET / HTTP/1.1" 200 2921
+INFO 2023-07-23 19:19:30,524 basehttp "GET / HTTP/1.1" 200 2921
+ERROR 2023-07-23 19:19:32,194 log Internal Server Error: /
+Traceback (most recent call last):
+  File "C:\Users\kiran.daware\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\kiran.daware\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\kiran.daware\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\views\decorators\cache.py", line 62, in _wrapper_view_func
+    response = view_func(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Office\GitProject\EasySipPwithPythonDjango\EasySipP\kSipP\views.py", line 55, in index
+    uasflow = showXmlFlow(selectUAS)
+              ^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Office\GitProject\EasySipPwithPythonDjango\EasySipP\kSipP\views.py", line 219, in showXmlFlow
+    return render(request, 'show_xml_flow.html', {'output_lines': output_lines})
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\kiran.daware\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\shortcuts.py", line 24, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\kiran.daware\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\loader.py", line 62, in render_to_string
+    return template.render(context, request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\kiran.daware\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\backends\django.py", line 61, in render
+    return self.template.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\kiran.daware\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\base.py", line 173, in render
+    with context.bind_template(self):
+  File "C:\Users\kiran.daware\AppData\Local\Programs\Python\Python311\Lib\contextlib.py", line 137, in __enter__
+    return next(self.gen)
+           ^^^^^^^^^^^^^^
+  File "C:\Users\kiran.daware\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\context.py", line 254, in bind_template
+    updates.update(processor(self.request))
+                   ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\kiran.daware\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\context_processors.py", line 41, in debug
+    if settings.DEBUG and request.META.get("REMOTE_ADDR") in settings.INTERNAL_IPS:
+                          ^^^^^^^^^^^^
+AttributeError: 'str' object has no attribute 'META'
+ERROR 2023-07-23 19:19:32,194 log Internal Server Error: /
+Traceback (most recent call last):
+  File "C:\Users\kiran.daware\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\kiran.daware\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\kiran.daware\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\views\decorators\cache.py", line 62, in _wrapper_view_func
+    response = view_func(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Office\GitProject\EasySipPwithPythonDjango\EasySipP\kSipP\views.py", line 55, in index
+    uasflow = showXmlFlow(selectUAS)
+              ^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Office\GitProject\EasySipPwithPythonDjango\EasySipP\kSipP\views.py", line 219, in showXmlFlow
+    return render(request, 'show_xml_flow.html', {'output_lines': output_lines})
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\kiran.daware\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\shortcuts.py", line 24, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\kiran.daware\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\loader.py", line 62, in render_to_string
+    return template.render(context, request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\kiran.daware\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\backends\django.py", line 61, in render
+    return self.template.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\kiran.daware\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\base.py", line 173, in render
+    with context.bind_template(self):
+  File "C:\Users\kiran.daware\AppData\Local\Programs\Python\Python311\Lib\contextlib.py", line 137, in __enter__
+    return next(self.gen)
+           ^^^^^^^^^^^^^^
+  File "C:\Users\kiran.daware\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\context.py", line 254, in bind_template
+    updates.update(processor(self.request))
+                   ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\kiran.daware\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\context_processors.py", line 41, in debug
+    if settings.DEBUG and request.META.get("REMOTE_ADDR") in settings.INTERNAL_IPS:
+                          ^^^^^^^^^^^^
+AttributeError: 'str' object has no attribute 'META'
+ERROR 2023-07-23 19:19:32,202 basehttp "POST / HTTP/1.1" 500 105686
+ERROR 2023-07-23 19:19:32,202 basehttp "POST / HTTP/1.1" 500 105686
+INFO 2023-07-23 19:20:06,998 autoreload C:\Office\GitProject\EasySipPwithPythonDjango\EasySipP\kSipP\views.py changed, reloading.
+INFO 2023-07-23 19:20:06,998 autoreload C:\Office\GitProject\EasySipPwithPythonDjango\EasySipP\kSipP\views.py changed, reloading.
+INFO 2023-07-23 19:20:07,809 autoreload Watching for file changes with StatReloader
+INFO 2023-07-23 19:20:07,809 autoreload Watching for file changes with StatReloader
+INFO 2023-07-23 19:20:11,696 basehttp "GET / HTTP/1.1" 200 2921
+INFO 2023-07-23 19:20:11,696 basehttp "GET / HTTP/1.1" 200 2921
+INFO 2023-07-23 19:20:12,808 basehttp "POST / HTTP/1.1" 200 546
+INFO 2023-07-23 19:20:12,808 basehttp "POST / HTTP/1.1" 200 546
+INFO 2023-07-23 19:20:44,172 autoreload C:\Office\GitProject\EasySipPwithPythonDjango\EasySipP\kSipP\views.py changed, reloading.
+INFO 2023-07-23 19:20:44,172 autoreload C:\Office\GitProject\EasySipPwithPythonDjango\EasySipP\kSipP\views.py changed, reloading.
+INFO 2023-07-23 19:20:45,086 autoreload Watching for file changes with StatReloader
+INFO 2023-07-23 19:20:45,086 autoreload Watching for file changes with StatReloader
+INFO 2023-07-23 19:21:40,413 autoreload C:\Office\GitProject\EasySipPwithPythonDjango\EasySipP\kSipP\views.py changed, reloading.
+INFO 2023-07-23 19:21:40,413 autoreload C:\Office\GitProject\EasySipPwithPythonDjango\EasySipP\kSipP\views.py changed, reloading.
+INFO 2023-07-23 19:21:41,428 autoreload Watching for file changes with StatReloader
+INFO 2023-07-23 19:21:41,428 autoreload Watching for file changes with StatReloader
+INFO 2023-07-23 19:21:42,376 basehttp "GET / HTTP/1.1" 200 2921
+INFO 2023-07-23 19:21:42,376 basehttp "GET / HTTP/1.1" 200 2921
+INFO 2023-07-23 19:21:43,641 basehttp "POST / HTTP/1.1" 200 506
+INFO 2023-07-23 19:21:43,641 basehttp "POST / HTTP/1.1" 200 506
+INFO 2023-07-23 19:22:34,730 basehttp "GET / HTTP/1.1" 200 2921
+INFO 2023-07-23 19:22:34,730 basehttp "GET / HTTP/1.1" 200 2921
+INFO 2023-07-23 19:22:36,126 basehttp "POST / HTTP/1.1" 200 506
+INFO 2023-07-23 19:22:36,126 basehttp "POST / HTTP/1.1" 200 506
+INFO 2023-07-23 19:22:39,772 basehttp "GET / HTTP/1.1" 200 2921
+INFO 2023-07-23 19:22:39,772 basehttp "GET / HTTP/1.1" 200 2921
+INFO 2023-07-23 19:24:59,501 basehttp "GET / HTTP/1.1" 200 2921
+INFO 2023-07-23 19:24:59,501 basehttp "GET / HTTP/1.1" 200 2921
+INFO 2023-07-23 19:26:46,538 basehttp "GET / HTTP/1.1" 200 2921
+INFO 2023-07-23 19:26:46,538 basehttp "GET / HTTP/1.1" 200 2921
+INFO 2023-07-23 19:26:47,793 basehttp "POST / HTTP/1.1" 200 477
+INFO 2023-07-23 19:26:47,793 basehttp "POST / HTTP/1.1" 200 477
+INFO 2023-07-23 19:26:56,222 autoreload Watching for file changes with StatReloader
+INFO 2023-07-23 19:26:56,222 autoreload Watching for file changes with StatReloader
+INFO 2023-07-23 19:28:12,514 autoreload Watching for file changes with StatReloader
+INFO 2023-07-23 19:28:12,514 autoreload Watching for file changes with StatReloader
+INFO 2023-07-23 19:28:18,594 basehttp "GET / HTTP/1.1" 200 2921
+INFO 2023-07-23 19:28:18,594 basehttp "GET / HTTP/1.1" 200 2921
+INFO 2023-07-23 19:28:21,010 basehttp "POST / HTTP/1.1" 200 477
+INFO 2023-07-23 19:28:21,010 basehttp "POST / HTTP/1.1" 200 477
+INFO 2023-07-23 19:28:48,616 basehttp "GET / HTTP/1.1" 200 2921
+INFO 2023-07-23 19:28:48,616 basehttp "GET / HTTP/1.1" 200 2921
+INFO 2023-07-23 19:28:50,089 basehttp "POST / HTTP/1.1" 200 508
+INFO 2023-07-23 19:28:50,089 basehttp "POST / HTTP/1.1" 200 508
+INFO 2023-07-23 19:29:05,923 basehttp "GET / HTTP/1.1" 200 2921
+INFO 2023-07-23 19:29:05,923 basehttp "GET / HTTP/1.1" 200 2921
+INFO 2023-07-23 19:29:08,033 basehttp "POST / HTTP/1.1" 200 510
+INFO 2023-07-23 19:29:08,033 basehttp "POST / HTTP/1.1" 200 510
+INFO 2023-07-23 19:31:12,841 autoreload C:\Office\GitProject\EasySipPwithPythonDjango\EasySipP\kSipP\scripts\showXmlFlow.py changed, reloading.
+INFO 2023-07-23 19:31:12,841 autoreload C:\Office\GitProject\EasySipPwithPythonDjango\EasySipP\kSipP\scripts\showXmlFlow.py changed, reloading.
+INFO 2023-07-23 19:31:13,748 autoreload Watching for file changes with StatReloader
+INFO 2023-07-23 19:31:13,748 autoreload Watching for file changes with StatReloader
+INFO 2023-07-23 19:31:15,269 basehttp "GET / HTTP/1.1" 200 2921
+INFO 2023-07-23 19:31:15,269 basehttp "GET / HTTP/1.1" 200 2921
+INFO 2023-07-23 19:31:16,617 basehttp "POST / HTTP/1.1" 200 550
+INFO 2023-07-23 19:31:16,617 basehttp "POST / HTTP/1.1" 200 550
+INFO 2023-07-23 19:31:37,534 autoreload C:\Office\GitProject\EasySipPwithPythonDjango\EasySipP\kSipP\scripts\showXmlFlow.py changed, reloading.
+INFO 2023-07-23 19:31:37,534 autoreload C:\Office\GitProject\EasySipPwithPythonDjango\EasySipP\kSipP\scripts\showXmlFlow.py changed, reloading.
+INFO 2023-07-23 19:31:38,482 autoreload Watching for file changes with StatReloader
+INFO 2023-07-23 19:31:38,482 autoreload Watching for file changes with StatReloader
+INFO 2023-07-23 19:34:58,729 autoreload C:\Office\GitProject\EasySipPwithPythonDjango\EasySipP\kSipP\scripts\showXmlFlow.py changed, reloading.
+INFO 2023-07-23 19:34:58,729 autoreload C:\Office\GitProject\EasySipPwithPythonDjango\EasySipP\kSipP\scripts\showXmlFlow.py changed, reloading.
+INFO 2023-07-23 19:34:59,661 autoreload Watching for file changes with StatReloader
+INFO 2023-07-23 19:34:59,661 autoreload Watching for file changes with StatReloader
+INFO 2023-07-23 19:35:02,194 autoreload C:\Office\GitProject\EasySipPwithPythonDjango\EasySipP\kSipP\scripts\showXmlFlow.py changed, reloading.
+INFO 2023-07-23 19:35:02,194 autoreload C:\Office\GitProject\EasySipPwithPythonDjango\EasySipP\kSipP\scripts\showXmlFlow.py changed, reloading.
+INFO 2023-07-23 19:35:02,964 autoreload Watching for file changes with StatReloader
+INFO 2023-07-23 19:35:02,964 autoreload Watching for file changes with StatReloader
+INFO 2023-07-23 19:35:27,446 autoreload C:\Office\GitProject\EasySipPwithPythonDjango\EasySipP\kSipP\views.py changed, reloading.
+INFO 2023-07-23 19:35:27,446 autoreload C:\Office\GitProject\EasySipPwithPythonDjango\EasySipP\kSipP\views.py changed, reloading.
+INFO 2023-07-23 19:35:28,356 autoreload Watching for file changes with StatReloader
+INFO 2023-07-23 19:35:28,356 autoreload Watching for file changes with StatReloader
+INFO 2023-07-23 19:35:40,223 basehttp "GET / HTTP/1.1" 200 2921
+INFO 2023-07-23 19:35:40,223 basehttp "GET / HTTP/1.1" 200 2921
+INFO 2023-07-23 19:35:41,586 basehttp "POST / HTTP/1.1" 200 879
+INFO 2023-07-23 19:35:41,586 basehttp "POST / HTTP/1.1" 200 879
+INFO 2023-07-23 19:36:36,712 basehttp "GET / HTTP/1.1" 200 2921
+INFO 2023-07-23 19:36:36,712 basehttp "GET / HTTP/1.1" 200 2921
+INFO 2023-07-23 19:36:38,026 basehttp "POST / HTTP/1.1" 200 920
+INFO 2023-07-23 19:36:38,026 basehttp "POST / HTTP/1.1" 200 920
+INFO 2023-07-23 19:38:46,471 basehttp "GET / HTTP/1.1" 200 2921
+INFO 2023-07-23 19:38:46,471 basehttp "GET / HTTP/1.1" 200 2921
+INFO 2023-07-23 19:38:47,631 basehttp "POST / HTTP/1.1" 200 1001
+INFO 2023-07-23 19:38:47,631 basehttp "POST / HTTP/1.1" 200 1001
+INFO 2023-07-23 19:39:53,609 basehttp "GET / HTTP/1.1" 200 2921
+INFO 2023-07-23 19:39:53,609 basehttp "GET / HTTP/1.1" 200 2921
+INFO 2023-07-23 19:39:54,984 basehttp "POST / HTTP/1.1" 200 1054
+INFO 2023-07-23 19:39:54,984 basehttp "POST / HTTP/1.1" 200 1054
+INFO 2023-07-23 19:40:15,992 basehttp "GET / HTTP/1.1" 200 2921
+INFO 2023-07-23 19:40:15,992 basehttp "GET / HTTP/1.1" 200 2921
+INFO 2023-07-23 19:40:17,526 basehttp "POST / HTTP/1.1" 200 1054
+INFO 2023-07-23 19:40:17,526 basehttp "POST / HTTP/1.1" 200 1054
+INFO 2023-07-23 19:40:34,577 basehttp "GET / HTTP/1.1" 200 2921
+INFO 2023-07-23 19:40:34,577 basehttp "GET / HTTP/1.1" 200 2921
+INFO 2023-07-23 19:40:36,032 basehttp "POST / HTTP/1.1" 200 1054
+INFO 2023-07-23 19:40:36,032 basehttp "POST / HTTP/1.1" 200 1054
+INFO 2023-07-23 19:42:18,031 basehttp "GET / HTTP/1.1" 200 2921
+INFO 2023-07-23 19:42:18,031 basehttp "GET / HTTP/1.1" 200 2921
+INFO 2023-07-23 19:42:19,075 basehttp "GET / HTTP/1.1" 200 2921
+INFO 2023-07-23 19:42:19,075 basehttp "GET / HTTP/1.1" 200 2921
+INFO 2023-07-23 19:42:20,361 basehttp "POST / HTTP/1.1" 200 1055
+INFO 2023-07-23 19:42:20,361 basehttp "POST / HTTP/1.1" 200 1055
+INFO 2023-07-23 19:42:36,815 basehttp "GET / HTTP/1.1" 200 2921
+INFO 2023-07-23 19:42:36,815 basehttp "GET / HTTP/1.1" 200 2921
+INFO 2023-07-23 19:42:38,040 basehttp "POST / HTTP/1.1" 200 1055
+INFO 2023-07-23 19:42:38,040 basehttp "POST / HTTP/1.1" 200 1055
+INFO 2023-07-23 19:43:31,493 autoreload C:\Office\GitProject\EasySipPwithPythonDjango\EasySipP\kSipP\views.py changed, reloading.
+INFO 2023-07-23 19:43:31,493 autoreload C:\Office\GitProject\EasySipPwithPythonDjango\EasySipP\kSipP\views.py changed, reloading.
+INFO 2023-07-23 19:43:32,396 autoreload Watching for file changes with StatReloader
+INFO 2023-07-23 19:43:32,396 autoreload Watching for file changes with StatReloader
+INFO 2023-07-23 19:43:34,769 basehttp "GET / HTTP/1.1" 200 2921
+INFO 2023-07-23 19:43:34,769 basehttp "GET / HTTP/1.1" 200 2921
+INFO 2023-07-23 19:43:36,244 basehttp "POST / HTTP/1.1" 200 1062
+INFO 2023-07-23 19:43:36,244 basehttp "POST / HTTP/1.1" 200 1062
+INFO 2023-07-23 19:44:12,123 basehttp "GET / HTTP/1.1" 200 2921
+INFO 2023-07-23 19:44:12,123 basehttp "GET / HTTP/1.1" 200 2921
+INFO 2023-07-23 19:44:13,446 basehttp "POST / HTTP/1.1" 200 1072
+INFO 2023-07-23 19:44:13,446 basehttp "POST / HTTP/1.1" 200 1072
+INFO 2023-07-23 19:44:34,379 basehttp "GET / HTTP/1.1" 200 2921
+INFO 2023-07-23 19:44:34,379 basehttp "GET / HTTP/1.1" 200 2921
+INFO 2023-07-23 19:46:12,952 basehttp "GET / HTTP/1.1" 200 2921
+INFO 2023-07-23 19:46:12,952 basehttp "GET / HTTP/1.1" 200 2921
+INFO 2023-07-23 19:46:16,256 basehttp "GET / HTTP/1.1" 200 2921
+INFO 2023-07-23 19:46:16,256 basehttp "GET / HTTP/1.1" 200 2921
+INFO 2023-07-23 19:46:21,497 autoreload Watching for file changes with StatReloader
+INFO 2023-07-23 19:46:21,497 autoreload Watching for file changes with StatReloader
+INFO 2023-07-23 19:46:23,858 basehttp "GET / HTTP/1.1" 200 3033
+INFO 2023-07-23 19:46:23,858 basehttp "GET / HTTP/1.1" 200 3033
+INFO 2023-07-23 19:46:32,674 basehttp "POST / HTTP/1.1" 200 1630
+INFO 2023-07-23 19:46:32,674 basehttp "POST / HTTP/1.1" 200 1630
+INFO 2023-07-23 19:46:40,997 basehttp "GET / HTTP/1.1" 200 3033
+INFO 2023-07-23 19:46:40,997 basehttp "GET / HTTP/1.1" 200 3033
+INFO 2023-07-23 19:47:03,762 basehttp "POST / HTTP/1.1" 200 3033
+INFO 2023-07-23 19:47:03,762 basehttp "POST / HTTP/1.1" 200 3033
+INFO 2023-07-23 19:47:05,491 basehttp "POST / HTTP/1.1" 200 3045
+INFO 2023-07-23 19:47:05,491 basehttp "POST / HTTP/1.1" 200 3045
+INFO 2023-07-23 19:47:17,177 basehttp "POST / HTTP/1.1" 200 1184
+INFO 2023-07-23 19:47:17,177 basehttp "POST / HTTP/1.1" 200 1184
+INFO 2023-07-23 19:47:58,247 basehttp "GET / HTTP/1.1" 200 3045
+INFO 2023-07-23 19:47:58,247 basehttp "GET / HTTP/1.1" 200 3045
+INFO 2023-07-23 19:48:00,175 basehttp "POST /run-script HTTP/1.1" 200 1016
+INFO 2023-07-23 19:48:00,175 basehttp "POST /run-script HTTP/1.1" 200 1016
+INFO 2023-07-23 19:48:06,789 basehttp "POST /run-script HTTP/1.1" 200 1016
+INFO 2023-07-23 19:48:06,789 basehttp "POST /run-script HTTP/1.1" 200 1016
+INFO 2023-07-23 19:49:27,851 autoreload C:\Office\GitProject\EasySipPwithPythonDjango\EasySipP\kSipP\scripts\showXmlFlow.py changed, reloading.
+INFO 2023-07-23 19:49:27,851 autoreload C:\Office\GitProject\EasySipPwithPythonDjango\EasySipP\kSipP\scripts\showXmlFlow.py changed, reloading.
+INFO 2023-07-23 19:49:28,762 autoreload Watching for file changes with StatReloader
+INFO 2023-07-23 19:49:28,762 autoreload Watching for file changes with StatReloader
+INFO 2023-07-23 19:50:12,233 autoreload C:\Office\GitProject\EasySipPwithPythonDjango\EasySipP\kSipP\scripts\showXmlFlow.py changed, reloading.
+INFO 2023-07-23 19:50:12,233 autoreload C:\Office\GitProject\EasySipPwithPythonDjango\EasySipP\kSipP\scripts\showXmlFlow.py changed, reloading.
+INFO 2023-07-23 19:50:13,149 autoreload Watching for file changes with StatReloader
+INFO 2023-07-23 19:50:13,149 autoreload Watching for file changes with StatReloader
+INFO 2023-07-23 19:50:17,751 basehttp "GET / HTTP/1.1" 200 3045
+INFO 2023-07-23 19:50:17,751 basehttp "GET / HTTP/1.1" 200 3045
+INFO 2023-07-23 19:50:19,370 basehttp "POST / HTTP/1.1" 200 1680
+INFO 2023-07-23 19:50:19,370 basehttp "POST / HTTP/1.1" 200 1680
+INFO 2023-07-23 19:50:26,615 basehttp "GET / HTTP/1.1" 200 3045
+INFO 2023-07-23 19:50:26,615 basehttp "GET / HTTP/1.1" 200 3045
+INFO 2023-07-23 19:50:30,407 basehttp "POST / HTTP/1.1" 200 1111
+INFO 2023-07-23 19:50:30,407 basehttp "POST / HTTP/1.1" 200 1111
+INFO 2023-07-23 19:51:16,847 basehttp "GET / HTTP/1.1" 200 3045
+INFO 2023-07-23 19:51:16,847 basehttp "GET / HTTP/1.1" 200 3045
+INFO 2023-07-23 19:51:24,754 autoreload C:\Office\GitProject\EasySipPwithPythonDjango\EasySipP\kSipP\scripts\showXmlFlow.py changed, reloading.
+INFO 2023-07-23 19:51:24,754 autoreload C:\Office\GitProject\EasySipPwithPythonDjango\EasySipP\kSipP\scripts\showXmlFlow.py changed, reloading.
+INFO 2023-07-23 19:51:25,568 autoreload Watching for file changes with StatReloader
+INFO 2023-07-23 19:51:25,568 autoreload Watching for file changes with StatReloader
+INFO 2023-07-23 19:52:57,087 basehttp "POST / HTTP/1.1" 200 1111
+INFO 2023-07-23 19:52:57,087 basehttp "POST / HTTP/1.1" 200 1111
+INFO 2023-07-23 19:52:59,322 basehttp "GET / HTTP/1.1" 200 3045
+INFO 2023-07-23 19:52:59,322 basehttp "GET / HTTP/1.1" 200 3045
+INFO 2023-07-23 19:53:00,650 basehttp "POST / HTTP/1.1" 200 1111
+INFO 2023-07-23 19:53:00,650 basehttp "POST / HTTP/1.1" 200 1111
+INFO 2023-07-23 19:54:34,610 basehttp "GET / HTTP/1.1" 200 3045
+INFO 2023-07-23 19:54:34,610 basehttp "GET / HTTP/1.1" 200 3045
+INFO 2023-07-23 19:54:43,732 basehttp "POST /run-script HTTP/1.1" 200 1016
+INFO 2023-07-23 19:54:43,732 basehttp "POST /run-script HTTP/1.1" 200 1016
+INFO 2023-07-23 19:54:46,274 basehttp "POST /run-script HTTP/1.1" 200 1016
+INFO 2023-07-23 19:54:46,274 basehttp "POST /run-script HTTP/1.1" 200 1016
+INFO 2023-07-23 19:57:15,381 autoreload C:\Office\GitProject\EasySipPwithPythonDjango\EasySipP\kSipP\views.py changed, reloading.
+INFO 2023-07-23 19:57:15,381 autoreload C:\Office\GitProject\EasySipPwithPythonDjango\EasySipP\kSipP\views.py changed, reloading.
+INFO 2023-07-23 19:57:16,341 autoreload Watching for file changes with StatReloader
+INFO 2023-07-23 19:57:16,341 autoreload Watching for file changes with StatReloader
+ERROR 2023-07-23 19:57:20,331 log Internal Server Error: /run-script
+Traceback (most recent call last):
+  File "C:\Users\kiran.daware\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\kiran.daware\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Office\GitProject\EasySipPwithPythonDjango\EasySipP\kSipP\views.py", line 185, in run_script_view
+    uacXml = str(settings.BASE_DIR / 'kSipP' / 'xml' / f'{xml_data["selectUAC"]}')
+                                                          ~~~~~~~~^^^^^^^^^^^^^
+KeyError: 'selectUAC'
+ERROR 2023-07-23 19:57:20,331 log Internal Server Error: /run-script
+Traceback (most recent call last):
+  File "C:\Users\kiran.daware\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\kiran.daware\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Office\GitProject\EasySipPwithPythonDjango\EasySipP\kSipP\views.py", line 185, in run_script_view
+    uacXml = str(settings.BASE_DIR / 'kSipP' / 'xml' / f'{xml_data["selectUAC"]}')
+                                                          ~~~~~~~~^^^^^^^^^^^^^
+KeyError: 'selectUAC'
+ERROR 2023-07-23 19:57:20,333 basehttp "GET /run-script HTTP/1.1" 500 65887
+ERROR 2023-07-23 19:57:20,333 basehttp "GET /run-script HTTP/1.1" 500 65887
+INFO 2023-07-23 19:57:31,573 basehttp "GET / HTTP/1.1" 200 3045
+INFO 2023-07-23 19:57:31,573 basehttp "GET / HTTP/1.1" 200 3045
+ERROR 2023-07-23 19:57:34,299 log Internal Server Error: /run-script
+Traceback (most recent call last):
+  File "C:\Users\kiran.daware\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\kiran.daware\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Office\GitProject\EasySipPwithPythonDjango\EasySipP\kSipP\views.py", line 203, in run_script_view
+    while uacCommand.poll() is None:
+          ^^^^^^^^^^^^^^^
+AttributeError: 'str' object has no attribute 'poll'
+ERROR 2023-07-23 19:57:34,299 log Internal Server Error: /run-script
+Traceback (most recent call last):
+  File "C:\Users\kiran.daware\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\kiran.daware\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Office\GitProject\EasySipPwithPythonDjango\EasySipP\kSipP\views.py", line 203, in run_script_view
+    while uacCommand.poll() is None:
+          ^^^^^^^^^^^^^^^
+AttributeError: 'str' object has no attribute 'poll'
+ERROR 2023-07-23 19:57:34,302 basehttp "POST /run-script HTTP/1.1" 500 68856
+ERROR 2023-07-23 19:57:34,302 basehttp "POST /run-script HTTP/1.1" 500 68856
+INFO 2023-07-23 19:58:09,882 autoreload C:\Office\GitProject\EasySipPwithPythonDjango\EasySipP\kSipP\views.py changed, reloading.
+INFO 2023-07-23 19:58:09,882 autoreload C:\Office\GitProject\EasySipPwithPythonDjango\EasySipP\kSipP\views.py changed, reloading.
+INFO 2023-07-23 19:58:10,773 autoreload Watching for file changes with StatReloader
+INFO 2023-07-23 19:58:10,773 autoreload Watching for file changes with StatReloader
+ERROR 2023-07-23 19:58:12,731 log Internal Server Error: /run-script
+Traceback (most recent call last):
+  File "C:\Users\kiran.daware\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\kiran.daware\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Office\GitProject\EasySipPwithPythonDjango\EasySipP\kSipP\views.py", line 185, in run_script_view
+    uacXml = str(settings.BASE_DIR / 'kSipP' / 'xml' / f'{xml_data["selectUAC"]}')
+                                                          ~~~~~~~~^^^^^^^^^^^^^
+KeyError: 'selectUAC'
+ERROR 2023-07-23 19:58:12,731 log Internal Server Error: /run-script
+Traceback (most recent call last):
+  File "C:\Users\kiran.daware\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\kiran.daware\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Office\GitProject\EasySipPwithPythonDjango\EasySipP\kSipP\views.py", line 185, in run_script_view
+    uacXml = str(settings.BASE_DIR / 'kSipP' / 'xml' / f'{xml_data["selectUAC"]}')
+                                                          ~~~~~~~~^^^^^^^^^^^^^
+KeyError: 'selectUAC'
+ERROR 2023-07-23 19:58:12,733 basehttp "GET /run-script HTTP/1.1" 500 65887
+ERROR 2023-07-23 19:58:12,733 basehttp "GET /run-script HTTP/1.1" 500 65887
+INFO 2023-07-23 19:58:17,008 basehttp "GET / HTTP/1.1" 200 3045
+INFO 2023-07-23 19:58:17,008 basehttp "GET / HTTP/1.1" 200 3045
+INFO 2023-07-23 19:58:19,307 basehttp "POST /run-script HTTP/1.1" 200 21
+INFO 2023-07-23 19:58:19,307 basehttp "POST /run-script HTTP/1.1" 200 21
+INFO 2023-07-23 20:01:33,995 autoreload C:\Office\GitProject\EasySipPwithPythonDjango\EasySipP\kSipP\views.py changed, reloading.
+INFO 2023-07-23 20:01:33,995 autoreload C:\Office\GitProject\EasySipPwithPythonDjango\EasySipP\kSipP\views.py changed, reloading.
+INFO 2023-07-23 20:01:34,917 autoreload Watching for file changes with StatReloader
+INFO 2023-07-23 20:01:34,917 autoreload Watching for file changes with StatReloader
+INFO 2023-07-23 20:05:00,681 autoreload C:\Office\GitProject\EasySipPwithPythonDjango\EasySipP\kSipP\views.py changed, reloading.
+INFO 2023-07-23 20:05:00,681 autoreload C:\Office\GitProject\EasySipPwithPythonDjango\EasySipP\kSipP\views.py changed, reloading.
+INFO 2023-07-23 20:05:01,657 autoreload Watching for file changes with StatReloader
+INFO 2023-07-23 20:05:01,657 autoreload Watching for file changes with StatReloader
+INFO 2023-07-23 20:05:20,988 autoreload C:\Office\GitProject\EasySipPwithPythonDjango\EasySipP\kSipP\views.py changed, reloading.
+INFO 2023-07-23 20:05:20,988 autoreload C:\Office\GitProject\EasySipPwithPythonDjango\EasySipP\kSipP\views.py changed, reloading.
+INFO 2023-07-23 20:05:21,806 autoreload Watching for file changes with StatReloader
+INFO 2023-07-23 20:05:21,806 autoreload Watching for file changes with StatReloader
+INFO 2023-07-23 20:05:26,954 basehttp "GET / HTTP/1.1" 200 3045
+INFO 2023-07-23 20:05:26,954 basehttp "GET / HTTP/1.1" 200 3045
+INFO 2023-07-23 20:05:39,914 basehttp "POST /run-script HTTP/1.1" 200 1016
+INFO 2023-07-23 20:05:39,914 basehttp "POST /run-script HTTP/1.1" 200 1016
+INFO 2023-07-23 20:05:44,780 basehttp "GET / HTTP/1.1" 200 3045
+INFO 2023-07-23 20:05:44,780 basehttp "GET / HTTP/1.1" 200 3045
+INFO 2023-07-23 20:05:57,202 basehttp "POST /run-script HTTP/1.1" 200 1016
+INFO 2023-07-23 20:05:57,202 basehttp "POST /run-script HTTP/1.1" 200 1016
+INFO 2023-07-23 20:08:43,585 autoreload C:\Office\GitProject\EasySipPwithPythonDjango\EasySipP\kSipP\views.py changed, reloading.
+INFO 2023-07-23 20:08:43,585 autoreload C:\Office\GitProject\EasySipPwithPythonDjango\EasySipP\kSipP\views.py changed, reloading.
+INFO 2023-07-23 20:08:44,433 autoreload Watching for file changes with StatReloader
+INFO 2023-07-23 20:08:44,433 autoreload Watching for file changes with StatReloader
+INFO 2023-07-23 20:11:51,440 autoreload C:\Office\GitProject\EasySipPwithPythonDjango\EasySipP\kSipP\views.py changed, reloading.
+INFO 2023-07-23 20:11:51,440 autoreload C:\Office\GitProject\EasySipPwithPythonDjango\EasySipP\kSipP\views.py changed, reloading.
+INFO 2023-07-23 20:11:52,312 autoreload Watching for file changes with StatReloader
+INFO 2023-07-23 20:11:52,312 autoreload Watching for file changes with StatReloader
+INFO 2023-07-23 20:11:55,868 autoreload C:\Office\GitProject\EasySipPwithPythonDjango\EasySipP\kSipP\views.py changed, reloading.
+INFO 2023-07-23 20:11:55,868 autoreload C:\Office\GitProject\EasySipPwithPythonDjango\EasySipP\kSipP\views.py changed, reloading.
+INFO 2023-07-23 20:11:56,752 autoreload Watching for file changes with StatReloader
+INFO 2023-07-23 20:11:56,752 autoreload Watching for file changes with StatReloader
+INFO 2023-07-23 20:12:34,613 basehttp "GET / HTTP/1.1" 200 3055
+INFO 2023-07-23 20:12:34,613 basehttp "GET / HTTP/1.1" 200 3055
+ERROR 2023-07-23 20:12:37,921 log Internal Server Error: /run-script
+Traceback (most recent call last):
+  File "C:\Users\kiran.daware\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\kiran.daware\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Office\GitProject\EasySipPwithPythonDjango\EasySipP\kSipP\views.py", line 213, in run_script_view
+    while uacProc.poll() is None:
+          ^^^^^^^
+UnboundLocalError: cannot access local variable 'uacProc' where it is not associated with a value
+ERROR 2023-07-23 20:12:37,921 log Internal Server Error: /run-script
+Traceback (most recent call last):
+  File "C:\Users\kiran.daware\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\kiran.daware\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Office\GitProject\EasySipPwithPythonDjango\EasySipP\kSipP\views.py", line 213, in run_script_view
+    while uacProc.poll() is None:
+          ^^^^^^^
+UnboundLocalError: cannot access local variable 'uacProc' where it is not associated with a value
+ERROR 2023-07-23 20:12:37,923 basehttp "POST /run-script HTTP/1.1" 500 68772
+ERROR 2023-07-23 20:12:37,923 basehttp "POST /run-script HTTP/1.1" 500 68772
+INFO 2023-07-23 20:13:51,464 autoreload C:\Office\GitProject\EasySipPwithPythonDjango\EasySipP\kSipP\views.py changed, reloading.
+INFO 2023-07-23 20:13:51,464 autoreload C:\Office\GitProject\EasySipPwithPythonDjango\EasySipP\kSipP\views.py changed, reloading.
+INFO 2023-07-23 20:13:52,433 autoreload Watching for file changes with StatReloader
+INFO 2023-07-23 20:13:52,433 autoreload Watching for file changes with StatReloader
+INFO 2023-07-23 20:13:54,925 basehttp "GET / HTTP/1.1" 200 3055
+INFO 2023-07-23 20:13:54,925 basehttp "GET / HTTP/1.1" 200 3055
+ERROR 2023-07-23 20:13:57,951 log Internal Server Error: /run-script
+Traceback (most recent call last):
+  File "C:\Users\kiran.daware\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\kiran.daware\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Office\GitProject\EasySipPwithPythonDjango\EasySipP\kSipP\views.py", line 215, in run_script_view
+    while uacProc.poll() is None:
+          ^^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'poll'
+ERROR 2023-07-23 20:13:57,951 log Internal Server Error: /run-script
+Traceback (most recent call last):
+  File "C:\Users\kiran.daware\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\kiran.daware\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Office\GitProject\EasySipPwithPythonDjango\EasySipP\kSipP\views.py", line 215, in run_script_view
+    while uacProc.poll() is None:
+          ^^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'poll'
+ERROR 2023-07-23 20:13:57,954 basehttp "POST /run-script HTTP/1.1" 500 68974
+ERROR 2023-07-23 20:13:57,954 basehttp "POST /run-script HTTP/1.1" 500 68974
+INFO 2023-07-23 20:14:15,468 basehttp "GET / HTTP/1.1" 200 3055
+INFO 2023-07-23 20:14:15,468 basehttp "GET / HTTP/1.1" 200 3055
+INFO 2023-07-23 20:14:38,385 autoreload C:\Office\GitProject\EasySipPwithPythonDjango\EasySipP\kSipP\views.py changed, reloading.
+INFO 2023-07-23 20:14:38,385 autoreload C:\Office\GitProject\EasySipPwithPythonDjango\EasySipP\kSipP\views.py changed, reloading.
+INFO 2023-07-23 20:14:39,402 autoreload Watching for file changes with StatReloader
+INFO 2023-07-23 20:14:39,402 autoreload Watching for file changes with StatReloader
+INFO 2023-07-23 20:14:41,017 basehttp "GET / HTTP/1.1" 200 3055
+INFO 2023-07-23 20:14:41,017 basehttp "GET / HTTP/1.1" 200 3055
+ERROR 2023-07-23 20:14:44,105 log Internal Server Error: /run-script
+Traceback (most recent call last):
+  File "C:\Users\kiran.daware\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\kiran.daware\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Office\GitProject\EasySipPwithPythonDjango\EasySipP\kSipP\views.py", line 214, in run_script_view
+    while uacProc.poll() is None:
+          ^^^^^^^
+UnboundLocalError: cannot access local variable 'uacProc' where it is not associated with a value
+ERROR 2023-07-23 20:14:44,105 log Internal Server Error: /run-script
+Traceback (most recent call last):
+  File "C:\Users\kiran.daware\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\kiran.daware\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Office\GitProject\EasySipPwithPythonDjango\EasySipP\kSipP\views.py", line 214, in run_script_view
+    while uacProc.poll() is None:
+          ^^^^^^^
+UnboundLocalError: cannot access local variable 'uacProc' where it is not associated with a value
+ERROR 2023-07-23 20:14:44,109 basehttp "POST /run-script HTTP/1.1" 500 68772
+ERROR 2023-07-23 20:14:44,109 basehttp "POST /run-script HTTP/1.1" 500 68772
+INFO 2023-07-23 20:17:05,938 autoreload C:\Office\GitProject\EasySipPwithPythonDjango\EasySipP\kSipP\views.py changed, reloading.
+INFO 2023-07-23 20:17:05,938 autoreload C:\Office\GitProject\EasySipPwithPythonDjango\EasySipP\kSipP\views.py changed, reloading.
+INFO 2023-07-23 20:17:06,938 autoreload Watching for file changes with StatReloader
+INFO 2023-07-23 20:17:06,938 autoreload Watching for file changes with StatReloader
+INFO 2023-07-23 20:17:47,319 autoreload C:\Office\GitProject\EasySipPwithPythonDjango\EasySipP\kSipP\views.py changed, reloading.
+INFO 2023-07-23 20:17:47,319 autoreload C:\Office\GitProject\EasySipPwithPythonDjango\EasySipP\kSipP\views.py changed, reloading.
+INFO 2023-07-23 20:17:48,135 autoreload Watching for file changes with StatReloader
+INFO 2023-07-23 20:17:48,135 autoreload Watching for file changes with StatReloader
+INFO 2023-07-23 20:17:49,556 autoreload C:\Office\GitProject\EasySipPwithPythonDjango\EasySipP\kSipP\views.py changed, reloading.
+INFO 2023-07-23 20:17:49,556 autoreload C:\Office\GitProject\EasySipPwithPythonDjango\EasySipP\kSipP\views.py changed, reloading.
+INFO 2023-07-23 20:17:50,331 autoreload Watching for file changes with StatReloader
+INFO 2023-07-23 20:17:50,331 autoreload Watching for file changes with StatReloader
