@@ -13,7 +13,8 @@
         {{ form.as_p }}
         <button type="submit" name="submitType" value="selectXml">Submit</button>
     </form>
-
+    <br />
+    <br />
     <form method="post" action="{% url 'modify-xml' %}">
         {% csrf_token %}
         <input type="hidden" name="xmlName" value="UAS">

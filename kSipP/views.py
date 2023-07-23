@@ -10,12 +10,42 @@ config_file = os.path.join(str(settings.BASE_DIR), 'config.ini')
 config = configparser.ConfigParser()
 config.read(config_file)
 configd = config['DEFAULT']
+configx = config['XML']
 
-
+config_data = {
+    'remoteAddr': configd.get('remoteAddr'),
+    'remotePort': configd.get('remotePort'),
+    'srcAddrUac': configd.get('srcAddrUac'),
+    'srcPortUac': configd.get('srcPortUac'),
+    'srcAddrUas': configd.get('srcAddrUas'),
+    'srcPortUas': configd.get('srcPortUas'),
+}
+xml_data = {
+    'selectUAC':configx.get('uac_script'),
+    'selectUAS':configx.get('uas_script')
+}
 
 def index(request):
-    return render(request, 'index.html')
+    selectXml = xmlForm(initial=xml_data)
+    configForm = ConfigForm(initial=config_data)
+    if request.method == 'POST':
+        if 'submitType' in request.POST:
+            submit_type = request.POST['submitType']
+            if submit_type =='selectXml':
+                selectXml = xmlForm(request.POST)
+                if selectXml.is_valid():
+                    selectUAC = selectXml.cleaned_data['selectUAC']
+                    selectUAS = selectXml.cleaned_data['selectUAS']
+                    config.set('XML','uac_script', selectUAC)
+                    config.set('XML','uas_script', selectUAS)
 
+                    xmlConfigFile = os.path.join(settings.BASE_DIR, 'config.ini')
+                    with open(xmlConfigFile, 'w') as configfile:
+                        config.write(configfile)
+
+                    return render(request, 'index.html', {'selectXmlForm': selectXml,'configForm': configForm})
+    
+    return render(request, 'index.html', {'selectXmlForm': selectXml, 'configForm': configForm})
 
 
 def modifyXml(request):
@@ -24,12 +54,24 @@ def modifyXml(request):
             submit_type = request.POST['submitType']
             if submit_type =='selectXml':
                 modifyXmlForm = xmlForm(request.POST)
-                scenario =  modifyXmlForm['selectUAS']
-                return HttpResponse(f"Selected Scenario {scenario}")
+                if modifyXmlForm.is_valid():
+                    selectUAC = modifyXmlForm.cleaned_data['selectUAC']
+                    selectUAS = modifyXmlForm.cleaned_data['selectUAS']
+                    xmlContent = f'''[DEFAULT]\n
+UAC = {selectUAC}
+UAS = {selectUAS}
+'''
+                    xmlConfigFile = os.path.join(settings.BASE_DIR, 'xml.ini')
+                    with open(xmlConfigFile, 'w') as file:
+                        file.write(xmlContent)
+                    return render(request, 'modify_xml.html', {'form': modifyXmlForm})
             
         if 'xmlName' in request.POST:
             xmlName = request.POST.get('xmlName')
-            modifyXml_script = str(settings.BASE_DIR / 'kSipP' / 'scripts' / 'modifyHeader.py')
+            if xmlName.is_valid():
+                
+
+                modifyXml_script = str(settings.BASE_DIR / 'kSipP' / 'scripts' / 'modifyHeader.py')
             try:
                 result = subprocess.run(['python', modifyXml_script], capture_output=True, text=True)
                 return HttpResponse(result)
@@ -40,16 +82,6 @@ def modifyXml(request):
     modifyXmlForm = xmlForm()
     return render(request, 'modify_xml.html', {'form': modifyXmlForm})
 
-
-
-config_data = {
-    'remoteAddr': configd.get('remoteAddr'),
-    'remotePort': configd.get('remotePort'),
-    'srcAddrUac': configd.get('srcAddrUac'),
-    'srcPortUac': configd.get('srcPortUac'),
-    'srcAddrUas': configd.get('srcAddrUas'),
-    'srcPortUas': configd.get('srcPortUas'),
-}
 
 
 def write_config(request):
