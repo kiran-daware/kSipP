@@ -7,6 +7,11 @@
 </head>
 <body>
     <h1>Run Scripts</h1>
+    <br/>
+    UAC Command: <b> {{ print_uac_command }}</b>
+    <br />
+    UAS Command: <b> {{ print_uas_command }} </b>
+    <br /><br />
 
     <form method="post" action="{% url 'run-script' %}">
         {% csrf_token %}

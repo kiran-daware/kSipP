@@ -10,8 +10,8 @@
     <a href="/modify-xml">Modify XML</a>
     <form method="post">
         {% csrf_token %}
-        {{ selectXmlForm.as_p }}
-        {{ configForm.as_p }}
+        {{ selectXml.as_p }}
+        {{ ipConfig.as_p }}
         <button type="submit" name="submitType" value="config">Submit</button>
     </form>
     {% include 'run_script_template.html' %}

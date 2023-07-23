@@ -1,4 +1,6 @@
 from django import forms
+from django.conf import settings
+import os
 
 class configForm(forms.Form):
     remoteAddr = forms.GenericIPAddressField(label='Remote Address', protocol='IPv4')
@@ -10,16 +12,23 @@ class configForm(forms.Form):
 
 
 class xmlForm(forms.Form):
-    optsUAC = [
-        ('basic', 'Basic'),
-        ('prack', 'Send Prack'),
-        ('media', 'Send Media'),
-    ]
+
+    xmlPath = str(settings.BASE_DIR / 'kSipP' / 'xml')
+    uac_files = [f for f in os.listdir(xmlPath) if f.startswith('uac')]
+    uas_files = [f for f in os.listdir(xmlPath) if f.startswith('uas')]
+
+    optsUAC = [(filename, filename) for filename in uac_files] 
+    # optsUAC = [
+    #     ('uac.xml', 'Basic'),
+    #     ('uac_Prack.xml', 'Send Prack'),
+    #     ('uac_Media.xml', 'Send Media'),
+    # ]
     selectUAC = forms.ChoiceField(choices=optsUAC, label='Select UAC scenario')
 
-    optsUAS = [
-        ('basic', 'Basic'),
-        ('prack', 'Receive Prack'),
-        ('media', 'Send Media'),
-    ]
+    optsUAS = [(filename, filename) for filename in uas_files] 
+    # optsUAS = [
+    #     ('uas.xml', 'Basic'),
+    #     ('uas_Prack.xml', 'Receive Prack'),
+    #     ('uas_Media.xml', 'Send Media'),
+    # ]
     selectUAS = forms.ChoiceField(choices=optsUAS, label='Select UAS scenario')  

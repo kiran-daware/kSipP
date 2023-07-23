@@ -8,16 +8,22 @@ import os
 import subprocess
 
 
+# Read initial data from config file
+config_file = os.path.join(str(settings.BASE_DIR), 'config.ini')
+config = configparser.ConfigParser()
+config.read(config_file)
+configd = config['DEFAULT']
+configx = config['XML']
+
+#global variables
+config_data = {}
+xml_data = {}
+
+
 @never_cache
 def index(request):
-    
-    # Read initial data from config file
-    config_file = os.path.join(str(settings.BASE_DIR), 'config.ini')
-    config = configparser.ConfigParser()
-    config.read(config_file)
-    configd = config['DEFAULT']
-    configx = config['XML']
 
+    global config_data
     config_data = {
         'remoteAddr': configd.get('remote_address'),
         'remotePort': configd.get('remote_port'),
@@ -25,11 +31,17 @@ def index(request):
         'srcPortUac': configd.get('uac_port'),
         'srcPortUas': configd.get('uas_port'),
     }
+    global xml_data
     xml_data = {
         'selectUAC':configx.get('uac_script'),
         'selectUAS':configx.get('uas_script')
     }
-        
+    
+    remote=f"{config_data['remoteAddr']}:{config_data['remotePort']}"
+    uacSrc=f"-i {config_data['localAddr']} -p {config_data['srcPortUac']}"
+    uasSrc=f"-i {config_data['localAddr']} -p {config_data['srcPortUas']}"
+    print_uac_command = f"sipp -sf {xml_data['selectUAC']} {remote} {uacSrc} -m 1"
+    print_uas_command = f"sipp -sf {xml_data['selectUAS']} {remote} {uasSrc}"
 
     selectXml = xmlForm(initial=xml_data)
     ipConfig = configForm(initial=config_data)
@@ -63,9 +75,10 @@ def index(request):
                     with open(ConfigFile, 'w') as configfile:
                         config.write(configfile)
 
-                    return render(request, 'index.html', {'selectXmlForm': selectXml, 'configForm': ipConfig})
+                    return render(request, 'index.html', locals())
 
-    return render(request, 'index.html', {'selectXmlForm': selectXml, 'configForm': ipConfig})
+    return render(request, 'index.html', locals())
+
 
 
 
@@ -108,7 +121,7 @@ UAS = {selectUAS}
 
 
 
-def write_config(request):
+#def write_config(request):
     if request.method == 'POST':
         form = configForm(request.POST)
         if form.is_valid():
@@ -146,26 +159,31 @@ srcAddrUas = {srcAddrUas}\nsrcPortUAS = {srcPortUas}'''
 
 
 def run_script_view(request):
+
+    sipp = str(settings.BASE_DIR / 'kSipP' / 'sipp' / 'sipp.exe')
+    uacXml = str(settings.BASE_DIR / 'kSipP' / 'xml' / f'{xml_data["selectUAC"]}')
+    uasXml = str(settings.BASE_DIR / 'kSipP' / 'xml' / f'{xml_data["selectUAS"]}')
+    remote=f"{config_data['remoteAddr']}:{config_data['remotePort']}"
+    uacSrc=f"-i {config_data['localAddr']} -p {config_data['srcPortUac']}"
+    uasSrc=f"-i {config_data['localAddr']} -p {config_data['srcPortUas']}"
+
+    print_uac_command = f"sipp -sf {xml_data['selectUAC']} {remote} {uacSrc} -m 1"
+    print_uas_command = f"sipp -sf {xml_data['selectUAS']} {remote} {uasSrc}"
+
     if request.method == 'POST':
         scriptName = request.POST.get('script')
-
-        sipp = str(settings.BASE_DIR / 'kSipP' / 'sipp' / 'sipp.exe')
-        uacXml = str(settings.BASE_DIR / 'kSipP' / 'sipp' / 'UAC.xml')
-        uasXml = str(settings.BASE_DIR / 'kSipP' / 'sipp' / 'UAS.xml')
-        remote=f"{config_data['remoteAddr']}:{config_data['remotePort']}"
-        uacSrc=f"-i {config_data['srcAddrUac']} -p {config_data['srcPortUac']}"
-        uasSrc=f"-i {config_data['srcAddrUas']} -p {config_data['srcPortUas']}"
-        
         if scriptName == 'UAC':
             try:
-                subprocess.Popen(["start", "cmd.exe", "/K", f"{sipp} -sf {uacXml} {remote} {uacSrc} -m 1"], shell=True)
+                uacCommand = f"{sipp} -sf {uacXml} {remote} {uacSrc} -m 1"
+                subprocess.Popen(["start", "cmd.exe", "/K", uacCommand], shell=True)
             except Exception as e:
                 print(f"Error: {e}")
             
         if scriptName =='UAS':
             try:
-                subprocess.Popen(["start", "cmd.exe", "/K", f"{sipp} -sf {uasXml} {remote} {uasSrc}"], shell=True)
+                uasCommand = f"{sipp} -sf {uasXml} {remote} {uasSrc}"
+                subprocess.Popen(["start", "cmd.exe", "/K", uasCommand], shell=True)
             except Exception as e:
                 print(f"Error: {e}")
-    
-    return render(request, 'run_script_template.html')
+
+    return render(request, 'run_script_template.html', locals())

@@ -1,0 +1,1120 @@
+INFO 2023-07-23 14:52:54,009 autoreload Watching for file changes with StatReloader
+INFO 2023-07-23 14:52:54,009 autoreload Watching for file changes with StatReloader
+INFO 2023-07-23 14:52:55,962 basehttp "GET / HTTP/1.1" 200 2788
+INFO 2023-07-23 14:52:55,962 basehttp "GET / HTTP/1.1" 200 2788
+INFO 2023-07-23 14:53:18,614 basehttp "POST / HTTP/1.1" 200 2788
+INFO 2023-07-23 14:53:18,614 basehttp "POST / HTTP/1.1" 200 2788
+ERROR 2023-07-23 14:53:39,232 log Internal Server Error: /run-script
+Traceback (most recent call last):
+  File "C:\Users\kiran.daware\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\kiran.daware\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Office\GitProject\EasySipPwithPythonDjango\EasySipP\kSipP\views.py", line 160, in run_script_view
+    uacXml = str(settings.BASE_DIR / 'kSipP' / 'sipp' / f'{xml_data["selectUACd"]}')
+                                                           ~~~~~~~~^^^^^^^^^^^^^^
+KeyError: 'selectUACd'
+ERROR 2023-07-23 14:53:39,232 log Internal Server Error: /run-script
+Traceback (most recent call last):
+  File "C:\Users\kiran.daware\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\kiran.daware\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Office\GitProject\EasySipPwithPythonDjango\EasySipP\kSipP\views.py", line 160, in run_script_view
+    uacXml = str(settings.BASE_DIR / 'kSipP' / 'sipp' / f'{xml_data["selectUACd"]}')
+                                                           ~~~~~~~~^^^^^^^^^^^^^^
+KeyError: 'selectUACd'
+ERROR 2023-07-23 14:53:39,246 basehttp "POST /run-script HTTP/1.1" 500 67014
+ERROR 2023-07-23 14:53:39,246 basehttp "POST /run-script HTTP/1.1" 500 67014
+INFO 2023-07-23 14:54:19,427 autoreload C:\Office\GitProject\EasySipPwithPythonDjango\EasySipP\kSipP\views.py changed, reloading.
+INFO 2023-07-23 14:54:19,427 autoreload C:\Office\GitProject\EasySipPwithPythonDjango\EasySipP\kSipP\views.py changed, reloading.
+INFO 2023-07-23 14:54:21,122 autoreload Watching for file changes with StatReloader
+INFO 2023-07-23 14:54:21,122 autoreload Watching for file changes with StatReloader
+INFO 2023-07-23 14:57:16,784 autoreload C:\Office\GitProject\EasySipPwithPythonDjango\EasySipP\kSipP\views.py changed, reloading.
+INFO 2023-07-23 14:57:16,784 autoreload C:\Office\GitProject\EasySipPwithPythonDjango\EasySipP\kSipP\views.py changed, reloading.
+INFO 2023-07-23 14:57:18,591 autoreload Watching for file changes with StatReloader
+INFO 2023-07-23 14:57:18,591 autoreload Watching for file changes with StatReloader
+INFO 2023-07-23 14:57:43,665 autoreload C:\Office\GitProject\EasySipPwithPythonDjango\EasySipP\kSipP\views.py changed, reloading.
+INFO 2023-07-23 14:57:43,665 autoreload C:\Office\GitProject\EasySipPwithPythonDjango\EasySipP\kSipP\views.py changed, reloading.
+INFO 2023-07-23 14:57:45,907 autoreload Watching for file changes with StatReloader
+INFO 2023-07-23 14:57:45,907 autoreload Watching for file changes with StatReloader
+INFO 2023-07-23 14:58:26,117 basehttp "GET /run-script HTTP/1.1" 200 831
+INFO 2023-07-23 14:58:26,117 basehttp "GET /run-script HTTP/1.1" 200 831
+INFO 2023-07-23 14:58:31,229 basehttp "GET / HTTP/1.1" 200 2827
+INFO 2023-07-23 14:58:31,229 basehttp "GET / HTTP/1.1" 200 2827
+INFO 2023-07-23 14:58:33,426 basehttp "POST /run-script HTTP/1.1" 200 831
+INFO 2023-07-23 14:58:33,426 basehttp "POST /run-script HTTP/1.1" 200 831
+INFO 2023-07-23 15:02:24,771 autoreload C:\Office\GitProject\EasySipPwithPythonDjango\EasySipP\kSipP\views.py changed, reloading.
+INFO 2023-07-23 15:02:24,771 autoreload C:\Office\GitProject\EasySipPwithPythonDjango\EasySipP\kSipP\views.py changed, reloading.
+INFO 2023-07-23 15:02:27,456 autoreload Watching for file changes with StatReloader
+INFO 2023-07-23 15:02:27,456 autoreload Watching for file changes with StatReloader
+ERROR 2023-07-23 15:02:28,514 log Internal Server Error: /run-script
+Traceback (most recent call last):
+  File "C:\Users\kiran.daware\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\kiran.daware\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Office\GitProject\EasySipPwithPythonDjango\EasySipP\kSipP\views.py", line 180, in run_script_view
+    return render(request, 'run_script_template.html', {'uasCommand':uasCommand})
+                                                                     ^^^^^^^^^^
+UnboundLocalError: cannot access local variable 'uasCommand' where it is not associated with a value
+ERROR 2023-07-23 15:02:28,514 log Internal Server Error: /run-script
+Traceback (most recent call last):
+  File "C:\Users\kiran.daware\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\kiran.daware\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Office\GitProject\EasySipPwithPythonDjango\EasySipP\kSipP\views.py", line 180, in run_script_view
+    return render(request, 'run_script_template.html', {'uasCommand':uasCommand})
+                                                                     ^^^^^^^^^^
+UnboundLocalError: cannot access local variable 'uasCommand' where it is not associated with a value
+ERROR 2023-07-23 15:02:28,519 basehttp "GET /run-script HTTP/1.1" 500 64711
+ERROR 2023-07-23 15:02:28,519 basehttp "GET /run-script HTTP/1.1" 500 64711
+INFO 2023-07-23 15:02:34,494 basehttp "GET / HTTP/1.1" 200 2827
+INFO 2023-07-23 15:02:34,494 basehttp "GET / HTTP/1.1" 200 2827
+INFO 2023-07-23 15:02:37,448 basehttp "POST /run-script HTTP/1.1" 200 1020
+INFO 2023-07-23 15:02:37,448 basehttp "POST /run-script HTTP/1.1" 200 1020
+INFO 2023-07-23 15:04:52,282 autoreload C:\Office\GitProject\EasySipPwithPythonDjango\EasySipP\kSipP\views.py changed, reloading.
+INFO 2023-07-23 15:04:52,282 autoreload C:\Office\GitProject\EasySipPwithPythonDjango\EasySipP\kSipP\views.py changed, reloading.
+INFO 2023-07-23 15:04:54,658 autoreload Watching for file changes with StatReloader
+INFO 2023-07-23 15:04:54,658 autoreload Watching for file changes with StatReloader
+ERROR 2023-07-23 15:05:01,521 log Internal Server Error: /run-script
+Traceback (most recent call last):
+  File "C:\Users\kiran.daware\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\kiran.daware\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Office\GitProject\EasySipPwithPythonDjango\EasySipP\kSipP\views.py", line 180, in run_script_view
+    return render(request, 'run_script_template.html', {'uasCommand':cmdOutput})
+                                                                     ^^^^^^^^^
+UnboundLocalError: cannot access local variable 'cmdOutput' where it is not associated with a value
+ERROR 2023-07-23 15:05:01,521 log Internal Server Error: /run-script
+Traceback (most recent call last):
+  File "C:\Users\kiran.daware\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\kiran.daware\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Office\GitProject\EasySipPwithPythonDjango\EasySipP\kSipP\views.py", line 180, in run_script_view
+    return render(request, 'run_script_template.html', {'uasCommand':cmdOutput})
+                                                                     ^^^^^^^^^
+UnboundLocalError: cannot access local variable 'cmdOutput' where it is not associated with a value
+ERROR 2023-07-23 15:05:01,527 basehttp "GET /run-script HTTP/1.1" 500 64722
+ERROR 2023-07-23 15:05:01,527 basehttp "GET /run-script HTTP/1.1" 500 64722
+INFO 2023-07-23 15:05:05,926 basehttp "GET / HTTP/1.1" 200 2827
+INFO 2023-07-23 15:05:05,926 basehttp "GET / HTTP/1.1" 200 2827
+INFO 2023-07-23 15:05:35,706 basehttp "POST /run-script HTTP/1.1" 200 844
+INFO 2023-07-23 15:05:35,706 basehttp "POST /run-script HTTP/1.1" 200 844
+INFO 2023-07-23 15:06:02,761 autoreload C:\Office\GitProject\EasySipPwithPythonDjango\EasySipP\kSipP\views.py changed, reloading.
+INFO 2023-07-23 15:06:02,761 autoreload C:\Office\GitProject\EasySipPwithPythonDjango\EasySipP\kSipP\views.py changed, reloading.
+INFO 2023-07-23 15:06:04,808 autoreload Watching for file changes with StatReloader
+INFO 2023-07-23 15:06:04,808 autoreload Watching for file changes with StatReloader
+INFO 2023-07-23 15:06:14,625 autoreload Watching for file changes with StatReloader
+INFO 2023-07-23 15:06:14,625 autoreload Watching for file changes with StatReloader
+INFO 2023-07-23 15:06:15,106 basehttp "GET / HTTP/1.1" 200 2827
+INFO 2023-07-23 15:06:15,106 basehttp "GET / HTTP/1.1" 200 2827
+INFO 2023-07-23 15:06:18,229 basehttp "POST /run-script HTTP/1.1" 200 952
+INFO 2023-07-23 15:06:18,229 basehttp "POST /run-script HTTP/1.1" 200 952
+INFO 2023-07-23 15:10:50,478 autoreload C:\Office\GitProject\EasySipPwithPythonDjango\EasySipP\kSipP\views.py changed, reloading.
+INFO 2023-07-23 15:10:50,478 autoreload C:\Office\GitProject\EasySipPwithPythonDjango\EasySipP\kSipP\views.py changed, reloading.
+INFO 2023-07-23 15:10:52,210 autoreload Watching for file changes with StatReloader
+INFO 2023-07-23 15:10:52,210 autoreload Watching for file changes with StatReloader
+INFO 2023-07-23 15:11:02,990 basehttp "GET / HTTP/1.1" 200 2827
+INFO 2023-07-23 15:11:02,990 basehttp "GET / HTTP/1.1" 200 2827
+INFO 2023-07-23 15:11:05,387 basehttp "POST /run-script HTTP/1.1" 200 831
+INFO 2023-07-23 15:11:05,387 basehttp "POST /run-script HTTP/1.1" 200 831
+INFO 2023-07-23 15:11:11,548 basehttp "POST /run-script HTTP/1.1" 200 831
+INFO 2023-07-23 15:11:11,548 basehttp "POST /run-script HTTP/1.1" 200 831
+INFO 2023-07-23 15:11:18,908 basehttp "POST /run-script HTTP/1.1" 200 831
+INFO 2023-07-23 15:11:18,908 basehttp "POST /run-script HTTP/1.1" 200 831
+INFO 2023-07-23 15:11:30,894 autoreload C:\Office\GitProject\EasySipPwithPythonDjango\EasySipP\kSipP\views.py changed, reloading.
+INFO 2023-07-23 15:11:30,894 autoreload C:\Office\GitProject\EasySipPwithPythonDjango\EasySipP\kSipP\views.py changed, reloading.
+INFO 2023-07-23 15:11:32,945 autoreload Watching for file changes with StatReloader
+INFO 2023-07-23 15:11:32,945 autoreload Watching for file changes with StatReloader
+ERROR 2023-07-23 15:11:34,097 log Internal Server Error: /run-script
+Traceback (most recent call last):
+  File "C:\Users\kiran.daware\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\kiran.daware\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Office\GitProject\EasySipPwithPythonDjango\EasySipP\kSipP\views.py", line 160, in run_script_view
+    uacXml = str(settings.BASE_DIR / 'kSipP' / 'sipp' / f'{xml_data["selectUAC"]}')
+                                                           ~~~~~~~~^^^^^^^^^^^^^
+KeyError: 'selectUAC'
+ERROR 2023-07-23 15:11:34,097 log Internal Server Error: /run-script
+Traceback (most recent call last):
+  File "C:\Users\kiran.daware\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\kiran.daware\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Office\GitProject\EasySipPwithPythonDjango\EasySipP\kSipP\views.py", line 160, in run_script_view
+    uacXml = str(settings.BASE_DIR / 'kSipP' / 'sipp' / f'{xml_data["selectUAC"]}')
+                                                           ~~~~~~~~^^^^^^^^^^^^^
+KeyError: 'selectUAC'
+ERROR 2023-07-23 15:11:34,102 basehttp "POST /run-script HTTP/1.1" 500 67016
+ERROR 2023-07-23 15:11:34,102 basehttp "POST /run-script HTTP/1.1" 500 67016
+ERROR 2023-07-23 15:11:44,597 log Internal Server Error: /run-script
+Traceback (most recent call last):
+  File "C:\Users\kiran.daware\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\kiran.daware\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Office\GitProject\EasySipPwithPythonDjango\EasySipP\kSipP\views.py", line 182, in run_script_view
+    return render(request, 'run_script_template.html', {'uasCommand=':command_output})
+                                                                      ^^^^^^^^^^^^^^
+UnboundLocalError: cannot access local variable 'command_output' where it is not associated with a value
+ERROR 2023-07-23 15:11:44,597 log Internal Server Error: /run-script
+Traceback (most recent call last):
+  File "C:\Users\kiran.daware\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\kiran.daware\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Office\GitProject\EasySipPwithPythonDjango\EasySipP\kSipP\views.py", line 182, in run_script_view
+    return render(request, 'run_script_template.html', {'uasCommand=':command_output})
+                                                                      ^^^^^^^^^^^^^^
+UnboundLocalError: cannot access local variable 'command_output' where it is not associated with a value
+ERROR 2023-07-23 15:11:44,603 basehttp "GET /run-script HTTP/1.1" 500 64801
+ERROR 2023-07-23 15:11:44,603 basehttp "GET /run-script HTTP/1.1" 500 64801
+ERROR 2023-07-23 15:11:47,845 log Internal Server Error: /run-script
+Traceback (most recent call last):
+  File "C:\Users\kiran.daware\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\kiran.daware\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Office\GitProject\EasySipPwithPythonDjango\EasySipP\kSipP\views.py", line 182, in run_script_view
+    return render(request, 'run_script_template.html', {'uasCommand=':command_output})
+                                                                      ^^^^^^^^^^^^^^
+UnboundLocalError: cannot access local variable 'command_output' where it is not associated with a value
+ERROR 2023-07-23 15:11:47,845 log Internal Server Error: /run-script
+Traceback (most recent call last):
+  File "C:\Users\kiran.daware\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\kiran.daware\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Office\GitProject\EasySipPwithPythonDjango\EasySipP\kSipP\views.py", line 182, in run_script_view
+    return render(request, 'run_script_template.html', {'uasCommand=':command_output})
+                                                                      ^^^^^^^^^^^^^^
+UnboundLocalError: cannot access local variable 'command_output' where it is not associated with a value
+ERROR 2023-07-23 15:11:47,850 basehttp "GET /run-script HTTP/1.1" 500 64938
+ERROR 2023-07-23 15:11:47,850 basehttp "GET /run-script HTTP/1.1" 500 64938
+INFO 2023-07-23 15:11:55,199 basehttp "GET / HTTP/1.1" 200 2827
+INFO 2023-07-23 15:11:55,199 basehttp "GET / HTTP/1.1" 200 2827
+INFO 2023-07-23 15:12:01,579 autoreload Watching for file changes with StatReloader
+INFO 2023-07-23 15:12:01,579 autoreload Watching for file changes with StatReloader
+INFO 2023-07-23 15:12:03,140 basehttp "GET / HTTP/1.1" 200 2827
+INFO 2023-07-23 15:12:03,140 basehttp "GET / HTTP/1.1" 200 2827
+INFO 2023-07-23 15:13:12,407 autoreload Watching for file changes with StatReloader
+INFO 2023-07-23 15:13:12,407 autoreload Watching for file changes with StatReloader
+INFO 2023-07-23 15:13:12,912 basehttp "GET / HTTP/1.1" 200 2827
+INFO 2023-07-23 15:13:12,912 basehttp "GET / HTTP/1.1" 200 2827
+ERROR 2023-07-23 15:13:14,637 log Internal Server Error: /run-script
+Traceback (most recent call last):
+  File "C:\Users\kiran.daware\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\kiran.daware\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Office\GitProject\EasySipPwithPythonDjango\EasySipP\kSipP\views.py", line 182, in run_script_view
+    return render(request, 'run_script_template.html', {'uasCommand=':command_output})
+                                                                      ^^^^^^^^^^^^^^
+UnboundLocalError: cannot access local variable 'command_output' where it is not associated with a value
+ERROR 2023-07-23 15:13:14,637 log Internal Server Error: /run-script
+Traceback (most recent call last):
+  File "C:\Users\kiran.daware\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\kiran.daware\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Office\GitProject\EasySipPwithPythonDjango\EasySipP\kSipP\views.py", line 182, in run_script_view
+    return render(request, 'run_script_template.html', {'uasCommand=':command_output})
+                                                                      ^^^^^^^^^^^^^^
+UnboundLocalError: cannot access local variable 'command_output' where it is not associated with a value
+ERROR 2023-07-23 15:13:14,643 basehttp "POST /run-script HTTP/1.1" 500 67692
+ERROR 2023-07-23 15:13:14,643 basehttp "POST /run-script HTTP/1.1" 500 67692
+INFO 2023-07-23 15:13:21,035 basehttp "GET / HTTP/1.1" 200 2827
+INFO 2023-07-23 15:13:21,035 basehttp "GET / HTTP/1.1" 200 2827
+INFO 2023-07-23 15:15:01,068 basehttp - Broken pipe from ('127.0.0.1', 52714)
+INFO 2023-07-23 15:15:01,068 basehttp - Broken pipe from ('127.0.0.1', 52714)
+INFO 2023-07-23 15:15:21,194 autoreload C:\Office\GitProject\EasySipPwithPythonDjango\EasySipP\kSipP\views.py changed, reloading.
+INFO 2023-07-23 15:15:21,194 autoreload C:\Office\GitProject\EasySipPwithPythonDjango\EasySipP\kSipP\views.py changed, reloading.
+INFO 2023-07-23 15:15:22,843 autoreload Watching for file changes with StatReloader
+INFO 2023-07-23 15:15:22,843 autoreload Watching for file changes with StatReloader
+INFO 2023-07-23 15:15:29,625 basehttp "GET / HTTP/1.1" 200 2827
+INFO 2023-07-23 15:15:29,625 basehttp "GET / HTTP/1.1" 200 2827
+INFO 2023-07-23 15:15:55,350 autoreload C:\Office\GitProject\EasySipPwithPythonDjango\EasySipP\kSipP\views.py changed, reloading.
+INFO 2023-07-23 15:15:55,350 autoreload C:\Office\GitProject\EasySipPwithPythonDjango\EasySipP\kSipP\views.py changed, reloading.
+INFO 2023-07-23 15:15:57,605 autoreload Watching for file changes with StatReloader
+INFO 2023-07-23 15:15:57,605 autoreload Watching for file changes with StatReloader
+INFO 2023-07-23 15:15:59,153 basehttp "GET / HTTP/1.1" 200 2827
+INFO 2023-07-23 15:15:59,153 basehttp "GET / HTTP/1.1" 200 2827
+INFO 2023-07-23 15:15:59,993 basehttp "GET / HTTP/1.1" 200 2827
+INFO 2023-07-23 15:15:59,993 basehttp "GET / HTTP/1.1" 200 2827
+ERROR 2023-07-23 15:16:01,307 log Internal Server Error: /run-script
+Traceback (most recent call last):
+  File "C:\Users\kiran.daware\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\kiran.daware\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Office\GitProject\EasySipPwithPythonDjango\EasySipP\kSipP\views.py", line 182, in run_script_view
+    return render(request, 'run_script_template.html', {'uasCommand=':command_output})
+                                                                      ^^^^^^^^^^^^^^
+UnboundLocalError: cannot access local variable 'command_output' where it is not associated with a value
+ERROR 2023-07-23 15:16:01,307 log Internal Server Error: /run-script
+Traceback (most recent call last):
+  File "C:\Users\kiran.daware\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\kiran.daware\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Office\GitProject\EasySipPwithPythonDjango\EasySipP\kSipP\views.py", line 182, in run_script_view
+    return render(request, 'run_script_template.html', {'uasCommand=':command_output})
+                                                                      ^^^^^^^^^^^^^^
+UnboundLocalError: cannot access local variable 'command_output' where it is not associated with a value
+ERROR 2023-07-23 15:16:01,314 basehttp "POST /run-script HTTP/1.1" 500 67609
+ERROR 2023-07-23 15:16:01,314 basehttp "POST /run-script HTTP/1.1" 500 67609
+INFO 2023-07-23 15:16:23,249 autoreload C:\Office\GitProject\EasySipPwithPythonDjango\EasySipP\kSipP\views.py changed, reloading.
+INFO 2023-07-23 15:16:23,249 autoreload C:\Office\GitProject\EasySipPwithPythonDjango\EasySipP\kSipP\views.py changed, reloading.
+INFO 2023-07-23 15:16:25,389 autoreload Watching for file changes with StatReloader
+INFO 2023-07-23 15:16:25,389 autoreload Watching for file changes with StatReloader
+ERROR 2023-07-23 15:16:26,431 log Internal Server Error: /run-script
+Traceback (most recent call last):
+  File "C:\Users\kiran.daware\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\kiran.daware\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Office\GitProject\EasySipPwithPythonDjango\EasySipP\kSipP\views.py", line 182, in run_script_view
+    return render(request, 'run_script_template.html', {'uasCommand':command_output})
+                                                                     ^^^^^^^^^^^^^^
+UnboundLocalError: cannot access local variable 'command_output' where it is not associated with a value
+ERROR 2023-07-23 15:16:26,431 log Internal Server Error: /run-script
+Traceback (most recent call last):
+  File "C:\Users\kiran.daware\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\kiran.daware\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Office\GitProject\EasySipPwithPythonDjango\EasySipP\kSipP\views.py", line 182, in run_script_view
+    return render(request, 'run_script_template.html', {'uasCommand':command_output})
+                                                                     ^^^^^^^^^^^^^^
+UnboundLocalError: cannot access local variable 'command_output' where it is not associated with a value
+ERROR 2023-07-23 15:16:26,437 basehttp "GET /run-script HTTP/1.1" 500 64769
+ERROR 2023-07-23 15:16:26,437 basehttp "GET /run-script HTTP/1.1" 500 64769
+INFO 2023-07-23 15:16:50,651 autoreload C:\Office\GitProject\EasySipPwithPythonDjango\EasySipP\kSipP\views.py changed, reloading.
+INFO 2023-07-23 15:16:50,651 autoreload C:\Office\GitProject\EasySipPwithPythonDjango\EasySipP\kSipP\views.py changed, reloading.
+INFO 2023-07-23 15:16:52,926 autoreload Watching for file changes with StatReloader
+INFO 2023-07-23 15:16:52,926 autoreload Watching for file changes with StatReloader
+ERROR 2023-07-23 15:16:53,724 log Internal Server Error: /run-script
+Traceback (most recent call last):
+  File "C:\Users\kiran.daware\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\kiran.daware\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Office\GitProject\EasySipPwithPythonDjango\EasySipP\kSipP\views.py", line 182, in run_script_view
+    return render(request, 'run_script_template.html', {'uasCommand':commandOutput})
+                                                                     ^^^^^^^^^^^^^
+UnboundLocalError: cannot access local variable 'commandOutput' where it is not associated with a value
+ERROR 2023-07-23 15:16:53,724 log Internal Server Error: /run-script
+Traceback (most recent call last):
+  File "C:\Users\kiran.daware\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\kiran.daware\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Office\GitProject\EasySipPwithPythonDjango\EasySipP\kSipP\views.py", line 182, in run_script_view
+    return render(request, 'run_script_template.html', {'uasCommand':commandOutput})
+                                                                     ^^^^^^^^^^^^^
+UnboundLocalError: cannot access local variable 'commandOutput' where it is not associated with a value
+ERROR 2023-07-23 15:16:53,733 basehttp "GET /run-script HTTP/1.1" 500 64897
+ERROR 2023-07-23 15:16:53,733 basehttp "GET /run-script HTTP/1.1" 500 64897
+INFO 2023-07-23 15:16:55,889 basehttp "GET / HTTP/1.1" 200 2827
+INFO 2023-07-23 15:16:55,889 basehttp "GET / HTTP/1.1" 200 2827
+ERROR 2023-07-23 15:16:57,837 log Internal Server Error: /run-script
+Traceback (most recent call last):
+  File "C:\Users\kiran.daware\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\kiran.daware\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Office\GitProject\EasySipPwithPythonDjango\EasySipP\kSipP\views.py", line 182, in run_script_view
+    return render(request, 'run_script_template.html', {'uasCommand':commandOutput})
+                                                                     ^^^^^^^^^^^^^
+UnboundLocalError: cannot access local variable 'commandOutput' where it is not associated with a value
+ERROR 2023-07-23 15:16:57,837 log Internal Server Error: /run-script
+Traceback (most recent call last):
+  File "C:\Users\kiran.daware\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\kiran.daware\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Office\GitProject\EasySipPwithPythonDjango\EasySipP\kSipP\views.py", line 182, in run_script_view
+    return render(request, 'run_script_template.html', {'uasCommand':commandOutput})
+                                                                     ^^^^^^^^^^^^^
+UnboundLocalError: cannot access local variable 'commandOutput' where it is not associated with a value
+ERROR 2023-07-23 15:16:57,840 basehttp "POST /run-script HTTP/1.1" 500 67596
+ERROR 2023-07-23 15:16:57,840 basehttp "POST /run-script HTTP/1.1" 500 67596
+INFO 2023-07-23 15:18:27,325 autoreload C:\Office\GitProject\EasySipPwithPythonDjango\EasySipP\kSipP\views.py changed, reloading.
+INFO 2023-07-23 15:18:27,325 autoreload C:\Office\GitProject\EasySipPwithPythonDjango\EasySipP\kSipP\views.py changed, reloading.
+INFO 2023-07-23 15:18:29,166 autoreload Watching for file changes with StatReloader
+INFO 2023-07-23 15:18:29,166 autoreload Watching for file changes with StatReloader
+ERROR 2023-07-23 15:18:34,271 log Internal Server Error: /run-script
+Traceback (most recent call last):
+  File "C:\Users\kiran.daware\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\kiran.daware\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Office\GitProject\EasySipPwithPythonDjango\EasySipP\kSipP\views.py", line 183, in run_script_view
+    return render(request, 'run_script_template.html', {'uasCommand':commandOutput})
+                                                                     ^^^^^^^^^^^^^
+UnboundLocalError: cannot access local variable 'commandOutput' where it is not associated with a value
+ERROR 2023-07-23 15:18:34,271 log Internal Server Error: /run-script
+Traceback (most recent call last):
+  File "C:\Users\kiran.daware\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\kiran.daware\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Office\GitProject\EasySipPwithPythonDjango\EasySipP\kSipP\views.py", line 183, in run_script_view
+    return render(request, 'run_script_template.html', {'uasCommand':commandOutput})
+                                                                     ^^^^^^^^^^^^^
+UnboundLocalError: cannot access local variable 'commandOutput' where it is not associated with a value
+ERROR 2023-07-23 15:18:34,277 basehttp "GET /run-script HTTP/1.1" 500 64717
+ERROR 2023-07-23 15:18:34,277 basehttp "GET /run-script HTTP/1.1" 500 64717
+INFO 2023-07-23 15:18:38,894 basehttp "GET / HTTP/1.1" 200 2827
+INFO 2023-07-23 15:18:38,894 basehttp "GET / HTTP/1.1" 200 2827
+ERROR 2023-07-23 15:18:41,098 log Internal Server Error: /run-script
+Traceback (most recent call last):
+  File "C:\Users\kiran.daware\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\kiran.daware\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Office\GitProject\EasySipPwithPythonDjango\EasySipP\kSipP\views.py", line 183, in run_script_view
+    return render(request, 'run_script_template.html', {'uasCommand':commandOutput})
+                                                                     ^^^^^^^^^^^^^
+UnboundLocalError: cannot access local variable 'commandOutput' where it is not associated with a value
+ERROR 2023-07-23 15:18:41,098 log Internal Server Error: /run-script
+Traceback (most recent call last):
+  File "C:\Users\kiran.daware\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\kiran.daware\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Office\GitProject\EasySipPwithPythonDjango\EasySipP\kSipP\views.py", line 183, in run_script_view
+    return render(request, 'run_script_template.html', {'uasCommand':commandOutput})
+                                                                     ^^^^^^^^^^^^^
+UnboundLocalError: cannot access local variable 'commandOutput' where it is not associated with a value
+ERROR 2023-07-23 15:18:41,106 basehttp "POST /run-script HTTP/1.1" 500 67558
+ERROR 2023-07-23 15:18:41,106 basehttp "POST /run-script HTTP/1.1" 500 67558
+INFO 2023-07-23 15:18:49,340 autoreload Watching for file changes with StatReloader
+INFO 2023-07-23 15:18:49,340 autoreload Watching for file changes with StatReloader
+INFO 2023-07-23 15:18:51,860 basehttp "GET / HTTP/1.1" 200 2827
+INFO 2023-07-23 15:18:51,860 basehttp "GET / HTTP/1.1" 200 2827
+ERROR 2023-07-23 15:18:54,528 log Internal Server Error: /run-script
+Traceback (most recent call last):
+  File "C:\Users\kiran.daware\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\kiran.daware\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Office\GitProject\EasySipPwithPythonDjango\EasySipP\kSipP\views.py", line 183, in run_script_view
+    return render(request, 'run_script_template.html', {'uasCommand':commandOutput})
+                                                                     ^^^^^^^^^^^^^
+UnboundLocalError: cannot access local variable 'commandOutput' where it is not associated with a value
+ERROR 2023-07-23 15:18:54,528 log Internal Server Error: /run-script
+Traceback (most recent call last):
+  File "C:\Users\kiran.daware\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\kiran.daware\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Office\GitProject\EasySipPwithPythonDjango\EasySipP\kSipP\views.py", line 183, in run_script_view
+    return render(request, 'run_script_template.html', {'uasCommand':commandOutput})
+                                                                     ^^^^^^^^^^^^^
+UnboundLocalError: cannot access local variable 'commandOutput' where it is not associated with a value
+ERROR 2023-07-23 15:18:54,532 basehttp "POST /run-script HTTP/1.1" 500 67553
+ERROR 2023-07-23 15:18:54,532 basehttp "POST /run-script HTTP/1.1" 500 67553
+INFO 2023-07-23 15:25:07,273 autoreload C:\Office\GitProject\EasySipPwithPythonDjango\EasySipP\kSipP\views.py changed, reloading.
+INFO 2023-07-23 15:25:07,273 autoreload C:\Office\GitProject\EasySipPwithPythonDjango\EasySipP\kSipP\views.py changed, reloading.
+INFO 2023-07-23 15:25:09,378 autoreload Watching for file changes with StatReloader
+INFO 2023-07-23 15:25:09,378 autoreload Watching for file changes with StatReloader
+INFO 2023-07-23 15:25:45,446 autoreload C:\Office\GitProject\EasySipPwithPythonDjango\EasySipP\kSipP\views.py changed, reloading.
+INFO 2023-07-23 15:25:45,446 autoreload C:\Office\GitProject\EasySipPwithPythonDjango\EasySipP\kSipP\views.py changed, reloading.
+INFO 2023-07-23 15:25:47,600 autoreload Watching for file changes with StatReloader
+INFO 2023-07-23 15:25:47,600 autoreload Watching for file changes with StatReloader
+INFO 2023-07-23 15:25:59,098 autoreload Watching for file changes with StatReloader
+INFO 2023-07-23 15:25:59,098 autoreload Watching for file changes with StatReloader
+INFO 2023-07-23 15:26:38,401 autoreload C:\Office\GitProject\EasySipPwithPythonDjango\EasySipP\kSipP\views.py changed, reloading.
+INFO 2023-07-23 15:26:38,401 autoreload C:\Office\GitProject\EasySipPwithPythonDjango\EasySipP\kSipP\views.py changed, reloading.
+INFO 2023-07-23 15:26:40,501 autoreload Watching for file changes with StatReloader
+INFO 2023-07-23 15:26:40,501 autoreload Watching for file changes with StatReloader
+INFO 2023-07-23 15:26:41,003 basehttp "GET / HTTP/1.1" 200 2827
+INFO 2023-07-23 15:26:41,003 basehttp "GET / HTTP/1.1" 200 2827
+INFO 2023-07-23 15:26:43,015 basehttp "POST /run-script HTTP/1.1" 200 942
+INFO 2023-07-23 15:26:43,015 basehttp "POST /run-script HTTP/1.1" 200 942
+INFO 2023-07-23 15:27:12,267 autoreload C:\Office\GitProject\EasySipPwithPythonDjango\EasySipP\kSipP\views.py changed, reloading.
+INFO 2023-07-23 15:27:12,267 autoreload C:\Office\GitProject\EasySipPwithPythonDjango\EasySipP\kSipP\views.py changed, reloading.
+INFO 2023-07-23 15:27:14,066 autoreload Watching for file changes with StatReloader
+INFO 2023-07-23 15:27:14,066 autoreload Watching for file changes with StatReloader
+ERROR 2023-07-23 15:27:24,431 log Internal Server Error: /run-script
+Traceback (most recent call last):
+  File "C:\Users\kiran.daware\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\kiran.daware\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Office\GitProject\EasySipPwithPythonDjango\EasySipP\kSipP\views.py", line 183, in run_script_view
+    return render(request, 'run_script_template.html', {'uasCommand':print_uac_command + "\n" + print_uas_command })
+                                                                     ^^^^^^^^^^^^^^^^^
+UnboundLocalError: cannot access local variable 'print_uac_command' where it is not associated with a value
+ERROR 2023-07-23 15:27:24,431 log Internal Server Error: /run-script
+Traceback (most recent call last):
+  File "C:\Users\kiran.daware\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\kiran.daware\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Office\GitProject\EasySipPwithPythonDjango\EasySipP\kSipP\views.py", line 183, in run_script_view
+    return render(request, 'run_script_template.html', {'uasCommand':print_uac_command + "\n" + print_uas_command })
+                                                                     ^^^^^^^^^^^^^^^^^
+UnboundLocalError: cannot access local variable 'print_uac_command' where it is not associated with a value
+ERROR 2023-07-23 15:27:24,438 basehttp "GET /run-script HTTP/1.1" 500 64843
+ERROR 2023-07-23 15:27:24,438 basehttp "GET /run-script HTTP/1.1" 500 64843
+INFO 2023-07-23 15:28:20,924 basehttp "GET / HTTP/1.1" 200 2827
+INFO 2023-07-23 15:28:20,924 basehttp "GET / HTTP/1.1" 200 2827
+INFO 2023-07-23 15:28:22,432 basehttp "POST /run-script HTTP/1.1" 200 943
+INFO 2023-07-23 15:28:22,432 basehttp "POST /run-script HTTP/1.1" 200 943
+INFO 2023-07-23 15:30:16,977 autoreload C:\Office\GitProject\EasySipPwithPythonDjango\EasySipP\kSipP\views.py changed, reloading.
+INFO 2023-07-23 15:30:16,977 autoreload C:\Office\GitProject\EasySipPwithPythonDjango\EasySipP\kSipP\views.py changed, reloading.
+INFO 2023-07-23 15:30:19,066 autoreload Watching for file changes with StatReloader
+INFO 2023-07-23 15:30:19,066 autoreload Watching for file changes with StatReloader
+ERROR 2023-07-23 15:30:22,520 log Internal Server Error: /run-script
+Traceback (most recent call last):
+  File "C:\Users\kiran.daware\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\kiran.daware\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Office\GitProject\EasySipPwithPythonDjango\EasySipP\kSipP\views.py", line 184, in run_script_view
+    return render(request, 'run_script_template.html', {'uasCommand':printCmd})
+                                                                     ^^^^^^^^
+UnboundLocalError: cannot access local variable 'printCmd' where it is not associated with a value
+ERROR 2023-07-23 15:30:22,520 log Internal Server Error: /run-script
+Traceback (most recent call last):
+  File "C:\Users\kiran.daware\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\kiran.daware\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Office\GitProject\EasySipPwithPythonDjango\EasySipP\kSipP\views.py", line 184, in run_script_view
+    return render(request, 'run_script_template.html', {'uasCommand':printCmd})
+                                                                     ^^^^^^^^
+UnboundLocalError: cannot access local variable 'printCmd' where it is not associated with a value
+ERROR 2023-07-23 15:30:22,526 basehttp "GET /run-script HTTP/1.1" 500 64695
+ERROR 2023-07-23 15:30:22,526 basehttp "GET /run-script HTTP/1.1" 500 64695
+INFO 2023-07-23 15:30:26,333 basehttp "GET / HTTP/1.1" 200 2827
+INFO 2023-07-23 15:30:26,333 basehttp "GET / HTTP/1.1" 200 2827
+INFO 2023-07-23 15:30:28,697 basehttp "POST /run-script HTTP/1.1" 200 945
+INFO 2023-07-23 15:30:28,697 basehttp "POST /run-script HTTP/1.1" 200 945
+INFO 2023-07-23 15:30:44,986 autoreload Watching for file changes with StatReloader
+INFO 2023-07-23 15:30:44,986 autoreload Watching for file changes with StatReloader
+ERROR 2023-07-23 15:30:46,249 log Internal Server Error: /run-script
+Traceback (most recent call last):
+  File "C:\Users\kiran.daware\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\kiran.daware\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Office\GitProject\EasySipPwithPythonDjango\EasySipP\kSipP\views.py", line 184, in run_script_view
+    return render(request, 'run_script_template.html', {'uasCommand':printCmd})
+                                                                     ^^^^^^^^
+UnboundLocalError: cannot access local variable 'printCmd' where it is not associated with a value
+ERROR 2023-07-23 15:30:46,249 log Internal Server Error: /run-script
+Traceback (most recent call last):
+  File "C:\Users\kiran.daware\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\kiran.daware\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Office\GitProject\EasySipPwithPythonDjango\EasySipP\kSipP\views.py", line 184, in run_script_view
+    return render(request, 'run_script_template.html', {'uasCommand':printCmd})
+                                                                     ^^^^^^^^
+UnboundLocalError: cannot access local variable 'printCmd' where it is not associated with a value
+ERROR 2023-07-23 15:30:46,253 basehttp "GET /run-script HTTP/1.1" 500 64695
+ERROR 2023-07-23 15:30:46,253 basehttp "GET /run-script HTTP/1.1" 500 64695
+INFO 2023-07-23 15:30:50,860 basehttp "GET / HTTP/1.1" 200 2827
+INFO 2023-07-23 15:30:50,860 basehttp "GET / HTTP/1.1" 200 2827
+INFO 2023-07-23 15:30:52,693 basehttp "POST /run-script HTTP/1.1" 200 945
+INFO 2023-07-23 15:30:52,693 basehttp "POST /run-script HTTP/1.1" 200 945
+INFO 2023-07-23 15:31:19,636 autoreload C:\Office\GitProject\EasySipPwithPythonDjango\EasySipP\kSipP\views.py changed, reloading.
+INFO 2023-07-23 15:31:19,636 autoreload C:\Office\GitProject\EasySipPwithPythonDjango\EasySipP\kSipP\views.py changed, reloading.
+INFO 2023-07-23 15:31:21,475 autoreload Watching for file changes with StatReloader
+INFO 2023-07-23 15:31:21,475 autoreload Watching for file changes with StatReloader
+ERROR 2023-07-23 15:32:21,734 log Internal Server Error: /run-script
+Traceback (most recent call last):
+  File "C:\Users\kiran.daware\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\kiran.daware\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Office\GitProject\EasySipPwithPythonDjango\EasySipP\kSipP\views.py", line 184, in run_script_view
+    return render(request, 'run_script_template.html', {'uasCommand':printCmd})
+                                                                     ^^^^^^^^
+UnboundLocalError: cannot access local variable 'printCmd' where it is not associated with a value
+ERROR 2023-07-23 15:32:21,734 log Internal Server Error: /run-script
+Traceback (most recent call last):
+  File "C:\Users\kiran.daware\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\kiran.daware\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Office\GitProject\EasySipPwithPythonDjango\EasySipP\kSipP\views.py", line 184, in run_script_view
+    return render(request, 'run_script_template.html', {'uasCommand':printCmd})
+                                                                     ^^^^^^^^
+UnboundLocalError: cannot access local variable 'printCmd' where it is not associated with a value
+ERROR 2023-07-23 15:32:21,740 basehttp "GET /run-script HTTP/1.1" 500 64695
+ERROR 2023-07-23 15:32:21,740 basehttp "GET /run-script HTTP/1.1" 500 64695
+INFO 2023-07-23 15:32:24,174 basehttp "GET / HTTP/1.1" 200 2794
+INFO 2023-07-23 15:32:24,174 basehttp "GET / HTTP/1.1" 200 2794
+INFO 2023-07-23 15:32:26,524 basehttp "POST /run-script HTTP/1.1" 200 798
+INFO 2023-07-23 15:32:26,524 basehttp "POST /run-script HTTP/1.1" 200 798
+INFO 2023-07-23 15:32:32,146 basehttp "GET / HTTP/1.1" 200 2794
+INFO 2023-07-23 15:32:32,146 basehttp "GET / HTTP/1.1" 200 2794
+INFO 2023-07-23 15:32:33,790 basehttp "POST /run-script HTTP/1.1" 200 798
+INFO 2023-07-23 15:32:33,790 basehttp "POST /run-script HTTP/1.1" 200 798
+INFO 2023-07-23 15:32:35,847 basehttp "GET / HTTP/1.1" 200 2794
+INFO 2023-07-23 15:32:35,847 basehttp "GET / HTTP/1.1" 200 2794
+INFO 2023-07-23 15:37:01,088 autoreload C:\Office\GitProject\EasySipPwithPythonDjango\EasySipP\kSipP\views.py changed, reloading.
+INFO 2023-07-23 15:37:01,088 autoreload C:\Office\GitProject\EasySipPwithPythonDjango\EasySipP\kSipP\views.py changed, reloading.
+INFO 2023-07-23 15:37:03,217 autoreload Watching for file changes with StatReloader
+INFO 2023-07-23 15:37:03,217 autoreload Watching for file changes with StatReloader
+INFO 2023-07-23 15:37:04,414 basehttp "GET / HTTP/1.1" 200 2794
+INFO 2023-07-23 15:37:04,414 basehttp "GET / HTTP/1.1" 200 2794
+INFO 2023-07-23 15:37:06,065 basehttp "POST /run-script HTTP/1.1" 200 798
+INFO 2023-07-23 15:37:06,065 basehttp "POST /run-script HTTP/1.1" 200 798
+INFO 2023-07-23 15:37:07,736 basehttp "POST /run-script HTTP/1.1" 200 798
+INFO 2023-07-23 15:37:07,736 basehttp "POST /run-script HTTP/1.1" 200 798
+INFO 2023-07-23 15:39:09,686 autoreload C:\Office\GitProject\EasySipPwithPythonDjango\EasySipP\kSipP\views.py changed, reloading.
+INFO 2023-07-23 15:39:09,686 autoreload C:\Office\GitProject\EasySipPwithPythonDjango\EasySipP\kSipP\views.py changed, reloading.
+INFO 2023-07-23 15:39:11,769 autoreload Watching for file changes with StatReloader
+INFO 2023-07-23 15:39:11,769 autoreload Watching for file changes with StatReloader
+ERROR 2023-07-23 15:39:12,864 log Internal Server Error: /run-script
+Traceback (most recent call last):
+  File "C:\Users\kiran.daware\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\kiran.daware\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Office\GitProject\EasySipPwithPythonDjango\EasySipP\kSipP\views.py", line 158, in run_script_view
+    uacXml = str(settings.BASE_DIR / 'kSipP' / 'sipp' / f'{xml_data["selectUAC"]}')
+                                                           ~~~~~~~~^^^^^^^^^^^^^
+KeyError: 'selectUAC'
+ERROR 2023-07-23 15:39:12,864 log Internal Server Error: /run-script
+Traceback (most recent call last):
+  File "C:\Users\kiran.daware\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\kiran.daware\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Office\GitProject\EasySipPwithPythonDjango\EasySipP\kSipP\views.py", line 158, in run_script_view
+    uacXml = str(settings.BASE_DIR / 'kSipP' / 'sipp' / f'{xml_data["selectUAC"]}')
+                                                           ~~~~~~~~^^^^^^^^^^^^^
+KeyError: 'selectUAC'
+ERROR 2023-07-23 15:39:12,870 basehttp "GET /run-script HTTP/1.1" 500 65892
+ERROR 2023-07-23 15:39:12,870 basehttp "GET /run-script HTTP/1.1" 500 65892
+INFO 2023-07-23 15:39:16,621 basehttp "GET / HTTP/1.1" 200 2794
+INFO 2023-07-23 15:39:16,621 basehttp "GET / HTTP/1.1" 200 2794
+INFO 2023-07-23 15:39:18,446 basehttp "POST /run-script HTTP/1.1" 200 798
+INFO 2023-07-23 15:39:18,446 basehttp "POST /run-script HTTP/1.1" 200 798
+INFO 2023-07-23 15:39:22,289 basehttp "GET /run-script HTTP/1.1" 200 798
+INFO 2023-07-23 15:39:22,289 basehttp "GET /run-script HTTP/1.1" 200 798
+INFO 2023-07-23 15:39:57,353 autoreload C:\Office\GitProject\EasySipPwithPythonDjango\EasySipP\kSipP\views.py changed, reloading.
+INFO 2023-07-23 15:39:57,353 autoreload C:\Office\GitProject\EasySipPwithPythonDjango\EasySipP\kSipP\views.py changed, reloading.
+INFO 2023-07-23 15:40:05,836 autoreload Watching for file changes with StatReloader
+INFO 2023-07-23 15:40:05,836 autoreload Watching for file changes with StatReloader
+INFO 2023-07-23 15:40:10,826 basehttp "GET / HTTP/1.1" 200 2794
+INFO 2023-07-23 15:40:10,826 basehttp "GET / HTTP/1.1" 200 2794
+INFO 2023-07-23 15:40:14,037 basehttp "POST /run-script HTTP/1.1" 200 798
+INFO 2023-07-23 15:40:14,037 basehttp "POST /run-script HTTP/1.1" 200 798
+INFO 2023-07-23 15:41:32,443 autoreload Watching for file changes with StatReloader
+INFO 2023-07-23 15:41:32,443 autoreload Watching for file changes with StatReloader
+INFO 2023-07-23 15:41:33,738 basehttp "GET / HTTP/1.1" 200 2793
+INFO 2023-07-23 15:41:33,738 basehttp "GET / HTTP/1.1" 200 2793
+INFO 2023-07-23 15:41:35,881 basehttp "POST /run-script HTTP/1.1" 200 912
+INFO 2023-07-23 15:41:35,881 basehttp "POST /run-script HTTP/1.1" 200 912
+INFO 2023-07-23 15:42:36,333 autoreload Watching for file changes with StatReloader
+INFO 2023-07-23 15:42:36,333 autoreload Watching for file changes with StatReloader
+INFO 2023-07-23 15:42:38,490 basehttp "GET / HTTP/1.1" 200 2793
+INFO 2023-07-23 15:42:38,490 basehttp "GET / HTTP/1.1" 200 2793
+INFO 2023-07-23 15:42:40,700 basehttp "GET / HTTP/1.1" 200 2793
+INFO 2023-07-23 15:42:40,700 basehttp "GET / HTTP/1.1" 200 2793
+INFO 2023-07-23 15:42:49,380 basehttp "GET / HTTP/1.1" 200 2793
+INFO 2023-07-23 15:42:49,380 basehttp "GET / HTTP/1.1" 200 2793
+INFO 2023-07-23 15:42:51,426 basehttp "POST / HTTP/1.1" 200 2793
+INFO 2023-07-23 15:42:51,426 basehttp "POST / HTTP/1.1" 200 2793
+INFO 2023-07-23 15:42:53,306 basehttp "POST / HTTP/1.1" 200 2793
+INFO 2023-07-23 15:42:53,306 basehttp "POST / HTTP/1.1" 200 2793
+INFO 2023-07-23 15:43:09,786 basehttp "GET /run-script HTTP/1.1" 200 912
+INFO 2023-07-23 15:43:09,786 basehttp "GET /run-script HTTP/1.1" 200 912
+INFO 2023-07-23 15:48:12,921 autoreload C:\Office\GitProject\EasySipPwithPythonDjango\EasySipP\kSipP\views.py changed, reloading.
+INFO 2023-07-23 15:48:12,921 autoreload C:\Office\GitProject\EasySipPwithPythonDjango\EasySipP\kSipP\views.py changed, reloading.
+INFO 2023-07-23 15:48:15,080 autoreload Watching for file changes with StatReloader
+INFO 2023-07-23 15:48:15,080 autoreload Watching for file changes with StatReloader
+INFO 2023-07-23 15:48:26,978 autoreload C:\Office\GitProject\EasySipPwithPythonDjango\EasySipP\kSipP\views.py changed, reloading.
+INFO 2023-07-23 15:48:26,978 autoreload C:\Office\GitProject\EasySipPwithPythonDjango\EasySipP\kSipP\views.py changed, reloading.
+INFO 2023-07-23 15:48:29,090 autoreload Watching for file changes with StatReloader
+INFO 2023-07-23 15:48:29,090 autoreload Watching for file changes with StatReloader
+ERROR 2023-07-23 15:49:05,999 log Internal Server Error: /run-script
+Traceback (most recent call last):
+  File "C:\Users\kiran.daware\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\kiran.daware\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Office\GitProject\EasySipPwithPythonDjango\EasySipP\kSipP\views.py", line 158, in run_script_view
+    uacXml = str(settings.BASE_DIR / 'kSipP' / 'sipp' / f'{xml_data["selectUAC"]}')
+                                                           ~~~~~~~~^^^^^^^^^^^^^
+KeyError: 'selectUAC'
+ERROR 2023-07-23 15:49:05,999 log Internal Server Error: /run-script
+Traceback (most recent call last):
+  File "C:\Users\kiran.daware\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\kiran.daware\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Office\GitProject\EasySipPwithPythonDjango\EasySipP\kSipP\views.py", line 158, in run_script_view
+    uacXml = str(settings.BASE_DIR / 'kSipP' / 'sipp' / f'{xml_data["selectUAC"]}')
+                                                           ~~~~~~~~^^^^^^^^^^^^^
+KeyError: 'selectUAC'
+ERROR 2023-07-23 15:49:06,006 basehttp "GET /run-script HTTP/1.1" 500 66029
+ERROR 2023-07-23 15:49:06,006 basehttp "GET /run-script HTTP/1.1" 500 66029
+INFO 2023-07-23 15:49:19,915 autoreload Watching for file changes with StatReloader
+INFO 2023-07-23 15:49:19,915 autoreload Watching for file changes with StatReloader
+ERROR 2023-07-23 15:49:21,344 log Internal Server Error: /run-script
+Traceback (most recent call last):
+  File "C:\Users\kiran.daware\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\kiran.daware\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Office\GitProject\EasySipPwithPythonDjango\EasySipP\kSipP\views.py", line 158, in run_script_view
+    uacXml = str(settings.BASE_DIR / 'kSipP' / 'sipp' / f'{xml_data["selectUAC"]}')
+                                                           ~~~~~~~~^^^^^^^^^^^^^
+KeyError: 'selectUAC'
+ERROR 2023-07-23 15:49:21,344 log Internal Server Error: /run-script
+Traceback (most recent call last):
+  File "C:\Users\kiran.daware\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\kiran.daware\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Office\GitProject\EasySipPwithPythonDjango\EasySipP\kSipP\views.py", line 158, in run_script_view
+    uacXml = str(settings.BASE_DIR / 'kSipP' / 'sipp' / f'{xml_data["selectUAC"]}')
+                                                           ~~~~~~~~^^^^^^^^^^^^^
+KeyError: 'selectUAC'
+ERROR 2023-07-23 15:49:21,350 basehttp "GET /run-script HTTP/1.1" 500 66029
+ERROR 2023-07-23 15:49:21,350 basehttp "GET /run-script HTTP/1.1" 500 66029
+INFO 2023-07-23 15:49:26,208 basehttp "GET / HTTP/1.1" 200 2798
+INFO 2023-07-23 15:49:26,208 basehttp "GET / HTTP/1.1" 200 2798
+INFO 2023-07-23 15:49:27,812 basehttp "POST / HTTP/1.1" 200 2798
+INFO 2023-07-23 15:49:27,812 basehttp "POST / HTTP/1.1" 200 2798
+INFO 2023-07-23 15:49:33,458 basehttp "GET /run-script HTTP/1.1" 200 913
+INFO 2023-07-23 15:49:33,458 basehttp "GET /run-script HTTP/1.1" 200 913
+INFO 2023-07-23 15:49:55,868 basehttp "GET /run-script HTTP/1.1" 200 924
+INFO 2023-07-23 15:49:55,868 basehttp "GET /run-script HTTP/1.1" 200 924
+INFO 2023-07-23 15:51:08,052 basehttp "GET /run-script HTTP/1.1" 200 983
+INFO 2023-07-23 15:51:08,052 basehttp "GET /run-script HTTP/1.1" 200 983
+INFO 2023-07-23 15:51:37,197 basehttp "GET /run-script HTTP/1.1" 200 987
+INFO 2023-07-23 15:51:37,197 basehttp "GET /run-script HTTP/1.1" 200 987
+INFO 2023-07-23 15:51:38,508 basehttp "GET /run-script HTTP/1.1" 200 987
+INFO 2023-07-23 15:51:38,508 basehttp "GET /run-script HTTP/1.1" 200 987
+INFO 2023-07-23 15:52:16,873 basehttp "GET /run-script HTTP/1.1" 200 1012
+INFO 2023-07-23 15:52:16,873 basehttp "GET /run-script HTTP/1.1" 200 1012
+INFO 2023-07-23 15:52:56,244 basehttp "GET /run-script HTTP/1.1" 200 1007
+INFO 2023-07-23 15:52:56,244 basehttp "GET /run-script HTTP/1.1" 200 1007
+INFO 2023-07-23 15:53:22,456 basehttp "GET /run-script HTTP/1.1" 200 1000
+INFO 2023-07-23 15:53:22,456 basehttp "GET /run-script HTTP/1.1" 200 1000
+INFO 2023-07-23 15:53:29,567 basehttp "GET / HTTP/1.1" 200 2885
+INFO 2023-07-23 15:53:29,567 basehttp "GET / HTTP/1.1" 200 2885
+INFO 2023-07-23 15:53:32,654 basehttp "GET / HTTP/1.1" 200 2885
+INFO 2023-07-23 15:53:32,654 basehttp "GET / HTTP/1.1" 200 2885
+INFO 2023-07-23 15:53:35,542 basehttp "POST / HTTP/1.1" 200 2885
+INFO 2023-07-23 15:53:35,542 basehttp "POST / HTTP/1.1" 200 2885
+INFO 2023-07-23 15:56:53,115 autoreload C:\Office\GitProject\EasySipPwithPythonDjango\EasySipP\kSipP\views.py changed, reloading.
+INFO 2023-07-23 15:56:53,115 autoreload C:\Office\GitProject\EasySipPwithPythonDjango\EasySipP\kSipP\views.py changed, reloading.
+INFO 2023-07-23 15:56:55,256 autoreload Watching for file changes with StatReloader
+INFO 2023-07-23 15:56:55,256 autoreload Watching for file changes with StatReloader
+INFO 2023-07-23 15:56:57,743 basehttp "GET / HTTP/1.1" 200 1399
+INFO 2023-07-23 15:56:57,743 basehttp "GET / HTTP/1.1" 200 1399
+INFO 2023-07-23 15:57:35,238 autoreload C:\Office\GitProject\EasySipPwithPythonDjango\EasySipP\kSipP\views.py changed, reloading.
+INFO 2023-07-23 15:57:35,238 autoreload C:\Office\GitProject\EasySipPwithPythonDjango\EasySipP\kSipP\views.py changed, reloading.
+INFO 2023-07-23 15:57:37,227 autoreload Watching for file changes with StatReloader
+INFO 2023-07-23 15:57:37,227 autoreload Watching for file changes with StatReloader
+INFO 2023-07-23 15:57:37,840 basehttp "GET / HTTP/1.1" 200 2885
+INFO 2023-07-23 15:57:37,840 basehttp "GET / HTTP/1.1" 200 2885
+INFO 2023-07-23 15:57:39,591 basehttp "POST / HTTP/1.1" 200 1399
+INFO 2023-07-23 15:57:39,591 basehttp "POST / HTTP/1.1" 200 1399
+INFO 2023-07-23 15:57:41,476 basehttp "GET / HTTP/1.1" 200 2885
+INFO 2023-07-23 15:57:41,476 basehttp "GET / HTTP/1.1" 200 2885
+INFO 2023-07-23 15:57:50,431 autoreload C:\Office\GitProject\EasySipPwithPythonDjango\EasySipP\kSipP\views.py changed, reloading.
+INFO 2023-07-23 15:57:50,431 autoreload C:\Office\GitProject\EasySipPwithPythonDjango\EasySipP\kSipP\views.py changed, reloading.
+INFO 2023-07-23 15:57:52,366 autoreload Watching for file changes with StatReloader
+INFO 2023-07-23 15:57:52,366 autoreload Watching for file changes with StatReloader
+INFO 2023-07-23 15:58:27,637 autoreload C:\Office\GitProject\EasySipPwithPythonDjango\EasySipP\kSipP\views.py changed, reloading.
+INFO 2023-07-23 15:58:27,637 autoreload C:\Office\GitProject\EasySipPwithPythonDjango\EasySipP\kSipP\views.py changed, reloading.
+INFO 2023-07-23 15:58:29,742 autoreload Watching for file changes with StatReloader
+INFO 2023-07-23 15:58:29,742 autoreload Watching for file changes with StatReloader
+ERROR 2023-07-23 15:58:51,492 log Internal Server Error: /
+Traceback (most recent call last):
+  File "C:\Users\kiran.daware\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\kiran.daware\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\kiran.daware\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\views\decorators\cache.py", line 62, in _wrapper_view_func
+    response = view_func(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Office\GitProject\EasySipPwithPythonDjango\EasySipP\kSipP\views.py", line 40, in index
+    print_uac_command = f"sipp -sf {xml_data['selectUAC']} {remote} {uacSrc} -m 1"
+                                                            ^^^^^^
+NameError: name 'remote' is not defined
+ERROR 2023-07-23 15:58:51,492 log Internal Server Error: /
+Traceback (most recent call last):
+  File "C:\Users\kiran.daware\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\kiran.daware\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\kiran.daware\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\views\decorators\cache.py", line 62, in _wrapper_view_func
+    response = view_func(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Office\GitProject\EasySipPwithPythonDjango\EasySipP\kSipP\views.py", line 40, in index
+    print_uac_command = f"sipp -sf {xml_data['selectUAC']} {remote} {uacSrc} -m 1"
+                                                            ^^^^^^
+NameError: name 'remote' is not defined
+ERROR 2023-07-23 15:58:51,505 basehttp "GET / HTTP/1.1" 500 69425
+ERROR 2023-07-23 15:58:51,505 basehttp "GET / HTTP/1.1" 500 69425
+ERROR 2023-07-23 15:58:56,080 log Internal Server Error: /
+Traceback (most recent call last):
+  File "C:\Users\kiran.daware\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\kiran.daware\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\kiran.daware\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\views\decorators\cache.py", line 62, in _wrapper_view_func
+    response = view_func(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Office\GitProject\EasySipPwithPythonDjango\EasySipP\kSipP\views.py", line 40, in index
+    print_uac_command = f"sipp -sf {xml_data['selectUAC']} {remote} {uacSrc} -m 1"
+                                                            ^^^^^^
+NameError: name 'remote' is not defined
+ERROR 2023-07-23 15:58:56,080 log Internal Server Error: /
+Traceback (most recent call last):
+  File "C:\Users\kiran.daware\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\kiran.daware\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\kiran.daware\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\views\decorators\cache.py", line 62, in _wrapper_view_func
+    response = view_func(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Office\GitProject\EasySipPwithPythonDjango\EasySipP\kSipP\views.py", line 40, in index
+    print_uac_command = f"sipp -sf {xml_data['selectUAC']} {remote} {uacSrc} -m 1"
+                                                            ^^^^^^
+NameError: name 'remote' is not defined
+ERROR 2023-07-23 15:58:56,085 basehttp "GET / HTTP/1.1" 500 69425
+ERROR 2023-07-23 15:58:56,085 basehttp "GET / HTTP/1.1" 500 69425
+INFO 2023-07-23 15:59:06,884 autoreload Watching for file changes with StatReloader
+INFO 2023-07-23 15:59:06,884 autoreload Watching for file changes with StatReloader
+ERROR 2023-07-23 15:59:07,696 log Internal Server Error: /
+Traceback (most recent call last):
+  File "C:\Users\kiran.daware\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\kiran.daware\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\kiran.daware\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\views\decorators\cache.py", line 62, in _wrapper_view_func
+    response = view_func(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Office\GitProject\EasySipPwithPythonDjango\EasySipP\kSipP\views.py", line 40, in index
+    print_uac_command = f"sipp -sf {xml_data['selectUAC']} {remote} {uacSrc} -m 1"
+                                                            ^^^^^^
+NameError: name 'remote' is not defined
+ERROR 2023-07-23 15:59:07,696 log Internal Server Error: /
+Traceback (most recent call last):
+  File "C:\Users\kiran.daware\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\kiran.daware\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\kiran.daware\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\views\decorators\cache.py", line 62, in _wrapper_view_func
+    response = view_func(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Office\GitProject\EasySipPwithPythonDjango\EasySipP\kSipP\views.py", line 40, in index
+    print_uac_command = f"sipp -sf {xml_data['selectUAC']} {remote} {uacSrc} -m 1"
+                                                            ^^^^^^
+NameError: name 'remote' is not defined
+ERROR 2023-07-23 15:59:07,702 basehttp "GET / HTTP/1.1" 500 69425
+ERROR 2023-07-23 15:59:07,702 basehttp "GET / HTTP/1.1" 500 69425
+INFO 2023-07-23 16:00:08,244 autoreload C:\Office\GitProject\EasySipPwithPythonDjango\EasySipP\kSipP\views.py changed, reloading.
+INFO 2023-07-23 16:00:08,244 autoreload C:\Office\GitProject\EasySipPwithPythonDjango\EasySipP\kSipP\views.py changed, reloading.
+INFO 2023-07-23 16:00:10,356 autoreload Watching for file changes with StatReloader
+INFO 2023-07-23 16:00:10,356 autoreload Watching for file changes with StatReloader
+INFO 2023-07-23 16:00:11,245 basehttp "GET / HTTP/1.1" 200 2990
+INFO 2023-07-23 16:00:11,245 basehttp "GET / HTTP/1.1" 200 2990
+INFO 2023-07-23 16:00:28,571 basehttp "POST / HTTP/1.1" 200 2990
+INFO 2023-07-23 16:00:28,571 basehttp "POST / HTTP/1.1" 200 2990
+INFO 2023-07-23 16:00:30,289 basehttp "POST / HTTP/1.1" 200 2990
+INFO 2023-07-23 16:00:30,289 basehttp "POST / HTTP/1.1" 200 2990
+INFO 2023-07-23 16:00:38,903 basehttp "POST / HTTP/1.1" 200 2990
+INFO 2023-07-23 16:00:38,903 basehttp "POST / HTTP/1.1" 200 2990
+INFO 2023-07-23 16:00:45,593 basehttp "POST / HTTP/1.1" 200 2990
+INFO 2023-07-23 16:00:45,593 basehttp "POST / HTTP/1.1" 200 2990
+INFO 2023-07-23 16:00:49,843 basehttp "POST / HTTP/1.1" 200 2990
+INFO 2023-07-23 16:00:49,843 basehttp "POST / HTTP/1.1" 200 2990
+INFO 2023-07-23 16:00:54,970 basehttp "POST / HTTP/1.1" 200 2990
+INFO 2023-07-23 16:00:54,970 basehttp "POST / HTTP/1.1" 200 2990
+INFO 2023-07-23 16:00:56,097 basehttp "POST / HTTP/1.1" 200 2990
+INFO 2023-07-23 16:00:56,097 basehttp "POST / HTTP/1.1" 200 2990
+INFO 2023-07-23 16:01:01,005 basehttp "POST / HTTP/1.1" 200 2990
+INFO 2023-07-23 16:01:01,005 basehttp "POST / HTTP/1.1" 200 2990
+INFO 2023-07-23 16:01:01,766 basehttp "POST / HTTP/1.1" 200 2990
+INFO 2023-07-23 16:01:01,766 basehttp "POST / HTTP/1.1" 200 2990
+INFO 2023-07-23 16:01:02,182 basehttp "POST / HTTP/1.1" 200 2990
+INFO 2023-07-23 16:01:02,182 basehttp "POST / HTTP/1.1" 200 2990
+INFO 2023-07-23 16:02:06,834 autoreload C:\Office\GitProject\EasySipPwithPythonDjango\EasySipP\kSipP\views.py changed, reloading.
+INFO 2023-07-23 16:02:06,834 autoreload C:\Office\GitProject\EasySipPwithPythonDjango\EasySipP\kSipP\views.py changed, reloading.
+INFO 2023-07-23 16:02:08,857 autoreload Watching for file changes with StatReloader
+INFO 2023-07-23 16:02:08,857 autoreload Watching for file changes with StatReloader
+INFO 2023-07-23 16:02:12,353 basehttp "GET / HTTP/1.1" 200 2990
+INFO 2023-07-23 16:02:12,353 basehttp "GET / HTTP/1.1" 200 2990
+INFO 2023-07-23 16:02:18,350 basehttp "POST / HTTP/1.1" 200 2990
+INFO 2023-07-23 16:02:18,350 basehttp "POST / HTTP/1.1" 200 2990
+INFO 2023-07-23 16:02:19,506 basehttp "POST / HTTP/1.1" 200 2990
+INFO 2023-07-23 16:02:19,506 basehttp "POST / HTTP/1.1" 200 2990
+INFO 2023-07-23 16:02:32,475 autoreload C:\Office\GitProject\EasySipPwithPythonDjango\EasySipP\kSipP\views.py changed, reloading.
+INFO 2023-07-23 16:02:32,475 autoreload C:\Office\GitProject\EasySipPwithPythonDjango\EasySipP\kSipP\views.py changed, reloading.
+INFO 2023-07-23 16:02:34,566 autoreload Watching for file changes with StatReloader
+INFO 2023-07-23 16:02:34,566 autoreload Watching for file changes with StatReloader
+INFO 2023-07-23 16:02:43,653 basehttp - Broken pipe from ('127.0.0.1', 53121)
+INFO 2023-07-23 16:02:43,653 basehttp - Broken pipe from ('127.0.0.1', 53121)
+INFO 2023-07-23 16:02:43,654 basehttp "POST / HTTP/1.1" 200 2990
+INFO 2023-07-23 16:02:43,654 basehttp "POST / HTTP/1.1" 200 2990
+INFO 2023-07-23 16:02:49,775 basehttp "POST / HTTP/1.1" 200 2990
+INFO 2023-07-23 16:02:49,775 basehttp "POST / HTTP/1.1" 200 2990
+INFO 2023-07-23 16:02:51,737 basehttp "POST / HTTP/1.1" 200 2988
+INFO 2023-07-23 16:02:51,737 basehttp "POST / HTTP/1.1" 200 2988
+INFO 2023-07-23 16:02:54,423 basehttp "POST / HTTP/1.1" 200 2988
+INFO 2023-07-23 16:02:54,423 basehttp "POST / HTTP/1.1" 200 2988
+INFO 2023-07-23 16:05:00,300 autoreload C:\Office\GitProject\EasySipPwithPythonDjango\EasySipP\kSipP\forms.py changed, reloading.
+INFO 2023-07-23 16:05:00,300 autoreload C:\Office\GitProject\EasySipPwithPythonDjango\EasySipP\kSipP\forms.py changed, reloading.
+INFO 2023-07-23 16:05:02,184 autoreload Watching for file changes with StatReloader
+INFO 2023-07-23 16:05:02,184 autoreload Watching for file changes with StatReloader
+INFO 2023-07-23 16:05:19,191 autoreload C:\Office\GitProject\EasySipPwithPythonDjango\EasySipP\kSipP\forms.py changed, reloading.
+INFO 2023-07-23 16:05:19,191 autoreload C:\Office\GitProject\EasySipPwithPythonDjango\EasySipP\kSipP\forms.py changed, reloading.
+INFO 2023-07-23 16:05:21,335 autoreload Watching for file changes with StatReloader
+INFO 2023-07-23 16:05:21,335 autoreload Watching for file changes with StatReloader
+INFO 2023-07-23 16:06:03,017 autoreload C:\Office\GitProject\EasySipPwithPythonDjango\EasySipP\kSipP\views.py changed, reloading.
+INFO 2023-07-23 16:06:03,017 autoreload C:\Office\GitProject\EasySipPwithPythonDjango\EasySipP\kSipP\views.py changed, reloading.
+INFO 2023-07-23 16:06:04,676 autoreload Watching for file changes with StatReloader
+INFO 2023-07-23 16:06:04,676 autoreload Watching for file changes with StatReloader
+INFO 2023-07-23 16:06:15,834 autoreload C:\Office\GitProject\EasySipPwithPythonDjango\EasySipP\kSipP\views.py changed, reloading.
+INFO 2023-07-23 16:06:15,834 autoreload C:\Office\GitProject\EasySipPwithPythonDjango\EasySipP\kSipP\views.py changed, reloading.
+INFO 2023-07-23 16:06:17,863 autoreload Watching for file changes with StatReloader
+INFO 2023-07-23 16:06:17,863 autoreload Watching for file changes with StatReloader
+INFO 2023-07-23 16:09:02,335 basehttp "GET /modify-xml HTTP/1.1" 200 1670
+INFO 2023-07-23 16:09:02,335 basehttp "GET /modify-xml HTTP/1.1" 200 1670
+INFO 2023-07-23 16:10:02,548 autoreload Watching for file changes with StatReloader
+INFO 2023-07-23 16:10:02,548 autoreload Watching for file changes with StatReloader
+INFO 2023-07-23 16:10:03,840 basehttp "GET / HTTP/1.1" 200 3011
+INFO 2023-07-23 16:10:03,840 basehttp "GET / HTTP/1.1" 200 3011
+INFO 2023-07-23 16:17:34,045 autoreload C:\Office\GitProject\EasySipPwithPythonDjango\EasySipP\kSipP\views.py changed, reloading.
+INFO 2023-07-23 16:17:34,045 autoreload C:\Office\GitProject\EasySipPwithPythonDjango\EasySipP\kSipP\views.py changed, reloading.
+INFO 2023-07-23 16:17:35,749 autoreload Watching for file changes with StatReloader
+INFO 2023-07-23 16:17:35,749 autoreload Watching for file changes with StatReloader
+INFO 2023-07-23 16:17:37,798 autoreload C:\Office\GitProject\EasySipPwithPythonDjango\EasySipP\kSipP\views.py changed, reloading.
+INFO 2023-07-23 16:17:37,798 autoreload C:\Office\GitProject\EasySipPwithPythonDjango\EasySipP\kSipP\views.py changed, reloading.
+INFO 2023-07-23 16:17:39,831 autoreload Watching for file changes with StatReloader
+INFO 2023-07-23 16:17:39,831 autoreload Watching for file changes with StatReloader
+INFO 2023-07-23 16:18:07,581 autoreload C:\Office\GitProject\EasySipPwithPythonDjango\EasySipP\kSipP\views.py changed, reloading.
+INFO 2023-07-23 16:18:07,581 autoreload C:\Office\GitProject\EasySipPwithPythonDjango\EasySipP\kSipP\views.py changed, reloading.
+INFO 2023-07-23 16:18:09,753 autoreload Watching for file changes with StatReloader
+INFO 2023-07-23 16:18:09,753 autoreload Watching for file changes with StatReloader
+INFO 2023-07-23 16:18:45,672 autoreload C:\Office\GitProject\EasySipPwithPythonDjango\EasySipP\kSipP\forms.py changed, reloading.
+INFO 2023-07-23 16:18:45,672 autoreload C:\Office\GitProject\EasySipPwithPythonDjango\EasySipP\kSipP\forms.py changed, reloading.
+INFO 2023-07-23 16:18:47,560 autoreload Watching for file changes with StatReloader
+INFO 2023-07-23 16:18:47,560 autoreload Watching for file changes with StatReloader
+ERROR 2023-07-23 16:18:55,077 log Internal Server Error: /run-script
+Traceback (most recent call last):
+  File "C:\Users\kiran.daware\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\kiran.daware\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Office\GitProject\EasySipPwithPythonDjango\EasySipP\kSipP\views.py", line 163, in run_script_view
+    uacXml = str(settings.BASE_DIR / 'kSipP' / 'xml' / f'{xml_data["selectUAC"]}')
+                                                          ~~~~~~~~^^^^^^^^^^^^^
+KeyError: 'selectUAC'
+ERROR 2023-07-23 16:18:55,077 log Internal Server Error: /run-script
+Traceback (most recent call last):
+  File "C:\Users\kiran.daware\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\kiran.daware\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Office\GitProject\EasySipPwithPythonDjango\EasySipP\kSipP\views.py", line 163, in run_script_view
+    uacXml = str(settings.BASE_DIR / 'kSipP' / 'xml' / f'{xml_data["selectUAC"]}')
+                                                          ~~~~~~~~^^^^^^^^^^^^^
+KeyError: 'selectUAC'
+ERROR 2023-07-23 16:18:55,086 basehttp "POST /run-script HTTP/1.1" 500 66838
+ERROR 2023-07-23 16:18:55,086 basehttp "POST /run-script HTTP/1.1" 500 66838
+INFO 2023-07-23 16:19:08,192 autoreload Watching for file changes with StatReloader
+INFO 2023-07-23 16:19:08,192 autoreload Watching for file changes with StatReloader
+INFO 2023-07-23 16:19:10,291 basehttp "GET / HTTP/1.1" 200 3002
+INFO 2023-07-23 16:19:10,291 basehttp "GET / HTTP/1.1" 200 3002
+INFO 2023-07-23 16:19:15,865 basehttp "POST /run-script HTTP/1.1" 200 992
+INFO 2023-07-23 16:19:15,865 basehttp "POST /run-script HTTP/1.1" 200 992
+INFO 2023-07-23 16:19:31,067 basehttp "POST /run-script HTTP/1.1" 200 992
+INFO 2023-07-23 16:19:31,067 basehttp "POST /run-script HTTP/1.1" 200 992
+INFO 2023-07-23 16:19:55,481 autoreload C:\Office\GitProject\EasySipPwithPythonDjango\EasySipP\kSipP\forms.py changed, reloading.
+INFO 2023-07-23 16:19:55,481 autoreload C:\Office\GitProject\EasySipPwithPythonDjango\EasySipP\kSipP\forms.py changed, reloading.
+INFO 2023-07-23 16:19:57,184 autoreload Watching for file changes with StatReloader
+INFO 2023-07-23 16:19:57,184 autoreload Watching for file changes with StatReloader
+INFO 2023-07-23 16:20:09,160 autoreload Watching for file changes with StatReloader
+INFO 2023-07-23 16:20:09,160 autoreload Watching for file changes with StatReloader
+INFO 2023-07-23 16:20:11,756 basehttp "GET / HTTP/1.1" 200 3002
+INFO 2023-07-23 16:20:11,756 basehttp "GET / HTTP/1.1" 200 3002
+INFO 2023-07-23 16:20:17,095 basehttp "POST / HTTP/1.1" 200 3020
+INFO 2023-07-23 16:20:17,095 basehttp "POST / HTTP/1.1" 200 3020
+INFO 2023-07-23 16:20:18,167 basehttp "POST / HTTP/1.1" 200 3022
+INFO 2023-07-23 16:20:18,167 basehttp "POST / HTTP/1.1" 200 3022
+INFO 2023-07-23 16:20:20,064 basehttp "POST / HTTP/1.1" 200 3022
+INFO 2023-07-23 16:20:20,064 basehttp "POST / HTTP/1.1" 200 3022
+INFO 2023-07-23 16:20:20,390 basehttp "POST / HTTP/1.1" 200 3022
+INFO 2023-07-23 16:20:20,390 basehttp "POST / HTTP/1.1" 200 3022
+INFO 2023-07-23 16:20:23,167 basehttp "POST /run-script HTTP/1.1" 200 994
+INFO 2023-07-23 16:20:23,167 basehttp "POST /run-script HTTP/1.1" 200 994
+INFO 2023-07-23 16:20:52,107 autoreload C:\Office\GitProject\EasySipPwithPythonDjango\EasySipP\kSipP\views.py changed, reloading.
+INFO 2023-07-23 16:20:52,107 autoreload C:\Office\GitProject\EasySipPwithPythonDjango\EasySipP\kSipP\views.py changed, reloading.
+INFO 2023-07-23 16:20:54,257 autoreload Watching for file changes with StatReloader
+INFO 2023-07-23 16:20:54,257 autoreload Watching for file changes with StatReloader
+INFO 2023-07-23 16:21:46,232 autoreload Watching for file changes with StatReloader
+INFO 2023-07-23 16:21:46,232 autoreload Watching for file changes with StatReloader
+INFO 2023-07-23 16:21:53,181 basehttp "GET / HTTP/1.1" 200 3022
+INFO 2023-07-23 16:21:53,181 basehttp "GET / HTTP/1.1" 200 3022
+INFO 2023-07-23 16:21:55,869 basehttp "POST / HTTP/1.1" 200 3022
+INFO 2023-07-23 16:21:55,869 basehttp "POST / HTTP/1.1" 200 3022
+INFO 2023-07-23 16:21:58,326 basehttp "POST /run-script HTTP/1.1" 200 994
+INFO 2023-07-23 16:21:58,326 basehttp "POST /run-script HTTP/1.1" 200 994
+INFO 2023-07-23 16:24:55,300 autoreload C:\Office\GitProject\EasySipPwithPythonDjango\EasySipP\kSipP\forms.py changed, reloading.
+INFO 2023-07-23 16:24:55,300 autoreload C:\Office\GitProject\EasySipPwithPythonDjango\EasySipP\kSipP\forms.py changed, reloading.
+INFO 2023-07-23 16:24:57,071 autoreload Watching for file changes with StatReloader
+INFO 2023-07-23 16:24:57,071 autoreload Watching for file changes with StatReloader
+INFO 2023-07-23 16:25:23,318 autoreload C:\Office\GitProject\EasySipPwithPythonDjango\EasySipP\kSipP\forms.py changed, reloading.
+INFO 2023-07-23 16:25:23,318 autoreload C:\Office\GitProject\EasySipPwithPythonDjango\EasySipP\kSipP\forms.py changed, reloading.
+INFO 2023-07-23 16:25:25,557 autoreload Watching for file changes with StatReloader
+INFO 2023-07-23 16:25:25,557 autoreload Watching for file changes with StatReloader
+INFO 2023-07-23 16:27:01,602 autoreload Watching for file changes with StatReloader
+INFO 2023-07-23 16:27:01,602 autoreload Watching for file changes with StatReloader
+INFO 2023-07-23 16:27:22,747 autoreload C:\Office\GitProject\EasySipPwithPythonDjango\EasySipP\kSipP\forms.py changed, reloading.
+INFO 2023-07-23 16:27:22,747 autoreload C:\Office\GitProject\EasySipPwithPythonDjango\EasySipP\kSipP\forms.py changed, reloading.
+INFO 2023-07-23 16:27:24,515 autoreload Watching for file changes with StatReloader
+INFO 2023-07-23 16:27:24,515 autoreload Watching for file changes with StatReloader
+INFO 2023-07-23 16:27:35,256 basehttp "GET / HTTP/1.1" 200 2918
+INFO 2023-07-23 16:27:35,256 basehttp "GET / HTTP/1.1" 200 2918
+INFO 2023-07-23 16:29:09,171 autoreload C:\Office\GitProject\EasySipPwithPythonDjango\EasySipP\kSipP\forms.py changed, reloading.
+INFO 2023-07-23 16:29:09,171 autoreload C:\Office\GitProject\EasySipPwithPythonDjango\EasySipP\kSipP\forms.py changed, reloading.
+INFO 2023-07-23 16:29:10,999 autoreload Watching for file changes with StatReloader
+INFO 2023-07-23 16:29:10,999 autoreload Watching for file changes with StatReloader
+INFO 2023-07-23 16:30:04,620 autoreload C:\Office\GitProject\EasySipPwithPythonDjango\EasySipP\kSipP\forms.py changed, reloading.
+INFO 2023-07-23 16:30:04,620 autoreload C:\Office\GitProject\EasySipPwithPythonDjango\EasySipP\kSipP\forms.py changed, reloading.
+INFO 2023-07-23 16:30:06,391 autoreload Watching for file changes with StatReloader
+INFO 2023-07-23 16:30:06,391 autoreload Watching for file changes with StatReloader
+INFO 2023-07-23 16:30:19,264 autoreload C:\Office\GitProject\EasySipPwithPythonDjango\EasySipP\kSipP\forms.py changed, reloading.
+INFO 2023-07-23 16:30:19,264 autoreload C:\Office\GitProject\EasySipPwithPythonDjango\EasySipP\kSipP\forms.py changed, reloading.
+INFO 2023-07-23 16:30:21,407 autoreload Watching for file changes with StatReloader
+INFO 2023-07-23 16:30:21,407 autoreload Watching for file changes with StatReloader
+INFO 2023-07-23 16:30:27,709 basehttp "GET / HTTP/1.1" 200 2811
+INFO 2023-07-23 16:30:27,709 basehttp "GET / HTTP/1.1" 200 2811
+INFO 2023-07-23 16:31:06,295 basehttp "POST / HTTP/1.1" 200 2811
+INFO 2023-07-23 16:31:06,295 basehttp "POST / HTTP/1.1" 200 2811
+INFO 2023-07-23 16:31:14,565 basehttp "POST / HTTP/1.1" 200 2816
+INFO 2023-07-23 16:31:14,565 basehttp "POST / HTTP/1.1" 200 2816
+INFO 2023-07-23 16:31:15,338 basehttp "POST / HTTP/1.1" 200 2826
+INFO 2023-07-23 16:31:15,338 basehttp "POST / HTTP/1.1" 200 2826
+INFO 2023-07-23 16:31:26,825 basehttp "POST / HTTP/1.1" 200 2826
+INFO 2023-07-23 16:31:26,825 basehttp "POST / HTTP/1.1" 200 2826
+INFO 2023-07-23 16:33:04,266 basehttp "GET /write-config HTTP/1.1" 200 1277
+INFO 2023-07-23 16:33:04,266 basehttp "GET /write-config HTTP/1.1" 200 1277
+INFO 2023-07-23 16:33:17,884 autoreload C:\Office\GitProject\EasySipPwithPythonDjango\EasySipP\kSipP\urls.py changed, reloading.
+INFO 2023-07-23 16:33:17,884 autoreload C:\Office\GitProject\EasySipPwithPythonDjango\EasySipP\kSipP\urls.py changed, reloading.
+INFO 2023-07-23 16:33:20,520 autoreload Watching for file changes with StatReloader
+INFO 2023-07-23 16:33:20,520 autoreload Watching for file changes with StatReloader
+INFO 2023-07-23 16:33:22,618 autoreload C:\Office\GitProject\EasySipPwithPythonDjango\EasySipP\kSipP\views.py changed, reloading.
+INFO 2023-07-23 16:33:22,618 autoreload C:\Office\GitProject\EasySipPwithPythonDjango\EasySipP\kSipP\views.py changed, reloading.
+INFO 2023-07-23 16:33:24,618 autoreload Watching for file changes with StatReloader
+INFO 2023-07-23 16:33:24,618 autoreload Watching for file changes with StatReloader
