@@ -8982,3 +8982,61 @@ INFO 2023-07-24 22:42:08,088 autoreload C:\Office\GitProject\EasySipPwithPythonD
 INFO 2023-07-24 22:42:08,088 autoreload C:\Office\GitProject\EasySipPwithPythonDjango\EasySipP\kSipP\forms.py changed, reloading.
 INFO 2023-07-24 22:42:10,109 autoreload Watching for file changes with StatReloader
 INFO 2023-07-24 22:42:10,109 autoreload Watching for file changes with StatReloader
+INFO 2023-07-24 22:43:28,115 basehttp "GET / HTTP/1.1" 200 3111
+INFO 2023-07-24 22:43:28,115 basehttp "GET / HTTP/1.1" 200 3111
+INFO 2023-07-24 22:43:34,181 basehttp "POST / HTTP/1.1" 200 3111
+INFO 2023-07-24 22:43:34,181 basehttp "POST / HTTP/1.1" 200 3111
+INFO 2023-07-24 22:43:37,937 basehttp "POST / HTTP/1.1" 200 3105
+INFO 2023-07-24 22:43:37,937 basehttp "POST / HTTP/1.1" 200 3105
+INFO 2023-07-24 22:43:41,165 basehttp "POST / HTTP/1.1" 200 3117
+INFO 2023-07-24 22:43:41,165 basehttp "POST / HTTP/1.1" 200 3117
+INFO 2023-07-24 22:43:46,865 basehttp "POST / HTTP/1.1" 200 3111
+INFO 2023-07-24 22:43:46,865 basehttp "POST / HTTP/1.1" 200 3111
+INFO 2023-07-24 22:43:48,732 basehttp "POST / HTTP/1.1" 200 1557
+INFO 2023-07-24 22:43:48,732 basehttp "POST / HTTP/1.1" 200 1557
+INFO 2023-07-24 22:43:58,094 basehttp "GET / HTTP/1.1" 200 3111
+INFO 2023-07-24 22:43:58,094 basehttp "GET / HTTP/1.1" 200 3111
+INFO 2023-07-24 22:44:01,445 basehttp "POST / HTTP/1.1" 200 1557
+INFO 2023-07-24 22:44:01,445 basehttp "POST / HTTP/1.1" 200 1557
+INFO 2023-07-24 22:44:03,180 basehttp "GET / HTTP/1.1" 200 3111
+INFO 2023-07-24 22:44:03,180 basehttp "GET / HTTP/1.1" 200 3111
+INFO 2023-07-24 22:44:30,149 autoreload C:\Office\GitProject\EasySipPwithPythonDjango\EasySipP\kSipP\forms.py changed, reloading.
+INFO 2023-07-24 22:44:30,149 autoreload C:\Office\GitProject\EasySipPwithPythonDjango\EasySipP\kSipP\forms.py changed, reloading.
+INFO 2023-07-24 22:44:32,122 autoreload Watching for file changes with StatReloader
+INFO 2023-07-24 22:44:32,122 autoreload Watching for file changes with StatReloader
+INFO 2023-07-24 22:44:51,696 basehttp "GET / HTTP/1.1" 200 3111
+INFO 2023-07-24 22:44:51,696 basehttp "GET / HTTP/1.1" 200 3111
+WARNING 2023-07-24 22:44:52,054 log Not Found: /favicon.ico
+WARNING 2023-07-24 22:44:52,054 log Not Found: /favicon.ico
+WARNING 2023-07-24 22:44:52,057 basehttp "GET /favicon.ico HTTP/1.1" 404 2801
+WARNING 2023-07-24 22:44:52,057 basehttp "GET /favicon.ico HTTP/1.1" 404 2801
+INFO 2023-07-24 22:44:53,084 basehttp "GET /modify-xml HTTP/1.1" 200 1041
+INFO 2023-07-24 22:44:53,084 basehttp "GET /modify-xml HTTP/1.1" 200 1041
+INFO 2023-07-24 22:44:53,895 basehttp "POST /modify-xml HTTP/1.1" 200 1304
+INFO 2023-07-24 22:44:53,895 basehttp "POST /modify-xml HTTP/1.1" 200 1304
+INFO 2023-07-24 22:44:58,352 basehttp "POST /modify-xml HTTP/1.1" 200 1403
+INFO 2023-07-24 22:44:58,352 basehttp "POST /modify-xml HTTP/1.1" 200 1403
+INFO 2023-07-24 22:44:59,344 basehttp "POST /modify-xml HTTP/1.1" 200 10406
+INFO 2023-07-24 22:44:59,344 basehttp "POST /modify-xml HTTP/1.1" 200 10406
+INFO 2023-07-24 22:45:03,207 basehttp "POST /xml-editor HTTP/1.1" 200 10412
+INFO 2023-07-24 22:45:03,207 basehttp "POST /xml-editor HTTP/1.1" 200 10412
+INFO 2023-07-24 22:45:08,265 basehttp "GET /modify-xml HTTP/1.1" 200 1041
+INFO 2023-07-24 22:45:08,265 basehttp "GET /modify-xml HTTP/1.1" 200 1041
+INFO 2023-07-24 22:45:09,438 basehttp "GET / HTTP/1.1" 200 3111
+INFO 2023-07-24 22:45:09,438 basehttp "GET / HTTP/1.1" 200 3111
+INFO 2023-07-24 22:45:11,068 basehttp "POST / HTTP/1.1" 200 1557
+INFO 2023-07-24 22:45:11,068 basehttp "POST / HTTP/1.1" 200 1557
+INFO 2023-07-24 22:45:12,773 basehttp "GET / HTTP/1.1" 200 3111
+INFO 2023-07-24 22:45:12,773 basehttp "GET / HTTP/1.1" 200 3111
+INFO 2023-07-24 22:45:14,807 basehttp "POST / HTTP/1.1" 200 1680
+INFO 2023-07-24 22:45:14,807 basehttp "POST / HTTP/1.1" 200 1680
+INFO 2023-07-24 22:45:16,184 basehttp "GET / HTTP/1.1" 200 3111
+INFO 2023-07-24 22:45:16,184 basehttp "GET / HTTP/1.1" 200 3111
+INFO 2023-07-24 22:45:17,799 basehttp "POST / HTTP/1.1" 200 3111
+INFO 2023-07-24 22:45:17,799 basehttp "POST / HTTP/1.1" 200 3111
+INFO 2023-07-24 22:45:21,066 basehttp "POST / HTTP/1.1" 200 3117
+INFO 2023-07-24 22:45:21,066 basehttp "POST / HTTP/1.1" 200 3117
+INFO 2023-07-24 22:45:25,968 basehttp "POST / HTTP/1.1" 200 3111
+INFO 2023-07-24 22:45:25,968 basehttp "POST / HTTP/1.1" 200 3111
+INFO 2023-07-25 04:28:11,375 autoreload Watching for file changes with StatReloader
+INFO 2023-07-25 04:28:11,375 autoreload Watching for file changes with StatReloader
