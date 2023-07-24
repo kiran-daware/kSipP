@@ -1,8 +1,9 @@
 from django.http import HttpResponse
 from django.views.decorators.cache import never_cache
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.conf import settings
-from .forms import configForm, xmlForm
+from django.contrib.sessions.models import Session
+from .forms import configForm, xmlForm, modifyHeader
 import configparser
 import os
 import subprocess
@@ -22,6 +23,8 @@ config_data = {}
 xml_data = {}
 
 
+################### Index Page Functions #############################
+
 @never_cache
 def index(request):
 
@@ -40,7 +43,7 @@ def index(request):
     }
     
 
-    ##### Check XML file call Flow
+    # Check XML file call Flow 
     if request.method =="POST":
         if 'submitType' in request.POST:
             submit_type = request.POST['submitType']
@@ -61,9 +64,17 @@ def index(request):
     remote=f"{config_data['remoteAddr']}:{config_data['remotePort']}"
     uacSrc=f"-i {config_data['localAddr']} -p {config_data['srcPortUac']}"
     uasSrc=f"-i {config_data['localAddr']} -p {config_data['srcPortUas']}"
+
+    # below vars used on index.html
     print_uac_command = f"sipp -sf {xml_data['selectUAC']} {remote} {uacSrc} -m 1"
     print_uas_command = f"sipp -sf {xml_data['selectUAS']} {remote} {uasSrc}"
 
+    # fetching xml files from directory each time page refreshes.
+    xmlPath = str(settings.BASE_DIR / 'kSipP' / 'xml')
+    uac_files = [f for f in os.listdir(xmlPath) if f.startswith('uac')]
+    uas_files = [f for f in os.listdir(xmlPath) if f.startswith('uas')]
+
+    # loading xmlForm and configForm
     selectXml = xmlForm(initial=xml_data)
     ipConfig = configForm(initial=config_data)
     if request.method == 'POST':
@@ -102,82 +113,165 @@ def index(request):
 
 
 
+######## Index End ############
 
+######################## Modify XML funtion calls ###############################################
 
 def modifyXml(request):
     if request.method == 'POST':
-        if 'submitType' in request.POST:
-            submit_type = request.POST['submitType']
-            if submit_type =='selectXml':
-                modifyXmlForm = xmlForm(request.POST)
-                if modifyXmlForm.is_valid():
-                    selectUAC = modifyXmlForm.cleaned_data['selectUAC']
-                    selectUAS = modifyXmlForm.cleaned_data['selectUAS']
-                    xmlContent = f'''[DEFAULT]\n
-UAC = {selectUAC}
-UAS = {selectUAS}
-'''
-                    xmlConfigFile = os.path.join(settings.BASE_DIR, 'xml.ini')
-                    with open(xmlConfigFile, 'w') as file:
-                        file.write(xmlContent)
-                    return render(request, 'modify_xml.html', {'form': modifyXmlForm})
-            
-        if 'xmlName' in request.POST:
-            xmlName = request.POST.get('xmlName')
-            if xmlName.is_valid():
-                
 
-                modifyXml_script = str(settings.BASE_DIR / 'kSipP' / 'scripts' / 'modifyHeader.py')
-            try:
-                result = subprocess.run(['python', modifyXml_script], capture_output=True, text=True)
-                return HttpResponse(result)
-            except subprocess.CalledProcessError as e:
-                # Handle any errors that may occur when running the script
-                return HttpResponse(f"Error occurred: {e}")
+        if 'modifyXml' not in request.session:
+            request.session['modifyXml'] = None
+
+        modifyXml = request.session['modifyXml']
+
+        if 'selectXml' in request.POST:
+            selectXml = request.POST['selectXml']
+            modifyXmlForm = xmlForm(request.POST)
+            if modifyXmlForm.is_valid():
+                if selectXml == 'modifyUAC':
+                    modifyXml = modifyXmlForm.cleaned_data['selectUAC']
+                elif selectXml == 'modifyUAS':
+                    modifyXml = modifyXmlForm.cleaned_data['selectUAS']
+
+            request.session['modifyXml'] = modifyXml #store var in session            
+            modifyHeaderForm = modifyHeader() #load modify header form
+
+
+        if modifyXml is not None:
+            if 'modifyXmlSubmit' in request.POST:
+                modifyXmlSubmit = request.POST['modifyXmlSubmit']
+                modifyHeaderForm = modifyHeader(request.POST)
+                if modifyXmlSubmit == 'newHeader':
+                    if modifyHeaderForm.is_valid():
+                        selectedHeader = modifyHeaderForm.cleaned_data['whichHeader']
+                        newHeader = modifyHeaderForm.cleaned_data['modifyHeader']
+                        
+                if modifyXmlSubmit == 'doneModify':
+                    request.session['modifyXml'] = None
+
+                if modifyXmlSubmit == 'xmlEditor':
+
+                    modXmlPath = os.path.join(settings.BASE_DIR, 'kSipP', 'xml', modifyXml)
+                    newModXmlPath = os.path.join(settings.BASE_DIR, 'kSipP', 'xml', 'uas_kiran.xml')
+
+                    with open(modXmlPath, 'r') as file:
+                        xml_content = file.read()
+                    
+                    return render(request, 'xml_editor.html', {'xml_content':xml_content})
+
 
     modifyXmlForm = xmlForm()
-    return render(request, 'modify_xml.html', {'form': modifyXmlForm})
+    return render(request, 'modify_xml.html', locals())
 
 
 
-
-
-#def write_config(request):
+def aceXmlEditor(request):
     if request.method == 'POST':
-        form = configForm(request.POST)
-        if form.is_valid():
-            # Get the configuration data from the form
-            remoteAddr = form.cleaned_data['remoteAddr']
-            remotePort = form.cleaned_data['remotePort']
-            srcAddrUac = form.cleaned_data['srcAddrUac']
-            srcPortUac = form.cleaned_data['srcPortUac']
-            srcAddrUas = form.cleaned_data['srcAddrUas']
-            srcPortUas = form.cleaned_data['srcPortUas']
+        xml_content = request.POST.get('xml_content')
+        # Replace double line breaks with single line breaks
+        xml_content = xml_content.replace('\r\n', '\n')
+        with open(os.path.join(settings.BASE_DIR, 'kSipP', 'xml', 'uas_kiran.xml'), 'w', encoding='utf-8') as file:
+            file.write(xml_content)
 
-            # Get more settings from the form as needed
+    return render(request, 'xml_editor.html', {'xml_content':xml_content})
 
-            # Create the configuration content
-            config_content = f'''[DEFAULT]\n
-remoteAddr = {remoteAddr}\nremotePort = {remotePort}
-srcAddrUac = {srcAddrUac}\nsrcPortUac = {srcPortUac}
-srcAddrUas = {srcAddrUas}\nsrcPortUAS = {srcPortUas}'''
-
-            # Add more settings to the config_content as needed
-
-            # Define the path to the config file
-            config_file_path = os.path.join(settings.BASE_DIR, 'config.ini')
-
-            # Write the configuration to the file
-            with open(config_file_path, 'w') as file:
-                file.write(config_content)
-
-            return render(request, 'success_template.html')
-    else:
-        form = configForm(initial=config_data)
-
-    return render(request, 'config_template.html', {'form': form})
+    # return HttpResponse('XML content saved successfully.')
 
 
+                        # if submit_type == 'save':
+                        #     xml_content = request.POST.get('xml_content')
+
+                        #     with open(newmodxml, 'w', encoding='utf-8') as file:
+                        #         file.write(xml_content)
+                        
+                        # else:
+                        #     with open(modxml, 'r') as file:
+                        #         xml_content = file.read()
+                        
+
+            # return render(request, 'xml_editor.html', {'xml_content':xml_content})
+
+
+
+        # printSelectedXml = f"Select Header to modify in {modifyXml}"
+        # modifyHeaderForm = modifyHeader(request.POST)
+
+        # # Handle form submissions here
+        # if selectXml == 'newHeader':
+        #     if modifyHeaderForm.is_valid():
+        #         selectedHeader = modifyHeaderForm.cleaned_data['selectHeader']
+        #         newHeader = modifyHeaderForm.cleaned_data['modifyHeader']
+        # elif selectXml == 'doneModify':
+        #     pass  # Handle the doneModify action if needed
+
+
+
+
+                # printSelectedXml = f"Select Header to modify in {modifyXml}"
+                # modifyHeaderForm = modifyHeader(request.POST)
+                # submit_type == request.POST['submitType']
+                # if submit_type == 'newHeader':
+                #     if modifyHeaderForm.is_valid():
+                #         selectedHeader = modifyHeaderForm.cleaned_data['selectHeader']
+                #         newHeader = modifyHeaderForm.cleaned_data['modifyHeader']
+
+
+                        # if submit_type == 'save':
+                        #     xml_content = request.POST.get('xml_content')
+
+                        #     with open(newmodxml, 'w', encoding='utf-8') as file:
+                        #         file.write(xml_content)
+                        
+                        # else:
+                        #     with open(modxml, 'r') as file:
+                        #         xml_content = file.read()
+                        
+
+                        # return render(request, 'xml_editor.html', {'xml_content':xml_content})
+
+
+                
+            
+
+                    
+                    
+                    
+                    
+
+
+
+#                 xmlContent = f'''[DEFAULT]\n
+# UAC = {selectUAC}
+# UAS = {selectUAS}
+# '''
+#                 xmlConfigFile = os.path.join(settings.BASE_DIR, 'xml.ini')
+#                 with open(xmlConfigFile, 'w') as file:
+#                     file.write(xmlContent)
+#                 return render(request, 'modify_xml.html', {'form': modifyXmlForm})
+            
+        # if 'xmlName' in request.POST:
+        #     xmlName = request.POST.get('xmlName')
+        #     if xmlName.is_valid():
+                
+
+        #         modifyXml_script = str(settings.BASE_DIR / 'kSipP' / 'scripts' / 'modifyHeader.py')
+        #     try:
+        #         result = subprocess.run(['python', modifyXml_script], capture_output=True, text=True)
+        #         return HttpResponse(result)
+        #     except subprocess.CalledProcessError as e:
+        #         # Handle any errors that may occur when running the script
+        #         return HttpResponse(f"Error occurred: {e}")
+
+
+    # modifyXmlForm = xmlForm()
+    # return render(request, 'modify_xml.html', locals())
+
+
+
+
+
+########################## Run SipP Scripts ##########################
 
 def run_script_view(request):
 
@@ -215,12 +309,3 @@ def run_script_view(request):
                 uasStatus=f"UAS script is running"
 
     return render(request, 'run_script_template.html', locals())
-
-
-
-def showXmlFlow(request):
-
-    xml_file_path = str(settings.BASE_DIR / 'kSipP' / 'xml' / 'uac.xml')
-    output_lines = showXmlFlowScript(xml_file_path)
-
-    return render(request, 'show_xml_flow.html', {'output_lines': output_lines})

@@ -8,26 +8,45 @@
 <body>
     <h1>Modify XML</h1>
 
+
     <form method="post">
+        {% if not modifyXml %}
         {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit" name="submitType" value="selectXml">Submit</button>
+        {{ modifyXmlForm.selectUAC }}
+        <button type="submit" name="selectXml" value="modifyUAC">Modify UAC</button><br/>
+        {{ modifyXmlForm.selectUAS }}
+        <button type="submit" name="selectXml" value="modifyUAS">Modify UAS</button>
+        {% endif %}
+        <br/>
+        <br/>
+    </form>
+    <form method="post">
+        {% if modifyXml %}
+        Selected xml file is: <b>{{ modifyXml }}</b><br/>
+        {% csrf_token %}
+        {{ modifyHeaderForm.whichHeader }}
+        {{ modifyHeaderForm.modifyHeader }}
+        <button type="submit" name="modifyXmlSubmit" value="newHeader">Modify Header</button>
+        <br />
+        <button type="submit" name="modifyXmlSubmit" value="doneModify">Done</button>
+        <br/>
+        {% if selectedHeader %}
+        {{ selectedHeader }} Header modified <br/>
+        {{ selectedHeader }} {{ newHeader }}<br/>
+        <br/>
+        {% endif %}   
+        
+        {% endif %}
+        <br /> 
+    </form>
+    <form method="POST">
+        {% if modifyXml %}
+        {% csrf_token %}
+        <button type="submit" name="modifyXmlSubmit" value="xmlEditor">Open in XML Editor</button>
+        {% endif %}
     </form>
     <br />
-    <br />
-    <form method="post" action="{% url 'modify-xml' %}">
-        {% csrf_token %}
-        <input type="hidden" name="xmlName" value="UAS">
-        <input type="submit" value="Modify UAS">
-    </form>
 
-    <form method="post" action="{% url 'modify-xml' %}">
-        {% csrf_token %}
-        <input type="hidden" name="xmlName" value="UAC">
-        <input type="submit" value="Modify UAC">
-    </form>
-
-    <!-- Add more forms for other scripts as needed -->
 
 </body>
 </html>

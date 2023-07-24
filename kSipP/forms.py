@@ -18,11 +18,6 @@ class xmlForm(forms.Form):
     uas_files = [f for f in os.listdir(xmlPath) if f.startswith('uas')]
 
     optsUAC = [(filename, filename) for filename in uac_files] 
-    # optsUAC = [
-    #     ('uac.xml', 'Basic'),
-    #     ('uac_Prack.xml', 'Send Prack'),
-    #     ('uac_Media.xml', 'Send Media'),
-    # ]
     selectUAC = forms.ChoiceField(choices=optsUAC, label='Select UAC scenario')
 
     optsUAS = [(filename, filename) for filename in uas_files] 
@@ -32,3 +27,19 @@ class xmlForm(forms.Form):
     #     ('uas_Media.xml', 'Send Media'),
     # ]
     selectUAS = forms.ChoiceField(choices=optsUAS, label='Select UAS scenario')  
+
+
+class modifyHeader(forms.Form):
+    optHeader = [
+        ('From:','From'),
+        ('To:','To'),
+        ('Contact','Contact'),
+    ]
+    whichHeader = forms.ChoiceField(choices=optHeader, label='Select Header')
+
+    modifyHeader = forms.CharField(
+        label='Modify Header',
+        max_length=200,  # You can set the maximum length for the text input.
+        widget=forms.TextInput(attrs={'style': 'width: 500px;'}),
+    )
+
