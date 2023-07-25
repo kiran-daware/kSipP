@@ -1,0 +1,327 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE scenario SYSTEM "sipp.dtd">
+
+<!-- This program is free software; you can redistribute it and/or      -->
+<!-- modify it under the terms of the GNU General Public License as     -->
+<!-- published by the Free Software Foundation; either version 2 of the -->
+<!-- License, or (at your option) any later version.                    -->
+<!--                                                                    -->
+<!-- This program is distributed in the hope that it will be useful,    -->
+<!-- but WITHOUT ANY WARRANTY; without even the implied warranty of     -->
+<!-- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the      -->
+<!-- GNU General Public License for more details.                       -->
+<!--                                                                    -->
+<!-- You should have received a copy of the GNU General Public License  -->
+<!-- along with this program; if not, write to the                      -->
+<!-- Free Software Foundation, Inc.,                                    -->
+<!-- 59 Temple Place, Suite 330, Boston, MA  02111-1307 USA             -->
+<!--                                                                    -->
+<!--                 Sipp default 'uas' scenario.                       -->
+<!--                                                                    -->
+
+<scenario name="Basic UAS responder">
+  <!-- By adding rrs="true" (Record Route Sets), the route sets         -->
+  <!-- are saved and used for following messages sent. Useful to test   -->
+  <!-- against stateful SIP proxies/B2BUAs.                             -->
+  <recv request="INVITE" crlf="true" rrs="true">
+  <action>
+      <ereg regexp=".*" search_in="hdr" header="Via:" check_it="true" assign_to="1" />
+      <ereg regexp=".*" search_in="hdr" header="CSeq:" check_it="true" assign_to="2" />
+	</action>
+  </recv>
+   <send>
+    <![CDATA[
+
+      SIP/2.0 100 Trying
+      [last_Via:]
+      [last_From:]
+      [last_To:];tag=[call_number]
+      [last_Call-ID:]
+      [last_CSeq:]
+      [last_Record-Route:]
+      Contact: <sip:9922951299@[local_ip]:[local_port];transport=[transport]>
+      Content-Length: 0
+
+    ]]>
+  </send>
+
+
+  <send>
+    <![CDATA[
+
+      SIP/2.0 180 Ringing
+      [last_Via:]
+      [last_From:]
+      [last_To:];tag=[call_number]
+      [last_Call-ID:]
+      [last_CSeq:]
+      [last_Record-Route:]
+      Supported: timer,100rel
+      Require: 100rel
+      RSeq: 1
+      Contact: <sip:12345@[local_ip]:[local_port];transport=[transport]>
+      Content-Length: 0
+
+      v=0
+      o=- 140987 140987 IN IP4 MSCPNGL1.MSS.DIGICEL.COM
+      s=-
+      c=IN IP4 10.249.54.35
+      t=0 0
+      a=sendrecv
+      m=audio 31358 RTP/AVP 18 101
+      c=IN IP4 10.249.54.35
+      a=rtpmap:18 G729/8000
+      a=fmtp:18 annexb=yes
+      a=rtpmap:101 telephone-event/8000
+      a=fmtp:101 0-15
+      a=ptime:20
+    ]]>
+  </send>
+
+   <recv request="PRACK" crlf="true">
+   </recv>
+
+   <send>   
+   <![CDATA[
+
+      SIP/2.0 200 OK
+      [last_Via:]
+      [last_From:]
+      [last_To:]
+      [last_Call-ID:]
+      [last_CSeq:]
+      [last_Record-Route:]
+      Supported: timer,100rel
+      Contact: <sip:[local_ip]:[local_port];transport=[transport]>
+      Content-Length: 0
+ 
+            
+    ]]>
+  </send>
+  
+  <send>
+    <![CDATA[
+
+      SIP/2.0 200 OK
+      Via:[$1]
+      [last_From:]
+      [last_To:];tag=[call_number]
+      [last_Call-ID:]
+      CSeq:[$2]
+      [last_Record-Route:]
+	  Session-Expires: 200;refresher=uac
+      Contact: <sip:12345@[local_ip]:[local_port];transport=[transport]>
+      Content-Type: application/sdp
+      Content-Length: [len]
+
+      v=0
+      o=user 53655765 2353687637 IN IP[local_ip_type] [local_ip]
+      s=Sip
+      c=IN IP[media_ip_type] [media_ip]
+      t=0 0
+      m=audio 50168 RTP/AVP 18 8 0 100 101
+      c=IN IP4 10.148.76.49
+      a=rtpmap:8 PCMA/8000
+      a=rtpmap:0 PCMU/8000
+      a=rtpmap:18 G729/8000
+      a=fmtp:18 annexb=yes
+      a=rtpmap:100 X-NSE/8000
+      a=fmtp:100 192-194
+      a=rtpmap:101 telephone-event/8000
+      a=fmtp:101 0-16
+
+    ]]>
+  </send>
+
+  <recv request="ACK"
+        rtd="true"
+        crlf="true">
+  </recv>
+
+  <!--recv request="INVITE" crlf="true" rrs="true">
+  </recv>
+
+   <send>
+    <![CDATA[
+
+      SIP/2.0 100 Trying
+      [last_Via:]
+      [last_From:]
+      [last_To:];tag=[call_number]
+      [last_Call-ID:]
+      [last_CSeq:]
+      [last_Record-Route:]
+      Contact: <sip:9922951299@[local_ip]:[local_port];transport=[transport]>
+      Content-Length: 0
+
+    ]]>
+  </send>
+
+
+  <send>
+    <![CDATA[
+
+      SIP/2.0 200 OK
+      [last_Via:]
+      [last_From:]
+      [last_To:];tag=[call_number]
+      [last_Call-ID:]
+      [last_CSeq:]
+      [last_Record-Route:]
+      Contact: <sip:12345@[local_ip]:[local_port];transport=[transport]>
+      Content-Type: application/sdp
+      Content-Length: [len]
+
+      v=0
+      o=user 53655765 2353687637 IN IP[local_ip_type] [local_ip]
+      s=Sip
+      c=IN IP[media_ip_type] [media_ip]
+      t=0 0
+      m=audio 50168 RTP/AVP 18 8 0 100 101
+      c=IN IP4 10.148.76.49
+      a=rtpmap:8 PCMA/8000
+      a=rtpmap:0 PCMU/8000
+      a=rtpmap:18 G729/8000
+      a=fmtp:18 annexb=yes
+      a=rtpmap:100 X-NSE/8000
+      a=fmtp:100 192-194
+      a=rtpmap:101 telephone-event/8000
+      a=fmtp:101 0-16
+
+    ]]>
+  </send>
+
+  <recv request="ACK"
+        rtd="true"
+        crlf="true">
+  </recv-->
+
+
+ <!--recv request="INFO" crlf="true" rrs="true">
+  </recv>
+
+  <send>
+    <![CDATA[
+      SIP/2.0 200 OK
+      [last_Via:]
+      [last_From:]
+      [last_To:]
+      [last_Call-ID:]
+      [last_CSeq:]
+      Contact: <sip:[local_ip]:[local_port];transport=[transport]>
+      Content-Length: 0
+
+    ]]>
+  </send-->
+
+  <recv request="INVITE" crlf="true" rrs="true">
+  </recv>
+
+  <send>
+    <![CDATA[
+
+      SIP/2.0 200 OK
+      [last_Via:]
+      [last_From:]
+      [last_To:];tag=[call_number]
+      [last_Call-ID:]
+      [last_CSeq:]
+      [last_Record-Route:]
+	  Session-Expires: 200;refresher=uac
+      Contact: <sip:12345@[local_ip]:[local_port];transport=[transport]>
+      Content-Type: application/sdp
+      Content-Length: [len]
+
+      v=0
+      o=user 53655765 2353687637 IN IP[local_ip_type] [local_ip]
+      s=Sip
+      c=IN IP[media_ip_type] [media_ip]
+      t=0 0
+      m=audio 50168 RTP/AVP 18 8 0 100 101
+      c=IN IP4 10.148.76.49
+      a=rtpmap:8 PCMA/8000
+      a=rtpmap:0 PCMU/8000
+      a=rtpmap:18 G729/8000
+      a=fmtp:18 annexb=yes
+      a=rtpmap:100 X-NSE/8000
+      a=fmtp:100 192-194
+      a=rtpmap:101 telephone-event/8000
+      a=fmtp:101 0-16
+
+    ]]>
+  </send>
+
+  <recv request="ACK"
+        rtd="true"
+        crlf="true">
+  </recv>
+
+  <recv request="UPDATE">
+  </recv>
+
+  <send>
+    <![CDATA[
+
+      SIP/2.0 200 OK
+      [last_Via:]
+      [last_From:]
+      [last_To:];tag=[call_number]
+      [last_Call-ID:]
+      [last_CSeq:]
+      [last_Record-Route:]
+	  Session-Expires: 200;refresher=uac
+      Contact: <sip:12345@[local_ip]:[local_port];transport=[transport]>
+      Content-Type: application/sdp
+      Content-Length: [len]
+
+      v=0
+      o=user 53655765 2353687637 IN IP[local_ip_type] [local_ip]
+      s=Sip
+      c=IN IP[media_ip_type] [media_ip]
+      t=0 0
+      m=audio 50168 RTP/AVP 18 8 0 100 101
+      c=IN IP4 10.148.76.49
+      a=rtpmap:8 PCMA/8000
+      a=rtpmap:0 PCMU/8000
+      a=rtpmap:18 G729/8000
+      a=fmtp:18 annexb=yes
+      a=rtpmap:100 X-NSE/8000
+      a=fmtp:100 192-194
+      a=rtpmap:101 telephone-event/8000
+      a=fmtp:101 0-16
+
+    ]]>
+  </send>
+
+ 
+   
+  <recv request="BYE">
+  </recv>
+  
+  <send>
+    <![CDATA[
+      SIP/2.0 200 OK
+      [last_Via:]
+      [last_From:]
+      [last_To:]
+      [last_Call-ID:]
+      [last_CSeq:]
+      Contact: <sip:[local_ip]:[local_port];transport=[transport]>
+      Content-Length: 0
+
+    ]]>
+  </send>
+
+
+  <!-- Keep the call open for a while in case the 200 is lost to be     -->
+  <!-- able to retransmit it if we receive the BYE again.               -->
+ 
+
+  <!-- definition of the response time repartition table (unit is ms)   -->
+  <ResponseTimeRepartition value="10, 20, 30, 40, 50, 100, 150, 200"/>
+
+  <!-- definition of the call length repartition table (unit is ms)     -->
+  <CallLengthRepartition value="10, 50, 100, 500, 1000, 5000, 10000"/>
+
+</scenario>
+

@@ -1,0 +1,25 @@
+<!-- Include the Ace Editor library -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.4.12/ace.js"></script>
+
+<!-- Create a div to contain the editor -->
+<form method="post" action="{% url 'xml-editor' %}">
+{% csrf_token %}
+<input type="hidden" name="xml_content" id="xmlContentInput" value="{{ xml_content }}">
+<div id="xmlEditor" style="height: 90%; width: 100%;">{{ xml_content }}</div>
+<button type="submit" name="submit" value="save">Save</button>
+</form>
+
+<!-- Initialize the editor -->
+<script>
+    var editor = ace.edit("xmlEditor");
+    editor.session.setMode("ace/mode/xml");
+    editor.setTheme("ace/theme/chrome");
+    editor.setFontSize('14px');
+
+    // Update the hidden input with the XML content before submitting the form
+    var xmlContentInput = document.getElementById("xmlContentInput");
+    editor.getSession().on("change", function () {
+        var xmlContent = editor.getValue();
+        xmlContentInput.value = xmlContent;
+    })
+</script>

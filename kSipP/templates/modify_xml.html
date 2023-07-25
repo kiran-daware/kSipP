@@ -1,0 +1,63 @@
+<!-- run_script_template.html -->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Modify XML</title>
+</head>
+<body>
+    <h1>Modify XML</h1>
+
+
+    <form method="post">
+        {% if not modifyXml %}
+        {% csrf_token %}
+        {{ modifyXmlForm.selectUAC }}
+        <button type="submit" name="selectXml" value="modifyUAC">Modify UAC</button><br/>
+        {{ modifyXmlForm.selectUAS }}
+        <button type="submit" name="selectXml" value="modifyUAS">Modify UAS</button>
+        {% endif %}
+        <br/>
+        <br/>
+    </form>
+    <form method="post">
+        {% if modifyXml %}
+        Selected xml file is: <b>{{ modifyXml }}</b><br/>
+        {% csrf_token %}
+        {{ modifyHeaderFormData.whichHeader }}
+        {{ modifyHeaderFormData.modifyHeader }}
+        <button type="submit" name="modifyXmlSubmit" value="newHeader">Modify Header</button>
+        <br />
+        <button type="submit" name="modifyXmlSubmit" value="doneModify">Done</button>
+        <br/>
+        {% if selectedHeader %}
+        {{ selectedHeader }} Header modified <br/>
+        {{ selectedHeader }} {{ newHeader }}<br/>
+        <br/>
+        {% endif %}   
+        
+        {% endif %}
+        <br /> 
+    </form>
+    <form method="POST">
+        {% if modifyXml %}
+        {% csrf_token %}
+        <button type="submit" name="modifyXmlSubmit" value="xmlEditor">Open in XML Editor</button>
+        {% endif %}
+    </form>
+    <br />
+
+
+
+    <form method="post">
+        {% csrf_token %}
+        {% for field in modifyHeaderFormDataNew %}
+            {{ field.label_tag }}: {{ field }}
+            <br>
+        {% endfor %}
+        <button type="submit">New Header Form</button>
+    </form>
+
+
+</body>
+</html>

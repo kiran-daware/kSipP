@@ -41,6 +41,7 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
+    'django.middleware.cache.UpdateCacheMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -48,7 +49,12 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'django.middleware.cache.FetchFromCacheMiddleware',
 ]
+
+CACHE_MIDDLEWARE_SECONDS = 0
+CACHE_MIDDLEWARE_KEY_PREFIX = None
+
 
 ROOT_URLCONF = 'EasySipP.urls'
 
@@ -122,3 +128,41 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+
+
+
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'formatters': {
+        'verbose': {
+            'format': '{levelname} {asctime} {module} {message}',
+            'style': '{',
+        },
+    },
+    'handlers': {
+        'file': {
+            'level': 'INFO',  # Set the desired logging level (e.g., DEBUG, INFO, WARNING, ERROR, CRITICAL)
+            'class': 'logging.FileHandler',
+            'filename': 'debug.log',  # Set the path and name of the log file
+            'formatter': 'verbose',  # Use the 'verbose' formatter defined above
+        },
+    },
+    'root': {
+        'handlers': ['file'],  # Use the 'file' handler for the root logger
+        'level': 'DEBUG',  # Set the desired logging level for the root logger
+    },
+    'loggers': {
+        'django': {
+            'handlers': ['file'],  # Use the 'file' handler for Django core components
+            'level': 'DEBUG',  # Set the desired logging level for Django core components
+        },
+        # You can add more loggers here for specific apps or modules
+        # 'myapp': {
+        #     'handlers': ['file'],
+        #     'level': 'DEBUG',
+        # },
+    },
+}
