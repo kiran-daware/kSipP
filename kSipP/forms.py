@@ -31,7 +31,7 @@ class xmlForm(forms.Form):
 
 class moreSippOptionsForm(forms.Form):
     calledPartyNumber = forms.CharField(label='Called Party Number', max_length=30, required=False, initial='1234')
-    callingPartyNumber = forms.CharField(label='Called Party Number', max_length=30, required=False, initial='9876')
+    callingPartyNumber = forms.CharField(label='Calling Party Number', max_length=30, required=False, initial='9876')
     totalNoOfCalls = forms.IntegerField(label='No. of calls to send', min_value=1, max_value=9999, required=False, initial=1)
     cps = forms.IntegerField(label='Calls Per Second', min_value=1, max_value=100, required=False, initial=1) 
 
