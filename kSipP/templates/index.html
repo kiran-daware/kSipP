@@ -4,18 +4,23 @@
     <title>EasySipP</title>
 </head>
 <body>
-    <h2>Hi! this is Kiran,</h2>
-    <p>Trying out a new idea which may make SipP easier for everyone.</p>
+    <h1><span style="font-size: 48px;">k</span>SipP</h1>
+    <p>Trying an idea which may make SipP easier for everyone.</p>
 
     <a href="/modify-xml">Modify XML</a>
     <form method="post">
         {% csrf_token %}
         {{ selectXml.as_p }}
         <button type="submit" name="submitType" value="checkFlow">Check XML Call Flow</button>
+        {% if showMoreOptionsForm %}
+        {{ moreOptionsForm.as_p }}
+        {% endif %}
+        <button type="submit" name="submitType" value="moreOptions">More Options</button>
         {{ ipConfig.as_p }}
         <button type="submit" name="submitType" value="config">Submit</button>
     </form>
     {% include 'run_script_template.html' %}
     
+
 </body>
 </html>

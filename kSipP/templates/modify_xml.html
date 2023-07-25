@@ -24,8 +24,8 @@
         {% if modifyXml %}
         Selected xml file is: <b>{{ modifyXml }}</b><br/>
         {% csrf_token %}
-        {{ modifyHeaderForm.whichHeader }}
-        {{ modifyHeaderForm.modifyHeader }}
+        {{ modifyHeaderFormData.whichHeader }}
+        {{ modifyHeaderFormData.modifyHeader }}
         <button type="submit" name="modifyXmlSubmit" value="newHeader">Modify Header</button>
         <br />
         <button type="submit" name="modifyXmlSubmit" value="doneModify">Done</button>
@@ -46,6 +46,17 @@
         {% endif %}
     </form>
     <br />
+
+
+
+    <form method="post">
+        {% csrf_token %}
+        {% for field in modifyHeaderFormDataNew %}
+            {{ field.label_tag }}: {{ field }}
+            <br>
+        {% endfor %}
+        <button type="submit">New Header Form</button>
+    </form>
 
 
 </body>

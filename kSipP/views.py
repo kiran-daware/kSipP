@@ -3,13 +3,13 @@ from django.views.decorators.cache import never_cache
 from django.shortcuts import render, redirect
 from django.conf import settings
 from django.contrib.sessions.models import Session
-from .forms import configForm, xmlForm, modifyHeader
+from .forms import configForm, xmlForm, modifyHeaderForm, modifyHeaderFormNew, moreSippOptionsForm
 import configparser
 import os
 import subprocess
 
 from .scripts.showXmlFlow import showXmlFlowScript
-
+from .scripts.modifyHeader import modifyHeaderScript
 
 # Read initial data from config file
 config_file = os.path.join(str(settings.BASE_DIR), 'config.ini')
@@ -30,18 +30,35 @@ def index(request):
 
     global config_data
     config_data = {
-        'remoteAddr': configd.get('remote_address'),
-        'remotePort': configd.get('remote_port'),
-        'localAddr': configd.get('local_address'),
-        'srcPortUac': configd.get('uac_port'),
-        'srcPortUas': configd.get('uas_port'),
+        'remoteAddr': configd.get('remoteAddr'),
+        'remotePort': configd.get('remotePort'),
+        'localAddr': configd.get('localAddr'),
+        'srcPortUac': configd.get('srcPortUac'),
+        'srcPortUas': configd.get('srcPortUas'),
     }
     global xml_data
     xml_data = {
-        'selectUAC':configx.get('uac_script'),
-        'selectUAS':configx.get('uas_script')
+        'selectUAC':configx.get('selectUAC'),
+        'selectUAS':configx.get('selectUAS')
     }
     
+
+    remote=f"{config_data['remoteAddr']}:{config_data['remotePort']}"
+    uacSrc=f"-i {config_data['localAddr']} -p {config_data['srcPortUac']}"
+    uasSrc=f"-i {config_data['localAddr']} -p {config_data['srcPortUas']}"
+
+    # below vars used on index.html
+    print_uac_command = f"sipp -sf {xml_data['selectUAC']} {remote} {uacSrc} -m 1"
+    print_uas_command = f"sipp -sf {xml_data['selectUAS']} {remote} {uasSrc}"
+
+    # # fetching xml files from directory each time page refreshes.
+    # xmlPath = str(settings.BASE_DIR / 'kSipP' / 'xml')
+    # uac_files = [f for f in os.listdir(xmlPath) if f.startswith('uac')]
+    # uas_files = [f for f in os.listdir(xmlPath) if f.startswith('uas')]
+
+    # loading xmlForm and configForm
+    selectXml = xmlForm(initial=xml_data)
+    ipConfig = configForm(initial=config_data)
 
     # Check XML file call Flow 
     if request.method =="POST":
@@ -52,60 +69,88 @@ def index(request):
                 if selectXml.is_valid():
                     selectUAC = selectXml.cleaned_data['selectUAC']
                     selectUAS = selectXml.cleaned_data['selectUAS']
-                    xml_file_path = str(settings.BASE_DIR / 'kSipP' / 'xml' / 'uac.xml')
+                    # xml_file_path = str(settings.BASE_DIR / 'kSipP' / 'xml' / 'uac.xml')
 
                     uacflow = showXmlFlowScript(selectUAC)
                     uasflow = showXmlFlowScript(selectUAS)
                     return render(request, 'show_xml_flow.html', locals())
+            
+            if submit_type == 'moreOptions':
+                # Load moreSippOptionsForm
+                showMoreOptionsForm = True
+                moreOptionsForm = moreSippOptionsForm()
 
 
-
-
-    remote=f"{config_data['remoteAddr']}:{config_data['remotePort']}"
-    uacSrc=f"-i {config_data['localAddr']} -p {config_data['srcPortUac']}"
-    uasSrc=f"-i {config_data['localAddr']} -p {config_data['srcPortUas']}"
-
-    # below vars used on index.html
-    print_uac_command = f"sipp -sf {xml_data['selectUAC']} {remote} {uacSrc} -m 1"
-    print_uas_command = f"sipp -sf {xml_data['selectUAS']} {remote} {uasSrc}"
-
-    # fetching xml files from directory each time page refreshes.
-    xmlPath = str(settings.BASE_DIR / 'kSipP' / 'xml')
-    uac_files = [f for f in os.listdir(xmlPath) if f.startswith('uac')]
-    uas_files = [f for f in os.listdir(xmlPath) if f.startswith('uas')]
-
-    # loading xmlForm and configForm
-    selectXml = xmlForm(initial=xml_data)
-    ipConfig = configForm(initial=config_data)
     if request.method == 'POST':
         if 'submitType' in request.POST:
             submit_type = request.POST['submitType']
             if submit_type =='config':
                 selectXml = xmlForm(request.POST)
                 ipConfig = configForm(request.POST)
-                if selectXml.is_valid() & ipConfig.is_valid():
+                moreOptionsForm = moreSippOptionsForm(request.POST)
+                if selectXml.is_valid() & ipConfig.is_valid() & moreOptionsForm.is_valid():
 
-                    selectUAC = selectXml.cleaned_data['selectUAC']
-                    selectUAS = selectXml.cleaned_data['selectUAS']
-                    config.set('XML','uac_script', selectUAC)
-                    config.set('XML','uas_script', selectUAS)
-
-                    remoteAddr = ipConfig.cleaned_data['remoteAddr']
-                    remotePort = ipConfig.cleaned_data['remotePort']
-                    localAddr = ipConfig.cleaned_data['localAddr']
-                    srcPortUac = ipConfig.cleaned_data['srcPortUac']
-                    srcPortUas = ipConfig.cleaned_data['srcPortUas']
-
-                    config.set('DEFAULT', 'remote_address', remoteAddr)
-                    config.set('DEFAULT', 'remote_port', str(remotePort))
-                    config.set('DEFAULT', 'local_address', localAddr)
-                    config.set('DEFAULT', 'uac_port', str(srcPortUac))
-                    config.set('DEFAULT', 'uas_port', str(srcPortUas))
+                    xml_data['selectUAC'] = selectXml.cleaned_data['selectUAC']
+                    xml_data['selectUAS'] = selectXml.cleaned_data['selectUAS']
+                    config.set('XML','selectUAC', str(xml_data['selectUAC']))
+                    config.set('XML','selectUAS', str(xml_data['selectUAS']))
                     
-                    # Update the config file
+                    # update config_data dictionary
+                    config_data['remoteAddr'] = ipConfig.cleaned_data['remoteAddr']
+                    config_data['remotePort'] = ipConfig.cleaned_data['remotePort']
+                    config_data['localAddr'] = ipConfig.cleaned_data['localAddr']
+                    config_data['srcPortUac'] = ipConfig.cleaned_data['srcPortUac']
+                    config_data['srcPortUas'] = ipConfig.cleaned_data['srcPortUas']
+                    config_data['calledPartyNumber'] = moreOptionsForm.cleaned_data['calledPartyNumber']
+                    config_data['callingPartyNumber'] = moreOptionsForm.cleaned_data['callingPartyNumber']
+                    config_data['totalNoOfCalls'] = moreOptionsForm.cleaned_data['totalNoOfCalls']
+                    config_data['cps'] = moreOptionsForm.cleaned_data['cps']
+                    
+                    # config set for saving in config.ini
+                    for configKey, configValue in config_data.items():
+                        config.set('DEFAULT', configKey, str(configValue))
+
+
+                    # remoteAddr = ipConfig.cleaned_data['remoteAddr']
+                    # remotePort = ipConfig.cleaned_data['remotePort']
+                    # localAddr = ipConfig.cleaned_data['localAddr']
+                    # srcPortUac = ipConfig.cleaned_data['srcPortUac']
+                    # srcPortUas = ipConfig.cleaned_data['srcPortUas']
+
+                    # config.set('DEFAULT', 'remote_address', remoteAddr)
+                    # config.set('DEFAULT', 'remote_port', str(remotePort))
+                    # config.set('DEFAULT', 'local_address', localAddr)
+                    # config.set('DEFAULT', 'uac_port', str(srcPortUac))
+                    # config.set('DEFAULT', 'uas_port', str(srcPortUas))
+
+                    
+                    # calledPartyNumber = moreOptionsForm.cleaned_data['calledPartyNumber']
+                    # callingPartyNumber = moreOptionsForm.cleaned_data['callingPartyNumber']
+                    # totalNoOfCalls = moreOptionsForm.cleaned_data['totalNoOfCalls']
+                    # cps = moreOptionsForm.cleaned_data['cps']
+
+                    # config.set('DEFAULT', 'called_Party_Number', calledPartyNumber)
+                    # config.set('DEFAULT', 'calling_Party_Number', callingPartyNumber)
+                    # config.set('DEFAULT', 'total_no_of_calls', str(totalNoOfCalls))
+                    # config.set('DEFAULT', 'cps', str(cps))
+                    
+
+
+                    # Update the config file after config.set
                     ConfigFile = os.path.join(settings.BASE_DIR, 'config.ini')
                     with open(ConfigFile, 'w') as configfile:
                         config.write(configfile)
+                    
+
+
+                    #update script prints on homepage
+                    remote=f"{config_data['remoteAddr']}:{config_data['remotePort']}"
+                    uacSrc=f"-i {config_data['localAddr']} -p {config_data['srcPortUac']}"
+                    uasSrc=f"-i {config_data['localAddr']} -p {config_data['srcPortUas']}"
+
+                    # below vars used on index.html
+                    print_uac_command = f"sipp -sf {xml_data['selectUAC']} {remote} {uacSrc} -m 1"
+                    print_uas_command = f"sipp -sf {xml_data['selectUAS']} {remote} {uasSrc}"
 
                     return render(request, 'index.html', locals())
 
@@ -135,17 +180,27 @@ def modifyXml(request):
                     modifyXml = modifyXmlForm.cleaned_data['selectUAS']
 
             request.session['modifyXml'] = modifyXml #store var in session            
-            modifyHeaderForm = modifyHeader() #load modify header form
+            modifyHeaderFormData = modifyHeaderForm() #load modify header form
+
+
+            modifyHeaderFormDataNew = modifyHeaderFormNew()
 
 
         if modifyXml is not None:
             if 'modifyXmlSubmit' in request.POST:
                 modifyXmlSubmit = request.POST['modifyXmlSubmit']
-                modifyHeaderForm = modifyHeader(request.POST)
+                modifyHeaderFormData = modifyHeaderForm(request.POST)
                 if modifyXmlSubmit == 'newHeader':
-                    if modifyHeaderForm.is_valid():
-                        selectedHeader = modifyHeaderForm.cleaned_data['whichHeader']
-                        newHeader = modifyHeaderForm.cleaned_data['modifyHeader']
+                    if modifyHeaderFormData.is_valid():
+                        selectedHeader = modifyHeaderFormData.cleaned_data['whichHeader']
+                        newHeader = modifyHeaderFormData.cleaned_data['modifyHeader']
+                        modifyHeaderScript(modifyXml, selectedHeader, newHeader)
+
+
+
+
+
+
                         
                 if modifyXmlSubmit == 'doneModify':
                     request.session['modifyXml'] = None
@@ -161,7 +216,7 @@ def modifyXml(request):
                     return render(request, 'xml_editor.html', {'xml_content':xml_content})
 
 
-    modifyXmlForm = xmlForm()
+    modifyXmlForm = xmlForm(initial=xml_data)
     return render(request, 'modify_xml.html', locals())
 
 
