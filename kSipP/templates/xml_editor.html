@@ -16,7 +16,7 @@
     editor.setTheme("ace/theme/chrome");
     editor.setFontSize('14px');
 
-        // Update the hidden input with the XML content before submitting the form
+    // Update the hidden input with the XML content before submitting the form
     var xmlContentInput = document.getElementById("xmlContentInput");
     editor.getSession().on("change", function () {
         var xmlContent = editor.getValue();
