@@ -3,13 +3,13 @@ from django.views.decorators.cache import never_cache
 from django.shortcuts import render, redirect
 from django.conf import settings
 from django.contrib.sessions.models import Session
-from .forms import configForm, xmlForm, modifyHeaderForm, modifyHeaderFormNew, moreSippOptionsForm
+from .forms import configForm, xmlForm, modifyHeaderForm, modifyHeaderFormNew, moreSippOptionsForm, modifySelectedHeaderForSipMsgs
 import configparser
 import os
 import subprocess
 
 from .scripts.showXmlFlow import showXmlFlowScript
-from .scripts.modifyHeader import modifyHeaderScript
+from .scripts.modifyHeader import modifyHeaderScript, getHeadersFromSipMsgs
 
 # Read initial data from config file
 config_file = os.path.join(str(settings.BASE_DIR), 'config.ini')
@@ -183,18 +183,32 @@ def modifyXml(request):
             modifyHeaderFormData = modifyHeaderForm() #load modify header form
 
 
-            modifyHeaderFormDataNew = modifyHeaderFormNew()
+            # modifyHeaderFormDataNew = modifyHeaderFormNew()
+
+
+        # if modifyXml is not None:
+        #     if 'modifyXmlSubmit' in request.POST:
+        #         modifyXmlSubmit = request.POST['modifyXmlSubmit']
+        #         modifyHeaderFormData = modifyHeaderForm(request.POST)
+        #         if modifyXmlSubmit == 'newHeader':
+        #             if modifyHeaderFormData.is_valid():
+        #                 selectedHeader = modifyHeaderFormData.cleaned_data['whichHeader']
+        #                 newHeader = modifyHeaderFormData.cleaned_data['modifyHeader']
+        #                 modifyHeaderScript(modifyXml, selectedHeader, newHeader)
+
 
 
         if modifyXml is not None:
             if 'modifyXmlSubmit' in request.POST:
                 modifyXmlSubmit = request.POST['modifyXmlSubmit']
-                modifyHeaderFormData = modifyHeaderForm(request.POST)
-                if modifyXmlSubmit == 'newHeader':
+                if modifyXmlSubmit == 'headerToModify':
+                    modifyHeaderFormData = modifyHeaderForm(request.POST)
                     if modifyHeaderFormData.is_valid():
                         selectedHeader = modifyHeaderFormData.cleaned_data['whichHeader']
-                        newHeader = modifyHeaderFormData.cleaned_data['modifyHeader']
-                        modifyHeaderScript(modifyXml, selectedHeader, newHeader)
+                        headersBySipMessage = getHeadersFromSipMsgs(modifyXml, selectedHeader)
+                        modifySelectedHeaderForSipMsgsForm = modifySelectedHeaderForSipMsgs(headersBySipMessage)
+
+                        
 
 
 

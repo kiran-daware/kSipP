@@ -20,6 +20,20 @@
         <br/>
         <br/>
     </form>
+
+    {% if modifyXml %}
+    <form method="post">
+        {% csrf_token %}
+        {{ modifyHeaderFormData.whichHeader }}
+        <button type="submit" name="modifyXmlSubmit" value="headerToModify">Modify Header</button>
+    </form>
+    
+    <form method="post">
+        {{ headersBySipMessage }}
+        {{ modifySelectedHeaderForSipMsgsForm.as_p }}
+    </form>
+    {% endif %}
+<br><br><br><br><br><br>
     <form method="post">
         {% if modifyXml %}
         Selected xml file is: <b>{{ modifyXml }}</b><br/>

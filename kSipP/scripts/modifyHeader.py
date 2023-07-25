@@ -1,6 +1,7 @@
 import lxml.etree as LE
 import os
 import configparser
+import pprint
 import logging
 
 cwd = os.path.dirname(os.path.abspath(__file__))
@@ -17,7 +18,9 @@ logging.basicConfig(filename= modifyHeaderLog, filemode='w', level=logging.DEBUG
 
 # Open SipP scenario.xml file
 def openXML(xml_file):
-    with open(xml_file, "r") as f:
+    xml_file_path = os.path.join(baseDir, 'kSipP', 'xml', xml_file)
+
+    with open(xml_file_path, "r") as f:
         xml_data = f.read()
 
     # Parse the XML file
@@ -26,31 +29,37 @@ def openXML(xml_file):
     return(LE.XML(xml_data.encode(), parser))
 
 
-# def getCdataLines(xml_file):
-#     xml_file_path = os.path.join(baseDir, 'kSipP', 'xml', xml_file)
-#     xml_file_noExt = xml_file.rsplit(".", 1)[0]
-#     new_xml_file = os.path.join(baseDir, 'kSipP', 'xml', f'{xml_file_noExt}_modified.xml')
-#     root = openXML(xml_file_path)
-#     logging.info(xml_file_path)
-#     # Find the "send" element
-#     for send in root.iter("send"):
-#         send.text = LE.CDATA(send.text)
-#         cdata_element = send.text
-#         logging.info(cdata_element)
-#         if cdata_element is not None:
-#             # Split the CDATA content into lines
-#             return cdata_element.strip().splitlines()
+def getHeadersFromSipMsgs(xml_file, header):
+    headersBySipMessage = {}
+    root = openXML(xml_file)
+    # Find the "send" element
+    for send in root.iter("send"):
+        send.text = LE.CDATA(send.text)
+        cdata_element = send.text
+        logging.info(cdata_element)
+        if cdata_element is not None:
+            # Split the CDATA content into lines
+            cdata_lines = cdata_element.strip().splitlines()
+            headerLine = [line.strip() for line in cdata_lines if line.strip().startswith(header)]
+
+            if headerLine:
+                sipMessage = cdata_element.strip().split(" ", 1)[0]
+
+            headersBySipMessage[sipMessage] = headerLine
+
+    pprint.pprint(headersBySipMessage)
+    return headersBySipMessage
+
+
 
 
 
 
 # Modify Header in xml
 def modifyHeaderScript(xml_file, header, newHeader):
-    xml_file_path = os.path.join(baseDir, 'kSipP', 'xml', xml_file)
     xml_file_noExt = xml_file.rsplit(".", 1)[0]
     new_xml_file = os.path.join(baseDir, 'kSipP', 'xml', f'{xml_file_noExt}_modified.xml')
-    root = openXML(xml_file_path)
-    logging.info(xml_file_path)
+    root = openXML(xml_file)
     # Find the "send" element
     for send in root.iter("send"):
         send.text = LE.CDATA(send.text)

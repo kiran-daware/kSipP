@@ -1,6 +1,5 @@
 from django import forms
 from django.conf import settings
-from collections import OrderedDict
 import xml.etree.ElementTree as ET
 import os
 
@@ -55,11 +54,31 @@ class modifyHeaderForm(forms.Form):
     ]
     whichHeader = forms.ChoiceField(choices=optHeader, label='Select Header')
 
-    modifyHeader = forms.CharField(
-        label='Modify Header',
-        max_length=200,  # You can set the maximum length for the text input.
-        widget=forms.TextInput(attrs={'style': 'width: 500px;'}),
-    )
+    # modifyHeader = forms.CharField(
+    #     label='Modify Header',
+    #     max_length=200,  # You can set the maximum length for the text input.
+    #     widget=forms.TextInput(attrs={'style': 'width: 500px;'}),
+    # )
+
+
+
+
+class modifySelectedHeaderForSipMsgs(forms.Form):
+    def __init__(self, headersBySipMessage, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        
+        for sipMessage, header in headersBySipMessage.items():
+            self.fields[sipMessage] = forms.CharField(
+                label=sipMessage,
+                initial='\n'.join(header),
+                max_length=200,
+                widget=forms.TextInput(attrs={'style': 'width: 500px;'}),
+                required=False,  # Optional, set to True if modification is mandatory.
+            )
+
+
+
+
 
 
 
@@ -81,7 +100,7 @@ class modifyHeaderFormNew(forms.Form):
                 )
 
     def get_available_headers(self, scenario_file):
-        headers_by_send_element = OrderedDict()
+        headers_by_send_element = {}
         if os.path.exists(scenario_file):
             tree = ET.parse(scenario_file)
             root = tree.getroot()

@@ -9,7 +9,7 @@
       INVITE sip:[service]@[remote_ip]:[remote_port] SIP/2.0
       Via: SIP/2.0/[transport] [local_ip]:[local_port];branch=[branch]
       From: sipp <sip:sipp@[local_ip]:[local_port]>;tag=[call_number]
-      To: kiran.da
+      To: dfs
       Call-ID: [call_id]
       CSeq: 1 INVITE
       Contact: sip:sipp@[local_ip]:[local_port]
@@ -51,7 +51,7 @@
       ACK sip:[service]@[remote_ip]:[remote_port] SIP/2.0
       Via: SIP/2.0/[transport] [local_ip]:[local_port];branch=[branch]
       From: sipp <sip:sipp@[local_ip]:[local_port]>;tag=[call_number]
-      To: kiran.da
+      To: dfs
       Call-ID: [call_id]
       CSeq: 1 ACK
       Contact: sip:sipp@[local_ip]:[local_port]
@@ -75,7 +75,7 @@
       BYE sip:[service]@[remote_ip]:[remote_port] SIP/2.0
       Via: SIP/2.0/[transport] [local_ip]:[local_port];branch=[branch]
       From: sipp <sip:sipp@[local_ip]:[local_port]>;tag=[call_number]
-      To: kiran.da
+      To: dfs
       Call-ID: [call_id]
       CSeq: 2 BYE
       Contact: sip:sipp@[local_ip]:[local_port]
