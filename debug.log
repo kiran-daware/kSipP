@@ -1,0 +1,70 @@
+INFO 2023-07-26 07:58:09,859 autoreload Watching for file changes with StatReloader
+INFO 2023-07-26 07:58:09,859 autoreload Watching for file changes with StatReloader
+INFO 2023-07-26 07:58:17,590 basehttp "GET /modify-xml HTTP/1.1" 200 1368
+INFO 2023-07-26 07:58:17,590 basehttp "GET /modify-xml HTTP/1.1" 200 1368
+INFO 2023-07-26 07:58:20,321 basehttp "GET / HTTP/1.1" 200 3264
+INFO 2023-07-26 07:58:20,321 basehttp "GET / HTTP/1.1" 200 3264
+INFO 2023-07-26 07:58:22,719 basehttp "GET /modify-xml HTTP/1.1" 200 1386
+INFO 2023-07-26 07:58:22,719 basehttp "GET /modify-xml HTTP/1.1" 200 1386
+INFO 2023-07-26 07:58:23,537 basehttp "POST /modify-xml HTTP/1.1" 200 1979
+INFO 2023-07-26 07:58:23,537 basehttp "POST /modify-xml HTTP/1.1" 200 1979
+INFO 2023-07-26 07:58:24,408 modifyHeader XML file name is uac.xml
+INFO 2023-07-26 07:58:24,408 modifyHeader 
+    
+
+      INVITE sip:[service]@[remote_ip]:[remote_port] SIP/2.0
+      Via: SIP/2.0/[transport] [local_ip]:[local_port];branch=[branch]
+      From: sipp <sip:sipp@[local_ip]:[local_port]>;tag=[call_number]
+      To: sut <sip:[service]@[remote_ip]:[remote_port]>
+      Call-ID: [call_id]
+      CSeq: 1 INVITE
+      Contact: sip:sipp@[local_ip]:[local_port]
+      Max-Forwards: 70
+      Subject: Performance Test
+      Content-Type: application/sdp
+      Content-Length: [len]
+
+      v=0
+      o=user1 53655765 2353687637 IN IP[local_ip_type] [local_ip]
+      s=-
+      c=IN IP[media_ip_type] [media_ip]
+      t=0 0
+      m=audio [media_port] RTP/AVP 0
+      a=rtpmap:0 PCMU/8000
+
+    
+  
+INFO 2023-07-26 07:58:24,408 modifyHeader 
+    
+
+      ACK sip:[service]@[remote_ip]:[remote_port] SIP/2.0
+      Via: SIP/2.0/[transport] [local_ip]:[local_port];branch=[branch]
+      From: sipp <sip:sipp@[local_ip]:[local_port]>;tag=[call_number]
+      To: sut <sip:[service]@[remote_ip]:[remote_port]>[peer_tag_param]
+      Call-ID: [call_id]
+      CSeq: 1 ACK
+      Contact: sip:sipp@[local_ip]:[local_port]
+      Max-Forwards: 70
+      Subject: Performance Test
+      Content-Length: 0
+
+    
+  
+INFO 2023-07-26 07:58:24,409 modifyHeader 
+    
+
+      BYE sip:[service]@[remote_ip]:[remote_port] SIP/2.0
+      Via: SIP/2.0/[transport] [local_ip]:[local_port];branch=[branch]
+      From: sipp <sip:sipp@[local_ip]:[local_port]>;tag=[call_number]
+      To: sut <sip:[service]@[remote_ip]:[remote_port]>[peer_tag_param]
+      Call-ID: [call_id]
+      CSeq: 2 BYE
+      Contact: sip:sipp@[local_ip]:[local_port]
+      Max-Forwards: 70
+      Subject: Performance Test
+      Content-Length: 0
+
+    
+  
+INFO 2023-07-26 07:58:24,427 basehttp "POST /modify-xml HTTP/1.1" 200 3083
+INFO 2023-07-26 07:58:24,427 basehttp "POST /modify-xml HTTP/1.1" 200 3083
