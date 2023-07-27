@@ -68,3 +68,329 @@ INFO 2023-07-26 07:58:24,409 modifyHeader
   
 INFO 2023-07-26 07:58:24,427 basehttp "POST /modify-xml HTTP/1.1" 200 3083
 INFO 2023-07-26 07:58:24,427 basehttp "POST /modify-xml HTTP/1.1" 200 3083
+INFO 2023-07-27 01:47:21,140 autoreload Watching for file changes with StatReloader
+INFO 2023-07-27 01:47:21,140 autoreload Watching for file changes with StatReloader
+INFO 2023-07-27 01:47:32,468 basehttp "GET / HTTP/1.1" 200 3264
+INFO 2023-07-27 01:47:32,468 basehttp "GET / HTTP/1.1" 200 3264
+WARNING 2023-07-27 01:47:32,567 log Not Found: /favicon.ico
+WARNING 2023-07-27 01:47:32,567 log Not Found: /favicon.ico
+WARNING 2023-07-27 01:47:32,567 basehttp "GET /favicon.ico HTTP/1.1" 404 2801
+WARNING 2023-07-27 01:47:32,567 basehttp "GET /favicon.ico HTTP/1.1" 404 2801
+INFO 2023-07-27 01:47:35,804 basehttp "GET /run-script HTTP/1.1" 200 893
+INFO 2023-07-27 01:47:35,804 basehttp "GET /run-script HTTP/1.1" 200 893
+ERROR 2023-07-27 01:47:38,222 log Internal Server Error: /run-script
+Traceback (most recent call last):
+  File "/home/kiran/python/EasySipP_wsl_venv_2/EasySipP/venv/lib/python3.8/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/kiran/python/EasySipP_wsl_venv_2/EasySipP/venv/lib/python3.8/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/kiran/python/EasySipP_wsl_venv_2/EasySipP/kSipP/views.py", line 377, in run_script_view
+    while uasProc.poll() is None:
+UnboundLocalError: local variable 'uasProc' referenced before assignment
+ERROR 2023-07-27 01:47:38,222 log Internal Server Error: /run-script
+Traceback (most recent call last):
+  File "/home/kiran/python/EasySipP_wsl_venv_2/EasySipP/venv/lib/python3.8/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/kiran/python/EasySipP_wsl_venv_2/EasySipP/venv/lib/python3.8/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/kiran/python/EasySipP_wsl_venv_2/EasySipP/kSipP/views.py", line 377, in run_script_view
+    while uasProc.poll() is None:
+UnboundLocalError: local variable 'uasProc' referenced before assignment
+ERROR 2023-07-27 01:47:38,224 basehttp "POST /run-script HTTP/1.1" 500 66671
+ERROR 2023-07-27 01:47:38,224 basehttp "POST /run-script HTTP/1.1" 500 66671
+INFO 2023-07-27 01:48:19,472 autoreload /home/kiran/python/EasySipP_wsl_venv_2/EasySipP/kSipP/views.py changed, reloading.
+INFO 2023-07-27 01:48:19,472 autoreload /home/kiran/python/EasySipP_wsl_venv_2/EasySipP/kSipP/views.py changed, reloading.
+INFO 2023-07-27 01:48:21,053 autoreload Watching for file changes with StatReloader
+INFO 2023-07-27 01:48:21,053 autoreload Watching for file changes with StatReloader
+INFO 2023-07-27 01:48:26,401 basehttp "GET /run-script HTTP/1.1" 200 893
+INFO 2023-07-27 01:48:26,401 basehttp "GET /run-script HTTP/1.1" 200 893
+ERROR 2023-07-27 01:48:29,688 log Internal Server Error: /run-script
+Traceback (most recent call last):
+  File "/home/kiran/python/EasySipP_wsl_venv_2/EasySipP/venv/lib/python3.8/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/kiran/python/EasySipP_wsl_venv_2/EasySipP/venv/lib/python3.8/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/kiran/python/EasySipP_wsl_venv_2/EasySipP/kSipP/views.py", line 367, in run_script_view
+    while uacProc.poll() is None:
+UnboundLocalError: local variable 'uacProc' referenced before assignment
+ERROR 2023-07-27 01:48:29,688 log Internal Server Error: /run-script
+Traceback (most recent call last):
+  File "/home/kiran/python/EasySipP_wsl_venv_2/EasySipP/venv/lib/python3.8/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/kiran/python/EasySipP_wsl_venv_2/EasySipP/venv/lib/python3.8/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/kiran/python/EasySipP_wsl_venv_2/EasySipP/kSipP/views.py", line 367, in run_script_view
+    while uacProc.poll() is None:
+UnboundLocalError: local variable 'uacProc' referenced before assignment
+ERROR 2023-07-27 01:48:29,689 basehttp "POST /run-script HTTP/1.1" 500 67144
+ERROR 2023-07-27 01:48:29,689 basehttp "POST /run-script HTTP/1.1" 500 67144
+INFO 2023-07-27 01:48:33,818 basehttp "GET /run-script HTTP/1.1" 200 893
+INFO 2023-07-27 01:48:33,818 basehttp "GET /run-script HTTP/1.1" 200 893
+INFO 2023-07-27 01:48:35,768 basehttp "POST /run-script HTTP/1.1" 200 893
+INFO 2023-07-27 01:48:35,768 basehttp "POST /run-script HTTP/1.1" 200 893
+INFO 2023-07-27 01:48:37,487 basehttp "POST /run-script HTTP/1.1" 200 893
+INFO 2023-07-27 01:48:37,487 basehttp "POST /run-script HTTP/1.1" 200 893
+INFO 2023-07-27 01:48:52,754 basehttp "POST /run-script HTTP/1.1" 200 893
+INFO 2023-07-27 01:48:52,754 basehttp "POST /run-script HTTP/1.1" 200 893
+INFO 2023-07-27 01:49:16,389 autoreload /home/kiran/python/EasySipP_wsl_venv_2/EasySipP/kSipP/views.py changed, reloading.
+INFO 2023-07-27 01:49:16,389 autoreload /home/kiran/python/EasySipP_wsl_venv_2/EasySipP/kSipP/views.py changed, reloading.
+INFO 2023-07-27 01:49:17,925 autoreload Watching for file changes with StatReloader
+INFO 2023-07-27 01:49:17,925 autoreload Watching for file changes with StatReloader
+INFO 2023-07-27 01:50:01,170 basehttp "GET /run-script HTTP/1.1" 200 893
+INFO 2023-07-27 01:50:01,170 basehttp "GET /run-script HTTP/1.1" 200 893
+ERROR 2023-07-27 01:50:03,130 log Internal Server Error: /run-script
+Traceback (most recent call last):
+  File "/home/kiran/python/EasySipP_wsl_venv_2/EasySipP/venv/lib/python3.8/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/kiran/python/EasySipP_wsl_venv_2/EasySipP/venv/lib/python3.8/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/kiran/python/EasySipP_wsl_venv_2/EasySipP/kSipP/views.py", line 367, in run_script_view
+    while uacProc.poll() is None:
+UnboundLocalError: local variable 'uacProc' referenced before assignment
+ERROR 2023-07-27 01:50:03,130 log Internal Server Error: /run-script
+Traceback (most recent call last):
+  File "/home/kiran/python/EasySipP_wsl_venv_2/EasySipP/venv/lib/python3.8/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/kiran/python/EasySipP_wsl_venv_2/EasySipP/venv/lib/python3.8/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/kiran/python/EasySipP_wsl_venv_2/EasySipP/kSipP/views.py", line 367, in run_script_view
+    while uacProc.poll() is None:
+UnboundLocalError: local variable 'uacProc' referenced before assignment
+ERROR 2023-07-27 01:50:03,131 basehttp "POST /run-script HTTP/1.1" 500 67144
+ERROR 2023-07-27 01:50:03,131 basehttp "POST /run-script HTTP/1.1" 500 67144
+INFO 2023-07-27 01:50:09,637 basehttp "POST /run-script HTTP/1.1" 200 893
+INFO 2023-07-27 01:50:09,637 basehttp "POST /run-script HTTP/1.1" 200 893
+INFO 2023-07-27 01:51:44,503 autoreload Watching for file changes with StatReloader
+INFO 2023-07-27 01:51:44,503 autoreload Watching for file changes with StatReloader
+INFO 2023-07-27 01:51:48,302 basehttp "GET /run-script HTTP/1.1" 200 893
+INFO 2023-07-27 01:51:48,302 basehttp "GET /run-script HTTP/1.1" 200 893
+INFO 2023-07-27 01:51:50,702 basehttp "POST /run-script HTTP/1.1" 200 893
+INFO 2023-07-27 01:51:50,702 basehttp "POST /run-script HTTP/1.1" 200 893
+INFO 2023-07-27 01:55:32,336 autoreload /home/kiran/python/EasySipP_wsl_venv_2/EasySipP/kSipP/views.py changed, reloading.
+INFO 2023-07-27 01:55:32,336 autoreload /home/kiran/python/EasySipP_wsl_venv_2/EasySipP/kSipP/views.py changed, reloading.
+INFO 2023-07-27 01:55:33,822 autoreload Watching for file changes with StatReloader
+INFO 2023-07-27 01:55:33,822 autoreload Watching for file changes with StatReloader
+INFO 2023-07-27 01:55:37,278 autoreload Watching for file changes with StatReloader
+INFO 2023-07-27 01:55:37,278 autoreload Watching for file changes with StatReloader
+INFO 2023-07-27 01:55:41,871 basehttp "GET /run-script HTTP/1.1" 200 893
+INFO 2023-07-27 01:55:41,871 basehttp "GET /run-script HTTP/1.1" 200 893
+INFO 2023-07-27 01:55:44,117 basehttp "POST /run-script HTTP/1.1" 200 893
+INFO 2023-07-27 01:55:44,117 basehttp "POST /run-script HTTP/1.1" 200 893
+INFO 2023-07-27 01:56:03,037 autoreload /home/kiran/python/EasySipP_wsl_venv_2/EasySipP/kSipP/views.py changed, reloading.
+INFO 2023-07-27 01:56:03,037 autoreload /home/kiran/python/EasySipP_wsl_venv_2/EasySipP/kSipP/views.py changed, reloading.
+INFO 2023-07-27 01:56:04,446 autoreload Watching for file changes with StatReloader
+INFO 2023-07-27 01:56:04,446 autoreload Watching for file changes with StatReloader
+INFO 2023-07-27 01:56:08,264 basehttp "GET /run-script HTTP/1.1" 200 893
+INFO 2023-07-27 01:56:08,264 basehttp "GET /run-script HTTP/1.1" 200 893
+INFO 2023-07-27 01:56:09,974 basehttp "POST /run-script HTTP/1.1" 200 893
+INFO 2023-07-27 01:56:09,974 basehttp "POST /run-script HTTP/1.1" 200 893
+INFO 2023-07-27 01:56:57,610 autoreload Watching for file changes with StatReloader
+INFO 2023-07-27 01:56:57,610 autoreload Watching for file changes with StatReloader
+INFO 2023-07-27 01:57:10,897 autoreload Watching for file changes with StatReloader
+INFO 2023-07-27 01:57:10,897 autoreload Watching for file changes with StatReloader
+INFO 2023-07-27 01:57:20,872 basehttp "GET /run-script HTTP/1.1" 200 893
+INFO 2023-07-27 01:57:20,872 basehttp "GET /run-script HTTP/1.1" 200 893
+ERROR 2023-07-27 01:57:22,651 log Internal Server Error: /run-script
+Traceback (most recent call last):
+  File "/home/kiran/python/EasySipP_wsl_venv_2/EasySipP/venv/lib/python3.8/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/kiran/python/EasySipP_wsl_venv_2/EasySipP/venv/lib/python3.8/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/kiran/python/EasySipP_wsl_venv_2/EasySipP/kSipP/views.py", line 367, in run_script_view
+    while uacProc.poll() is None:
+UnboundLocalError: local variable 'uacProc' referenced before assignment
+ERROR 2023-07-27 01:57:22,651 log Internal Server Error: /run-script
+Traceback (most recent call last):
+  File "/home/kiran/python/EasySipP_wsl_venv_2/EasySipP/venv/lib/python3.8/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/kiran/python/EasySipP_wsl_venv_2/EasySipP/venv/lib/python3.8/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/kiran/python/EasySipP_wsl_venv_2/EasySipP/kSipP/views.py", line 367, in run_script_view
+    while uacProc.poll() is None:
+UnboundLocalError: local variable 'uacProc' referenced before assignment
+ERROR 2023-07-27 01:57:22,653 basehttp "POST /run-script HTTP/1.1" 500 67156
+ERROR 2023-07-27 01:57:22,653 basehttp "POST /run-script HTTP/1.1" 500 67156
+INFO 2023-07-27 01:57:41,789 autoreload /home/kiran/python/EasySipP_wsl_venv_2/EasySipP/kSipP/views.py changed, reloading.
+INFO 2023-07-27 01:57:41,789 autoreload /home/kiran/python/EasySipP_wsl_venv_2/EasySipP/kSipP/views.py changed, reloading.
+INFO 2023-07-27 01:57:43,219 autoreload Watching for file changes with StatReloader
+INFO 2023-07-27 01:57:43,219 autoreload Watching for file changes with StatReloader
+INFO 2023-07-27 01:57:47,542 autoreload Watching for file changes with StatReloader
+INFO 2023-07-27 01:57:47,542 autoreload Watching for file changes with StatReloader
+INFO 2023-07-27 01:57:55,367 basehttp "GET /run-script HTTP/1.1" 200 893
+INFO 2023-07-27 01:57:55,367 basehttp "GET /run-script HTTP/1.1" 200 893
+INFO 2023-07-27 01:57:57,112 basehttp "POST /run-script HTTP/1.1" 200 893
+INFO 2023-07-27 01:57:57,112 basehttp "POST /run-script HTTP/1.1" 200 893
+INFO 2023-07-27 02:02:06,593 autoreload /home/kiran/python/EasySipP_wsl_venv_2/EasySipP/kSipP/views.py changed, reloading.
+INFO 2023-07-27 02:02:06,593 autoreload /home/kiran/python/EasySipP_wsl_venv_2/EasySipP/kSipP/views.py changed, reloading.
+INFO 2023-07-27 02:02:08,151 autoreload Watching for file changes with StatReloader
+INFO 2023-07-27 02:02:08,151 autoreload Watching for file changes with StatReloader
+INFO 2023-07-27 02:02:54,162 autoreload /home/kiran/python/EasySipP_wsl_venv_2/EasySipP/kSipP/views.py changed, reloading.
+INFO 2023-07-27 02:02:54,162 autoreload /home/kiran/python/EasySipP_wsl_venv_2/EasySipP/kSipP/views.py changed, reloading.
+INFO 2023-07-27 02:02:55,768 autoreload Watching for file changes with StatReloader
+INFO 2023-07-27 02:02:55,768 autoreload Watching for file changes with StatReloader
+INFO 2023-07-27 02:03:13,220 autoreload Watching for file changes with StatReloader
+INFO 2023-07-27 02:03:13,220 autoreload Watching for file changes with StatReloader
+INFO 2023-07-27 02:03:19,408 basehttp "GET /run-script HTTP/1.1" 200 893
+INFO 2023-07-27 02:03:19,408 basehttp "GET /run-script HTTP/1.1" 200 893
+INFO 2023-07-27 02:03:21,300 basehttp "POST /run-script HTTP/1.1" 200 893
+INFO 2023-07-27 02:03:21,300 basehttp "POST /run-script HTTP/1.1" 200 893
+INFO 2023-07-27 02:11:45,943 autoreload Watching for file changes with StatReloader
+INFO 2023-07-27 02:11:45,943 autoreload Watching for file changes with StatReloader
+INFO 2023-07-27 02:11:51,669 basehttp "GET /run-script HTTP/1.1" 200 893
+INFO 2023-07-27 02:11:51,669 basehttp "GET /run-script HTTP/1.1" 200 893
+INFO 2023-07-27 02:11:53,670 basehttp "POST /run-script HTTP/1.1" 200 893
+INFO 2023-07-27 02:11:53,670 basehttp "POST /run-script HTTP/1.1" 200 893
+INFO 2023-07-27 02:14:09,477 autoreload Watching for file changes with StatReloader
+INFO 2023-07-27 02:14:09,477 autoreload Watching for file changes with StatReloader
+INFO 2023-07-27 02:14:10,875 basehttp "GET /run-script HTTP/1.1" 200 893
+INFO 2023-07-27 02:14:10,875 basehttp "GET /run-script HTTP/1.1" 200 893
+INFO 2023-07-27 02:14:14,587 basehttp "POST /run-script HTTP/1.1" 200 893
+INFO 2023-07-27 02:14:14,587 basehttp "POST /run-script HTTP/1.1" 200 893
+INFO 2023-07-27 02:14:44,981 basehttp "POST /run-script HTTP/1.1" 200 893
+INFO 2023-07-27 02:14:44,981 basehttp "POST /run-script HTTP/1.1" 200 893
+INFO 2023-07-27 02:21:04,817 autoreload Watching for file changes with StatReloader
+INFO 2023-07-27 02:21:04,817 autoreload Watching for file changes with StatReloader
+INFO 2023-07-27 02:21:06,910 basehttp "GET /run-script HTTP/1.1" 200 893
+INFO 2023-07-27 02:21:06,910 basehttp "GET /run-script HTTP/1.1" 200 893
+INFO 2023-07-27 02:21:09,907 basehttp "POST /run-script HTTP/1.1" 200 893
+INFO 2023-07-27 02:21:09,907 basehttp "POST /run-script HTTP/1.1" 200 893
+INFO 2023-07-27 02:21:11,114 basehttp "POST /run-script HTTP/1.1" 200 893
+INFO 2023-07-27 02:21:11,114 basehttp "POST /run-script HTTP/1.1" 200 893
+INFO 2023-07-27 02:21:43,782 autoreload /home/kiran/python/EasySipP_wsl_venv_2/EasySipP/kSipP/views.py changed, reloading.
+INFO 2023-07-27 02:21:43,782 autoreload /home/kiran/python/EasySipP_wsl_venv_2/EasySipP/kSipP/views.py changed, reloading.
+INFO 2023-07-27 02:21:45,136 autoreload Watching for file changes with StatReloader
+INFO 2023-07-27 02:21:45,136 autoreload Watching for file changes with StatReloader
+INFO 2023-07-27 02:21:52,652 autoreload /home/kiran/python/EasySipP_wsl_venv_2/EasySipP/kSipP/views.py changed, reloading.
+INFO 2023-07-27 02:21:52,652 autoreload /home/kiran/python/EasySipP_wsl_venv_2/EasySipP/kSipP/views.py changed, reloading.
+INFO 2023-07-27 02:21:54,052 autoreload Watching for file changes with StatReloader
+INFO 2023-07-27 02:21:54,052 autoreload Watching for file changes with StatReloader
+INFO 2023-07-27 02:21:57,768 basehttp "GET /run-script HTTP/1.1" 200 893
+INFO 2023-07-27 02:21:57,768 basehttp "GET /run-script HTTP/1.1" 200 893
+INFO 2023-07-27 02:21:59,203 basehttp "POST /run-script HTTP/1.1" 200 893
+INFO 2023-07-27 02:21:59,203 basehttp "POST /run-script HTTP/1.1" 200 893
+INFO 2023-07-27 02:22:02,111 basehttp "POST /run-script HTTP/1.1" 200 893
+INFO 2023-07-27 02:22:02,111 basehttp "POST /run-script HTTP/1.1" 200 893
+INFO 2023-07-27 02:22:56,422 autoreload /home/kiran/python/EasySipP_wsl_venv_2/EasySipP/kSipP/views.py changed, reloading.
+INFO 2023-07-27 02:22:56,422 autoreload /home/kiran/python/EasySipP_wsl_venv_2/EasySipP/kSipP/views.py changed, reloading.
+INFO 2023-07-27 02:22:57,825 autoreload Watching for file changes with StatReloader
+INFO 2023-07-27 02:22:57,825 autoreload Watching for file changes with StatReloader
+INFO 2023-07-27 02:23:04,292 basehttp "POST /run-script HTTP/1.1" 200 63
+INFO 2023-07-27 02:23:04,292 basehttp "POST /run-script HTTP/1.1" 200 63
+INFO 2023-07-27 02:24:37,752 basehttp "POST /run-script HTTP/1.1" 200 893
+INFO 2023-07-27 02:24:37,752 basehttp "POST /run-script HTTP/1.1" 200 893
+INFO 2023-07-27 02:32:02,522 autoreload /home/kiran/python/EasySipP_wsl_venv_2/EasySipP/kSipP/views.py changed, reloading.
+INFO 2023-07-27 02:32:02,522 autoreload /home/kiran/python/EasySipP_wsl_venv_2/EasySipP/kSipP/views.py changed, reloading.
+INFO 2023-07-27 02:32:03,891 autoreload Watching for file changes with StatReloader
+INFO 2023-07-27 02:32:03,891 autoreload Watching for file changes with StatReloader
+INFO 2023-07-27 02:32:09,967 basehttp "GET /run-script HTTP/1.1" 200 893
+INFO 2023-07-27 02:32:09,967 basehttp "GET /run-script HTTP/1.1" 200 893
+INFO 2023-07-27 02:32:11,780 basehttp "POST /run-script HTTP/1.1" 200 893
+INFO 2023-07-27 02:32:11,780 basehttp "POST /run-script HTTP/1.1" 200 893
+INFO 2023-07-27 02:32:13,772 basehttp "POST /run-script HTTP/1.1" 200 893
+INFO 2023-07-27 02:32:13,772 basehttp "POST /run-script HTTP/1.1" 200 893
+INFO 2023-07-27 02:33:19,920 autoreload Watching for file changes with StatReloader
+INFO 2023-07-27 02:33:19,920 autoreload Watching for file changes with StatReloader
+INFO 2023-07-27 02:33:24,277 basehttp "GET /run-script HTTP/1.1" 200 893
+INFO 2023-07-27 02:33:24,277 basehttp "GET /run-script HTTP/1.1" 200 893
+INFO 2023-07-27 02:33:25,892 basehttp "POST /run-script HTTP/1.1" 200 893
+INFO 2023-07-27 02:33:25,892 basehttp "POST /run-script HTTP/1.1" 200 893
+INFO 2023-07-27 02:33:56,734 autoreload Watching for file changes with StatReloader
+INFO 2023-07-27 02:33:56,734 autoreload Watching for file changes with StatReloader
+INFO 2023-07-27 02:36:39,558 autoreload /home/kiran/python/EasySipP_wsl_venv_2/EasySipP/kSipP/views.py changed, reloading.
+INFO 2023-07-27 02:36:39,558 autoreload /home/kiran/python/EasySipP_wsl_venv_2/EasySipP/kSipP/views.py changed, reloading.
+INFO 2023-07-27 02:36:40,970 autoreload Watching for file changes with StatReloader
+INFO 2023-07-27 02:36:40,970 autoreload Watching for file changes with StatReloader
+INFO 2023-07-27 02:36:43,171 basehttp "GET /run-script HTTP/1.1" 200 893
+INFO 2023-07-27 02:36:43,171 basehttp "GET /run-script HTTP/1.1" 200 893
+INFO 2023-07-27 02:36:44,858 basehttp "POST /run-script HTTP/1.1" 200 4547
+INFO 2023-07-27 02:36:44,858 basehttp "POST /run-script HTTP/1.1" 200 4547
+INFO 2023-07-27 02:39:49,247 autoreload /home/kiran/python/EasySipP_wsl_venv_2/EasySipP/kSipP/views.py changed, reloading.
+INFO 2023-07-27 02:39:49,247 autoreload /home/kiran/python/EasySipP_wsl_venv_2/EasySipP/kSipP/views.py changed, reloading.
+INFO 2023-07-27 02:39:50,702 autoreload Watching for file changes with StatReloader
+INFO 2023-07-27 02:39:50,702 autoreload Watching for file changes with StatReloader
+INFO 2023-07-27 02:39:54,750 basehttp "GET /run-script HTTP/1.1" 200 893
+INFO 2023-07-27 02:39:54,750 basehttp "GET /run-script HTTP/1.1" 200 893
+INFO 2023-07-27 02:39:56,280 basehttp "POST /run-script HTTP/1.1" 200 893
+INFO 2023-07-27 02:39:56,280 basehttp "POST /run-script HTTP/1.1" 200 893
+INFO 2023-07-27 02:40:08,423 autoreload /home/kiran/python/EasySipP_wsl_venv_2/EasySipP/kSipP/views.py changed, reloading.
+INFO 2023-07-27 02:40:08,423 autoreload /home/kiran/python/EasySipP_wsl_venv_2/EasySipP/kSipP/views.py changed, reloading.
+INFO 2023-07-27 02:40:09,981 autoreload Watching for file changes with StatReloader
+INFO 2023-07-27 02:40:09,981 autoreload Watching for file changes with StatReloader
+INFO 2023-07-27 02:40:14,581 basehttp "POST /run-script HTTP/1.1" 200 893
+INFO 2023-07-27 02:40:14,581 basehttp "POST /run-script HTTP/1.1" 200 893
+INFO 2023-07-27 02:44:06,034 autoreload /home/kiran/python/EasySipP_wsl_venv_2/EasySipP/kSipP/views.py changed, reloading.
+INFO 2023-07-27 02:44:06,034 autoreload /home/kiran/python/EasySipP_wsl_venv_2/EasySipP/kSipP/views.py changed, reloading.
+INFO 2023-07-27 02:44:07,599 autoreload Watching for file changes with StatReloader
+INFO 2023-07-27 02:44:07,599 autoreload Watching for file changes with StatReloader
+INFO 2023-07-27 02:49:43,987 autoreload Watching for file changes with StatReloader
+INFO 2023-07-27 02:49:43,987 autoreload Watching for file changes with StatReloader
+INFO 2023-07-27 02:49:48,934 basehttp "GET /run-script HTTP/1.1" 200 893
+INFO 2023-07-27 02:49:48,934 basehttp "GET /run-script HTTP/1.1" 200 893
+INFO 2023-07-27 02:49:51,460 basehttp "POST /run-script HTTP/1.1" 200 39
+INFO 2023-07-27 02:49:51,460 basehttp "POST /run-script HTTP/1.1" 200 39
+INFO 2023-07-27 02:50:07,634 basehttp "GET /run-script HTTP/1.1" 200 893
+INFO 2023-07-27 02:50:07,634 basehttp "GET /run-script HTTP/1.1" 200 893
+INFO 2023-07-27 02:50:29,095 autoreload /home/kiran/python/EasySipP_wsl_venv_2/EasySipP/kSipP/views.py changed, reloading.
+INFO 2023-07-27 02:50:29,095 autoreload /home/kiran/python/EasySipP_wsl_venv_2/EasySipP/kSipP/views.py changed, reloading.
+INFO 2023-07-27 02:50:30,633 autoreload Watching for file changes with StatReloader
+INFO 2023-07-27 02:50:30,633 autoreload Watching for file changes with StatReloader
+INFO 2023-07-27 02:50:34,138 basehttp "GET /run-script HTTP/1.1" 200 893
+INFO 2023-07-27 02:50:34,138 basehttp "GET /run-script HTTP/1.1" 200 893
+INFO 2023-07-27 02:50:36,033 basehttp "POST /run-script HTTP/1.1" 200 39
+INFO 2023-07-27 02:50:36,033 basehttp "POST /run-script HTTP/1.1" 200 39
+INFO 2023-07-27 02:51:03,884 autoreload Watching for file changes with StatReloader
+INFO 2023-07-27 02:51:03,884 autoreload Watching for file changes with StatReloader
+INFO 2023-07-27 02:51:07,152 basehttp "GET /run-script HTTP/1.1" 200 893
+INFO 2023-07-27 02:51:07,152 basehttp "GET /run-script HTTP/1.1" 200 893
+INFO 2023-07-27 02:51:08,843 basehttp "POST /run-script HTTP/1.1" 200 39
+INFO 2023-07-27 02:51:08,843 basehttp "POST /run-script HTTP/1.1" 200 39
+INFO 2023-07-27 02:51:36,796 autoreload /home/kiran/python/EasySipP_wsl_venv_2/EasySipP/kSipP/views.py changed, reloading.
+INFO 2023-07-27 02:51:36,796 autoreload /home/kiran/python/EasySipP_wsl_venv_2/EasySipP/kSipP/views.py changed, reloading.
+INFO 2023-07-27 02:51:40,170 autoreload Watching for file changes with StatReloader
+INFO 2023-07-27 02:51:40,170 autoreload Watching for file changes with StatReloader
+INFO 2023-07-27 02:51:41,619 basehttp "GET /run-script HTTP/1.1" 200 893
+INFO 2023-07-27 02:51:41,619 basehttp "GET /run-script HTTP/1.1" 200 893
+INFO 2023-07-27 02:51:43,176 basehttp "POST /run-script HTTP/1.1" 200 79
+INFO 2023-07-27 02:51:43,176 basehttp "POST /run-script HTTP/1.1" 200 79
+INFO 2023-07-27 02:53:17,193 autoreload /home/kiran/python/EasySipP_wsl_venv_2/EasySipP/kSipP/views.py changed, reloading.
+INFO 2023-07-27 02:53:17,193 autoreload /home/kiran/python/EasySipP_wsl_venv_2/EasySipP/kSipP/views.py changed, reloading.
+INFO 2023-07-27 02:53:18,551 autoreload Watching for file changes with StatReloader
+INFO 2023-07-27 02:53:18,551 autoreload Watching for file changes with StatReloader
+INFO 2023-07-27 02:53:26,000 autoreload /home/kiran/python/EasySipP_wsl_venv_2/EasySipP/kSipP/views.py changed, reloading.
+INFO 2023-07-27 02:53:26,000 autoreload /home/kiran/python/EasySipP_wsl_venv_2/EasySipP/kSipP/views.py changed, reloading.
+INFO 2023-07-27 02:53:27,342 autoreload Watching for file changes with StatReloader
+INFO 2023-07-27 02:53:27,342 autoreload Watching for file changes with StatReloader
+INFO 2023-07-27 02:53:38,444 basehttp "GET /run-script HTTP/1.1" 200 893
+INFO 2023-07-27 02:53:38,444 basehttp "GET /run-script HTTP/1.1" 200 893
+INFO 2023-07-27 02:53:40,413 basehttp "POST /run-script HTTP/1.1" 200 893
+INFO 2023-07-27 02:53:40,413 basehttp "POST /run-script HTTP/1.1" 200 893
+INFO 2023-07-27 02:55:10,105 autoreload Watching for file changes with StatReloader
+INFO 2023-07-27 02:55:10,105 autoreload Watching for file changes with StatReloader
+INFO 2023-07-27 02:55:15,855 basehttp "POST /run-script HTTP/1.1" 200 893
+INFO 2023-07-27 02:55:15,855 basehttp "POST /run-script HTTP/1.1" 200 893
+INFO 2023-07-27 02:55:50,926 autoreload Watching for file changes with StatReloader
+INFO 2023-07-27 02:55:50,926 autoreload Watching for file changes with StatReloader
+INFO 2023-07-27 02:56:01,074 basehttp "GET /run-script HTTP/1.1" 200 893
+INFO 2023-07-27 02:56:01,074 basehttp "GET /run-script HTTP/1.1" 200 893
+INFO 2023-07-27 02:56:02,602 basehttp "POST /run-script HTTP/1.1" 200 893
+INFO 2023-07-27 02:56:02,602 basehttp "POST /run-script HTTP/1.1" 200 893
+INFO 2023-07-27 03:02:20,940 autoreload Watching for file changes with StatReloader
+INFO 2023-07-27 03:02:20,940 autoreload Watching for file changes with StatReloader
+INFO 2023-07-27 03:02:43,633 autoreload /home/kiran/python/EasySipP_wsl_venv_2/EasySipP/kSipP/views.py changed, reloading.
+INFO 2023-07-27 03:02:43,633 autoreload /home/kiran/python/EasySipP_wsl_venv_2/EasySipP/kSipP/views.py changed, reloading.
+INFO 2023-07-27 03:02:45,153 autoreload Watching for file changes with StatReloader
+INFO 2023-07-27 03:02:45,153 autoreload Watching for file changes with StatReloader
+INFO 2023-07-27 03:04:09,021 autoreload Watching for file changes with StatReloader
+INFO 2023-07-27 03:04:09,021 autoreload Watching for file changes with StatReloader
+INFO 2023-07-27 03:05:50,082 autoreload Watching for file changes with StatReloader
+INFO 2023-07-27 03:05:50,082 autoreload Watching for file changes with StatReloader
+INFO 2023-07-27 03:07:15,047 autoreload Watching for file changes with StatReloader
+INFO 2023-07-27 03:07:15,047 autoreload Watching for file changes with StatReloader
+INFO 2023-07-27 03:24:20,737 autoreload Watching for file changes with StatReloader
+INFO 2023-07-27 03:24:20,737 autoreload Watching for file changes with StatReloader
+INFO 2023-07-27 03:25:17,752 autoreload Watching for file changes with StatReloader
+INFO 2023-07-27 03:25:17,752 autoreload Watching for file changes with StatReloader
+INFO 2023-07-27 03:27:04,067 autoreload Watching for file changes with StatReloader
+INFO 2023-07-27 03:27:04,067 autoreload Watching for file changes with StatReloader
+INFO 2023-07-27 03:58:13,871 autoreload Watching for file changes with StatReloader
+INFO 2023-07-27 03:58:13,871 autoreload Watching for file changes with StatReloader

@@ -7,6 +7,8 @@ from .forms import configForm, xmlForm, modifyHeaderForm, modifyHeaderFormNew, m
 import configparser
 import os
 import subprocess
+# import psutil
+
 
 from .scripts.showXmlFlow import showXmlFlowScript
 from .scripts.modifyHeader import modifyHeaderScript, getHeadersFromSipMsgs
@@ -344,37 +346,49 @@ def aceXmlEditor(request):
 
 def run_script_view(request):
 
-    sipp = str(settings.BASE_DIR / 'kSipP' / 'sipp' / 'sipp.exe')
-    uacXml = str(settings.BASE_DIR / 'kSipP' / 'xml' / f'{xml_data["selectUAC"]}')
-    uasXml = str(settings.BASE_DIR / 'kSipP' / 'xml' / f'{xml_data["selectUAS"]}')
-    remote=f"{config_data['remoteAddr']}:{config_data['remotePort']}"
-    uacSrc=f"-i {config_data['localAddr']} -p {config_data['srcPortUac']}"
-    uasSrc=f"-i {config_data['localAddr']} -p {config_data['srcPortUas']}"
+    # cwd = os.path.dirname(os.path.abspath(__file__))
+    # baseDir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+    # sipp = os.path.join(baseDir, 'kSipP', 'sipp', 'sipp')
+    sipp = str(settings.BASE_DIR / 'kSipP' / 'sipp' / 'sipp')
+    # uacXml = str(settings.BASE_DIR / 'kSipP' / 'xml' / f'{xml_data["selectUAC"]}')
+    # uasXml = str(settings.BASE_DIR / 'kSipP' / 'xml' / f'{xml_data["selectUAS"]}')
+    # remote=f"{config_data['remoteAddr']}:{config_data['remotePort']}"
+    # uacSrc=f"-i {config_data['localAddr']} -p {config_data['srcPortUac']}"
+    # uasSrc=f"-i {config_data['localAddr']} -p {config_data['srcPortUas']}"
 
-    print_uac_command = f"sipp -sf {xml_data['selectUAC']} {remote} {uacSrc} -m 1"
-    print_uas_command = f"sipp -sf {xml_data['selectUAS']} {remote} {uasSrc}"
+    # print_uac_command = f"sipp -sf {xml_data['selectUAC']} {remote} {uacSrc} -m 1"
+    # print_uas_command = f"sipp -sf {xml_data['selectUAS']} {remote} {uasSrc}"
 
     if request.method == 'POST':
         scriptName = request.POST.get('script')
 
         if scriptName == 'UAC':
             try:
-                uacCommand = f"{sipp} -sf {uacXml} {remote} {uacSrc} -m 1"
-                uacProc=subprocess.Popen(["start", "cmd.exe", "/K", uacCommand], shell=True,)
+                uacCommand = f"{sipp} -sn uac 1.1.1.1 -m 1"
+                uacProc=subprocess.Popen(uacCommand,shell=True)
+                sipp_pid = None
+                for process in psutil.process_iter(['pid', 'cmdline']):
+                    if process.info['cmdline'] and ' '.join(process.info['cmdline']) == uacCommand:
+                        sipp_pid = process.info['pid']
+                        break
+                return HttpResponse(f"shell pid = {uacProc.pid} and sipp pid = {sipp_pid} ")
+                
             except Exception as e:
                 print(f"Error: {e}")
             
-            while uacProc.poll() is None:
-                uacStatus=f"UAC script is running"
+            # while uacProc.poll() is None:
+            #     uacStatus=f"UAC script is running"
             
         if scriptName =='UAS':
+            env = os.environ.copy()
+            env["PATH"] += os.pathsep + sipp
             try:
-                uasCommand = f"{sipp} -sf {uasXml} {remote} {uasSrc}"
-                uasProc=subprocess.Popen(["start", "cmd.exe", "/K", uasCommand], shell=True)
+                uasCommand = f"{sipp} -sn uas"
+                uasProc=subprocess.Popen(uasCommand, shell=False)
             except Exception as e:
                 print(f"Error: {e}")
             
-            while uasProc.poll() is None:
-                uasStatus=f"UAS script is running"
+            # while uasProc.poll() is None:
+            #     uasStatus=f"UAS script is running"
 
     return render(request, 'run_script_template.html', locals())
