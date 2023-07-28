@@ -1,4 +1,5 @@
 from django.http import HttpResponse
+from django.http import JsonResponse
 from django.views.decorators.cache import never_cache
 from django.shortcuts import render, redirect
 from django.conf import settings
@@ -7,7 +8,10 @@ from .forms import configForm, xmlForm, modifyHeaderForm, modifyHeaderFormNew, m
 import configparser
 import os
 import subprocess
-# import psutil
+import psutil
+import signal
+import re
+import time
 
 
 from .scripts.showXmlFlow import showXmlFlowScript
@@ -346,9 +350,6 @@ def aceXmlEditor(request):
 
 def run_script_view(request):
 
-    # cwd = os.path.dirname(os.path.abspath(__file__))
-    # baseDir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-    # sipp = os.path.join(baseDir, 'kSipP', 'sipp', 'sipp')
     sipp = str(settings.BASE_DIR / 'kSipP' / 'sipp' / 'sipp')
     # uacXml = str(settings.BASE_DIR / 'kSipP' / 'xml' / f'{xml_data["selectUAC"]}')
     # uasXml = str(settings.BASE_DIR / 'kSipP' / 'xml' / f'{xml_data["selectUAS"]}')
@@ -366,29 +367,85 @@ def run_script_view(request):
             try:
                 uacCommand = f"{sipp} -sn uac 1.1.1.1 -m 1"
                 uacProc=subprocess.Popen(uacCommand,shell=True)
-                sipp_pid = None
-                for process in psutil.process_iter(['pid', 'cmdline']):
-                    if process.info['cmdline'] and ' '.join(process.info['cmdline']) == uacCommand:
-                        sipp_pid = process.info['pid']
-                        break
-                return HttpResponse(f"shell pid = {uacProc.pid} and sipp pid = {sipp_pid} ")
                 
             except Exception as e:
                 print(f"Error: {e}")
             
-            # while uacProc.poll() is None:
-            #     uacStatus=f"UAC script is running"
-            
+
         if scriptName =='UAS':
-            env = os.environ.copy()
-            env["PATH"] += os.pathsep + sipp
             try:
                 uasCommand = f"{sipp} -sn uas"
-                uasProc=subprocess.Popen(uasCommand, shell=False)
+                uasProc=subprocess.Popen(uasCommand, shell=True)
             except Exception as e:
                 print(f"Error: {e}")
             
-            # while uasProc.poll() is None:
-            #     uasStatus=f"UAS script is running"
+
+
+    def get_sipp_processes():
+        sipp_processes = []
+        sipp_pattern = r"sipp"  # Regular expression to match "sipp" in the command-line
+        shell_name = r"(bash|sh|cmd|powershell)"  # Regular expression to match shell names
+
+        for process in psutil.process_iter(['pid', 'cmdline']):
+            if process.info['cmdline']:
+                cmdline = ' '.join(process.info['cmdline'])
+                if re.search(sipp_pattern, cmdline) and not re.search(shell_name, cmdline):
+                    global script_name
+                    script_name = os.path.basename(process.info['cmdline'][0])
+                    arguments = ' '.join(os.path.basename(arg) if os.path.isabs(arg) else arg for arg in process.info['cmdline'][1:])
+
+                    sipp_processes.append({
+                        'pid': process.info['pid'],
+                        'command_line': f"{script_name} {arguments}"
+                    })
+
+
+        return sipp_processes
+
+
+
+    if request.method == 'POST' and 'send_signal' in request.POST:
+        send_signal = request.POST.get('send_signal')
+        # Handle the POST request for killing the process here
+        pid_to_kill = request.POST.get('pid_to_kill')
+        process = psutil.Process(int(pid_to_kill))
+        if send_signal == 'Kill':
+            try:
+                process.terminate()  # You can also use process.kill() for a more forceful termination
+            except psutil.NoSuchProcess:
+                pass  # The process with the given PID doesn't exist or already terminated
+        
+        elif send_signal == 'CheckOutput':
+            try:
+                os.kill(process.pid, signal.SIGUSR2)
+                uac_uas_arg = None
+                for arg in process.cmdline()[1:]:
+                    if arg.startswith('uac') or arg.startswith('uas'):
+                        uac_uas_arg = arg
+                        break
+                log_name = f"{uac_uas_arg}_{process.pid}_screen.log"
+                return redirect('display_sipp_screen', log_name=log_name)
+
+            except (psutil.NoSuchProcess, ProcessLookupError):
+                pass  # The process with the given PID doesn't exist or already terminated, or the signal couldn't be sent
+
+    sipp_processes = get_sipp_processes()
 
     return render(request, 'run_script_template.html', locals())
+
+
+
+def read_sipp_screen(file_path, num_lines):
+    with open(file_path, 'r') as file:
+        lines = file.readlines()
+    return lines[-num_lines:]
+
+
+def display_sipp_screen(request, log_name):
+    
+    file_path = os.path.join(settings.BASE_DIR, log_name)
+    num_lines = 50
+    lines = read_sipp_screen(file_path, num_lines)
+    content = ''.join(lines)
+    return render(request, 'sipp_log.html', {'content': content})
+

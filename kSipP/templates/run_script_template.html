@@ -6,26 +6,46 @@
     <title>Run Scripts</title>
 </head>
 <body>
-    <h1>Run Scripts</h1>
-    <br/>
+    <h3>Run Scripts</h3>
     UAC Command: <b> {{ print_uac_command }}</b>
-    {{ uacStatus }}
     <br />
     UAS Command: <b> {{ print_uas_command }} </b>
-    {{ uasStatus }}
     <br /><br />
 
-    <form method="post" action="{% url 'run-script' %}">
+    <form method="post" action="{% url 'run-script' %}" style="float: left; margin-right: 50px;">
         {% csrf_token %}
         <input type="hidden" name="script" value="UAS">
         <input type="submit" value="Run UAS">
     </form>
 
-    <form method="post" action="{% url 'run-script' %}">
+    <form method="post" action="{% url 'run-script' %}" style="float: left; margin-right: 50px;">
         {% csrf_token %}
         <input type="hidden" name="script" value="UAC">
         <input type="submit" value="Run UAC">
     </form>
+
+    <span>shell pid = {{uacProc.pid}} and sipp pid = {{sipp_pid_orig}} 
+    </span>
+
+    
+    <h3>Running SIPp Processes:</h3>
+    {% if sipp_processes %}
+        <ul>
+            {% for process in sipp_processes %}
+                <li>
+                    PID: {{ process.pid }} : {{ process.command_line }}
+                    <form method="post" action="">
+                        {% csrf_token %}
+                        <input type="hidden" name="pid_to_kill" value="{{ process.pid }}">
+                        <input type="submit" name="send_signal" value="Kill">
+                        <input type ="submit" name="send_signal" value="CheckOutput">
+                    </form>
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>No SIPp processes currently running.</p>
+    {% endif %}
 
     <!-- Add more forms for other scripts as needed -->
 
