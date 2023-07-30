@@ -346,13 +346,40 @@ def aceXmlEditor(request):
 
 
 
+############# function to get running Sipp Process
+
+def get_sipp_processes():
+    sipp_processes = []
+    sipp_pattern = r"sipp"  # Regular expression to match "sipp" in the command-line
+    shell_name = r"(bash|sh|cmd|powershell)"  # Regular expression to match shell names
+
+    for process in psutil.process_iter(['pid', 'cmdline']):
+        if process.info['cmdline']:
+            cmdline = ' '.join(process.info['cmdline'])
+            if re.search(sipp_pattern, cmdline) and not re.search(shell_name, cmdline):
+                sipp = os.path.basename(process.info['cmdline'][0])
+                arguments = ' '.join(os.path.basename(arg) if os.path.isabs(arg) else arg for arg in process.info['cmdline'][1:])
+                uac_uas_arg =''.join(os.path.basename(process.info['cmdline'][2]))
+
+                sipp_processes.append({
+                    'pid': process.info['pid'],
+                    'command_line': f"{sipp} {arguments}",
+                    'script_name' : f"{uac_uas_arg}"
+                })
+
+    return sipp_processes
+
+
+
+
+
 ########################## Run SipP Scripts ##########################
 
 def run_script_view(request):
 
     sipp = str(settings.BASE_DIR / 'kSipP' / 'sipp' / 'sipp')
-    # uacXml = str(settings.BASE_DIR / 'kSipP' / 'xml' / f'{xml_data["selectUAC"]}')
-    # uasXml = str(settings.BASE_DIR / 'kSipP' / 'xml' / f'{xml_data["selectUAS"]}')
+    uacXml = str(settings.BASE_DIR / 'kSipP' / 'xml' / f'{xml_data["selectUAC"]}')
+    uasXml = str(settings.BASE_DIR / 'kSipP' / 'xml' / f'{xml_data["selectUAS"]}')
     # remote=f"{config_data['remoteAddr']}:{config_data['remotePort']}"
     # uacSrc=f"-i {config_data['localAddr']} -p {config_data['srcPortUac']}"
     # uasSrc=f"-i {config_data['localAddr']} -p {config_data['srcPortUas']}"
@@ -365,69 +392,50 @@ def run_script_view(request):
 
         if scriptName == 'UAC':
             try:
-                uacCommand = f"{sipp} -sn uac 1.1.1.1 -m 1"
+                uacCommand = f"{sipp} -sf {uacXml} 10.122.24.236:5060 -i 172.23.219.81 -p 6061 -m 1 -trace_screen"
                 uacProc=subprocess.Popen(uacCommand,shell=True)
-                
+                time.sleep(0.2)
+
             except Exception as e:
                 print(f"Error: {e}")
             
-
         if scriptName =='UAS':
             try:
-                uasCommand = f"{sipp} -sn uas"
+                uasCommand = f"{sipp} -sf {uasXml} -i 172.23.219.81 -p 6062 -t tn"
                 uasProc=subprocess.Popen(uasCommand, shell=True)
+                time.sleep(0.2)
+
             except Exception as e:
-                print(f"Error: {e}")
-            
-
-
-    def get_sipp_processes():
-        sipp_processes = []
-        sipp_pattern = r"sipp"  # Regular expression to match "sipp" in the command-line
-        shell_name = r"(bash|sh|cmd|powershell)"  # Regular expression to match shell names
-
-        for process in psutil.process_iter(['pid', 'cmdline']):
-            if process.info['cmdline']:
-                cmdline = ' '.join(process.info['cmdline'])
-                if re.search(sipp_pattern, cmdline) and not re.search(shell_name, cmdline):
-                    global script_name
-                    script_name = os.path.basename(process.info['cmdline'][0])
-                    arguments = ' '.join(os.path.basename(arg) if os.path.isabs(arg) else arg for arg in process.info['cmdline'][1:])
-
-                    sipp_processes.append({
-                        'pid': process.info['pid'],
-                        'command_line': f"{script_name} {arguments}"
-                    })
-
-
-        return sipp_processes
-
-
+                print(f"Error: {e}")            
 
     if request.method == 'POST' and 'send_signal' in request.POST:
         send_signal = request.POST.get('send_signal')
         # Handle the POST request for killing the process here
         pid_to_kill = request.POST.get('pid_to_kill')
-        process = psutil.Process(int(pid_to_kill))
+        script_name = request.POST.get('script_name')
+
+        # uac_uas_arg = None
+        # if os.path.isabs(process.cmdline()[2]):
+        #     uac_uas_arg=''.join(os.path.basename(process.cmdline()[2]))
+
+        xml_wo_ext = script_name.rsplit(".", 1)[0]
+        log_name = f"{xml_wo_ext}_{pid_to_kill}_screen.log"
+
         if send_signal == 'Kill':
             try:
+                process = psutil.Process(int(pid_to_kill))
                 process.terminate()  # You can also use process.kill() for a more forceful termination
             except psutil.NoSuchProcess:
                 pass  # The process with the given PID doesn't exist or already terminated
         
         elif send_signal == 'CheckOutput':
             try:
+                process = psutil.Process(int(pid_to_kill))
                 os.kill(process.pid, signal.SIGUSR2)
-                uac_uas_arg = None
-                for arg in process.cmdline()[1:]:
-                    if arg.startswith('uac') or arg.startswith('uas'):
-                        uac_uas_arg = arg
-                        break
-                log_name = f"{uac_uas_arg}_{process.pid}_screen.log"
-                return redirect('display_sipp_screen', log_name=log_name)
+                return redirect('display_sipp_screen', log_name=log_name, pid=process.pid)
 
             except (psutil.NoSuchProcess, ProcessLookupError):
-                pass  # The process with the given PID doesn't exist or already terminated, or the signal couldn't be sent
+                return redirect('display_sipp_screen', log_name=log_name, pid=pid_to_kill)
 
     sipp_processes = get_sipp_processes()
 
@@ -435,17 +443,56 @@ def run_script_view(request):
 
 
 
-def read_sipp_screen(file_path, num_lines):
+
+################### Show Sipp Screen ###############
+
+def read_sipp_screen(file_path):
     with open(file_path, 'r') as file:
         lines = file.readlines()
-    return lines[-num_lines:]
+    return lines
 
 
-def display_sipp_screen(request, log_name):
-    
+def display_sipp_screen(request, log_name, pid):
+    sipp_processes = get_sipp_processes()
+    # for thisprocess in sipp_processes:
+    #     if int(thisprocess['pid']) == pid:
+    #         this_process = thisprocess
+    #         break
     file_path = os.path.join(settings.BASE_DIR, log_name)
-    num_lines = 50
-    lines = read_sipp_screen(file_path, num_lines)
+    lines = read_sipp_screen(file_path)
     content = ''.join(lines)
-    return render(request, 'sipp_log.html', {'content': content})
+    context = {
+        'content': content, 
+        'sipp_processes':sipp_processes,
+        'log_name':log_name,
+        'pid':pid,
+        }
+
+    if request.method == 'POST' and 'send_signal' in request.POST:
+        send_signal = request.POST.get('send_signal')
+        # Handle the POST request for killing the process here
+        pid_to_kill = request.POST.get('pid_to_kill')        
+        if send_signal == 'Kill':
+            process = psutil.Process(int(pid_to_kill))
+            try:
+                process.terminate()  # You can also use process.kill() for a more forceful termination
+            except psutil.NoSuchProcess:
+                pass  # The process with the given PID doesn't exist or already terminated
+        
+        elif send_signal == 'CheckOutput':
+            try:
+                os.kill(pid, signal.SIGUSR2)
+                time.sleep(0.2)
+                lines = read_sipp_screen(file_path)
+                content = ''.join(lines)
+                context['content'] = content
+                return render(request, 'sipp_log.html', context)
+            except (psutil.NoSuchProcess, ProcessLookupError):
+                if file_path:
+                    lines = read_sipp_screen(file_path)
+                    content = ''.join(lines)
+    
+
+
+    return render(request, 'sipp_log.html', context)
 
