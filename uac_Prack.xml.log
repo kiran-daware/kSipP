@@ -1,0 +1,46 @@
+Resolving remote host '10.122.24.236'... Done.
+------------------------------ Scenario Screen -------- [1-9]: Change Screen --
+  Call rate (length)   Port   Total-time  Total-calls  Remote-host
+  10.0(0 ms)/1.000s   6061       1.70 s            1  10.122.24.236:5060(UDP)
+
+  Call limit 1 hit, 0.0 s period          0 ms scheduler resolution            
+  0 calls (limit 30)                      Peak was 1 calls, after 0 s
+  0 Running, 3 Paused, 8 Woken up
+  0 dead call msg (discarded)             0 out-of-call msg (discarded)
+  0 open sockets                          0/0/0 UDP errors (send/recv/cong)
+  0 open sockets                          0/0/0 UDP errors (send/recv/cong)
+
+                                 Messages  Retrans   Timeout   Unexpected-Msg
+0 :      INVITE ---------->         1         0         0                      
+1 :         100 <----------         1         0         0         0            
+2 :         180 <----------         1         0         0         0            
+3 :       PRACK ---------->         1         0         0                      
+4 :         200 <----------  E-RTD1 1         0         0         0            
+5 :         200 <----------  E-RTD1 1         0         0         0            
+6 :         ACK ---------->         1         0                                
+7 :       Pause [    400ms]         1                             0        
+8 :         BYE ---------->         1         0         0                      
+9 :         200 <----------         1         0         0         0            
+
+------------------------------ Test Terminated --------------------------------
+----------------------------- Statistics Screen ------- [1-9]: Change Screen --
+  Start Time             | 2023-07-30	15:24:31.193912	1690730671.193912         
+  Last Reset Time        | 2023-07-30	15:24:32.910219	1690730672.910219         
+  Current Time           | 2023-07-30	15:24:32.910547	1690730672.910547         
+-------------------------+---------------------------+--------------------------
+  Counter Name           | Periodic value            | Cumulative value
+-------------------------+---------------------------+--------------------------
+  Elapsed Time           | 00:00:00:000000           | 00:00:00:000000          
+  Call Rate              |    0.000 cps              |    0.583 cps             
+-------------------------+---------------------------+--------------------------
+  Incoming calls created |        0                  |        0                 
+  Outgoing calls created |        0                  |        1                 
+  Total Calls created    |                           |        1                 
+  Current Calls          |        0                  |                          
+-------------------------+---------------------------+--------------------------
+  Successful call        |        0                  |        1                 
+  Failed call            |        0                  |        0                 
+-------------------------+---------------------------+--------------------------
+  Response Time 1        | 00:00:00:000000           | 00:00:00:000000          
+  Call Length            | 00:00:00:000000           | 00:00:00:000000          
+------------------------------ Test Terminated --------------------------------

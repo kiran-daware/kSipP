@@ -4,7 +4,7 @@ from django.views.decorators.cache import never_cache
 from django.shortcuts import render, redirect
 from django.conf import settings
 from django.contrib.sessions.models import Session
-from .forms import configForm, xmlForm, modifyHeaderForm, modifyHeaderFormNew, moreSippOptionsForm, modifySelectedHeaderForSipMsgs
+from .forms import configForm, xmlForm, modifyHeaderForm, moreSippOptionsForm, modifySelectedHeaderForSipMsgs
 import configparser
 import os
 import subprocess
@@ -12,7 +12,6 @@ import psutil
 import signal
 import re
 import time
-
 
 from .scripts.showXmlFlow import showXmlFlowScript
 from .scripts.modifyHeader import modifyHeaderScript, getHeadersFromSipMsgs
@@ -169,74 +168,91 @@ def index(request):
 ######################## Modify XML funtion calls ###############################################
 
 def modifyXml(request):
-    if request.method == 'POST':
-
-        if 'modifyXml' not in request.session:
-            request.session['modifyXml'] = None
-
-        modifyXml = request.session['modifyXml']
-
-        if 'selectXml' in request.POST:
-            selectXml = request.POST['selectXml']
-            modifyXmlForm = xmlForm(request.POST)
-            if modifyXmlForm.is_valid():
-                if selectXml == 'modifyUAC':
-                    modifyXml = modifyXmlForm.cleaned_data['selectUAC']
-                elif selectXml == 'modifyUAS':
-                    modifyXml = modifyXmlForm.cleaned_data['selectUAS']
-
-            request.session['modifyXml'] = modifyXml #store var in session            
-            modifyHeaderFormData = modifyHeaderForm() #load modify header form
-
-
-            # modifyHeaderFormDataNew = modifyHeaderFormNew()
-
-
-        # if modifyXml is not None:
-        #     if 'modifyXmlSubmit' in request.POST:
-        #         modifyXmlSubmit = request.POST['modifyXmlSubmit']
-        #         modifyHeaderFormData = modifyHeaderForm(request.POST)
-        #         if modifyXmlSubmit == 'newHeader':
-        #             if modifyHeaderFormData.is_valid():
-        #                 selectedHeader = modifyHeaderFormData.cleaned_data['whichHeader']
-        #                 newHeader = modifyHeaderFormData.cleaned_data['modifyHeader']
-        #                 modifyHeaderScript(modifyXml, selectedHeader, newHeader)
-
-
-
-        if modifyXml is not None:
-            if 'modifyXmlSubmit' in request.POST:
-                modifyXmlSubmit = request.POST['modifyXmlSubmit']
-                if modifyXmlSubmit == 'headerToModify':
-                    modifyHeaderFormData = modifyHeaderForm(request.POST)
-                    if modifyHeaderFormData.is_valid():
-                        selectedHeader = modifyHeaderFormData.cleaned_data['whichHeader']
-                        headersBySipMessage = getHeadersFromSipMsgs(modifyXml, selectedHeader)
-                        modifySelectedHeaderForSipMsgsForm = modifySelectedHeaderForSipMsgs(headersBySipMessage)
-
-                        
-
-
-
-
-
-
-                        
-                if modifyXmlSubmit == 'doneModify':
-                    request.session['modifyXml'] = None
-
-                if modifyXmlSubmit == 'xmlEditor':
-
-                    modXmlPath = os.path.join(settings.BASE_DIR, 'kSipP', 'xml', modifyXml)
-                    newModXmlPath = os.path.join(settings.BASE_DIR, 'kSipP', 'xml', 'uas_kiran.xml')
-
-                    with open(modXmlPath, 'r') as file:
-                        xml_content = file.read()
-                    
-                    return render(request, 'xml_editor.html', {'xml_content':xml_content})
-
-
     modifyXmlForm = xmlForm(initial=xml_data)
+
+    if 'modifyXml' not in request.session:
+        request.session['modifyXml'] = None
+    modifyXml = request.session['modifyXml']
+
+    if request.method == 'POST' and 'selectXml' in request.POST:
+        selectXml = request.POST['selectXml']
+        modifyXmlForm = xmlForm(request.POST)
+        if modifyXmlForm.is_valid():
+            if selectXml == 'modifyUAC':
+                modifyXml = modifyXmlForm.cleaned_data['selectUAC']
+            elif selectXml == 'modifyUAS':
+                modifyXml = modifyXmlForm.cleaned_data['selectUAS']
+
+        request.session['modifyXml'] = modifyXml #store var in session            
+        modifyHeaderFormData = modifyHeaderForm() #load modify header form after selecting xml file
+
+    if modifyXml is not None:
+        if request.method == 'POST' and 'modifyXmlSubmit' in request.POST:
+            modifyXmlSubmit = request.POST['modifyXmlSubmit']
+            if modifyXmlSubmit == 'headerToModify':
+                modifyHeaderFormData = modifyHeaderForm(request.POST)
+                if modifyHeaderFormData.is_valid():
+                    selectedHeader = modifyHeaderFormData.cleaned_data['whichHeader']
+                    headersBySipMessage = getHeadersFromSipMsgs(modifyXml, selectedHeader)
+                    request.session['headersBySipMessage']=headersBySipMessage
+                    request.session['selectedHeader']=selectedHeader
+                    modifySelectedHeaderForSipMsgsForm = modifySelectedHeaderForSipMsgs(hbsm=headersBySipMessage)
+                    return render(request, 'modify_xml.html', locals())
+                
+
+            if modifyXmlSubmit == 'doneModify':
+                request.session['modifyXml'] = None
+                modifyXml = None
+                return render(request, 'modify_xml.html', locals())
+
+            if modifyXmlSubmit == 'xmlEditor':
+
+                modXmlPath = os.path.join(settings.BASE_DIR, 'kSipP', 'xml', modifyXml)
+                # newModXmlPath = os.path.join(settings.BASE_DIR, 'kSipP', 'xml', 'uas_kiran.xml')
+                with open(modXmlPath, 'r') as file:
+                    xml_content = file.read()
+                
+                return render(request, 'xml_editor.html', {'xml_content':xml_content, 'modifyXml':modifyXml})
+
+                    
+        if request.method == 'POST' and 'modifiedHeaderDone' in request.POST:
+            headersBySipMessage = request.session['headersBySipMessage']
+            selectedHeader = request.session['selectedHeader']
+            modifySelectedHeaderForSipMsgsForm = modifySelectedHeaderForSipMsgs(request.POST, hbsm=headersBySipMessage)
+            if modifySelectedHeaderForSipMsgsForm.is_valid():
+                modified_headers = {}
+
+                # delete if already a file exists with xml_name_modified.xml to avoid conflicts after editing
+                modXmlPath = os.path.join(settings.BASE_DIR, 'kSipP', 'xml', f'{modifyXml.rsplit(".", 1)[0]}_modified.xml')
+                if os.path.exists(modXmlPath):
+                    try:
+                        os.remove(modXmlPath)
+                    except:
+                        pass
+
+                for sipMessage, header_value in modifySelectedHeaderForSipMsgsForm.cleaned_data.items():
+                    modified_headers[sipMessage] = header_value
+                    modifyHeaderScript(modifyXml, sipMessage, selectedHeader, header_value)
+                    # update session with new modified xml file name (statically defined in modifyHeader.py)
+                    request.session['modifyXml'] = f'{modifyXml.rsplit(".", 1)[0]}_modified.xml'
+
+
+                    
+            # if modifyXmlSubmit == 'doneModify':
+            #     request.session['modifyXml'] = None
+
+            # if modifyXmlSubmit == 'xmlEditor':
+
+            #     modXmlPath = os.path.join(settings.BASE_DIR, 'kSipP', 'xml', modifyXml)
+            #     newModXmlPath = os.path.join(settings.BASE_DIR, 'kSipP', 'xml', 'uas_kiran.xml')
+
+            #     with open(modXmlPath, 'r') as file:
+            #         xml_content = file.read()
+                
+            #     return render(request, 'xml_editor.html', {'xml_content':xml_content})
+
+
+    
     return render(request, 'modify_xml.html', locals())
 
 
@@ -372,7 +388,6 @@ def get_sipp_processes():
 
 
 
-
 ########################## Run SipP Scripts ##########################
 
 def run_script_view(request):
@@ -380,20 +395,27 @@ def run_script_view(request):
     sipp = str(settings.BASE_DIR / 'kSipP' / 'sipp' / 'sipp')
     uacXml = str(settings.BASE_DIR / 'kSipP' / 'xml' / f'{xml_data["selectUAC"]}')
     uasXml = str(settings.BASE_DIR / 'kSipP' / 'xml' / f'{xml_data["selectUAS"]}')
-    # remote=f"{config_data['remoteAddr']}:{config_data['remotePort']}"
-    # uacSrc=f"-i {config_data['localAddr']} -p {config_data['srcPortUac']}"
-    # uasSrc=f"-i {config_data['localAddr']} -p {config_data['srcPortUas']}"
+    remote=f"{config_data['remoteAddr']}:{config_data['remotePort']}"
+    uacSrc=f"-i {config_data['localAddr']} -p {config_data['srcPortUac']}"
+    uasSrc=f"-i {config_data['localAddr']} -p {config_data['srcPortUas']}"
 
-    # print_uac_command = f"sipp -sf {xml_data['selectUAC']} {remote} {uacSrc} -m 1"
-    # print_uas_command = f"sipp -sf {xml_data['selectUAS']} {remote} {uasSrc}"
+    print_uac_command = f"sipp -sf {xml_data['selectUAC']} {remote} {uacSrc} -m 1"
+    print_uas_command = f"sipp -sf {xml_data['selectUAS']} {remote} {uasSrc}"
 
     if request.method == 'POST':
-        scriptName = request.POST.get('script')
 
+        def run_sipp_in_background(command, output_file):
+            with open(output_file, 'w') as f:
+                process = subprocess.Popen(command, stdout=f, stderr=subprocess.STDOUT,shell=True, text=True)
+            return process
+
+        scriptName = request.POST.get('script')
         if scriptName == 'UAC':
             try:
-                uacCommand = f"{sipp} -sf {uacXml} 10.122.24.236:5060 -i 172.23.219.81 -p 6061 -m 1 -trace_screen"
-                uacProc=subprocess.Popen(uacCommand,shell=True)
+                uacCommand = f"{sipp} -sf {uacXml} {remote} {uacSrc} -m 1"
+                outputFile = f'{xml_data["selectUAC"]}.log'
+                uacProc = run_sipp_in_background(uacCommand, outputFile)
+                # uacProc=subprocess.Popen(uacCommand,shell=True)
                 time.sleep(0.2)
 
             except Exception as e:
@@ -401,8 +423,9 @@ def run_script_view(request):
             
         if scriptName =='UAS':
             try:
-                uasCommand = f"{sipp} -sf {uasXml} -i 172.23.219.81 -p 6062 -t tn"
-                uasProc=subprocess.Popen(uasCommand, shell=True)
+                uasCommand = f"{sipp} -sf {uasXml} {remote} {uasSrc} -t t1"
+                outputFile = f'{xml_data["selectUAS"]}.log'
+                uasProc=run_sipp_in_background(uasCommand, outputFile)
                 time.sleep(0.2)
 
             except Exception as e:
@@ -414,12 +437,7 @@ def run_script_view(request):
         pid_to_kill = request.POST.get('pid_to_kill')
         script_name = request.POST.get('script_name')
 
-        # uac_uas_arg = None
-        # if os.path.isabs(process.cmdline()[2]):
-        #     uac_uas_arg=''.join(os.path.basename(process.cmdline()[2]))
-
         xml_wo_ext = script_name.rsplit(".", 1)[0]
-        log_name = f"{xml_wo_ext}_{pid_to_kill}_screen.log"
 
         if send_signal == 'Kill':
             try:
@@ -432,10 +450,10 @@ def run_script_view(request):
             try:
                 process = psutil.Process(int(pid_to_kill))
                 os.kill(process.pid, signal.SIGUSR2)
-                return redirect('display_sipp_screen', log_name=log_name, pid=process.pid)
+                return redirect('display_sipp_screen', xml=xml_wo_ext, pid=process.pid)
 
             except (psutil.NoSuchProcess, ProcessLookupError):
-                return redirect('display_sipp_screen', log_name=log_name, pid=pid_to_kill)
+                return redirect('display_sipp_screen', xml=xml_wo_ext, pid=pid_to_kill)
 
     sipp_processes = get_sipp_processes()
 
@@ -452,20 +470,31 @@ def read_sipp_screen(file_path):
     return lines
 
 
-def display_sipp_screen(request, log_name, pid):
+def display_sipp_screen(request, xml, pid):
     sipp_processes = get_sipp_processes()
-    # for thisprocess in sipp_processes:
-    #     if int(thisprocess['pid']) == pid:
-    #         this_process = thisprocess
-    #         break
-    file_path = os.path.join(settings.BASE_DIR, log_name)
+    log_name = f"{xml}_{pid}_screen.log"
+    log1 = os.path.join(settings.BASE_DIR, log_name)
+    log2 = os.path.join(settings.BASE_DIR, f'{xml}.xml.log')
+
+    if psutil.pid_exists(pid) & os.path.isfile(log1):
+        file_path=log1
+    else:
+        file_path=log2
+        try:
+            os.remove(log1)
+        except:
+            pass
+
+    # file_path = log1 if os.path.isfile(log1) else log2
+
     lines = read_sipp_screen(file_path)
     content = ''.join(lines)
     context = {
         'content': content, 
         'sipp_processes':sipp_processes,
-        'log_name':log_name,
+        'xml':xml,
         'pid':pid,
+        'file_path':file_path,
         }
 
     if request.method == 'POST' and 'send_signal' in request.POST:
@@ -475,7 +504,7 @@ def display_sipp_screen(request, log_name, pid):
         if send_signal == 'Kill':
             process = psutil.Process(int(pid_to_kill))
             try:
-                process.terminate()  # You can also use process.kill() for a more forceful termination
+                process.terminate()  # use process.kill() for a more forceful termination
             except psutil.NoSuchProcess:
                 pass  # The process with the given PID doesn't exist or already terminated
         
@@ -483,16 +512,17 @@ def display_sipp_screen(request, log_name, pid):
             try:
                 os.kill(pid, signal.SIGUSR2)
                 time.sleep(0.2)
+
                 lines = read_sipp_screen(file_path)
                 content = ''.join(lines)
                 context['content'] = content
                 return render(request, 'sipp_log.html', context)
             except (psutil.NoSuchProcess, ProcessLookupError):
+                file_path = os.path.join(settings.BASE_DIR, f'{xml}.xml.log')
                 if file_path:
                     lines = read_sipp_screen(file_path)
                     content = ''.join(lines)
     
-
 
     return render(request, 'sipp_log.html', context)
 

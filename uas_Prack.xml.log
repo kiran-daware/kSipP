@@ -1,0 +1,54 @@
+Resolving remote host '10.122.24.236'... Done.
+------------------------------ Scenario Screen -------- [1-9]: Change Screen --
+  Port   Total-time  Total-calls  Transport
+  6062      44.25 s            0  TCP
+
+  0 new calls during 0.830 s period       1 ms scheduler resolution            
+  0 calls                                 Peak was 0 calls, after 0 s
+  0 Running, 2 Paused, 10 Woken up
+  0 dead call msg (discarded)           
+  3 open sockets                          0/0/0 TCP errors (send/recv/cong)
+  0 Total RTP pckts sent                  0.000 last period RTP rate (kB/s)
+
+                                 Messages  Retrans   Timeout   Unexpected-Msg
+0 :  ----------> INVITE             0         0         0         0            
+
+1 :  <---------- 100                0         0                                
+2 :  <---------- 180                0         0                                
+3 :  ----------> PRACK              0         0         0         0            
+
+4 :  <---------- 200                0         0                                
+5 :  <---------- 200                0         0                                
+6 :  ----------> ACK         E-RTD1 0         0         0         0            
+
+7 :  ----------> INVITE             0         0         0         0            
+
+8 :  <---------- 200                0         0                                
+9 :  ----------> ACK         E-RTD1 0         0         0         0            
+
+10:  ----------> UPDATE             0         0         0         0            
+11:  <---------- 200                0         0                                
+12:  ----------> BYE                0         0         0         0            
+13:  <---------- 200                0         0                                
+------------------------------ Test Terminated --------------------------------
+----------------------------- Statistics Screen ------- [1-9]: Change Screen --
+  Start Time             | 2023-07-31	16:37:54.409305	1690821474.409305         
+  Last Reset Time        | 2023-07-31	16:38:37.823932	1690821517.823932         
+  Current Time           | 2023-07-31	16:38:38.658079	1690821518.658079         
+-------------------------+---------------------------+--------------------------
+  Counter Name           | Periodic value            | Cumulative value
+-------------------------+---------------------------+--------------------------
+  Elapsed Time           | 00:00:00:834000           | 00:00:00:834000          
+  Call Rate              |    0.000 cps              |    0.000 cps             
+-------------------------+---------------------------+--------------------------
+  Incoming calls created |        0                  |        0                 
+  Outgoing calls created |        0                  |        0                 
+  Total Calls created    |                           |        0                 
+  Current Calls          |        0                  |                          
+-------------------------+---------------------------+--------------------------
+  Successful call        |        0                  |        0                 
+  Failed call            |        0                  |        0                 
+-------------------------+---------------------------+--------------------------
+  Response Time 1        | 00:00:00:000000           | 00:00:00:000000          
+  Call Length            | 00:00:00:000000           | 00:00:00:000000          
+------------------------------ Test Terminated --------------------------------

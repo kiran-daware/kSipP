@@ -1,17 +1,17 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Last 50 Lines of the Text File</title>
+    <title>{{ log_name }}</title>
 </head>
 <body>
     <h3>Running SIPp Processes:</h3>
     {{ sipp_processes }}
     <br>
-
+    {{ file_path }}
     <br>
     {% if pid %}
 
-        <form method="post" action="{% url 'display_sipp_screen' pid log_name %}" id="checkSignalForm">
+        <form method="post" action="{% url 'display_sipp_screen' pid xml %}" id="checkSignalForm">
             {% csrf_token %}
             <input type="hidden" name="pid_to_kill" value="{{ pid }}">
             <input type ="submit" name="send_signal" value="CheckOutput">

@@ -6,57 +6,53 @@
     <title>Modify XML</title>
 </head>
 <body>
-    <h1>Modify XML</h1>
+    <h2>Modify XML</h2>
 
-
+    <!-- Form for selecting xml file to modify-->
+    {% if not modifySelectedHeaderForSipMsgsForm %}
     <form method="post">
-        {% if not modifyXml %}
         {% csrf_token %}
         {{ modifyXmlForm.selectUAC }}
         <button type="submit" name="selectXml" value="modifyUAC">Modify UAC</button><br/>
         {{ modifyXmlForm.selectUAS }}
         <button type="submit" name="selectXml" value="modifyUAS">Modify UAS</button>
-        {% endif %}
         <br/>
         <br/>
     </form>
+    {% endif %}
 
-    {% if modifyXml %}
+
+    {% if modifyHeaderFormData %}
+    <h3>Selected xml file is: <b>{{ modifyXml }}</b></h3>
     <form method="post">
         {% csrf_token %}
         {{ modifyHeaderFormData.whichHeader }}
         <button type="submit" name="modifyXmlSubmit" value="headerToModify">Modify Header</button>
     </form>
-    
-    <form method="post">
-        {{ headersBySipMessage }}
-        {{ modifySelectedHeaderForSipMsgsForm.as_p }}
-    </form>
-    {% endif %}
-<br><br><br><br><br><br>
-    <form method="post">
-        {% if modifyXml %}
-        Selected xml file is: <b>{{ modifyXml }}</b><br/>
-        {% csrf_token %}
-        {{ modifyHeaderFormData.whichHeader }}
-        {{ modifyHeaderFormData.modifyHeader }}
-        <button type="submit" name="modifyXmlSubmit" value="newHeader">Modify Header</button>
-        <br />
-        <button type="submit" name="modifyXmlSubmit" value="doneModify">Done</button>
-        <br/>
-        {% if selectedHeader %}
-        {{ selectedHeader }} Header modified <br/>
-        {{ selectedHeader }} {{ newHeader }}<br/>
-        <br/>
-        {% endif %}   
-        
+        {% if modifySelectedHeaderForSipMsgsForm %}
+            {% if not headersBySipMessage %}
+            <br>Header not found in selected xml<br><br>
+            {% endif %}
+        <form method="post">
+            {% csrf_token %}
+            {{ modifySelectedHeaderForSipMsgsForm.as_p }}
+            <button type="submit" name="modifiedHeaderDone" value="modifiedHeaderDone">Save</button>
+        </form>
         {% endif %}
-        <br /> 
-    </form>
+    {% endif %}
+
+    {% if modified_headers %}
+    Successfully modified {{ modified_headers }}
+    {% endif %}
+
+<br>
+<br>
+
     <form method="POST">
         {% if modifyXml %}
         {% csrf_token %}
         <button type="submit" name="modifyXmlSubmit" value="xmlEditor">Open in XML Editor</button>
+        <button type="submit" name="modifyXmlSubmit" value="doneModify">Cancel</button>
         {% endif %}
     </form>
     <br />
