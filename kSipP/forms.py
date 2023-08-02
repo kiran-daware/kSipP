@@ -25,7 +25,9 @@ class xmlForm(forms.Form):
                 elif field_name == 'uas' and filename.startswith('uas'):
                     choices.append((filename, filename))
 
-        return choices
+        sorted_choices = sorted(choices, key=lambda choice: choice[1])
+
+        return sorted_choices
 
 
 class moreSippOptionsForm(forms.Form):
