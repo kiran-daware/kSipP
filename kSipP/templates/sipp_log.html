@@ -4,13 +4,9 @@
     <title>{{ log_name }}</title>
 </head>
 <body>
-    <h3>Running SIPp Processes:</h3>
-    {{ sipp_processes }}
-    <br>
-    {{ file_path }}
-    <br>
-    {% if pid %}
+    <h3>{{ log_name }}</h3>
 
+    {% if pid %}
         <form method="post" action="{% url 'display_sipp_screen' pid xml %}" id="checkSignalForm">
             {% csrf_token %}
             <input type="hidden" name="pid_to_kill" value="{{ pid }}">

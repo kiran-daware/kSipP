@@ -7,6 +7,12 @@
 </head>
 <body>
     <h3>Run Scripts</h3>
+    <div class="menubar" style="margin: 10px;">
+        <a style="padding: 10px;" href="/">Home</a>
+        <a style="padding: 10px;" href="/run-script">Run Scripts</a>
+        <a style="padding: 10px;" href="/modify-xml">Modify Xml</a>
+    </div>
+
     UAC Command: <b> {{ print_uac_command }}</b>
     <br />
     UAS Command: <b> {{ print_uas_command }} </b>
@@ -23,12 +29,8 @@
         <input type="hidden" name="script" value="UAC">
         <input type="submit" value="Run UAC">
     </form>
-
-    <span>shell pid = {{uacProc.pid}} and sipp pid = {{sipp_pid_orig}} 
-    </span>
-
     
-    <h3>Running SIPp Processes:</h3>
+    <h3>Running SipP Processes:</h3>
     {% if sipp_processes %}
         <ul>
             {% for process in sipp_processes %}
@@ -46,7 +48,7 @@
             {% endfor %}
         </ul>
     {% else %}
-        <p>No SIPp processes currently running.</p>
+        <p>No SipP processes currently running.</p>
     {% endif %}
 
     <!-- Add more forms for other scripts as needed -->

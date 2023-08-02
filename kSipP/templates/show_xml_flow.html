@@ -4,7 +4,13 @@
     <title>XML Flow Output</title>
 </head>
 <body>
-    <h1>XML Call Flow:</h1>
+    <h2>XML Call Flow:</h2>
+    <div class="menubar" style="margin: 10px;">
+        <a style="padding: 10px;" href="/">Home</a>
+        <a style="padding: 10px;" href="/run-script">Run Scripts</a>
+        <a style="padding: 10px;" href="/modify-xml">Modify Xml</a>
+    </div>
+
     <pre style="float: left; margin-right: 20px;">
         <h2 style="margin-left: 50px;">UAC Scenario: {{ selectUAC }}</h2>
         {% for line in uacflow %}

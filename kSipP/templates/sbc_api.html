@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>API Request Form</title>
+</head>
+<body>
+    <form id="apiForm">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name"><br>
+
+        <label for="dstIp">Destination IP:</label>
+        <input type="text" id="dstIp" name="dstIp"><br>
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email"><br>
+
+        <button type="submit">Submit</button>
+    </form>
+
+    <div id="response"></div>
+
+    <script type="text/javascript">
+
+
+
+document.getElementById("apiForm").addEventListener("submit", function(event) {
+    event.preventDefault();
+
+    // Get form input values
+    const name = document.getElementById("name").value;
+    const dstIp = document.getElementById("dstIp").value;
+    const email = document.getElementById("email").value;
+
+    // Create JSON object with form data
+    const jsonData = 
+
+        {
+            "totalrecords": 2,
+            "list": [
+                {
+                    "pvisitedNetworkIDValue": "notconfigured",
+                    "paccessNetworkInfoOption": "No",
+                    "paccessNetworkInfoValue": "notconfigured",
+                    "pcalledPartyIDOption": "No",
+                    "pvisitedNetworkIDOption": "No",
+                    "id": 21,
+                    "cfgStatus": "Yes",
+                    "name": "Kiran_out",
+                    "classId": "interconnect",
+                    "nwType": "Interconnect",
+                    "diameterType": "None",
+                    "ccfh": "Continue",
+                    "imsNetwork": "No",
+                    "omrNetwork": "No",
+                    "surrogatePeer": "No",
+                    "trunkAuthentication": "No",
+                    "requireRegistration": "Yes",
+                    "subTraffic": "No",
+                    "operId": "",
+                    "omrIpRealm": "",
+                    "surrogatePeerAor": "",
+                    "surrogateAuthUserName": "",
+                    "surrogateAuthPassword": "",
+                    "surrogateNumberList": "",
+                    "surrogateRegType": "No",
+                    "trunkAuthenticationAor": "",
+                    "trunkAuthenticationUserName": "",
+                    "trunkAuthenticationPassword": "",
+                    "sourceType": "Single",
+                    "sourceAddressList": [
+                        {
+                            "ipAddressType": "IPv4",
+                            "ipAddress": "10.50.225.200",
+                            "subnetMask": 0,
+                            "port": 6062
+                        }
+                    ],
+                    "trustLevel": "High",
+                    "hostAddressType": "IPv4",
+                    "host": dstIp,
+                    "port": 6062,
+                    "protocol": [
+                        "TCP"
+                    ],
+                    "maxUdpMtu": 0,
+                    "paramProfId": {
+                        "idList": [
+                            {
+                                "idNum": 1,
+                                "name": "Default"
+                            }
+                        ]
+                    },
+                    "mediaProfId": {
+                        "idList": [
+                            {
+                                "idNum": 1,
+                                "name": "Default"
+                            }
+                        ]
+                    },
+                    "serviceProfile": {
+                        "idList": [
+                            {
+                                "idNum": 1,
+                                "name": "Default"
+                            }
+                        ]
+                    },
+                    "securityProfile": null,
+                    "note": "",
+                    "timeZone": "",
+                    "tgrpId": "",
+                    "enforceIpSec": "No",
+                    "routingPolicy": null,
+                    "reRoutingPolicy": null,
+                    "mapScfCorrId": "No",
+                    "prefixLen": 0,
+                    "scfId": 5,
+                    "correlationId": 6,
+                    "recordingEnable": "No",
+                    "recordingPreference": "No",
+                    "srsPeer": null,
+                    "portAllocId": null,
+                    "recordingRelCallOnFailure": "No",
+                    "pCalledPartyIDOption": "No",
+                    "pVisitedNetworkIDOption": "No",
+                    "pVisitedNetworkIDValue": "notconfigured",
+                    "pAccessNetworkInfoOption": "No",
+                    "pAccessNetworkInfoValue": "notconfigured",
+                    "shakenEnabled": "Disabled",
+                    "shakenAnonymousHandling": "Reject",
+                    "shakenDestClaim": "Reject",
+                    "shakenStaleInterval": 0,
+                    "shakenAuthServiceType": "Internal",
+                    "shakenSKSURI": "empty",
+                    "shakenAuthCertificatePair": {
+                        "idList": [
+                            {
+                                "idNum": 0,
+                                "name": null
+                            }
+                        ]
+                    },
+                    "shakenX5UVerifier": "empty",
+                    "shakenVeriServiceType": "Internal",
+                    "shakenVerCertificatePair": {
+                        "idList": [
+                            {
+                                "idNum": 0,
+                                "name": null
+                            }
+                        ]
+                    },
+                    "dynamicRouting": "None",
+                    "survivability": "None",
+                    "survivabilityRegistrationInterval": 30,
+                    "hostInstanceIdx": 0
+                },
+                {
+                    "pvisitedNetworkIDValue": "notconfigured",
+                    "paccessNetworkInfoOption": "No",
+                    "paccessNetworkInfoValue": "notconfigured",
+                    "pcalledPartyIDOption": "No",
+                    "pvisitedNetworkIDOption": "No",
+                    "id": 11,
+                    "cfgStatus": "Yes",
+                    "name": "Kiran_in",
+                    "classId": "local",
+                    "nwType": "Interconnect",
+                    "diameterType": "None",
+                    "ccfh": "Continue",
+                    "imsNetwork": "No",
+                    "omrNetwork": "No",
+                    "surrogatePeer": "No",
+                    "trunkAuthentication": "No",
+                    "requireRegistration": "Yes",
+                    "subTraffic": "No",
+                    "operId": "",
+                    "omrIpRealm": "",
+                    "surrogatePeerAor": "",
+                    "surrogateAuthUserName": "",
+                    "surrogateAuthPassword": "",
+                    "surrogateNumberList": "",
+                    "surrogateRegType": "No",
+                    "trunkAuthenticationAor": "",
+                    "trunkAuthenticationUserName": "",
+                    "trunkAuthenticationPassword": "",
+                    "sourceType": "Single",
+                    "sourceAddressList": [
+                        {
+                            "ipAddressType": "IPv4",
+                            "ipAddress": "10.50.225.200",
+                            "subnetMask": 0,
+                            "port": 0
+                        },
+                        {
+                            "ipAddressType": "IPv4",
+                            "ipAddress": "10.50.224.206",
+                            "subnetMask": 0,
+                            "port": 0
+                        }
+                    ],
+                    "trustLevel": "High",
+                    "hostAddressType": "IPv4",
+                    "host": "10.50.224.206",
+                    "port": 6061,
+                    "protocol": [
+                        "UDP"
+                    ],
+                    "maxUdpMtu": 0,
+                    "paramProfId": {
+                        "idList": [
+                            {
+                                "idNum": 1,
+                                "name": "Default"
+                            }
+                        ]
+                    },
+                    "mediaProfId": {
+                        "idList": [
+                            {
+                                "idNum": 1,
+                                "name": "Default"
+                            }
+                        ]
+                    },
+                    "serviceProfile": {
+                        "idList": [
+                            {
+                                "idNum": 1,
+                                "name": "Default"
+                            }
+                        ]
+                    },
+                    "securityProfile": null,
+                    "note": "",
+                    "timeZone": "",
+                    "tgrpId": "",
+                    "enforceIpSec": "No",
+                    "routingPolicy": null,
+                    "reRoutingPolicy": null,
+                    "mapScfCorrId": "No",
+                    "prefixLen": 0,
+                    "scfId": 5,
+                    "correlationId": 6,
+                    "recordingEnable": "No",
+                    "recordingPreference": "No",
+                    "srsPeer": null,
+                    "portAllocId": null,
+                    "recordingRelCallOnFailure": "No",
+                    "pCalledPartyIDOption": "No",
+                    "pVisitedNetworkIDOption": "No",
+                    "pVisitedNetworkIDValue": "notconfigured",
+                    "pAccessNetworkInfoOption": "No",
+                    "pAccessNetworkInfoValue": "notconfigured",
+                    "shakenEnabled": "Disabled",
+                    "shakenAnonymousHandling": "Reject",
+                    "shakenDestClaim": "Reject",
+                    "shakenStaleInterval": 0,
+                    "shakenAuthServiceType": "Internal",
+                    "shakenSKSURI": "empty",
+                    "shakenAuthCertificatePair": {
+                        "idList": [
+                            {
+                                "idNum": 0,
+                                "name": null
+                            }
+                        ]
+                    },
+                    "shakenX5UVerifier": "empty",
+                    "shakenVeriServiceType": "Internal",
+                    "shakenVerCertificatePair": {
+                        "idList": [
+                            {
+                                "idNum": 0,
+                                "name": null
+                            }
+                        ]
+                    },
+                    "dynamicRouting": "None",
+                    "survivability": "None",
+                    "survivabilityRegistrationInterval": 30,
+                    "hostInstanceIdx": 0
+                }
+            ],
+            "operationId": null
+        };
+
+    // Make the API request
+    fetch("https://10.122.217.26:8443/application/sipconfiguration/peers", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+            "Authorization": "Basic a2lyYW46a2lyYW4=",
+            "Access": "*/*",
+
+
+
+
+        },
+        mode: "no-cors",
+        body: JSON.stringify(jsonData)
+    })
+    .then(response => response.json())
+    .then(data => {
+        // Handle the API response
+        document.getElementById("response").innerText = JSON.stringify(data, null, 2);
+    })
+    .catch(error => {
+        // Handle errors
+        document.getElementById("response").innerText = "Error: " + error.message;
+    });
+});
+
+
+
+
+
+
+    </script>
+</body>
+</html>

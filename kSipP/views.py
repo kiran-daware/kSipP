@@ -33,6 +33,7 @@ xml_data = {}
 @never_cache
 def index(request):
 
+    # Read initial data from config file
     global config_data
     config_data = {
         'remoteAddr': configd.get('remoteAddr'),
@@ -40,6 +41,10 @@ def index(request):
         'localAddr': configd.get('localAddr'),
         'srcPortUac': configd.get('srcPortUac'),
         'srcPortUas': configd.get('srcPortUas'),
+        'calledPartyNumber': configd.get('calledPartyNumber'),
+        'callingPartyNumber': configd.get('callingPartyNumber'),
+        'totalNoOfCalls': configd.get('totalNoOfCalls'),
+        'cps': configd.get('cps'),
     }
     global xml_data
     xml_data = {
@@ -56,14 +61,10 @@ def index(request):
     print_uac_command = f"sipp -sf {xml_data['selectUAC']} {remote} {uacSrc} -m 1"
     print_uas_command = f"sipp -sf {xml_data['selectUAS']} {remote} {uasSrc}"
 
-    # # fetching xml files from directory each time page refreshes.
-    # xmlPath = str(settings.BASE_DIR / 'kSipP' / 'xml')
-    # uac_files = [f for f in os.listdir(xmlPath) if f.startswith('uac')]
-    # uas_files = [f for f in os.listdir(xmlPath) if f.startswith('uas')]
-
     # loading xmlForm and configForm
     selectXml = xmlForm(initial=xml_data)
     ipConfig = configForm(initial=config_data)
+    moreOptionsForm = moreSippOptionsForm(initial=config_data)
 
     # Check XML file call Flow 
     if request.method =="POST":
@@ -83,82 +84,83 @@ def index(request):
             if submit_type == 'moreOptions':
                 # Load moreSippOptionsForm
                 showMoreOptionsForm = True
-                moreOptionsForm = moreSippOptionsForm()
 
 
     if request.method == 'POST':
         if 'submitType' in request.POST:
-            submit_type = request.POST['submitType']
-            if submit_type =='config':
-                selectXml = xmlForm(request.POST)
-                ipConfig = configForm(request.POST)
-                moreOptionsForm = moreSippOptionsForm(request.POST)
-                if selectXml.is_valid() & ipConfig.is_valid() & moreOptionsForm.is_valid():
+            # submit_type = request.POST['submitType']
+            # if submit_type =='config' or submit_type == 'moreOptionsClose' or submit_type == 'moreOptions':
+            selectXml = xmlForm(request.POST)
+            ipConfig = configForm(request.POST)
+            moreOptionsForm = moreSippOptionsForm(request.POST)
+            if selectXml.is_valid() & ipConfig.is_valid() & moreOptionsForm.is_valid():
 
-                    xml_data['selectUAC'] = selectXml.cleaned_data['selectUAC']
-                    xml_data['selectUAS'] = selectXml.cleaned_data['selectUAS']
-                    config.set('XML','selectUAC', str(xml_data['selectUAC']))
-                    config.set('XML','selectUAS', str(xml_data['selectUAS']))
-                    
-                    # update config_data dictionary
-                    config_data['remoteAddr'] = ipConfig.cleaned_data['remoteAddr']
-                    config_data['remotePort'] = ipConfig.cleaned_data['remotePort']
-                    config_data['localAddr'] = ipConfig.cleaned_data['localAddr']
-                    config_data['srcPortUac'] = ipConfig.cleaned_data['srcPortUac']
-                    config_data['srcPortUas'] = ipConfig.cleaned_data['srcPortUas']
-                    config_data['calledPartyNumber'] = moreOptionsForm.cleaned_data['calledPartyNumber']
-                    config_data['callingPartyNumber'] = moreOptionsForm.cleaned_data['callingPartyNumber']
-                    config_data['totalNoOfCalls'] = moreOptionsForm.cleaned_data['totalNoOfCalls']
-                    config_data['cps'] = moreOptionsForm.cleaned_data['cps']
-                    
-                    # config set for saving in config.ini
-                    for configKey, configValue in config_data.items():
-                        config.set('DEFAULT', configKey, str(configValue))
-
-
-                    # remoteAddr = ipConfig.cleaned_data['remoteAddr']
-                    # remotePort = ipConfig.cleaned_data['remotePort']
-                    # localAddr = ipConfig.cleaned_data['localAddr']
-                    # srcPortUac = ipConfig.cleaned_data['srcPortUac']
-                    # srcPortUas = ipConfig.cleaned_data['srcPortUas']
-
-                    # config.set('DEFAULT', 'remote_address', remoteAddr)
-                    # config.set('DEFAULT', 'remote_port', str(remotePort))
-                    # config.set('DEFAULT', 'local_address', localAddr)
-                    # config.set('DEFAULT', 'uac_port', str(srcPortUac))
-                    # config.set('DEFAULT', 'uas_port', str(srcPortUas))
-
-                    
-                    # calledPartyNumber = moreOptionsForm.cleaned_data['calledPartyNumber']
-                    # callingPartyNumber = moreOptionsForm.cleaned_data['callingPartyNumber']
-                    # totalNoOfCalls = moreOptionsForm.cleaned_data['totalNoOfCalls']
-                    # cps = moreOptionsForm.cleaned_data['cps']
-
-                    # config.set('DEFAULT', 'called_Party_Number', calledPartyNumber)
-                    # config.set('DEFAULT', 'calling_Party_Number', callingPartyNumber)
-                    # config.set('DEFAULT', 'total_no_of_calls', str(totalNoOfCalls))
-                    # config.set('DEFAULT', 'cps', str(cps))
-                    
+                xml_data['selectUAC'] = selectXml.cleaned_data['selectUAC']
+                xml_data['selectUAS'] = selectXml.cleaned_data['selectUAS']
+                config.set('XML','selectUAC', str(xml_data['selectUAC']))
+                config.set('XML','selectUAS', str(xml_data['selectUAS']))
+                
+                # update config_data dictionary
+                config_data['remoteAddr'] = ipConfig.cleaned_data['remoteAddr']
+                config_data['remotePort'] = ipConfig.cleaned_data['remotePort']
+                config_data['localAddr'] = ipConfig.cleaned_data['localAddr']
+                config_data['srcPortUac'] = ipConfig.cleaned_data['srcPortUac']
+                config_data['srcPortUas'] = ipConfig.cleaned_data['srcPortUas']
+                config_data['calledPartyNumber'] = moreOptionsForm.cleaned_data['calledPartyNumber']
+                config_data['callingPartyNumber'] = moreOptionsForm.cleaned_data['callingPartyNumber']
+                config_data['totalNoOfCalls'] = moreOptionsForm.cleaned_data['totalNoOfCalls']
+                config_data['cps'] = moreOptionsForm.cleaned_data['cps']
+                
+                # config set for saving in config.ini
+                for configKey, configValue in config_data.items():
+                    config.set('DEFAULT', configKey, str(configValue))
 
 
-                    # Update the config file after config.set
-                    ConfigFile = os.path.join(settings.BASE_DIR, 'config.ini')
-                    with open(ConfigFile, 'w') as configfile:
-                        config.write(configfile)
-                    
+                # remoteAddr = ipConfig.cleaned_data['remoteAddr']
+                # remotePort = ipConfig.cleaned_data['remotePort']
+                # localAddr = ipConfig.cleaned_data['localAddr']
+                # srcPortUac = ipConfig.cleaned_data['srcPortUac']
+                # srcPortUas = ipConfig.cleaned_data['srcPortUas']
+
+                # config.set('DEFAULT', 'remote_address', remoteAddr)
+                # config.set('DEFAULT', 'remote_port', str(remotePort))
+                # config.set('DEFAULT', 'local_address', localAddr)
+                # config.set('DEFAULT', 'uac_port', str(srcPortUac))
+                # config.set('DEFAULT', 'uas_port', str(srcPortUas))
+
+                
+                # calledPartyNumber = moreOptionsForm.cleaned_data['calledPartyNumber']
+                # callingPartyNumber = moreOptionsForm.cleaned_data['callingPartyNumber']
+                # totalNoOfCalls = moreOptionsForm.cleaned_data['totalNoOfCalls']
+                # cps = moreOptionsForm.cleaned_data['cps']
+
+                # config.set('DEFAULT', 'called_Party_Number', calledPartyNumber)
+                # config.set('DEFAULT', 'calling_Party_Number', callingPartyNumber)
+                # config.set('DEFAULT', 'total_no_of_calls', str(totalNoOfCalls))
+                # config.set('DEFAULT', 'cps', str(cps))
+                
 
 
-                    #update script prints on homepage
-                    remote=f"{config_data['remoteAddr']}:{config_data['remotePort']}"
-                    uacSrc=f"-i {config_data['localAddr']} -p {config_data['srcPortUac']}"
-                    uasSrc=f"-i {config_data['localAddr']} -p {config_data['srcPortUas']}"
+                # Update the config file after config.set
+                ConfigFile = os.path.join(settings.BASE_DIR, 'config.ini')
+                with open(ConfigFile, 'w') as configfile:
+                    config.write(configfile)
+                
 
-                    # below vars used on index.html
-                    print_uac_command = f"sipp -sf {xml_data['selectUAC']} {remote} {uacSrc} -m 1"
-                    print_uas_command = f"sipp -sf {xml_data['selectUAS']} {remote} {uasSrc}"
 
-                    return render(request, 'index.html', locals())
+                #update script prints on homepage
+                remote=f"{config_data['remoteAddr']}:{config_data['remotePort']}"
+                uacSrc=f"-i {config_data['localAddr']} -p {config_data['srcPortUac']}"
+                uasSrc=f"-i {config_data['localAddr']} -p {config_data['srcPortUas']}"
 
+                # below vars used on index.html
+                print_uac_command = f"sipp -sf {xml_data['selectUAC']} {remote} {uacSrc} -m 1"
+                print_uas_command = f"sipp -sf {xml_data['selectUAS']} {remote} {uasSrc}"
+
+                sipp_processes = get_sipp_processes()
+                return render(request, 'index.html', locals())
+    
+    sipp_processes = get_sipp_processes()
     return render(request, 'index.html', locals())
 
 
@@ -197,6 +199,7 @@ def modifyXml(request):
                     request.session['headersBySipMessage']=headersBySipMessage
                     request.session['selectedHeader']=selectedHeader
                     modifySelectedHeaderForSipMsgsForm = modifySelectedHeaderForSipMsgs(hbsm=headersBySipMessage)
+                    modifyXml_noext = modifyXml.rsplit(".", 1)[0]
                     return render(request, 'modify_xml.html', locals())
                 
 
@@ -216,25 +219,37 @@ def modifyXml(request):
 
                     
         if request.method == 'POST' and 'modifiedHeaderDone' in request.POST:
+            modifiedHeaderDone = request.POST['modifiedHeaderDone']
+            newXmlFileName = None
+            if modifiedHeaderDone == 'modifiedHeaderDoneNewFile':
+                newXmlFileName = request.POST['newXmlFileName']
+
+            modifyXml_noext = modifyXml.rsplit(".", 1)[0]
             headersBySipMessage = request.session['headersBySipMessage']
             selectedHeader = request.session['selectedHeader']
             modifySelectedHeaderForSipMsgsForm = modifySelectedHeaderForSipMsgs(request.POST, hbsm=headersBySipMessage)
             if modifySelectedHeaderForSipMsgsForm.is_valid():
                 modified_headers = {}
 
-                # delete if already a file exists with xml_name_modified.xml to avoid conflicts after editing
-                modXmlPath = os.path.join(settings.BASE_DIR, 'kSipP', 'xml', f'{modifyXml.rsplit(".", 1)[0]}_modified.xml')
-                if os.path.exists(modXmlPath):
-                    try:
-                        os.remove(modXmlPath)
-                    except:
-                        pass
+                if newXmlFileName is not None:
+                    # delete if already a file exists with xml_name_modified.xml to avoid conflicts after editing
+                    modXmlPath = os.path.join(settings.BASE_DIR, 'kSipP', 'xml', f'{modifyXml_noext}_{newXmlFileName}.xml')                    
+                    if os.path.exists(modXmlPath):
+                        try:
+                            os.remove(modXmlPath)
+                        except:
+                            pass
 
                 for sipMessage, header_value in modifySelectedHeaderForSipMsgsForm.cleaned_data.items():
                     modified_headers[sipMessage] = header_value
-                    modifyHeaderScript(modifyXml, sipMessage, selectedHeader, header_value)
-                    # update session with new modified xml file name (statically defined in modifyHeader.py)
-                    request.session['modifyXml'] = f'{modifyXml.rsplit(".", 1)[0]}_modified.xml'
+
+                    if newXmlFileName is not None:
+                        modifyHeaderScript(modifyXml, sipMessage, selectedHeader, header_value, newXmlFileName)
+                        # update session with new modified xml file name (statically defined in modifyHeader.py)
+                        request.session['modifyXml'] = f'{modifyXml_noext}_{newXmlFileName}.xml'
+
+                    else:
+                        modifyHeaderScript(modifyXml, sipMessage, selectedHeader, header_value)
 
 
                     
@@ -367,7 +382,7 @@ def aceXmlEditor(request):
 def get_sipp_processes():
     sipp_processes = []
     sipp_pattern = r"sipp"  # Regular expression to match "sipp" in the command-line
-    shell_name = r"(bash|sh|cmd|powershell)"  # Regular expression to match shell names
+    shell_name = r"(bash|sh)"  # Regular expression to match shell names
 
     for process in psutil.process_iter(['pid', 'cmdline']):
         if process.info['cmdline']:
@@ -382,8 +397,9 @@ def get_sipp_processes():
                     'command_line': f"{sipp} {arguments}",
                     'script_name' : f"{uac_uas_arg}"
                 })
+    sorted_sipp_processes = sorted(sipp_processes, key=lambda x: x['pid'], reverse=True)
 
-    return sipp_processes
+    return sorted_sipp_processes
 
 
 
@@ -495,6 +511,7 @@ def display_sipp_screen(request, xml, pid):
         'xml':xml,
         'pid':pid,
         'file_path':file_path,
+        'log_name':log_name,
         }
 
     if request.method == 'POST' and 'send_signal' in request.POST:
@@ -525,4 +542,9 @@ def display_sipp_screen(request, xml, pid):
     
 
     return render(request, 'sipp_log.html', context)
+
+
+
+def sbc_api(request):
+    return render(request, 'sbc_api.html')
 

@@ -1,6 +1,5 @@
 import lxml.etree as LE
 import os
-import configparser
 import logging
 
 cwd = os.path.dirname(os.path.abspath(__file__))

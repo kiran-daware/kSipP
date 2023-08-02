@@ -58,10 +58,14 @@ def getHeadersFromSipMsgs(xml_file, header):
 
 
 # Modify Header in xml
-def modifyHeaderScript(xml_file, sipMessage, header, newHeader):
+def modifyHeaderScript(xml_file, sipMessage, header, newHeader, newXmlFileName = None):
     logging.info(xml_file + sipMessage + header + newHeader)
     xml_file_noExt = xml_file.rsplit(".", 1)[0]
-    new_xml_file = os.path.join(baseDir, 'kSipP', 'xml', f'{xml_file_noExt}_modified.xml')
+    if newXmlFileName is not None:
+        new_xml_file = os.path.join(baseDir, 'kSipP', 'xml', f'{xml_file_noExt}_{newXmlFileName}.xml')
+    else:
+        new_xml_file = os.path.join(baseDir, 'kSipP', 'xml', f'{xml_file}')
+
     if os.path.isfile(new_xml_file):
         root = openXML(new_xml_file)
     else: 

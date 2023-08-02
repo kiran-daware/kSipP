@@ -7,6 +7,11 @@
 </head>
 <body>
     <h2>Modify XML</h2>
+    <div class="menubar" style="margin: 10px;">
+        <a style="padding: 10px;" href="/">Home</a>
+        <a style="padding: 10px;" href="/run-script">Run Scripts</a>
+        <a style="padding: 10px;" href="/modify-xml">Modify Xml</a>
+    </div>    
 
     <!-- Form for selecting xml file to modify-->
     {% if not modifySelectedHeaderForSipMsgsForm %}
@@ -36,7 +41,10 @@
         <form method="post">
             {% csrf_token %}
             {{ modifySelectedHeaderForSipMsgsForm.as_p }}
-            <button type="submit" name="modifiedHeaderDone" value="modifiedHeaderDone">Save</button>
+            <button type="submit" name="modifiedHeaderDone" value="modifiedHeaderDone">Save</button> Or <br>
+            <label for="text_input">Save as new file: {{ modifyXml_noext }}_</label>
+            <input type="text" id="newXmlFileName" name="newXmlFileName" maxlength="10" value="new"><span>.xml</span>
+            <button type="submit" name="modifiedHeaderDone" value="modifiedHeaderDoneNewFile">Save as</button>
         </form>
         {% endif %}
     {% endif %}
@@ -49,7 +57,7 @@
 <br>
 
     <form method="POST">
-        {% if modifyXml %}
+        {% if modifySelectedHeaderForSipMsgsForm or modified_headers %}
         {% csrf_token %}
         <button type="submit" name="modifyXmlSubmit" value="xmlEditor">Open in XML Editor</button>
         <button type="submit" name="modifyXmlSubmit" value="doneModify">Cancel</button>
