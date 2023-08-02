@@ -61,7 +61,7 @@
       [last_To:];tag=[pid]SIPpTag01[call_number]
       [last_Call-ID:]
       [last_CSeq:]
-      Contact: <sip:[local_ip]:[local_port];transport=[transport]>
+      Contact: <sip:10.50.224.206:6062;transport=[transport]>
       Content-Type: application/sdp
       Content-Length: [len]
 
