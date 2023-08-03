@@ -21,11 +21,26 @@ config_file = os.path.join(str(settings.BASE_DIR), 'config.ini')
 config = configparser.ConfigParser()
 config.read(config_file)
 configd = config['DEFAULT']
-configx = config['XML']
 
 #global variables
-config_data = {}
-xml_data = {}
+def fetch_config_data():
+    # Read initial data from config file
+    config_data = {
+        'remote_addr': configd.get('remote_addr'),
+        'remote_port': configd.get('remote_port'),
+        'local_addr': configd.get('local_addr'),
+        'src_port_uac': configd.get('src_port_uac'),
+        'src_port_uas': configd.get('src_port_uas'),
+        'called_party_number': configd.get('called_party_number'),
+        'calling_party_number': configd.get('calling_party_number'),
+        'total_no_of_calls': configd.get('total_no_of_calls'),
+        'cps': configd.get('cps'),
+        'select_uac':configd.get('select_uac'),
+        'select_uas':configd.get('select_uas'),
+        'is_behind_nat':configd.get('is_behind_nat')
+    }
+    return config_data
+
 
 
 ################### Index Page Functions #############################
@@ -33,36 +48,18 @@ xml_data = {}
 @never_cache
 def index(request):
 
-    # Read initial data from config file
-    global config_data
-    config_data = {
-        'remoteAddr': configd.get('remoteAddr'),
-        'remotePort': configd.get('remotePort'),
-        'localAddr': configd.get('localAddr'),
-        'srcPortUac': configd.get('srcPortUac'),
-        'srcPortUas': configd.get('srcPortUas'),
-        'calledPartyNumber': configd.get('calledPartyNumber'),
-        'callingPartyNumber': configd.get('callingPartyNumber'),
-        'totalNoOfCalls': configd.get('totalNoOfCalls'),
-        'cps': configd.get('cps'),
-    }
-    global xml_data
-    xml_data = {
-        'selectUAC':configx.get('selectUAC'),
-        'selectUAS':configx.get('selectUAS')
-    }
+    config_data = fetch_config_data()
     
-
-    remote=f"{config_data['remoteAddr']}:{config_data['remotePort']}"
-    uacSrc=f"-i {config_data['localAddr']} -p {config_data['srcPortUac']}"
-    uasSrc=f"-i {config_data['localAddr']} -p {config_data['srcPortUas']}"
+    remote=f"{config_data['remote_addr']}:{config_data['remote_port']}"
+    uacSrc=f"-i {config_data['local_addr']} -p {config_data['src_port_uac']}"
+    uasSrc=f"-i {config_data['local_addr']} -p {config_data['src_port_uas']}"
 
     # below vars used on index.html
-    print_uac_command = f"sipp -sf {xml_data['selectUAC']} {remote} {uacSrc} -m 1"
-    print_uas_command = f"sipp -sf {xml_data['selectUAS']} {remote} {uasSrc}"
+    print_uac_command = f"sipp -sf {config_data['select_uac']} {remote} {uacSrc} -m 1"
+    print_uas_command = f"sipp -sf {config_data['select_uas']} {remote} {uasSrc}"
 
     # loading xmlForm and configForm
-    selectXml = xmlForm(initial=xml_data)
+    selectXml = xmlForm(initial=config_data)
     ipConfig = configForm(initial=config_data)
     moreOptionsForm = moreSippOptionsForm(initial=config_data)
 
@@ -73,8 +70,8 @@ def index(request):
             if submit_type == 'checkFlow':
                 selectXml = xmlForm(request.POST)
                 if selectXml.is_valid():
-                    selectUAC = selectXml.cleaned_data['selectUAC']
-                    selectUAS = selectXml.cleaned_data['selectUAS']
+                    selectUAC = selectXml.cleaned_data['select_uac']
+                    selectUAS = selectXml.cleaned_data['select_uas']
                     # xml_file_path = str(settings.BASE_DIR / 'kSipP' / 'xml' / 'uac.xml')
 
                     uacflow = showXmlFlowScript(selectUAC)
@@ -95,52 +92,26 @@ def index(request):
             moreOptionsForm = moreSippOptionsForm(request.POST)
             if selectXml.is_valid() & ipConfig.is_valid() & moreOptionsForm.is_valid():
 
-                xml_data['selectUAC'] = selectXml.cleaned_data['selectUAC']
-                xml_data['selectUAS'] = selectXml.cleaned_data['selectUAS']
-                config.set('XML','selectUAC', str(xml_data['selectUAC']))
-                config.set('XML','selectUAS', str(xml_data['selectUAS']))
-                
                 # update config_data dictionary
-                config_data['remoteAddr'] = ipConfig.cleaned_data['remoteAddr']
-                config_data['remotePort'] = ipConfig.cleaned_data['remotePort']
-                config_data['localAddr'] = ipConfig.cleaned_data['localAddr']
-                config_data['srcPortUac'] = ipConfig.cleaned_data['srcPortUac']
-                config_data['srcPortUas'] = ipConfig.cleaned_data['srcPortUas']
-                config_data['calledPartyNumber'] = moreOptionsForm.cleaned_data['calledPartyNumber']
-                config_data['callingPartyNumber'] = moreOptionsForm.cleaned_data['callingPartyNumber']
-                config_data['totalNoOfCalls'] = moreOptionsForm.cleaned_data['totalNoOfCalls']
+                config_data['select_uac'] = selectXml.cleaned_data['select_uac']
+                config_data['select_uas'] = selectXml.cleaned_data['select_uas']
+                
+                config_data['remote_addr'] = ipConfig.cleaned_data['remote_addr']
+                config_data['remote_port'] = ipConfig.cleaned_data['remote_port']
+                config_data['local_addr'] = ipConfig.cleaned_data['local_addr']
+                config_data['src_port_uac'] = ipConfig.cleaned_data['src_port_uac']
+                config_data['src_port_uas'] = ipConfig.cleaned_data['src_port_uas']
+                config_data['called_party_number'] = moreOptionsForm.cleaned_data['called_party_number']
+                config_data['calling_party_number'] = moreOptionsForm.cleaned_data['calling_party_number']
+                config_data['total_no_of_calls'] = moreOptionsForm.cleaned_data['total_no_of_calls']
                 config_data['cps'] = moreOptionsForm.cleaned_data['cps']
+                config_data['is_behind_nat'] = moreOptionsForm.cleaned_data['is_behind_nat']
                 
                 # config set for saving in config.ini
                 for configKey, configValue in config_data.items():
                     config.set('DEFAULT', configKey, str(configValue))
 
-
-                # remoteAddr = ipConfig.cleaned_data['remoteAddr']
-                # remotePort = ipConfig.cleaned_data['remotePort']
-                # localAddr = ipConfig.cleaned_data['localAddr']
-                # srcPortUac = ipConfig.cleaned_data['srcPortUac']
-                # srcPortUas = ipConfig.cleaned_data['srcPortUas']
-
-                # config.set('DEFAULT', 'remote_address', remoteAddr)
-                # config.set('DEFAULT', 'remote_port', str(remotePort))
-                # config.set('DEFAULT', 'local_address', localAddr)
-                # config.set('DEFAULT', 'uac_port', str(srcPortUac))
-                # config.set('DEFAULT', 'uas_port', str(srcPortUas))
-
                 
-                # calledPartyNumber = moreOptionsForm.cleaned_data['calledPartyNumber']
-                # callingPartyNumber = moreOptionsForm.cleaned_data['callingPartyNumber']
-                # totalNoOfCalls = moreOptionsForm.cleaned_data['totalNoOfCalls']
-                # cps = moreOptionsForm.cleaned_data['cps']
-
-                # config.set('DEFAULT', 'called_Party_Number', calledPartyNumber)
-                # config.set('DEFAULT', 'calling_Party_Number', callingPartyNumber)
-                # config.set('DEFAULT', 'total_no_of_calls', str(totalNoOfCalls))
-                # config.set('DEFAULT', 'cps', str(cps))
-                
-
-
                 # Update the config file after config.set
                 ConfigFile = os.path.join(settings.BASE_DIR, 'config.ini')
                 with open(ConfigFile, 'w') as configfile:
@@ -149,13 +120,13 @@ def index(request):
 
 
                 #update script prints on homepage
-                remote=f"{config_data['remoteAddr']}:{config_data['remotePort']}"
-                uacSrc=f"-i {config_data['localAddr']} -p {config_data['srcPortUac']}"
-                uasSrc=f"-i {config_data['localAddr']} -p {config_data['srcPortUas']}"
+                remote=f"{config_data['remote_addr']}:{config_data['remote_port']}"
+                uacSrc=f"-i {config_data['local_addr']} -p {config_data['src_port_uac']}"
+                uasSrc=f"-i {config_data['local_addr']} -p {config_data['src_port_uas']}"
 
                 # below vars used on index.html
-                print_uac_command = f"sipp -sf {xml_data['selectUAC']} {remote} {uacSrc} -m 1"
-                print_uas_command = f"sipp -sf {xml_data['selectUAS']} {remote} {uasSrc}"
+                print_uac_command = f"sipp -sf {config_data['select_uac']} {remote} {uacSrc} -m 1"
+                print_uas_command = f"sipp -sf {config_data['select_uas']} {remote} {uasSrc}"
 
                 sipp_processes = get_sipp_processes()
                 return render(request, 'index.html', locals())
@@ -170,7 +141,8 @@ def index(request):
 ######################## Modify XML funtion calls ###############################################
 
 def modifyXml(request):
-    modifyXmlForm = xmlForm(initial=xml_data)
+    config_data = fetch_config_data()
+    modifyXmlForm = xmlForm(initial=config_data)
 
     if 'modifyXml' not in request.session:
         request.session['modifyXml'] = None
@@ -181,9 +153,9 @@ def modifyXml(request):
         modifyXmlForm = xmlForm(request.POST)
         if modifyXmlForm.is_valid():
             if selectXml == 'modifyUAC':
-                modifyXml = modifyXmlForm.cleaned_data['selectUAC']
+                modifyXml = modifyXmlForm.cleaned_data['select_uac']
             elif selectXml == 'modifyUAS':
-                modifyXml = modifyXmlForm.cleaned_data['selectUAS']
+                modifyXml = modifyXmlForm.cleaned_data['select_uas']
 
         request.session['modifyXml'] = modifyXml #store var in session            
         modifyHeaderFormData = modifyHeaderForm() #load modify header form after selecting xml file
@@ -408,15 +380,17 @@ def get_sipp_processes():
 
 def run_script_view(request):
 
-    sipp = str(settings.BASE_DIR / 'kSipP' / 'sipp' / 'sipp')
-    uacXml = str(settings.BASE_DIR / 'kSipP' / 'xml' / f'{xml_data["selectUAC"]}')
-    uasXml = str(settings.BASE_DIR / 'kSipP' / 'xml' / f'{xml_data["selectUAS"]}')
-    remote=f"{config_data['remoteAddr']}:{config_data['remotePort']}"
-    uacSrc=f"-i {config_data['localAddr']} -p {config_data['srcPortUac']}"
-    uasSrc=f"-i {config_data['localAddr']} -p {config_data['srcPortUas']}"
+    config_data = fetch_config_data()
 
-    print_uac_command = f"sipp -sf {xml_data['selectUAC']} {remote} {uacSrc} -m 1"
-    print_uas_command = f"sipp -sf {xml_data['selectUAS']} {remote} {uasSrc}"
+    sipp = str(settings.BASE_DIR / 'kSipP' / 'sipp' / 'sipp')
+    uacXml = str(settings.BASE_DIR / 'kSipP' / 'xml' / f'{config_data["select_uac"]}')
+    uasXml = str(settings.BASE_DIR / 'kSipP' / 'xml' / f'{config_data["select_uas"]}')
+    remote=f"{config_data['remote_addr']}:{config_data['remote_port']}"
+    uacSrc=f"-i {config_data['local_addr']} -p {config_data['src_port_uac']}"
+    uasSrc=f"-i {config_data['local_addr']} -p {config_data['src_port_uas']}"
+
+    print_uac_command = f"sipp -sf {config_data['select_uac']} {remote} {uacSrc} -m 1"
+    print_uas_command = f"sipp -sf {config_data['select_uas']} {remote} {uasSrc}"
 
     if request.method == 'POST':
 
@@ -429,23 +403,41 @@ def run_script_view(request):
         if scriptName == 'UAC':
             try:
                 uacCommand = f"{sipp} -sf {uacXml} {remote} {uacSrc} -m 1"
-                outputFile = f'{xml_data["selectUAC"]}.log'
+                outputFile = f'{config_data["select_uac"]}.log'
                 uacProc = run_sipp_in_background(uacCommand, outputFile)
                 # uacProc=subprocess.Popen(uacCommand,shell=True)
                 time.sleep(0.2)
+                # Check if Process has immediately exited
+                return_code = uacProc.poll()
+                if return_code != 0:
+                    outputFilePath = os.path.join(settings.BASE_DIR, outputFile)
+                    with open(outputFilePath, 'r') as file:
+                        lines = file.readlines()
+                        # Extract the last 'num_lines' lines from the list
+                        last_lines = lines[-15:]
+                        sipp_error = '*****'.join(last_lines)
 
             except Exception as e:
-                print(f"Error: {e}")
+                return HttpResponse(f"Error: {e}")
             
         if scriptName =='UAS':
             try:
                 uasCommand = f"{sipp} -sf {uasXml} {remote} {uasSrc} -t t1"
-                outputFile = f'{xml_data["selectUAS"]}.log'
+                outputFile = f'{config_data["select_uas"]}.log'
                 uasProc=run_sipp_in_background(uasCommand, outputFile)
                 time.sleep(0.2)
-
+                # Check if Process has immediately exited
+                return_code = uasProc.poll()
+                if return_code != 0:
+                    outputFilePath = os.path.join(settings.BASE_DIR, outputFile)
+                    with open(outputFilePath, 'r') as file:
+                        lines = file.readlines()
+                        # Extract the last 'num_lines' lines from the list
+                        last_lines = lines[-15:]
+                        sipp_error = '*****'.join(last_lines)
+                        
             except Exception as e:
-                print(f"Error: {e}")            
+                return HttpResponse(f"Error: {e}")
 
     if request.method == 'POST' and 'send_signal' in request.POST:
         send_signal = request.POST.get('send_signal')
@@ -519,11 +511,11 @@ def display_sipp_screen(request, xml, pid):
         # Handle the POST request for killing the process here
         pid_to_kill = request.POST.get('pid_to_kill')        
         if send_signal == 'Kill':
-            process = psutil.Process(int(pid_to_kill))
             try:
+                process = psutil.Process(int(pid_to_kill))
                 process.terminate()  # use process.kill() for a more forceful termination
             except psutil.NoSuchProcess:
-                pass  # The process with the given PID doesn't exist or already terminated
+                return HttpResponse("The SipP process with the given PID doesn't exist or already terminated")
         
         elif send_signal == 'CheckOutput':
             try:

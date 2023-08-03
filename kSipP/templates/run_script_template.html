@@ -30,6 +30,11 @@
         <input type="submit" value="Run UAC">
     </form>
     
+    <div style="clear:both; max-width: 800px; padding-top: 20px;">    
+    {{ sipp_error }}
+    </div>
+
+    <div style="clear:both;"></div>
     <h3>Running SipP Processes:</h3>
     {% if sipp_processes %}
         <ul>
