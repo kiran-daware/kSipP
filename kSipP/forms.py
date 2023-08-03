@@ -25,7 +25,9 @@ class xmlForm(forms.Form):
                 elif field_name == 'uas' and filename.startswith('uas'):
                     choices.append((filename, filename))
 
-        return choices
+        sorted_choices = sorted(choices, key=lambda choice: choice[1])
+
+        return sorted_choices
 
 
 class moreSippOptionsForm(forms.Form):
@@ -63,70 +65,54 @@ class modifyHeaderForm(forms.Form):
 
 
 
-class modifySelectedHeaderForSipMsgs(forms.Form):
-    def __init__(self, headersBySipMessage, *args, **kwargs):
-        super().__init__(*args, **kwargs)
+# class modifySelectedHeaderForSipMsgs(forms.Form):
+#     def __init__(self, headersBySipMessage, *args, **kwargs):
+#         super().__init__(*args, **kwargs)
         
-        for sipMessage, header in headersBySipMessage.items():
+#         for sipMessage, header in headersBySipMessage.items():
+#             self.fields[sipMessage] = forms.CharField(
+#                 label=sipMessage,
+#                 initial='\n'.join(header),
+#                 max_length=200,
+#                 widget=forms.TextInput(attrs={'style': 'width: 500px;'}),
+#                 required=False,  # Optional, set to True if modification is mandatory.
+#             )
+#             self.fields[sipMessage].widget = forms.TextInput(attrs={'value': sipMessage})
+
+
+
+
+class modifySelectedHeaderForSipMsgs(forms.Form):
+    def __init__(self, *args, **kwargs):
+        dictionary = kwargs.pop('hbsm')
+        super(modifySelectedHeaderForSipMsgs, self).__init__(*args, **kwargs)
+
+        for sipMessage, header_value in dictionary.items():
             self.fields[sipMessage] = forms.CharField(
+                initial='\n'.join(header_value),
                 label=sipMessage,
-                initial='\n'.join(header),
                 max_length=200,
                 widget=forms.TextInput(attrs={'style': 'width: 500px;'}),
-                required=False,  # Optional, set to True if modification is mandatory.
-            )
-
-
-
-
-
-
-
-
-class modifyHeaderFormNew(forms.Form):
-    def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
-        scenario_file = xmlPath = str(settings.BASE_DIR / 'kSipP' / 'xml' / 'uac.xml')  # Replace with the path to your SIPp scenario file.
-        headers_by_send_element = self.get_available_headers(scenario_file)
-        
-        for message_name, headers in headers_by_send_element.items():
-            for header_name in headers:
-                self.fields[header_name] = forms.CharField(
-                    label=message_name,
-                    initial=header_name,
-                    max_length=200,
-                    widget=forms.TextInput(attrs={'style': 'width: 500px;'}),
-                    required=False,  # Optional, set to True if modification is mandatory.
+                required=False,
                 )
 
-    def get_available_headers(self, scenario_file):
-        headers_by_send_element = {}
-        if os.path.exists(scenario_file):
-            tree = ET.parse(scenario_file)
-            root = tree.getroot()
-            for element in root.iter("send"):
-                if element.tag == "send":
-                    cdata_element = element.text
-                    if cdata_element is not None:
-                        # Split the CDATA content into lines
-                        message_name = cdata_element.strip().split(" ", 1)[0]
-                        cdata_lines = cdata_element.strip().splitlines()
-                        headers = []
-                        for line in cdata_lines:
-                            if line.strip():
-                                header_name = line.strip()
-                                
-                                headers.append(header_name)
-                        headers_by_send_element[message_name] = headers
-
-        return headers_by_send_element
-
-    
-                    # Remove leading/trailing whitespaces and get the first word from CDATA
-                        # header_name = (cdata_text.strip())
 
 
-                        # header_name = header_element
-                        
-        # return headers
+
+# class modifySelectedHeaderForSipMsgs(forms.Form):
+#     def __init__(self, headersBySipMessage, *args, **kwargs):
+#         super().__init__(*args, **kwargs)
+        
+#         for sipMessage, header in headersBySipMessage.items():
+#             label_value = sipMessage
+#             field_name = f"{sipMessage}_field"  # Create a unique field name for each label
+#             self.fields[field_name] = forms.CharField(
+#                 initial='\n'.join(header),
+#                 widget=forms.TextInput(attrs={'style': 'width: 500px;'}),
+#                 required=False,  # Optional, set to True if modification is mandatory.
+#             )
+#             # Add a hidden input field for the label
+#             self.fields[field_name].label = False
+#             self.fields[field_name].widget = forms.HiddenInput(attrs={'value': label_value})
+
 

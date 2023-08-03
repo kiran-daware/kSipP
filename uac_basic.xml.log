@@ -1,0 +1,46 @@
+Resolving remote host '10.122.24.236'... Done.
+------------------------------ Scenario Screen -------- [1-9]: Change Screen --
+  Call rate (length)   Port   Total-time  Total-calls  Remote-host
+  10.0(0 ms)/1.000s   6061      31.67 s            1  10.122.24.236:5060(UDP)
+
+  Call limit 1 hit, 0.0 s period          0 ms scheduler resolution            
+  0 calls (limit 30)                      Peak was 1 calls, after 0 s
+  0 Running, 2 Paused, 56 Woken up
+  0 dead call msg (discarded)             0 out-of-call msg (discarded)
+  0 open sockets                          0/0/0 UDP errors (send/recv/cong)
+  0 open sockets                          0/0/0 UDP errors (send/recv/cong)
+
+                                 Messages  Retrans   Timeout   Unexpected-Msg
+0 :      INVITE ---------->         1         5         1                      
+1 :         100 <----------         0         0         0         0            
+2 :         180 <----------         0         0         0         0            
+3 :         183 <----------         0         0         0         0            
+4 :         200 <----------  E-RTD1 0         0         0         0            
+5 :         ACK ---------->         0         0                                
+6 :       Pause [      0ms]         0                             0        
+7 :         BYE ---------->         0         0         0                      
+8 :         200 <----------         0         0         0         0            
+
+------------------------------ Test Terminated --------------------------------
+----------------------------- Statistics Screen ------- [1-9]: Change Screen --
+  Start Time             | 2023-08-02	14:15:20.584107	1690985720.584107         
+  Last Reset Time        | 2023-08-02	14:15:52.255654	1690985752.255654         
+  Current Time           | 2023-08-02	14:15:52.255894	1690985752.255894         
+-------------------------+---------------------------+--------------------------
+  Counter Name           | Periodic value            | Cumulative value
+-------------------------+---------------------------+--------------------------
+  Elapsed Time           | 00:00:00:000000           | 00:00:00:000000          
+  Call Rate              |    0.000 cps              |    0.032 cps             
+-------------------------+---------------------------+--------------------------
+  Incoming calls created |        0                  |        0                 
+  Outgoing calls created |        0                  |        1                 
+  Total Calls created    |                           |        1                 
+  Current Calls          |        0                  |                          
+-------------------------+---------------------------+--------------------------
+  Successful call        |        0                  |        0                 
+  Failed call            |        0                  |        1                 
+-------------------------+---------------------------+--------------------------
+  Response Time 1        | 00:00:00:000000           | 00:00:00:000000          
+  Call Length            | 00:00:00:000000           | 00:00:00:000000          
+------------------------------ Test Terminated --------------------------------2023-08-02	14:15:52.253979	1690985752.253979: Aborting call on UDP retransmission timeout for Call-ID '1-4571@172.23.219.81'
+

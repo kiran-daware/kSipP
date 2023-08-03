@@ -2,6 +2,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.4.12/ace.js"></script>
 
 <!-- Create a div to contain the editor -->
+<h2>{{ modifyXml }}</h2>
 <form method="post" action="{% url 'xml-editor' %}">
 {% csrf_token %}
 <input type="hidden" name="xml_content" id="xmlContentInput" value="{{ xml_content }}">
