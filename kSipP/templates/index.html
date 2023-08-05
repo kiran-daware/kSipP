@@ -13,7 +13,7 @@
         <a style="padding: 10px;" href="/modify-xml">Modify Xml</a>
     </div>
 
-    <div style="float: left; padding: 20px; width: 40%;">
+    <div style="float: left; padding: 20px; width: 38%;">
     <form method="post">
         {% csrf_token %}
         {{ selectXml.as_p }}
@@ -23,14 +23,20 @@
             <button type="submit" name="submitType" value="moreOptionsClose">OK</button>
         </div>        
         <button id="showMoreOptions">More Options</button>
-        {{ ipConfig.as_p }}
+        <br>
+        <div style="clear: both;">
+        <p>Remote Address: {{ ipConfig.remote_addr }} {{ ipConfig.remote_port }}</p>
+        <p>Local Address: {{ ipConfig.local_addr }}</p>
+        <p>UAC Src Port: {{ ipConfig.src_port_uac }} {{ ipConfig.protocol_uac }}</p>
+        <p>UAS Src Port: {{ ipConfig.src_port_uas }} {{ ipConfig.protocol_uas }}</p>
+        </div>
         <button type="submit" name="submitType" value="config">Save Config</button>
     </form>
     </div>
 
 
 
-    <div style="float: left; padding: 20px; width: 50%;">
+    <div style="float: left; padding: 20px; width: 52%;">
     
         <h3>Run SipP Scripts</h3>
         UAC Command: <b> {{ print_uac_command }}</b>

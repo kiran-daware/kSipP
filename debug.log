@@ -1,64 +1,454 @@
-INFO 2023-08-03 15:15:47,017 autoreload Watching for file changes with StatReloader
-INFO 2023-08-03 15:15:47,017 autoreload Watching for file changes with StatReloader
-INFO 2023-08-03 15:15:51,831 basehttp "GET / HTTP/1.1" 200 10127
-INFO 2023-08-03 15:15:51,831 basehttp "GET / HTTP/1.1" 200 10127
-WARNING 2023-08-03 15:15:52,227 log Not Found: /favicon.ico
-WARNING 2023-08-03 15:15:52,227 log Not Found: /favicon.ico
-WARNING 2023-08-03 15:15:52,231 basehttp "GET /favicon.ico HTTP/1.1" 404 3179
-WARNING 2023-08-03 15:15:52,231 basehttp "GET /favicon.ico HTTP/1.1" 404 3179
-INFO 2023-08-03 15:16:46,473 basehttp "POST /run-script HTTP/1.1" 200 2434
-INFO 2023-08-03 15:16:46,473 basehttp "POST /run-script HTTP/1.1" 200 2434
-INFO 2023-08-03 15:16:48,408 basehttp "POST /run-script HTTP/1.1" 302 0
-INFO 2023-08-03 15:16:48,408 basehttp "POST /run-script HTTP/1.1" 302 0
-INFO 2023-08-03 15:16:48,439 basehttp "GET /log/682/uas_200_multiple_streams/ HTTP/1.1" 200 5804
-INFO 2023-08-03 15:16:48,439 basehttp "GET /log/682/uas_200_multiple_streams/ HTTP/1.1" 200 5804
-INFO 2023-08-03 15:16:49,967 basehttp "POST /log/682/uas_200_multiple_streams/ HTTP/1.1" 200 5804
-INFO 2023-08-03 15:16:49,967 basehttp "POST /log/682/uas_200_multiple_streams/ HTTP/1.1" 200 5804
-INFO 2023-08-03 15:16:50,639 basehttp "POST /log/682/uas_200_multiple_streams/ HTTP/1.1" 200 71
-INFO 2023-08-03 15:16:50,639 basehttp "POST /log/682/uas_200_multiple_streams/ HTTP/1.1" 200 71
-INFO 2023-08-03 15:16:52,876 basehttp "GET /log/682/uas_200_multiple_streams/ HTTP/1.1" 200 5585
-INFO 2023-08-03 15:16:52,876 basehttp "GET /log/682/uas_200_multiple_streams/ HTTP/1.1" 200 5585
-INFO 2023-08-03 15:16:58,791 basehttp "POST /run-script HTTP/1.1" 200 1582
-INFO 2023-08-03 15:16:58,791 basehttp "POST /run-script HTTP/1.1" 200 1582
-INFO 2023-08-03 15:17:05,002 basehttp "GET / HTTP/1.1" 200 10127
-INFO 2023-08-03 15:17:05,002 basehttp "GET / HTTP/1.1" 200 10127
-INFO 2023-08-03 15:19:52,377 autoreload /home/kiran/python/EasySipP_wsl_venv/EasySipP_ubuntu/kSipP/forms.py changed, reloading.
-INFO 2023-08-03 15:19:52,377 autoreload /home/kiran/python/EasySipP_wsl_venv/EasySipP_ubuntu/kSipP/forms.py changed, reloading.
-INFO 2023-08-03 15:19:54,577 autoreload Watching for file changes with StatReloader
-INFO 2023-08-03 15:19:54,577 autoreload Watching for file changes with StatReloader
-INFO 2023-08-03 15:20:10,063 autoreload /home/kiran/python/EasySipP_wsl_venv/EasySipP_ubuntu/kSipP/forms.py changed, reloading.
-INFO 2023-08-03 15:20:10,063 autoreload /home/kiran/python/EasySipP_wsl_venv/EasySipP_ubuntu/kSipP/forms.py changed, reloading.
-INFO 2023-08-03 15:20:12,273 autoreload Watching for file changes with StatReloader
-INFO 2023-08-03 15:20:12,273 autoreload Watching for file changes with StatReloader
-INFO 2023-08-03 15:21:29,270 autoreload /home/kiran/python/EasySipP_wsl_venv/EasySipP_ubuntu/kSipP/forms.py changed, reloading.
-INFO 2023-08-03 15:21:29,270 autoreload /home/kiran/python/EasySipP_wsl_venv/EasySipP_ubuntu/kSipP/forms.py changed, reloading.
-INFO 2023-08-03 15:21:31,901 autoreload Watching for file changes with StatReloader
-INFO 2023-08-03 15:21:31,901 autoreload Watching for file changes with StatReloader
-INFO 2023-08-03 15:21:40,591 basehttp "GET / HTTP/1.1" 200 10280
-INFO 2023-08-03 15:21:40,591 basehttp "GET / HTTP/1.1" 200 10280
-INFO 2023-08-03 15:21:51,753 basehttp "POST / HTTP/1.1" 200 10280
-INFO 2023-08-03 15:21:51,753 basehttp "POST / HTTP/1.1" 200 10280
-INFO 2023-08-03 15:22:34,116 autoreload /home/kiran/python/EasySipP_wsl_venv/EasySipP_ubuntu/kSipP/views.py changed, reloading.
-INFO 2023-08-03 15:22:34,116 autoreload /home/kiran/python/EasySipP_wsl_venv/EasySipP_ubuntu/kSipP/views.py changed, reloading.
-INFO 2023-08-03 15:22:36,310 autoreload Watching for file changes with StatReloader
-INFO 2023-08-03 15:22:36,310 autoreload Watching for file changes with StatReloader
-INFO 2023-08-03 15:23:02,916 basehttp "POST / HTTP/1.1" 200 10302
-INFO 2023-08-03 15:23:02,916 basehttp "POST / HTTP/1.1" 200 10302
-INFO 2023-08-03 15:23:07,505 basehttp "GET / HTTP/1.1" 200 10293
-INFO 2023-08-03 15:23:07,505 basehttp "GET / HTTP/1.1" 200 10293
-INFO 2023-08-03 15:23:26,593 basehttp "POST / HTTP/1.1" 200 10356
-INFO 2023-08-03 15:23:26,593 basehttp "POST / HTTP/1.1" 200 10356
-INFO 2023-08-03 15:23:35,631 basehttp "GET / HTTP/1.1" 200 10293
-INFO 2023-08-03 15:23:35,631 basehttp "GET / HTTP/1.1" 200 10293
-INFO 2023-08-03 15:24:14,119 basehttp "POST / HTTP/1.1" 200 10302
-INFO 2023-08-03 15:24:14,119 basehttp "POST / HTTP/1.1" 200 10302
-INFO 2023-08-03 15:24:22,117 basehttp "POST / HTTP/1.1" 200 10302
-INFO 2023-08-03 15:24:22,117 basehttp "POST / HTTP/1.1" 200 10302
-INFO 2023-08-03 15:25:20,042 autoreload /home/kiran/python/EasySipP_wsl_venv/EasySipP_ubuntu/kSipP/views.py changed, reloading.
-INFO 2023-08-03 15:25:20,042 autoreload /home/kiran/python/EasySipP_wsl_venv/EasySipP_ubuntu/kSipP/views.py changed, reloading.
-INFO 2023-08-03 15:25:22,557 autoreload Watching for file changes with StatReloader
-INFO 2023-08-03 15:25:22,557 autoreload Watching for file changes with StatReloader
-INFO 2023-08-03 15:25:25,508 basehttp "POST / HTTP/1.1" 200 10302
-INFO 2023-08-03 15:25:25,508 basehttp "POST / HTTP/1.1" 200 10302
-INFO 2023-08-03 15:25:48,553 basehttp "POST / HTTP/1.1" 200 10302
-INFO 2023-08-03 15:25:48,553 basehttp "POST / HTTP/1.1" 200 10302
+INFO 2023-08-05 05:58:16,046 autoreload Watching for file changes with StatReloader
+INFO 2023-08-05 05:58:16,046 autoreload Watching for file changes with StatReloader
+INFO 2023-08-05 05:58:20,947 basehttp "GET / HTTP/1.1" 200 6625
+INFO 2023-08-05 05:58:20,947 basehttp "GET / HTTP/1.1" 200 6625
+WARNING 2023-08-05 05:58:21,255 log Not Found: /favicon.ico
+WARNING 2023-08-05 05:58:21,255 log Not Found: /favicon.ico
+WARNING 2023-08-05 05:58:21,256 basehttp "GET /favicon.ico HTTP/1.1" 404 3179
+WARNING 2023-08-05 05:58:21,256 basehttp "GET /favicon.ico HTTP/1.1" 404 3179
+INFO 2023-08-05 06:02:39,052 autoreload /home/kiran/python/EasySipP_wsl_venv/EasySipP_ubuntu/kSipP/views.py changed, reloading.
+INFO 2023-08-05 06:02:39,052 autoreload /home/kiran/python/EasySipP_wsl_venv/EasySipP_ubuntu/kSipP/views.py changed, reloading.
+INFO 2023-08-05 06:02:42,022 autoreload Watching for file changes with StatReloader
+INFO 2023-08-05 06:02:42,022 autoreload Watching for file changes with StatReloader
+INFO 2023-08-05 06:02:59,944 autoreload /home/kiran/python/EasySipP_wsl_venv/EasySipP_ubuntu/kSipP/views.py changed, reloading.
+INFO 2023-08-05 06:02:59,944 autoreload /home/kiran/python/EasySipP_wsl_venv/EasySipP_ubuntu/kSipP/views.py changed, reloading.
+INFO 2023-08-05 06:03:02,141 autoreload Watching for file changes with StatReloader
+INFO 2023-08-05 06:03:02,141 autoreload Watching for file changes with StatReloader
+INFO 2023-08-05 06:03:32,159 basehttp "GET / HTTP/1.1" 200 6625
+INFO 2023-08-05 06:03:32,159 basehttp "GET / HTTP/1.1" 200 6625
+INFO 2023-08-05 06:03:43,904 basehttp "POST /run-script HTTP/1.1" 200 1620
+INFO 2023-08-05 06:03:43,904 basehttp "POST /run-script HTTP/1.1" 200 1620
+INFO 2023-08-05 06:10:40,923 autoreload /home/kiran/python/EasySipP_wsl_venv/EasySipP_ubuntu/kSipP/views.py changed, reloading.
+INFO 2023-08-05 06:10:40,923 autoreload /home/kiran/python/EasySipP_wsl_venv/EasySipP_ubuntu/kSipP/views.py changed, reloading.
+INFO 2023-08-05 06:10:43,121 autoreload Watching for file changes with StatReloader
+INFO 2023-08-05 06:10:43,121 autoreload Watching for file changes with StatReloader
+INFO 2023-08-05 06:10:51,688 basehttp "GET /run-script HTTP/1.1" 200 1569
+INFO 2023-08-05 06:10:51,688 basehttp "GET /run-script HTTP/1.1" 200 1569
+INFO 2023-08-05 06:11:01,393 basehttp "POST /run-script HTTP/1.1" 200 1784
+INFO 2023-08-05 06:11:01,393 basehttp "POST /run-script HTTP/1.1" 200 1784
+INFO 2023-08-05 06:11:48,999 autoreload /home/kiran/python/EasySipP_wsl_venv/EasySipP_ubuntu/kSipP/views.py changed, reloading.
+INFO 2023-08-05 06:11:48,999 autoreload /home/kiran/python/EasySipP_wsl_venv/EasySipP_ubuntu/kSipP/views.py changed, reloading.
+INFO 2023-08-05 06:11:51,684 autoreload Watching for file changes with StatReloader
+INFO 2023-08-05 06:11:51,684 autoreload Watching for file changes with StatReloader
+INFO 2023-08-05 06:11:54,568 basehttp "GET /run-script HTTP/1.1" 200 1569
+INFO 2023-08-05 06:11:54,568 basehttp "GET /run-script HTTP/1.1" 200 1569
+INFO 2023-08-05 06:12:05,696 basehttp "POST /run-script HTTP/1.1" 200 1784
+INFO 2023-08-05 06:12:05,696 basehttp "POST /run-script HTTP/1.1" 200 1784
+INFO 2023-08-05 06:14:24,513 autoreload /home/kiran/python/EasySipP_wsl_venv/EasySipP_ubuntu/kSipP/views.py changed, reloading.
+INFO 2023-08-05 06:14:24,513 autoreload /home/kiran/python/EasySipP_wsl_venv/EasySipP_ubuntu/kSipP/views.py changed, reloading.
+INFO 2023-08-05 06:14:31,348 autoreload Watching for file changes with StatReloader
+INFO 2023-08-05 06:14:31,348 autoreload Watching for file changes with StatReloader
+INFO 2023-08-05 06:14:33,070 basehttp "GET /run-script HTTP/1.1" 200 1569
+INFO 2023-08-05 06:14:33,070 basehttp "GET /run-script HTTP/1.1" 200 1569
+INFO 2023-08-05 06:14:42,715 basehttp "POST /run-script HTTP/1.1" 200 1780
+INFO 2023-08-05 06:14:42,715 basehttp "POST /run-script HTTP/1.1" 200 1780
+INFO 2023-08-05 06:15:13,986 basehttp "POST /run-script HTTP/1.1" 200 2
+INFO 2023-08-05 06:15:13,986 basehttp "POST /run-script HTTP/1.1" 200 2
+INFO 2023-08-05 06:15:30,349 basehttp "GET /run-script HTTP/1.1" 200 1569
+INFO 2023-08-05 06:15:30,349 basehttp "GET /run-script HTTP/1.1" 200 1569
+INFO 2023-08-05 06:15:39,778 basehttp "POST /run-script HTTP/1.1" 200 2
+INFO 2023-08-05 06:15:39,778 basehttp "POST /run-script HTTP/1.1" 200 2
+INFO 2023-08-05 06:16:05,576 autoreload /home/kiran/python/EasySipP_wsl_venv/EasySipP_ubuntu/kSipP/views.py changed, reloading.
+INFO 2023-08-05 06:16:05,576 autoreload /home/kiran/python/EasySipP_wsl_venv/EasySipP_ubuntu/kSipP/views.py changed, reloading.
+INFO 2023-08-05 06:16:11,020 autoreload Watching for file changes with StatReloader
+INFO 2023-08-05 06:16:11,020 autoreload Watching for file changes with StatReloader
+INFO 2023-08-05 06:16:11,965 basehttp "GET /run-script HTTP/1.1" 200 1569
+INFO 2023-08-05 06:16:11,965 basehttp "GET /run-script HTTP/1.1" 200 1569
+INFO 2023-08-05 06:16:21,701 basehttp "POST /run-script HTTP/1.1" 200 48
+INFO 2023-08-05 06:16:21,701 basehttp "POST /run-script HTTP/1.1" 200 48
+INFO 2023-08-05 06:16:55,853 autoreload /home/kiran/python/EasySipP_wsl_venv/EasySipP_ubuntu/kSipP/views.py changed, reloading.
+INFO 2023-08-05 06:16:55,853 autoreload /home/kiran/python/EasySipP_wsl_venv/EasySipP_ubuntu/kSipP/views.py changed, reloading.
+INFO 2023-08-05 06:17:00,772 autoreload Watching for file changes with StatReloader
+INFO 2023-08-05 06:17:00,772 autoreload Watching for file changes with StatReloader
+INFO 2023-08-05 06:17:08,369 basehttp "GET /run-script HTTP/1.1" 200 1569
+INFO 2023-08-05 06:17:08,369 basehttp "GET /run-script HTTP/1.1" 200 1569
+INFO 2023-08-05 06:17:54,469 basehttp "POST /run-script HTTP/1.1" 200 2372
+INFO 2023-08-05 06:17:54,469 basehttp "POST /run-script HTTP/1.1" 200 2372
+INFO 2023-08-05 06:17:56,261 basehttp "POST /run-script HTTP/1.1" 302 0
+INFO 2023-08-05 06:17:56,261 basehttp "POST /run-script HTTP/1.1" 302 0
+INFO 2023-08-05 06:17:56,295 basehttp "GET /log/4279/uac/ HTTP/1.1" 200 6776
+INFO 2023-08-05 06:17:56,295 basehttp "GET /log/4279/uac/ HTTP/1.1" 200 6776
+INFO 2023-08-05 06:17:59,307 basehttp "POST /log/4279/uac/ HTTP/1.1" 200 6776
+INFO 2023-08-05 06:17:59,307 basehttp "POST /log/4279/uac/ HTTP/1.1" 200 6776
+INFO 2023-08-05 06:17:59,979 basehttp "POST /log/4279/uac/ HTTP/1.1" 200 71
+INFO 2023-08-05 06:17:59,979 basehttp "POST /log/4279/uac/ HTTP/1.1" 200 71
+WARNING 2023-08-05 06:21:01,525 log Not Found: //
+WARNING 2023-08-05 06:21:01,525 log Not Found: //
+WARNING 2023-08-05 06:21:01,527 basehttp "GET // HTTP/1.1" 404 3149
+WARNING 2023-08-05 06:21:01,527 basehttp "GET // HTTP/1.1" 404 3149
+INFO 2023-08-05 06:21:07,187 basehttp "GET / HTTP/1.1" 200 6625
+INFO 2023-08-05 06:21:07,187 basehttp "GET / HTTP/1.1" 200 6625
+INFO 2023-08-05 06:21:26,220 basehttp "POST /run-script HTTP/1.1" 200 2362
+INFO 2023-08-05 06:21:26,220 basehttp "POST /run-script HTTP/1.1" 200 2362
+INFO 2023-08-05 06:21:53,401 basehttp "GET / HTTP/1.1" 200 7428
+INFO 2023-08-05 06:21:53,401 basehttp "GET / HTTP/1.1" 200 7428
+INFO 2023-08-05 06:21:58,044 basehttp "POST / HTTP/1.1" 200 7428
+INFO 2023-08-05 06:21:58,044 basehttp "POST / HTTP/1.1" 200 7428
+INFO 2023-08-05 06:22:00,026 basehttp "POST /run-script HTTP/1.1" 200 3110
+INFO 2023-08-05 06:22:00,026 basehttp "POST /run-script HTTP/1.1" 200 3110
+INFO 2023-08-05 06:30:16,566 autoreload /home/kiran/python/EasySipP_wsl_venv/EasySipP_ubuntu/kSipP/scripts/modifyHeader.py changed, reloading.
+INFO 2023-08-05 06:30:16,566 autoreload /home/kiran/python/EasySipP_wsl_venv/EasySipP_ubuntu/kSipP/scripts/modifyHeader.py changed, reloading.
+INFO 2023-08-05 06:30:19,060 autoreload Watching for file changes with StatReloader
+INFO 2023-08-05 06:30:19,060 autoreload Watching for file changes with StatReloader
+INFO 2023-08-05 06:30:23,526 basehttp "GET /run-script HTTP/1.1" 200 3053
+INFO 2023-08-05 06:30:23,526 basehttp "GET /run-script HTTP/1.1" 200 3053
+INFO 2023-08-05 06:30:26,152 basehttp "POST /run-script HTTP/1.1" 200 2305
+INFO 2023-08-05 06:30:26,152 basehttp "POST /run-script HTTP/1.1" 200 2305
+INFO 2023-08-05 06:30:27,505 basehttp "POST /run-script HTTP/1.1" 200 1569
+INFO 2023-08-05 06:30:27,505 basehttp "POST /run-script HTTP/1.1" 200 1569
+INFO 2023-08-05 06:30:29,603 basehttp "POST /run-script HTTP/1.1" 200 2380
+INFO 2023-08-05 06:30:29,603 basehttp "POST /run-script HTTP/1.1" 200 2380
+INFO 2023-08-05 06:30:33,803 basehttp "POST /run-script HTTP/1.1" 200 3156
+INFO 2023-08-05 06:30:33,803 basehttp "POST /run-script HTTP/1.1" 200 3156
+INFO 2023-08-05 06:30:43,755 basehttp "POST /run-script HTTP/1.1" 200 2333
+INFO 2023-08-05 06:30:43,755 basehttp "POST /run-script HTTP/1.1" 200 2333
+INFO 2023-08-05 06:30:46,083 basehttp "POST /run-script HTTP/1.1" 200 1569
+INFO 2023-08-05 06:30:46,083 basehttp "POST /run-script HTTP/1.1" 200 1569
+INFO 2023-08-05 06:30:47,177 basehttp "GET / HTTP/1.1" 200 6625
+INFO 2023-08-05 06:30:47,177 basehttp "GET / HTTP/1.1" 200 6625
+INFO 2023-08-05 06:30:49,981 basehttp "POST / HTTP/1.1" 200 6625
+INFO 2023-08-05 06:30:49,981 basehttp "POST / HTTP/1.1" 200 6625
+INFO 2023-08-05 06:30:55,078 basehttp "POST /run-script HTTP/1.1" 200 2380
+INFO 2023-08-05 06:30:55,078 basehttp "POST /run-script HTTP/1.1" 200 2380
+INFO 2023-08-05 06:30:59,455 basehttp "POST /run-script HTTP/1.1" 200 1569
+INFO 2023-08-05 06:30:59,455 basehttp "POST /run-script HTTP/1.1" 200 1569
+INFO 2023-08-05 06:31:01,673 basehttp "GET / HTTP/1.1" 200 6625
+INFO 2023-08-05 06:31:01,673 basehttp "GET / HTTP/1.1" 200 6625
+INFO 2023-08-05 06:31:06,580 autoreload /home/kiran/python/EasySipP_wsl_venv/EasySipP_ubuntu/kSipP/scripts/modifyHeader.py changed, reloading.
+INFO 2023-08-05 06:31:06,580 autoreload /home/kiran/python/EasySipP_wsl_venv/EasySipP_ubuntu/kSipP/scripts/modifyHeader.py changed, reloading.
+INFO 2023-08-05 06:31:09,533 autoreload Watching for file changes with StatReloader
+INFO 2023-08-05 06:31:09,533 autoreload Watching for file changes with StatReloader
+INFO 2023-08-05 06:31:37,923 autoreload /home/kiran/python/EasySipP_wsl_venv/EasySipP_ubuntu/kSipP/views.py changed, reloading.
+INFO 2023-08-05 06:31:37,923 autoreload /home/kiran/python/EasySipP_wsl_venv/EasySipP_ubuntu/kSipP/views.py changed, reloading.
+INFO 2023-08-05 06:31:43,511 autoreload Watching for file changes with StatReloader
+INFO 2023-08-05 06:31:43,511 autoreload Watching for file changes with StatReloader
+INFO 2023-08-05 06:31:48,715 basehttp "GET / HTTP/1.1" 200 6625
+INFO 2023-08-05 06:31:48,715 basehttp "GET / HTTP/1.1" 200 6625
+INFO 2023-08-05 06:31:52,592 basehttp "POST / HTTP/1.1" 200 6625
+INFO 2023-08-05 06:31:52,592 basehttp "POST / HTTP/1.1" 200 6625
+INFO 2023-08-05 06:31:55,330 basehttp "POST /run-script HTTP/1.1" 200 2380
+INFO 2023-08-05 06:31:55,330 basehttp "POST /run-script HTTP/1.1" 200 2380
+INFO 2023-08-05 06:32:01,219 basehttp "POST /run-script HTTP/1.1" 302 0
+INFO 2023-08-05 06:32:01,219 basehttp "POST /run-script HTTP/1.1" 302 0
+INFO 2023-08-05 06:32:01,263 basehttp "GET /log/5711/uas_basic/ HTTP/1.1" 200 5764
+INFO 2023-08-05 06:32:01,263 basehttp "GET /log/5711/uas_basic/ HTTP/1.1" 200 5764
+INFO 2023-08-05 06:32:04,801 basehttp "POST /log/5711/uas_basic/ HTTP/1.1" 200 5764
+INFO 2023-08-05 06:32:04,801 basehttp "POST /log/5711/uas_basic/ HTTP/1.1" 200 5764
+INFO 2023-08-05 06:32:08,106 basehttp "POST /log/5711/uas_basic/ HTTP/1.1" 200 5764
+INFO 2023-08-05 06:32:08,106 basehttp "POST /log/5711/uas_basic/ HTTP/1.1" 200 5764
+INFO 2023-08-05 06:32:09,357 basehttp "POST /log/5711/uas_basic/ HTTP/1.1" 200 5764
+INFO 2023-08-05 06:32:09,357 basehttp "POST /log/5711/uas_basic/ HTTP/1.1" 200 5764
+ERROR 2023-08-05 06:32:14,876 log Internal Server Error: /log/5711/uas_basic/
+Traceback (most recent call last):
+  File "/home/kiran/python/EasySipP_wsl_venv/EasySipP_ubuntu/venv/lib/python3.8/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/kiran/python/EasySipP_wsl_venv/EasySipP_ubuntu/venv/lib/python3.8/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/kiran/python/EasySipP_wsl_venv/EasySipP_ubuntu/kSipP/views.py", line 540, in display_sipp_screen
+    lines = read_sipp_screen(file_path)
+  File "/home/kiran/python/EasySipP_wsl_venv/EasySipP_ubuntu/kSipP/views.py", line 518, in read_sipp_screen
+    with open(file_path, 'r') as file:
+FileNotFoundError: [Errno 2] No such file or directory: '/home/kiran/python/EasySipP_wsl_venv/EasySipP_ubuntu/uas_basic.xml.log'
+ERROR 2023-08-05 06:32:14,876 log Internal Server Error: /log/5711/uas_basic/
+Traceback (most recent call last):
+  File "/home/kiran/python/EasySipP_wsl_venv/EasySipP_ubuntu/venv/lib/python3.8/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/kiran/python/EasySipP_wsl_venv/EasySipP_ubuntu/venv/lib/python3.8/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/kiran/python/EasySipP_wsl_venv/EasySipP_ubuntu/kSipP/views.py", line 540, in display_sipp_screen
+    lines = read_sipp_screen(file_path)
+  File "/home/kiran/python/EasySipP_wsl_venv/EasySipP_ubuntu/kSipP/views.py", line 518, in read_sipp_screen
+    with open(file_path, 'r') as file:
+FileNotFoundError: [Errno 2] No such file or directory: '/home/kiran/python/EasySipP_wsl_venv/EasySipP_ubuntu/uas_basic.xml.log'
+ERROR 2023-08-05 06:32:14,878 basehttp "POST /log/5711/uas_basic/ HTTP/1.1" 500 71224
+ERROR 2023-08-05 06:32:14,878 basehttp "POST /log/5711/uas_basic/ HTTP/1.1" 500 71224
+ERROR 2023-08-05 06:32:22,539 log Internal Server Error: /log/5711/uas_basic/
+Traceback (most recent call last):
+  File "/home/kiran/python/EasySipP_wsl_venv/EasySipP_ubuntu/venv/lib/python3.8/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/kiran/python/EasySipP_wsl_venv/EasySipP_ubuntu/venv/lib/python3.8/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/kiran/python/EasySipP_wsl_venv/EasySipP_ubuntu/kSipP/views.py", line 540, in display_sipp_screen
+    lines = read_sipp_screen(file_path)
+  File "/home/kiran/python/EasySipP_wsl_venv/EasySipP_ubuntu/kSipP/views.py", line 518, in read_sipp_screen
+    with open(file_path, 'r') as file:
+FileNotFoundError: [Errno 2] No such file or directory: '/home/kiran/python/EasySipP_wsl_venv/EasySipP_ubuntu/uas_basic.xml.log'
+ERROR 2023-08-05 06:32:22,539 log Internal Server Error: /log/5711/uas_basic/
+Traceback (most recent call last):
+  File "/home/kiran/python/EasySipP_wsl_venv/EasySipP_ubuntu/venv/lib/python3.8/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/kiran/python/EasySipP_wsl_venv/EasySipP_ubuntu/venv/lib/python3.8/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/kiran/python/EasySipP_wsl_venv/EasySipP_ubuntu/kSipP/views.py", line 540, in display_sipp_screen
+    lines = read_sipp_screen(file_path)
+  File "/home/kiran/python/EasySipP_wsl_venv/EasySipP_ubuntu/kSipP/views.py", line 518, in read_sipp_screen
+    with open(file_path, 'r') as file:
+FileNotFoundError: [Errno 2] No such file or directory: '/home/kiran/python/EasySipP_wsl_venv/EasySipP_ubuntu/uas_basic.xml.log'
+ERROR 2023-08-05 06:32:22,541 basehttp "POST /log/5711/uas_basic/ HTTP/1.1" 500 71355
+ERROR 2023-08-05 06:32:22,541 basehttp "POST /log/5711/uas_basic/ HTTP/1.1" 500 71355
+ERROR 2023-08-05 06:32:27,412 log Internal Server Error: /log/5711/uas_basic/
+Traceback (most recent call last):
+  File "/home/kiran/python/EasySipP_wsl_venv/EasySipP_ubuntu/venv/lib/python3.8/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/kiran/python/EasySipP_wsl_venv/EasySipP_ubuntu/venv/lib/python3.8/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/kiran/python/EasySipP_wsl_venv/EasySipP_ubuntu/kSipP/views.py", line 540, in display_sipp_screen
+    lines = read_sipp_screen(file_path)
+  File "/home/kiran/python/EasySipP_wsl_venv/EasySipP_ubuntu/kSipP/views.py", line 518, in read_sipp_screen
+    with open(file_path, 'r') as file:
+FileNotFoundError: [Errno 2] No such file or directory: '/home/kiran/python/EasySipP_wsl_venv/EasySipP_ubuntu/uas_basic.xml.log'
+ERROR 2023-08-05 06:32:27,412 log Internal Server Error: /log/5711/uas_basic/
+Traceback (most recent call last):
+  File "/home/kiran/python/EasySipP_wsl_venv/EasySipP_ubuntu/venv/lib/python3.8/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/kiran/python/EasySipP_wsl_venv/EasySipP_ubuntu/venv/lib/python3.8/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/kiran/python/EasySipP_wsl_venv/EasySipP_ubuntu/kSipP/views.py", line 540, in display_sipp_screen
+    lines = read_sipp_screen(file_path)
+  File "/home/kiran/python/EasySipP_wsl_venv/EasySipP_ubuntu/kSipP/views.py", line 518, in read_sipp_screen
+    with open(file_path, 'r') as file:
+FileNotFoundError: [Errno 2] No such file or directory: '/home/kiran/python/EasySipP_wsl_venv/EasySipP_ubuntu/uas_basic.xml.log'
+ERROR 2023-08-05 06:32:27,415 basehttp "POST /log/5711/uas_basic/ HTTP/1.1" 500 71355
+ERROR 2023-08-05 06:32:27,415 basehttp "POST /log/5711/uas_basic/ HTTP/1.1" 500 71355
+INFO 2023-08-05 06:33:33,518 basehttp "GET / HTTP/1.1" 200 6625
+INFO 2023-08-05 06:33:33,518 basehttp "GET / HTTP/1.1" 200 6625
+INFO 2023-08-05 06:33:36,189 basehttp "POST /run-script HTTP/1.1" 200 2380
+INFO 2023-08-05 06:33:36,189 basehttp "POST /run-script HTTP/1.1" 200 2380
+INFO 2023-08-05 06:33:38,415 basehttp "POST /run-script HTTP/1.1" 200 1569
+INFO 2023-08-05 06:33:38,415 basehttp "POST /run-script HTTP/1.1" 200 1569
+INFO 2023-08-05 06:33:41,106 basehttp "POST /run-script HTTP/1.1" 200 2380
+INFO 2023-08-05 06:33:41,106 basehttp "POST /run-script HTTP/1.1" 200 2380
+INFO 2023-08-05 06:33:42,141 basehttp "POST /run-script HTTP/1.1" 302 0
+INFO 2023-08-05 06:33:42,141 basehttp "POST /run-script HTTP/1.1" 302 0
+INFO 2023-08-05 06:33:42,168 basehttp "GET /log/5881/uas_basic/ HTTP/1.1" 200 5763
+INFO 2023-08-05 06:33:42,168 basehttp "GET /log/5881/uas_basic/ HTTP/1.1" 200 5763
+INFO 2023-08-05 06:33:43,850 basehttp "POST /log/5881/uas_basic/ HTTP/1.1" 200 5763
+INFO 2023-08-05 06:33:43,850 basehttp "POST /log/5881/uas_basic/ HTTP/1.1" 200 5763
+ERROR 2023-08-05 06:33:45,028 log Internal Server Error: /log/5881/uas_basic/
+Traceback (most recent call last):
+  File "/home/kiran/python/EasySipP_wsl_venv/EasySipP_ubuntu/venv/lib/python3.8/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/kiran/python/EasySipP_wsl_venv/EasySipP_ubuntu/venv/lib/python3.8/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/kiran/python/EasySipP_wsl_venv/EasySipP_ubuntu/kSipP/views.py", line 540, in display_sipp_screen
+    lines = read_sipp_screen(file_path)
+  File "/home/kiran/python/EasySipP_wsl_venv/EasySipP_ubuntu/kSipP/views.py", line 518, in read_sipp_screen
+    with open(file_path, 'r') as file:
+FileNotFoundError: [Errno 2] No such file or directory: '/home/kiran/python/EasySipP_wsl_venv/EasySipP_ubuntu/uas_basic.xml.log'
+ERROR 2023-08-05 06:33:45,028 log Internal Server Error: /log/5881/uas_basic/
+Traceback (most recent call last):
+  File "/home/kiran/python/EasySipP_wsl_venv/EasySipP_ubuntu/venv/lib/python3.8/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/kiran/python/EasySipP_wsl_venv/EasySipP_ubuntu/venv/lib/python3.8/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/kiran/python/EasySipP_wsl_venv/EasySipP_ubuntu/kSipP/views.py", line 540, in display_sipp_screen
+    lines = read_sipp_screen(file_path)
+  File "/home/kiran/python/EasySipP_wsl_venv/EasySipP_ubuntu/kSipP/views.py", line 518, in read_sipp_screen
+    with open(file_path, 'r') as file:
+FileNotFoundError: [Errno 2] No such file or directory: '/home/kiran/python/EasySipP_wsl_venv/EasySipP_ubuntu/uas_basic.xml.log'
+ERROR 2023-08-05 06:33:45,030 basehttp "POST /log/5881/uas_basic/ HTTP/1.1" 500 71348
+ERROR 2023-08-05 06:33:45,030 basehttp "POST /log/5881/uas_basic/ HTTP/1.1" 500 71348
+INFO 2023-08-05 06:34:51,241 autoreload /home/kiran/python/EasySipP_wsl_venv/EasySipP_ubuntu/kSipP/views.py changed, reloading.
+INFO 2023-08-05 06:34:51,241 autoreload /home/kiran/python/EasySipP_wsl_venv/EasySipP_ubuntu/kSipP/views.py changed, reloading.
+INFO 2023-08-05 06:34:54,035 autoreload Watching for file changes with StatReloader
+INFO 2023-08-05 06:34:54,035 autoreload Watching for file changes with StatReloader
+ERROR 2023-08-05 06:34:55,691 log Internal Server Error: /log/5881/uas_basic/
+Traceback (most recent call last):
+  File "/home/kiran/python/EasySipP_wsl_venv/EasySipP_ubuntu/venv/lib/python3.8/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/kiran/python/EasySipP_wsl_venv/EasySipP_ubuntu/venv/lib/python3.8/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/kiran/python/EasySipP_wsl_venv/EasySipP_ubuntu/kSipP/views.py", line 540, in display_sipp_screen
+    lines = read_sipp_screen(file_path)
+  File "/home/kiran/python/EasySipP_wsl_venv/EasySipP_ubuntu/kSipP/views.py", line 518, in read_sipp_screen
+    with open(file_path, 'r') as file:
+FileNotFoundError: [Errno 2] No such file or directory: '/home/kiran/python/EasySipP_wsl_venv/EasySipP_ubuntu/uas_basic.xml.log'
+ERROR 2023-08-05 06:34:55,691 log Internal Server Error: /log/5881/uas_basic/
+Traceback (most recent call last):
+  File "/home/kiran/python/EasySipP_wsl_venv/EasySipP_ubuntu/venv/lib/python3.8/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/kiran/python/EasySipP_wsl_venv/EasySipP_ubuntu/venv/lib/python3.8/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/kiran/python/EasySipP_wsl_venv/EasySipP_ubuntu/kSipP/views.py", line 540, in display_sipp_screen
+    lines = read_sipp_screen(file_path)
+  File "/home/kiran/python/EasySipP_wsl_venv/EasySipP_ubuntu/kSipP/views.py", line 518, in read_sipp_screen
+    with open(file_path, 'r') as file:
+FileNotFoundError: [Errno 2] No such file or directory: '/home/kiran/python/EasySipP_wsl_venv/EasySipP_ubuntu/uas_basic.xml.log'
+ERROR 2023-08-05 06:34:55,695 basehttp "GET /log/5881/uas_basic/ HTTP/1.1" 500 70234
+ERROR 2023-08-05 06:34:55,695 basehttp "GET /log/5881/uas_basic/ HTTP/1.1" 500 70234
+INFO 2023-08-05 06:34:57,209 basehttp "GET / HTTP/1.1" 200 6625
+INFO 2023-08-05 06:34:57,209 basehttp "GET / HTTP/1.1" 200 6625
+INFO 2023-08-05 06:35:00,107 basehttp "POST /run-script HTTP/1.1" 200 2380
+INFO 2023-08-05 06:35:00,107 basehttp "POST /run-script HTTP/1.1" 200 2380
+INFO 2023-08-05 06:35:01,677 basehttp "POST /run-script HTTP/1.1" 302 0
+INFO 2023-08-05 06:35:01,677 basehttp "POST /run-script HTTP/1.1" 302 0
+INFO 2023-08-05 06:35:01,710 basehttp "GET /log/6059/uas_basic/ HTTP/1.1" 200 5763
+INFO 2023-08-05 06:35:01,710 basehttp "GET /log/6059/uas_basic/ HTTP/1.1" 200 5763
+INFO 2023-08-05 06:35:03,853 basehttp "POST /log/6059/uas_basic/ HTTP/1.1" 200 5763
+INFO 2023-08-05 06:35:03,853 basehttp "POST /log/6059/uas_basic/ HTTP/1.1" 200 5763
+INFO 2023-08-05 06:35:04,565 basehttp "POST /log/6059/uas_basic/ HTTP/1.1" 200 71
+INFO 2023-08-05 06:35:04,565 basehttp "POST /log/6059/uas_basic/ HTTP/1.1" 200 71
+INFO 2023-08-05 06:35:09,661 basehttp "POST /log/6059/uas_basic/ HTTP/1.1" 200 5545
+INFO 2023-08-05 06:35:09,661 basehttp "POST /log/6059/uas_basic/ HTTP/1.1" 200 5545
+INFO 2023-08-05 06:35:11,631 basehttp "POST /log/6059/uas_basic/ HTTP/1.1" 200 5545
+INFO 2023-08-05 06:35:11,631 basehttp "POST /log/6059/uas_basic/ HTTP/1.1" 200 5545
+INFO 2023-08-05 06:35:12,391 basehttp "POST /log/6059/uas_basic/ HTTP/1.1" 200 5545
+INFO 2023-08-05 06:35:12,391 basehttp "POST /log/6059/uas_basic/ HTTP/1.1" 200 5545
+INFO 2023-08-05 06:35:15,470 basehttp "POST /log/6059/uas_basic/ HTTP/1.1" 200 5545
+INFO 2023-08-05 06:35:15,470 basehttp "POST /log/6059/uas_basic/ HTTP/1.1" 200 5545
+INFO 2023-08-05 06:35:18,563 basehttp "POST /log/6059/uas_basic/ HTTP/1.1" 200 5545
+INFO 2023-08-05 06:35:18,563 basehttp "POST /log/6059/uas_basic/ HTTP/1.1" 200 5545
+INFO 2023-08-05 06:35:21,639 basehttp "POST /log/6059/uas_basic/ HTTP/1.1" 200 5545
+INFO 2023-08-05 06:35:21,639 basehttp "POST /log/6059/uas_basic/ HTTP/1.1" 200 5545
+INFO 2023-08-05 06:35:24,721 basehttp "POST /log/6059/uas_basic/ HTTP/1.1" 200 5545
+INFO 2023-08-05 06:35:24,721 basehttp "POST /log/6059/uas_basic/ HTTP/1.1" 200 5545
+INFO 2023-08-05 06:35:27,801 basehttp "POST /log/6059/uas_basic/ HTTP/1.1" 200 5545
+INFO 2023-08-05 06:35:27,801 basehttp "POST /log/6059/uas_basic/ HTTP/1.1" 200 5545
+INFO 2023-08-05 06:35:30,896 basehttp "POST /log/6059/uas_basic/ HTTP/1.1" 200 5545
+INFO 2023-08-05 06:35:30,896 basehttp "POST /log/6059/uas_basic/ HTTP/1.1" 200 5545
+INFO 2023-08-05 06:35:33,994 basehttp "POST /log/6059/uas_basic/ HTTP/1.1" 200 5545
+INFO 2023-08-05 06:35:33,994 basehttp "POST /log/6059/uas_basic/ HTTP/1.1" 200 5545
+INFO 2023-08-05 06:35:37,076 basehttp "POST /log/6059/uas_basic/ HTTP/1.1" 200 5545
+INFO 2023-08-05 06:35:37,076 basehttp "POST /log/6059/uas_basic/ HTTP/1.1" 200 5545
+INFO 2023-08-05 06:35:40,158 basehttp "POST /log/6059/uas_basic/ HTTP/1.1" 200 5545
+INFO 2023-08-05 06:35:40,158 basehttp "POST /log/6059/uas_basic/ HTTP/1.1" 200 5545
+INFO 2023-08-05 06:35:43,230 basehttp "POST /log/6059/uas_basic/ HTTP/1.1" 200 5545
+INFO 2023-08-05 06:35:43,230 basehttp "POST /log/6059/uas_basic/ HTTP/1.1" 200 5545
+INFO 2023-08-05 06:35:46,301 basehttp "POST /log/6059/uas_basic/ HTTP/1.1" 200 5545
+INFO 2023-08-05 06:35:46,301 basehttp "POST /log/6059/uas_basic/ HTTP/1.1" 200 5545
+INFO 2023-08-05 06:35:49,418 basehttp "POST /log/6059/uas_basic/ HTTP/1.1" 200 5545
+INFO 2023-08-05 06:35:49,418 basehttp "POST /log/6059/uas_basic/ HTTP/1.1" 200 5545
+INFO 2023-08-05 06:35:52,498 basehttp "POST /log/6059/uas_basic/ HTTP/1.1" 200 5545
+INFO 2023-08-05 06:35:52,498 basehttp "POST /log/6059/uas_basic/ HTTP/1.1" 200 5545
+INFO 2023-08-05 06:35:55,587 basehttp "POST /log/6059/uas_basic/ HTTP/1.1" 200 5545
+INFO 2023-08-05 06:35:55,587 basehttp "POST /log/6059/uas_basic/ HTTP/1.1" 200 5545
+INFO 2023-08-05 06:35:58,690 basehttp "POST /log/6059/uas_basic/ HTTP/1.1" 200 5545
+INFO 2023-08-05 06:35:58,690 basehttp "POST /log/6059/uas_basic/ HTTP/1.1" 200 5545
+INFO 2023-08-05 06:36:01,777 basehttp "POST /log/6059/uas_basic/ HTTP/1.1" 200 5545
+INFO 2023-08-05 06:36:01,777 basehttp "POST /log/6059/uas_basic/ HTTP/1.1" 200 5545
+INFO 2023-08-05 06:36:04,859 basehttp "POST /log/6059/uas_basic/ HTTP/1.1" 200 5545
+INFO 2023-08-05 06:36:04,859 basehttp "POST /log/6059/uas_basic/ HTTP/1.1" 200 5545
+INFO 2023-08-05 06:36:07,936 basehttp "POST /log/6059/uas_basic/ HTTP/1.1" 200 5545
+INFO 2023-08-05 06:36:07,936 basehttp "POST /log/6059/uas_basic/ HTTP/1.1" 200 5545
+INFO 2023-08-05 06:36:11,016 basehttp "POST /log/6059/uas_basic/ HTTP/1.1" 200 5545
+INFO 2023-08-05 06:36:11,016 basehttp "POST /log/6059/uas_basic/ HTTP/1.1" 200 5545
+INFO 2023-08-05 06:36:14,097 basehttp "POST /log/6059/uas_basic/ HTTP/1.1" 200 5545
+INFO 2023-08-05 06:36:14,097 basehttp "POST /log/6059/uas_basic/ HTTP/1.1" 200 5545
+INFO 2023-08-05 06:36:17,197 basehttp "POST /log/6059/uas_basic/ HTTP/1.1" 200 5545
+INFO 2023-08-05 06:36:17,197 basehttp "POST /log/6059/uas_basic/ HTTP/1.1" 200 5545
+INFO 2023-08-05 06:36:20,291 basehttp "POST /log/6059/uas_basic/ HTTP/1.1" 200 5545
+INFO 2023-08-05 06:36:20,291 basehttp "POST /log/6059/uas_basic/ HTTP/1.1" 200 5545
+INFO 2023-08-05 06:36:23,370 basehttp "POST /log/6059/uas_basic/ HTTP/1.1" 200 5545
+INFO 2023-08-05 06:36:23,370 basehttp "POST /log/6059/uas_basic/ HTTP/1.1" 200 5545
+INFO 2023-08-05 06:36:26,440 basehttp "POST /log/6059/uas_basic/ HTTP/1.1" 200 5545
+INFO 2023-08-05 06:36:26,440 basehttp "POST /log/6059/uas_basic/ HTTP/1.1" 200 5545
+INFO 2023-08-05 06:36:29,528 basehttp "POST /log/6059/uas_basic/ HTTP/1.1" 200 5545
+INFO 2023-08-05 06:36:29,528 basehttp "POST /log/6059/uas_basic/ HTTP/1.1" 200 5545
+INFO 2023-08-05 06:36:32,611 basehttp "POST /log/6059/uas_basic/ HTTP/1.1" 200 5545
+INFO 2023-08-05 06:36:32,611 basehttp "POST /log/6059/uas_basic/ HTTP/1.1" 200 5545
+INFO 2023-08-05 06:36:35,702 basehttp "POST /log/6059/uas_basic/ HTTP/1.1" 200 5545
+INFO 2023-08-05 06:36:35,702 basehttp "POST /log/6059/uas_basic/ HTTP/1.1" 200 5545
+INFO 2023-08-05 06:36:38,786 basehttp "POST /log/6059/uas_basic/ HTTP/1.1" 200 5545
+INFO 2023-08-05 06:36:38,786 basehttp "POST /log/6059/uas_basic/ HTTP/1.1" 200 5545
+INFO 2023-08-05 06:36:41,870 basehttp "POST /log/6059/uas_basic/ HTTP/1.1" 200 5545
+INFO 2023-08-05 06:36:41,870 basehttp "POST /log/6059/uas_basic/ HTTP/1.1" 200 5545
+INFO 2023-08-05 06:36:43,632 basehttp "POST /log/6059/uas_basic/ HTTP/1.1" 200 71
+INFO 2023-08-05 06:36:43,632 basehttp "POST /log/6059/uas_basic/ HTTP/1.1" 200 71
+INFO 2023-08-05 06:36:50,857 basehttp "POST /log/6059/uas_basic/ HTTP/1.1" 200 71
+INFO 2023-08-05 06:36:50,857 basehttp "POST /log/6059/uas_basic/ HTTP/1.1" 200 71
+INFO 2023-08-05 06:36:54,147 basehttp "GET / HTTP/1.1" 200 6625
+INFO 2023-08-05 06:36:54,147 basehttp "GET / HTTP/1.1" 200 6625
+INFO 2023-08-05 06:38:13,312 autoreload /home/kiran/python/EasySipP_wsl_venv/EasySipP_ubuntu/kSipP/views.py changed, reloading.
+INFO 2023-08-05 06:38:13,312 autoreload /home/kiran/python/EasySipP_wsl_venv/EasySipP_ubuntu/kSipP/views.py changed, reloading.
+INFO 2023-08-05 06:38:16,361 autoreload Watching for file changes with StatReloader
+INFO 2023-08-05 06:38:16,361 autoreload Watching for file changes with StatReloader
+INFO 2023-08-05 06:38:19,816 basehttp "GET / HTTP/1.1" 200 6625
+INFO 2023-08-05 06:38:19,816 basehttp "GET / HTTP/1.1" 200 6625
+INFO 2023-08-05 06:38:21,327 basehttp "GET / HTTP/1.1" 200 6625
+INFO 2023-08-05 06:38:21,327 basehttp "GET / HTTP/1.1" 200 6625
+INFO 2023-08-05 06:38:22,364 basehttp "GET /run-script HTTP/1.1" 200 1569
+INFO 2023-08-05 06:38:22,364 basehttp "GET /run-script HTTP/1.1" 200 1569
+INFO 2023-08-05 06:38:47,531 basehttp "POST /run-script HTTP/1.1" 200 2380
+INFO 2023-08-05 06:38:47,531 basehttp "POST /run-script HTTP/1.1" 200 2380
+INFO 2023-08-05 06:38:55,437 basehttp "POST /run-script HTTP/1.1" 200 1569
+INFO 2023-08-05 06:38:55,437 basehttp "POST /run-script HTTP/1.1" 200 1569
+INFO 2023-08-05 06:38:57,192 basehttp "GET / HTTP/1.1" 200 6625
+INFO 2023-08-05 06:38:57,192 basehttp "GET / HTTP/1.1" 200 6625
+INFO 2023-08-05 06:38:58,515 basehttp "GET / HTTP/1.1" 200 6625
+INFO 2023-08-05 06:38:58,515 basehttp "GET / HTTP/1.1" 200 6625
+INFO 2023-08-05 06:39:03,746 basehttp "POST / HTTP/1.1" 200 6625
+INFO 2023-08-05 06:39:03,746 basehttp "POST / HTTP/1.1" 200 6625
+INFO 2023-08-05 06:39:07,263 basehttp "POST / HTTP/1.1" 200 6625
+INFO 2023-08-05 06:39:07,263 basehttp "POST / HTTP/1.1" 200 6625
+INFO 2023-08-05 06:39:17,284 basehttp "POST /run-script HTTP/1.1" 200 2380
+INFO 2023-08-05 06:39:17,284 basehttp "POST /run-script HTTP/1.1" 200 2380
+INFO 2023-08-05 06:39:55,483 autoreload /home/kiran/python/EasySipP_wsl_venv/EasySipP_ubuntu/kSipP/views.py changed, reloading.
+INFO 2023-08-05 06:39:55,483 autoreload /home/kiran/python/EasySipP_wsl_venv/EasySipP_ubuntu/kSipP/views.py changed, reloading.
+INFO 2023-08-05 06:39:58,317 autoreload Watching for file changes with StatReloader
+INFO 2023-08-05 06:39:58,317 autoreload Watching for file changes with StatReloader
+INFO 2023-08-05 06:40:02,687 autoreload /home/kiran/python/EasySipP_wsl_venv/EasySipP_ubuntu/kSipP/views.py changed, reloading.
+INFO 2023-08-05 06:40:02,687 autoreload /home/kiran/python/EasySipP_wsl_venv/EasySipP_ubuntu/kSipP/views.py changed, reloading.
+INFO 2023-08-05 06:40:05,374 autoreload Watching for file changes with StatReloader
+INFO 2023-08-05 06:40:05,374 autoreload Watching for file changes with StatReloader
+INFO 2023-08-05 06:40:06,790 basehttp "GET /run-script HTTP/1.1" 200 2323
+INFO 2023-08-05 06:40:06,790 basehttp "GET /run-script HTTP/1.1" 200 2323
+INFO 2023-08-05 06:40:08,584 basehttp "POST /run-script HTTP/1.1" 200 1569
+INFO 2023-08-05 06:40:08,584 basehttp "POST /run-script HTTP/1.1" 200 1569
+INFO 2023-08-05 06:40:18,026 basehttp "POST /run-script HTTP/1.1" 200 51
+INFO 2023-08-05 06:40:18,026 basehttp "POST /run-script HTTP/1.1" 200 51
+INFO 2023-08-05 06:40:30,016 basehttp "GET /run-script HTTP/1.1" 200 1569
+INFO 2023-08-05 06:40:30,016 basehttp "GET /run-script HTTP/1.1" 200 1569
+INFO 2023-08-05 06:40:40,483 basehttp "POST /run-script HTTP/1.1" 200 51
+INFO 2023-08-05 06:40:40,483 basehttp "POST /run-script HTTP/1.1" 200 51
+INFO 2023-08-05 06:40:51,961 basehttp "GET / HTTP/1.1" 200 6625
+INFO 2023-08-05 06:40:51,961 basehttp "GET / HTTP/1.1" 200 6625
+INFO 2023-08-05 06:41:08,534 basehttp "GET / HTTP/1.1" 200 6625
+INFO 2023-08-05 06:41:08,534 basehttp "GET / HTTP/1.1" 200 6625
+INFO 2023-08-05 06:41:10,481 basehttp "GET / HTTP/1.1" 200 6625
+INFO 2023-08-05 06:41:10,481 basehttp "GET / HTTP/1.1" 200 6625
+INFO 2023-08-05 06:41:12,378 basehttp "GET /run-script HTTP/1.1" 200 1569
+INFO 2023-08-05 06:41:12,378 basehttp "GET /run-script HTTP/1.1" 200 1569
+INFO 2023-08-05 06:41:14,193 basehttp "GET /modify-xml HTTP/1.1" 200 2543
+INFO 2023-08-05 06:41:14,193 basehttp "GET /modify-xml HTTP/1.1" 200 2543
+INFO 2023-08-05 06:41:15,831 basehttp "POST /modify-xml HTTP/1.1" 200 3390
+INFO 2023-08-05 06:41:15,831 basehttp "POST /modify-xml HTTP/1.1" 200 3390
+INFO 2023-08-05 06:41:17,809 basehttp "POST /modify-xml HTTP/1.1" 200 11059
+INFO 2023-08-05 06:41:17,809 basehttp "POST /modify-xml HTTP/1.1" 200 11059
+INFO 2023-08-05 06:41:23,399 basehttp "GET / HTTP/1.1" 200 6625
+INFO 2023-08-05 06:41:23,399 basehttp "GET / HTTP/1.1" 200 6625
+INFO 2023-08-05 06:41:52,496 basehttp "POST /run-script HTTP/1.1" 200 2380
+INFO 2023-08-05 06:41:52,496 basehttp "POST /run-script HTTP/1.1" 200 2380
+INFO 2023-08-05 06:42:12,973 basehttp "POST /run-script HTTP/1.1" 200 3156
+INFO 2023-08-05 06:42:12,973 basehttp "POST /run-script HTTP/1.1" 200 3156
+INFO 2023-08-05 06:42:16,886 basehttp "POST /run-script HTTP/1.1" 200 2323
+INFO 2023-08-05 06:42:16,886 basehttp "POST /run-script HTTP/1.1" 200 2323
+INFO 2023-08-05 06:42:26,187 basehttp "POST /run-script HTTP/1.1" 200 1569
+INFO 2023-08-05 06:42:26,187 basehttp "POST /run-script HTTP/1.1" 200 1569
+INFO 2023-08-05 06:42:26,368 basehttp "POST /run-script HTTP/1.1" 200 51
+INFO 2023-08-05 06:42:26,368 basehttp "POST /run-script HTTP/1.1" 200 51
+INFO 2023-08-05 06:42:38,648 basehttp "GET /run-script HTTP/1.1" 200 1569
+INFO 2023-08-05 06:42:38,648 basehttp "GET /run-script HTTP/1.1" 200 1569
+INFO 2023-08-05 06:42:47,735 basehttp "POST /run-script HTTP/1.1" 200 51
+INFO 2023-08-05 06:42:47,735 basehttp "POST /run-script HTTP/1.1" 200 51
+INFO 2023-08-05 06:43:00,157 basehttp "GET / HTTP/1.1" 200 6625
+INFO 2023-08-05 06:43:00,157 basehttp "GET / HTTP/1.1" 200 6625
+INFO 2023-08-05 06:43:02,172 basehttp "GET / HTTP/1.1" 200 6625
+INFO 2023-08-05 06:43:02,172 basehttp "GET / HTTP/1.1" 200 6625
+INFO 2023-08-05 06:43:03,755 basehttp "GET /modify-xml HTTP/1.1" 200 2543
+INFO 2023-08-05 06:43:03,755 basehttp "GET /modify-xml HTTP/1.1" 200 2543
+INFO 2023-08-05 06:43:05,317 basehttp "GET / HTTP/1.1" 200 6625
+INFO 2023-08-05 06:43:05,317 basehttp "GET / HTTP/1.1" 200 6625
+INFO 2023-08-05 06:44:03,156 basehttp "GET / HTTP/1.1" 200 6625
+INFO 2023-08-05 06:44:03,156 basehttp "GET / HTTP/1.1" 200 6625
+INFO 2023-08-05 06:44:05,918 basehttp "GET / HTTP/1.1" 200 6625
+INFO 2023-08-05 06:44:05,918 basehttp "GET / HTTP/1.1" 200 6625
+INFO 2023-08-05 06:44:38,864 basehttp "POST /run-script HTTP/1.1" 200 51
+INFO 2023-08-05 06:44:38,864 basehttp "POST /run-script HTTP/1.1" 200 51
+INFO 2023-08-05 06:44:41,828 basehttp "GET / HTTP/1.1" 200 6625
+INFO 2023-08-05 06:44:41,828 basehttp "GET / HTTP/1.1" 200 6625
+INFO 2023-08-05 06:45:36,274 basehttp "POST / HTTP/1.1" 200 6625
+INFO 2023-08-05 06:45:36,274 basehttp "POST / HTTP/1.1" 200 6625
+INFO 2023-08-05 06:45:39,387 basehttp "GET /run-script HTTP/1.1" 200 1569
+INFO 2023-08-05 06:45:39,387 basehttp "GET /run-script HTTP/1.1" 200 1569
+INFO 2023-08-05 06:45:41,211 basehttp "GET /modify-xml HTTP/1.1" 200 2543
+INFO 2023-08-05 06:45:41,211 basehttp "GET /modify-xml HTTP/1.1" 200 2543

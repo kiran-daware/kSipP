@@ -1,0 +1,44 @@
+Resolving remote host '10.122.24.236'... Done.
+------------------------------ Scenario Screen -------- [1-9]: Change Screen --
+  Port   Total-time  Total-calls  Transport
+  6062      33.98 s            0  UDP
+
+  0 new calls during 0.650 s period       1 ms scheduler resolution            
+  0 calls                                 Peak was 0 calls, after 0 s
+  0 Running, 2 Paused, 115 Woken up
+  0 dead call msg (discarded)           
+  3 open sockets                          0/0/0 UDP errors (send/recv/cong)
+  0 Total RTP pckts sent                  0.000 last period RTP rate (kB/s)
+
+                                 Messages  Retrans   Timeout   Unexpected-Msg
+0 :  ----------> INVITE             0         0         0         0            
+
+1 :  <---------- 180                0         0                                
+2 :  <---------- 200                0         0         0                      
+3 :  ----------> ACK         E-RTD1 0         0         0         0            
+
+4 :  ----------> BYE                0         0         0         0            
+5 :  <---------- 200                0         0                                
+6 :  [   4000ms] Pause              0                             0        
+------------------------------ Test Terminated --------------------------------
+----------------------------- Statistics Screen ------- [1-9]: Change Screen --
+  Start Time             | 2023-08-05	06:41:52.172587	1691217712.172587         
+  Last Reset Time        | 2023-08-05	06:42:25.499732	1691217745.499732         
+  Current Time           | 2023-08-05	06:42:26.158994	1691217746.158994         
+-------------------------+---------------------------+--------------------------
+  Counter Name           | Periodic value            | Cumulative value
+-------------------------+---------------------------+--------------------------
+  Elapsed Time           | 00:00:00:659000           | 00:00:00:659000          
+  Call Rate              |    0.000 cps              |    0.000 cps             
+-------------------------+---------------------------+--------------------------
+  Incoming calls created |        0                  |        0                 
+  Outgoing calls created |        0                  |        0                 
+  Total Calls created    |                           |        0                 
+  Current Calls          |        0                  |                          
+-------------------------+---------------------------+--------------------------
+  Successful call        |        0                  |        0                 
+  Failed call            |        0                  |        0                 
+-------------------------+---------------------------+--------------------------
+  Response Time 1        | 00:00:00:000000           | 00:00:00:000000          
+  Call Length            | 00:00:00:000000           | 00:00:00:000000          
+------------------------------ Test Terminated --------------------------------

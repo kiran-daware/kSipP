@@ -23,10 +23,7 @@
   <!-- By adding rrs="true" (Record Route Sets), the route sets         -->
   <!-- are saved and used for following messages sent. Useful to test   -->
   <!-- against stateful SIP proxies/B2BUAs.                             -->
-  <!-- Adding ignoresdp="true" here would ignore the SDP data: that     -->
-  <!-- can be useful if you want to reject reINVITEs and keep the       -->
-  <!-- media stream flowing.                                            -->
-  <recv request="INVITE" crlf="true">
+  <recv request="INVITE" crlf="true" rrs="true">
   </recv>
 
   <!-- The '[last_*]' keyword is replaced automatically by the          -->
@@ -37,8 +34,23 @@
   <!-- are also discarded.                                              -->
   <!--                                                                  -->
   <!-- If the specified header was present several times in the         -->
-  <!-- message, all occurrences are concatenated (CRLF separated)       -->
+  <!-- message, all occurences are concatenated (CRLF seperated)        -->
   <!-- to be used in place of the '[last_*]' keyword.                   -->
+
+  <send>
+    <![CDATA[
+
+      SIP/2.0 100 Trying
+      [last_Via:]
+      [last_From:]
+      [last_To:];tag=[pid]SIPpTag01[call_number]
+      [last_Call-ID:]
+      [last_CSeq:]
+      Contact: <sip:[local_ip]:[local_port];transport=[transport]>
+      Content-Length: 0
+
+    ]]>
+  </send>
 
   <send>
     <![CDATA[
@@ -54,7 +66,7 @@
 
     ]]>
   </send>
-
+<pause milliseconds="500" />
   <send retrans="500">
     <![CDATA[
 
@@ -73,17 +85,24 @@
       s=-
       c=IN IP[media_ip_type] [media_ip]
       t=0 0
-      m=audio [media_port] RTP/AVP 0
-      a=rtpmap:0 PCMU/8000
+      m=audio [media_port] RTP/AVP 18
+      a=rtpmap:18 G729/8000
 
     ]]>
   </send>
 
   <recv request="ACK"
-        optional="true"
         rtd="true"
         crlf="true">
   </recv>
+
+  <!-- Play a pre-recorded PCAP file (RTP stream)                       -->
+  <nop>
+    <action>
+      <exec play_pcap_audio="g711a.pcap"/>
+    </action>
+  </nop>
+  <pause milliseconds="90000"/>
 
   <recv request="BYE">
   </recv>

@@ -1,5 +1,4 @@
 from django.http import HttpResponse
-from django.http import JsonResponse
 from django.views.decorators.cache import never_cache
 from django.shortcuts import render, redirect
 from django.conf import settings
@@ -10,11 +9,11 @@ import os
 import subprocess
 import psutil
 import signal
-import re
 import time
+import re, stun
 
 from .scripts.showXmlFlow import showXmlFlowScript
-from .scripts.modifyHeader import modifyHeaderScript, getHeadersFromSipMsgs
+from .scripts.modifyHeader import modifyHeaderScript, getHeadersFromSipMsgs, tmpXmlBehindNAT
 
 # Read initial data from config file
 config_file = os.path.join(str(settings.BASE_DIR), 'config.ini')
@@ -31,13 +30,16 @@ def fetch_config_data():
         'local_addr': configd.get('local_addr'),
         'src_port_uac': configd.get('src_port_uac'),
         'src_port_uas': configd.get('src_port_uas'),
+        'protocol_uac':configd.get('protocol_uac'),
+        'protocol_uas':configd.get('protocol_uas'),
         'called_party_number': configd.get('called_party_number'),
         'calling_party_number': configd.get('calling_party_number'),
         'total_no_of_calls': configd.get('total_no_of_calls'),
         'cps': configd.get('cps'),
         'select_uac':configd.get('select_uac'),
         'select_uas':configd.get('select_uas'),
-        'is_behind_nat':configd.get('is_behind_nat')
+        'stun_server':configd.get('stun_server'),
+
     }
     return config_data
 
@@ -101,11 +103,14 @@ def index(request):
                 config_data['local_addr'] = ipConfig.cleaned_data['local_addr']
                 config_data['src_port_uac'] = ipConfig.cleaned_data['src_port_uac']
                 config_data['src_port_uas'] = ipConfig.cleaned_data['src_port_uas']
+                config_data['protocol_uac'] = ipConfig.cleaned_data['protocol_uac']
+                config_data['protocol_uas'] = ipConfig.cleaned_data['protocol_uas']
+
                 config_data['called_party_number'] = moreOptionsForm.cleaned_data['called_party_number']
                 config_data['calling_party_number'] = moreOptionsForm.cleaned_data['calling_party_number']
                 config_data['total_no_of_calls'] = moreOptionsForm.cleaned_data['total_no_of_calls']
                 config_data['cps'] = moreOptionsForm.cleaned_data['cps']
-                config_data['is_behind_nat'] = moreOptionsForm.cleaned_data['is_behind_nat']
+                config_data['stun_server'] = moreOptionsForm.cleaned_data['stun_server']
                 
                 # config set for saving in config.ini
                 for configKey, configValue in config_data.items():
@@ -247,9 +252,10 @@ def modifyXml(request):
 def aceXmlEditor(request):
     if request.method == 'POST':
         xml_content = request.POST.get('xml_content')
+        xml_name = request.POST.get('xml_name')
         # Replace double line breaks with single line breaks
         xml_content = xml_content.replace('\r\n', '\n')
-        with open(os.path.join(settings.BASE_DIR, 'kSipP', 'xml', 'uas_kiran.xml'), 'w', encoding='utf-8') as file:
+        with open(os.path.join(settings.BASE_DIR, 'kSipP', 'xml', xml_name), 'w', encoding='utf-8') as file:
             file.write(xml_content)
 
     return render(request, 'xml_editor.html', {'xml_content':xml_content})
@@ -382,15 +388,40 @@ def run_script_view(request):
 
     config_data = fetch_config_data()
 
-    sipp = str(settings.BASE_DIR / 'kSipP' / 'sipp' / 'sipp')
-    uacXml = str(settings.BASE_DIR / 'kSipP' / 'xml' / f'{config_data["select_uac"]}')
-    uasXml = str(settings.BASE_DIR / 'kSipP' / 'xml' / f'{config_data["select_uas"]}')
-    remote=f"{config_data['remote_addr']}:{config_data['remote_port']}"
-    uacSrc=f"-i {config_data['local_addr']} -p {config_data['src_port_uac']}"
-    uasSrc=f"-i {config_data['local_addr']} -p {config_data['src_port_uas']}"
+    uacXml = f'{config_data["select_uac"]}'
+    uasXml = f'{config_data["select_uas"]}'
+    uacSrcPort = int(f"{config_data['src_port_uac']}")
+    protocol_uac = f'{config_data["protocol_uac"]}'
+    uasSrcPort = int(f"{config_data['src_port_uas']}")
+    protocol_uas = f'{config_data["protocol_uas"]}'
+    noOfCalls = int(f"{config_data['total_no_of_calls']}")
+    cps = int(f"{config_data['cps']}")
 
-    print_uac_command = f"sipp -sf {config_data['select_uac']} {remote} {uacSrc} -m 1"
-    print_uas_command = f"sipp -sf {config_data['select_uas']} {remote} {uasSrc}"
+    stun_server = {config_data['stun_server']}
+
+    sipp = str(settings.BASE_DIR / 'kSipP' / 'sipp' / 'sipp')
+    uacXmlPath = str(settings.BASE_DIR / 'kSipP' / 'xml' / uacXml)
+    uasXmlPath = str(settings.BASE_DIR / 'kSipP' / 'xml' / uasXml)
+    remote=f"{config_data['remote_addr']}:{config_data['remote_port']}"
+    uacSrc=f"-i {config_data['local_addr']} -p {uacSrcPort}"
+    uasSrc=f"-i {config_data['local_addr']} -p {uasSrcPort}"
+
+    print_uac_command = f"sipp -sf {uacXml} {remote} {uacSrc} -m 1"
+    print_uas_command = f"sipp -sf {uasXml} {remote} {uasSrc}"
+
+
+
+    
+    ######## For behind NAT sipp
+    def stun4nat(xmlName, srcPort, stunServer):
+        stun_host_str = ''.join(stunServer)
+        nat_type, external_ip, external_port = stun.get_ip_info(stun_host=stun_host_str, source_port=int(srcPort))
+        if external_ip is not None and external_port is not None:
+            newXmlPath = tmpXmlBehindNAT(xmlName, external_ip, external_port)
+        else:
+            return None
+        return newXmlPath
+
 
     if request.method == 'POST':
 
@@ -402,11 +433,18 @@ def run_script_view(request):
         scriptName = request.POST.get('script')
         if scriptName == 'UAC':
             try:
-                uacCommand = f"{sipp} -sf {uacXml} {remote} {uacSrc} -m 1"
-                outputFile = f'{config_data["select_uac"]}.log'
+                if any(stun_server):
+                    stunnedPath = stun4nat(uacXml, uacSrcPort, stun_server)
+                    if stunnedPath is not None:
+                        uacXmlPath = stunnedPath
+
+                    else: return HttpResponse(f'Stun server at {stun_server} is not responding!')
+
+                uacCommand = f"{sipp} -sf {uacXmlPath} {remote} {uacSrc} -m {noOfCalls} -r {cps} -t {protocol_uac}"
+                outputFile = f'{uacXml}.log'
                 uacProc = run_sipp_in_background(uacCommand, outputFile)
                 # uacProc=subprocess.Popen(uacCommand,shell=True)
-                time.sleep(0.2)
+                time.sleep(0.3)
                 # Check if Process has immediately exited
                 return_code = uacProc.poll()
                 if return_code != 0:
@@ -422,10 +460,17 @@ def run_script_view(request):
             
         if scriptName =='UAS':
             try:
-                uasCommand = f"{sipp} -sf {uasXml} {remote} {uasSrc} -t t1"
-                outputFile = f'{config_data["select_uas"]}.log'
+                if any(stun_server):                    
+                    stunnedPath = stun4nat(uasXml, uasSrcPort, stun_server)
+                    if stunnedPath is not None:
+                        uasXmlPath = stunnedPath
+
+                    else: return HttpResponse(f'Stun server at {stun_server} is not responding!')
+
+                uasCommand = f"{sipp} -sf {uasXmlPath} {remote} {uasSrc} -t {protocol_uas}"
+                outputFile = f'{uasXml}.log'
                 uasProc=run_sipp_in_background(uasCommand, outputFile)
-                time.sleep(0.2)
+                time.sleep(0.3)
                 # Check if Process has immediately exited
                 return_code = uasProc.poll()
                 if return_code != 0:

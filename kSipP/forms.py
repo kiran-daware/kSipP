@@ -35,7 +35,7 @@ class moreSippOptionsForm(forms.Form):
     calling_party_number = forms.CharField(label='Calling Party Number', max_length=30, required=False, initial='9876')
     total_no_of_calls = forms.IntegerField(label='No. of calls to send', min_value=1, max_value=9999, required=False, initial=1)
     cps = forms.IntegerField(label='Calls Per Second', min_value=1, max_value=100, required=False, initial=1) 
-    is_behind_nat = forms.GenericIPAddressField(label='SipP behind NAT?', protocol='IPv4', required=False, initial='')
+    stun_server = forms.GenericIPAddressField(label='Stun Server', protocol='IPv4', required=False, initial='')
 
 
 
@@ -43,8 +43,10 @@ class configForm(forms.Form):
     remote_addr = forms.GenericIPAddressField(label='Remote Address', protocol='IPv4')
     remote_port = forms.IntegerField(label='Remote Port', min_value=1000, max_value=9999, initial=5060)
     local_addr = forms.GenericIPAddressField(label='Local Address', protocol='IPv4')
-    src_port_uac = forms.IntegerField(label='UAC Source Port', min_value=1000, max_value=9999, initial=5060)
-    src_port_uas = forms.IntegerField(label='UAS Source Port', min_value=1000, max_value=9999, initial=5060)
+    src_port_uac = forms.IntegerField(label='UAC Src Port', min_value=1000, max_value=9999, initial=5060)
+    src_port_uas = forms.IntegerField(label='UAS Src Port', min_value=1000, max_value=9999, initial=5060)
+    protocol_uac = forms.ChoiceField(label='', choices=[('u1', 'UDP'),('tn', 'TCP')])
+    protocol_uas = forms.ChoiceField(label='', choices=[('u1', 'UDP'),('tn', 'TCP')])
     # Add more fields for other configuration settings as needed
 
 

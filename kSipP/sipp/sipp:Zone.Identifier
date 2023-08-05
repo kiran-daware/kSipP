@@ -1,4 +1,0 @@
-[ZoneTransfer]
-ZoneId=3
-ReferrerUrl=https://github.com/SIPp/sipp/releases/tag/v3.7.1
-HostUrl=https://objects.githubusercontent.com/github-production-release-asset-2e65be/13161657/5b3d64ad-053e-4f46-9dcb-89ea57a538ac?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAIWNJYAX4CSVEH53A%2F20230725%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20230725T135204Z&X-Amz-Expires=300&X-Amz-Signature=9b2315d2fd1d9da564001c153a8bcac8f6706f7c8394198bbc3ee4f12dd5a828&X-Amz-SignedHeaders=host&actor_id=136244832&key_id=0&repo_id=13161657&response-content-disposition=attachment%3B%20filename%3Dsipp&response-content-type=application%2Foctet-stream

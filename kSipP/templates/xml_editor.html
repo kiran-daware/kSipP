@@ -6,6 +6,7 @@
 <form method="post" action="{% url 'xml-editor' %}">
 {% csrf_token %}
 <input type="hidden" name="xml_content" id="xmlContentInput" value="{{ xml_content }}">
+<input type="hidden" name="xml_name" value="{{ modifyXml }}">
 <div id="xmlEditor" style="height: 90%; width: 100%;">{{ xml_content }}</div>
 <button type="submit" name="submit" value="save">Save</button>
 </form>
