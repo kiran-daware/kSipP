@@ -13,10 +13,9 @@
         <a style="padding: 10px;" href="/modify-xml">Modify Xml</a>
     </div>
 
-    UAC Command: <b> {{ print_uac_command }}</b>
+    <p>uac: <span> {{ print_uac_command }}</span></p>
+    <p>uas: <span> {{ print_uas_command }} </span></p>
     <br />
-    UAS Command: <b> {{ print_uas_command }} </b>
-    <br /><br />
 
     <form method="post" action="{% url 'run-script' %}" style="float: left; margin-right: 50px;">
         {% csrf_token %}
@@ -30,19 +29,24 @@
         <input type="submit" value="Run UAC">
     </form>
     
+    <div style="clear:both; max-width: 800px; padding-top: 20px;">    
+    {{ sipp_error }}
+    </div>
+
+    <div style="clear:both;"></div>
     <h3>Running SipP Processes:</h3>
     {% if sipp_processes %}
         <ul>
             {% for process in sipp_processes %}
                 <li>
-                    pid: {{ process.pid }}, {{ process.command_line }}, {{ process.script_name }}
+                    pid: {{ process.pid }}, {{ process.command_line }}
                     
-                    <form method="post" action="" target="_blank">
+                    <form method="post" action="{% url 'run-script' %}">
                         {% csrf_token %}
                         <input type="hidden" name="script_name" value="{{ process.script_name}}">
                         <input type="hidden" name="pid_to_kill" value="{{ process.pid }}">
                         <input type="submit" name="send_signal" value="Kill">
-                        <input type ="submit" name="send_signal" value="CheckOutput">
+                        <input type ="submit" name="send_signal" value="CheckOutput" formtarget="_blank">
                     </form>
                 </li>
             {% endfor %}

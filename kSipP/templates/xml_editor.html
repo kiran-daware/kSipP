@@ -2,13 +2,24 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.4.12/ace.js"></script>
 
 <!-- Create a div to contain the editor -->
-<h2>{{ modifyXml }}</h2>
+<h3>{{ xml_name }}.xml</h3>
 <form method="post" action="{% url 'xml-editor' %}">
 {% csrf_token %}
 <input type="hidden" name="xml_content" id="xmlContentInput" value="{{ xml_content }}">
-<div id="xmlEditor" style="height: 90%; width: 100%;">{{ xml_content }}</div>
-<button type="submit" name="submit" value="save">Save</button>
+<input type="hidden" name="xml_name" value="{{ xml_name }}">
+<div id="xmlEditor" style="height: 88%; width: 100%;">{{ xml_content }}</div>
+<div style="margin-top: 15px;">
+<button type="submit" name="save" value="save">Save</button>  Or
+<label for="text_input">Save as new file: {{ xml_name }}_</label>
+<input type="text" name="new_xml_name" maxlength="10" value="new"><span>.xml</span>
+<button type="submit" name="save" value="save_as">Save as</button>  
+<button type="submit" name="save" value="exit">Exit</button>
+{% if save %}
+Successfully Saved to <b>{{ xml_name }}.xml</b>
+{% endif %}
+</div>
 </form>
+
 
 <!-- Initialize the editor -->
 <script>

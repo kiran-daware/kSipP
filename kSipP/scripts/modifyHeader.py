@@ -105,26 +105,6 @@ def modifyHeaderScript(xml_file, sipMessage, header, newHeader, newXmlFileName =
        
 
 
-    # #PrettyXml
-    # with open(new_xml_file, 'r') as file:
-    #     xml_content = file.read()
-
-    # newLineBeforeCdata = xml_content.replace('<![CDATA[', '\n    <![CDATA[')
-    # newLineAfterCdata = newLineBeforeCdata.replace(']]>', '    ]]>')
-    # modifiedXML = newLineAfterCdata.replace('</send>', '\n  </send>')
-    # # Write the modified XML content back to the same file
-    # with open(new_xml_file, 'w') as file:
-    #     file.write(modifiedXML)
-
-
-#Modify Header 
-# xml_file_path = os.path.join(baseDir, 'kSipP', 'xml', 'UAC_orig.xml')
-# new_xml_file = os.path.join(baseDir, 'kSipP', 'xml','UAC.xml')
-# header = "From"
-# newHeader = "kiran <sip:123@10.122.217.27:5060>"
-# modifyHeader(xml_file_path, header, newHeader)
-
-
 # #PrettyXml
 # with open(xml_file_path, 'r') as file:
 #     xml_content = file.read()
@@ -137,3 +117,24 @@ def modifyHeaderScript(xml_file, sipMessage, header, newHeader, newXmlFileName =
 #     file.write(modifiedXML)
 
 
+
+
+def tmpXmlBehindNAT(xml, externalIp, externalPort):
+    xmlPath = str(settings.BASE_DIR / 'kSipP' / 'xml' / xml)
+    with open(xmlPath, 'r') as file:
+        xml_content = file.read()
+    
+    replaceExtIp = xml_content.replace('[local_ip]', externalIp)
+
+    if xml.startswith("uac"):
+        modifiedXML = replaceExtIp.replace('[local_port]',str(externalPort))
+        # newXml = 'uac.xml'
+    else: 
+        modifiedXML = replaceExtIp #Not changing the NAT port for UAS 
+        # newXml = 'uas.xml'
+    tmpXmlPath = str(settings.BASE_DIR / 'kSipP' / 'xml' / 'tmp' / xml)
+
+    with open(tmpXmlPath, 'w') as file:
+        file.write(modifiedXML)
+        
+    return tmpXmlPath

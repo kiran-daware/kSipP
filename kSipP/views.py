@@ -1,5 +1,4 @@
 from django.http import HttpResponse
-from django.http import JsonResponse
 from django.views.decorators.cache import never_cache
 from django.shortcuts import render, redirect
 from django.conf import settings
@@ -10,22 +9,40 @@ import os
 import subprocess
 import psutil
 import signal
-import re
 import time
+import re, stun
 
 from .scripts.showXmlFlow import showXmlFlowScript
-from .scripts.modifyHeader import modifyHeaderScript, getHeadersFromSipMsgs
+from .scripts.modifyHeader import modifyHeaderScript, getHeadersFromSipMsgs, tmpXmlBehindNAT
 
 # Read initial data from config file
 config_file = os.path.join(str(settings.BASE_DIR), 'config.ini')
 config = configparser.ConfigParser()
 config.read(config_file)
 configd = config['DEFAULT']
-configx = config['XML']
 
 #global variables
-config_data = {}
-xml_data = {}
+def fetch_config_data():
+    # Read initial data from config file
+    config_data = {
+        'remote_addr': configd.get('remote_addr'),
+        'remote_port': configd.get('remote_port'),
+        'local_addr': configd.get('local_addr'),
+        'src_port_uac': configd.get('src_port_uac'),
+        'src_port_uas': configd.get('src_port_uas'),
+        'protocol_uac':configd.get('protocol_uac'),
+        'protocol_uas':configd.get('protocol_uas'),
+        'called_party_number': configd.get('called_party_number'),
+        'calling_party_number': configd.get('calling_party_number'),
+        'total_no_of_calls': configd.get('total_no_of_calls'),
+        'cps': configd.get('cps'),
+        'select_uac':configd.get('select_uac'),
+        'select_uas':configd.get('select_uas'),
+        'stun_server':configd.get('stun_server'),
+
+    }
+    return config_data
+
 
 
 ################### Index Page Functions #############################
@@ -33,36 +50,32 @@ xml_data = {}
 @never_cache
 def index(request):
 
-    # Read initial data from config file
-    global config_data
-    config_data = {
-        'remoteAddr': configd.get('remoteAddr'),
-        'remotePort': configd.get('remotePort'),
-        'localAddr': configd.get('localAddr'),
-        'srcPortUac': configd.get('srcPortUac'),
-        'srcPortUas': configd.get('srcPortUas'),
-        'calledPartyNumber': configd.get('calledPartyNumber'),
-        'callingPartyNumber': configd.get('callingPartyNumber'),
-        'totalNoOfCalls': configd.get('totalNoOfCalls'),
-        'cps': configd.get('cps'),
-    }
-    global xml_data
-    xml_data = {
-        'selectUAC':configx.get('selectUAC'),
-        'selectUAS':configx.get('selectUAS')
-    }
+    config_data = fetch_config_data()
     
 
-    remote=f"{config_data['remoteAddr']}:{config_data['remotePort']}"
-    uacSrc=f"-i {config_data['localAddr']} -p {config_data['srcPortUac']}"
-    uasSrc=f"-i {config_data['localAddr']} -p {config_data['srcPortUas']}"
+    uacXml = f'{config_data["select_uac"]}'
+    uasXml = f'{config_data["select_uas"]}'
+    uacSrcPort = int(f"{config_data['src_port_uac']}")
+    protocol_uac = f'{config_data["protocol_uac"]}'
+    uasSrcPort = int(f"{config_data['src_port_uas']}")
+    protocol_uas = f'{config_data["protocol_uas"]}'
+    noOfCalls = int(f"{config_data['total_no_of_calls']}")
+    cps = int(f"{config_data['cps']}")
+
+    remote=f"{config_data['remote_addr']}:{config_data['remote_port']}"
+    uacSrc=f"-i {config_data['local_addr']} -p {uacSrcPort}"
+    uasSrc=f"-i {config_data['local_addr']} -p {uasSrcPort}"
 
     # below vars used on index.html
-    print_uac_command = f"sipp -sf {xml_data['selectUAC']} {remote} {uacSrc} -m 1"
-    print_uas_command = f"sipp -sf {xml_data['selectUAS']} {remote} {uasSrc}"
+    print_uac_command = f"sipp -sf {uacXml} {remote} {uacSrc} -m {noOfCalls}"
+    if cps > 1: print_uac_command += f" -r {cps}"
+    if protocol_uac == 'tn' : print_uac_command += f" -t {protocol_uac}"
+
+    print_uas_command = f"sipp -sf {uasXml} {remote} {uasSrc}"
+    if protocol_uas == 'tn': print_uas_command += f" -t {protocol_uas}"
 
     # loading xmlForm and configForm
-    selectXml = xmlForm(initial=xml_data)
+    selectXml = xmlForm(initial=config_data)
     ipConfig = configForm(initial=config_data)
     moreOptionsForm = moreSippOptionsForm(initial=config_data)
 
@@ -73,8 +86,8 @@ def index(request):
             if submit_type == 'checkFlow':
                 selectXml = xmlForm(request.POST)
                 if selectXml.is_valid():
-                    selectUAC = selectXml.cleaned_data['selectUAC']
-                    selectUAS = selectXml.cleaned_data['selectUAS']
+                    selectUAC = selectXml.cleaned_data['select_uac']
+                    selectUAS = selectXml.cleaned_data['select_uas']
                     # xml_file_path = str(settings.BASE_DIR / 'kSipP' / 'xml' / 'uac.xml')
 
                     uacflow = showXmlFlowScript(selectUAC)
@@ -95,52 +108,29 @@ def index(request):
             moreOptionsForm = moreSippOptionsForm(request.POST)
             if selectXml.is_valid() & ipConfig.is_valid() & moreOptionsForm.is_valid():
 
-                xml_data['selectUAC'] = selectXml.cleaned_data['selectUAC']
-                xml_data['selectUAS'] = selectXml.cleaned_data['selectUAS']
-                config.set('XML','selectUAC', str(xml_data['selectUAC']))
-                config.set('XML','selectUAS', str(xml_data['selectUAS']))
-                
                 # update config_data dictionary
-                config_data['remoteAddr'] = ipConfig.cleaned_data['remoteAddr']
-                config_data['remotePort'] = ipConfig.cleaned_data['remotePort']
-                config_data['localAddr'] = ipConfig.cleaned_data['localAddr']
-                config_data['srcPortUac'] = ipConfig.cleaned_data['srcPortUac']
-                config_data['srcPortUas'] = ipConfig.cleaned_data['srcPortUas']
-                config_data['calledPartyNumber'] = moreOptionsForm.cleaned_data['calledPartyNumber']
-                config_data['callingPartyNumber'] = moreOptionsForm.cleaned_data['callingPartyNumber']
-                config_data['totalNoOfCalls'] = moreOptionsForm.cleaned_data['totalNoOfCalls']
+                config_data['select_uac'] = selectXml.cleaned_data['select_uac']
+                config_data['select_uas'] = selectXml.cleaned_data['select_uas']
+                
+                config_data['remote_addr'] = ipConfig.cleaned_data['remote_addr']
+                config_data['remote_port'] = ipConfig.cleaned_data['remote_port']
+                config_data['local_addr'] = ipConfig.cleaned_data['local_addr']
+                config_data['src_port_uac'] = ipConfig.cleaned_data['src_port_uac']
+                config_data['src_port_uas'] = ipConfig.cleaned_data['src_port_uas']
+                config_data['protocol_uac'] = ipConfig.cleaned_data['protocol_uac']
+                config_data['protocol_uas'] = ipConfig.cleaned_data['protocol_uas']
+
+                config_data['called_party_number'] = moreOptionsForm.cleaned_data['called_party_number']
+                config_data['calling_party_number'] = moreOptionsForm.cleaned_data['calling_party_number']
+                config_data['total_no_of_calls'] = moreOptionsForm.cleaned_data['total_no_of_calls']
                 config_data['cps'] = moreOptionsForm.cleaned_data['cps']
+                config_data['stun_server'] = moreOptionsForm.cleaned_data['stun_server']
                 
                 # config set for saving in config.ini
                 for configKey, configValue in config_data.items():
                     config.set('DEFAULT', configKey, str(configValue))
 
-
-                # remoteAddr = ipConfig.cleaned_data['remoteAddr']
-                # remotePort = ipConfig.cleaned_data['remotePort']
-                # localAddr = ipConfig.cleaned_data['localAddr']
-                # srcPortUac = ipConfig.cleaned_data['srcPortUac']
-                # srcPortUas = ipConfig.cleaned_data['srcPortUas']
-
-                # config.set('DEFAULT', 'remote_address', remoteAddr)
-                # config.set('DEFAULT', 'remote_port', str(remotePort))
-                # config.set('DEFAULT', 'local_address', localAddr)
-                # config.set('DEFAULT', 'uac_port', str(srcPortUac))
-                # config.set('DEFAULT', 'uas_port', str(srcPortUas))
-
                 
-                # calledPartyNumber = moreOptionsForm.cleaned_data['calledPartyNumber']
-                # callingPartyNumber = moreOptionsForm.cleaned_data['callingPartyNumber']
-                # totalNoOfCalls = moreOptionsForm.cleaned_data['totalNoOfCalls']
-                # cps = moreOptionsForm.cleaned_data['cps']
-
-                # config.set('DEFAULT', 'called_Party_Number', calledPartyNumber)
-                # config.set('DEFAULT', 'calling_Party_Number', callingPartyNumber)
-                # config.set('DEFAULT', 'total_no_of_calls', str(totalNoOfCalls))
-                # config.set('DEFAULT', 'cps', str(cps))
-                
-
-
                 # Update the config file after config.set
                 ConfigFile = os.path.join(settings.BASE_DIR, 'config.ini')
                 with open(ConfigFile, 'w') as configfile:
@@ -149,13 +139,26 @@ def index(request):
 
 
                 #update script prints on homepage
-                remote=f"{config_data['remoteAddr']}:{config_data['remotePort']}"
-                uacSrc=f"-i {config_data['localAddr']} -p {config_data['srcPortUac']}"
-                uasSrc=f"-i {config_data['localAddr']} -p {config_data['srcPortUas']}"
+                uacXml = f'{config_data["select_uac"]}'
+                uasXml = f'{config_data["select_uas"]}'
+                uacSrcPort = int(f"{config_data['src_port_uac']}")
+                protocol_uac = f'{config_data["protocol_uac"]}'
+                uasSrcPort = int(f"{config_data['src_port_uas']}")
+                protocol_uas = f'{config_data["protocol_uas"]}'
+                noOfCalls = int(f"{config_data['total_no_of_calls']}")
+                cps = int(f"{config_data['cps']}")
+
+                remote=f"{config_data['remote_addr']}:{config_data['remote_port']}"
+                uacSrc=f"-i {config_data['local_addr']} -p {uacSrcPort}"
+                uasSrc=f"-i {config_data['local_addr']} -p {uasSrcPort}"
 
                 # below vars used on index.html
-                print_uac_command = f"sipp -sf {xml_data['selectUAC']} {remote} {uacSrc} -m 1"
-                print_uas_command = f"sipp -sf {xml_data['selectUAS']} {remote} {uasSrc}"
+                print_uac_command = f"sipp -sf {uacXml} {remote} {uacSrc} -m {noOfCalls}"
+                if cps > 1: print_uac_command += f" -r {cps}"
+                if protocol_uac == 'tn' : print_uac_command += f" -t {protocol_uac}"
+
+                print_uas_command = f"sipp -sf {uasXml} {remote} {uasSrc}"
+                if protocol_uas == 'tn': print_uas_command += f" -t {protocol_uas}"
 
                 sipp_processes = get_sipp_processes()
                 return render(request, 'index.html', locals())
@@ -170,7 +173,8 @@ def index(request):
 ######################## Modify XML funtion calls ###############################################
 
 def modifyXml(request):
-    modifyXmlForm = xmlForm(initial=xml_data)
+    config_data = fetch_config_data()
+    modifyXmlForm = xmlForm(initial=config_data)
 
     if 'modifyXml' not in request.session:
         request.session['modifyXml'] = None
@@ -181,9 +185,9 @@ def modifyXml(request):
         modifyXmlForm = xmlForm(request.POST)
         if modifyXmlForm.is_valid():
             if selectXml == 'modifyUAC':
-                modifyXml = modifyXmlForm.cleaned_data['selectUAC']
+                modifyXml = modifyXmlForm.cleaned_data['select_uac']
             elif selectXml == 'modifyUAS':
-                modifyXml = modifyXmlForm.cleaned_data['selectUAS']
+                modifyXml = modifyXmlForm.cleaned_data['select_uas']
 
         request.session['modifyXml'] = modifyXml #store var in session            
         modifyHeaderFormData = modifyHeaderForm() #load modify header form after selecting xml file
@@ -211,11 +215,11 @@ def modifyXml(request):
             if modifyXmlSubmit == 'xmlEditor':
 
                 modXmlPath = os.path.join(settings.BASE_DIR, 'kSipP', 'xml', modifyXml)
-                # newModXmlPath = os.path.join(settings.BASE_DIR, 'kSipP', 'xml', 'uas_kiran.xml')
+                modifyXml_noext = modifyXml.rsplit(".", 1)[0]
                 with open(modXmlPath, 'r') as file:
                     xml_content = file.read()
                 
-                return render(request, 'xml_editor.html', {'xml_content':xml_content, 'modifyXml':modifyXml})
+                return render(request, 'xml_editor.html', {'xml_content':xml_content, 'xml_name':modifyXml_noext})
 
                     
         if request.method == 'POST' and 'modifiedHeaderDone' in request.POST:
@@ -252,127 +256,31 @@ def modifyXml(request):
                         modifyHeaderScript(modifyXml, sipMessage, selectedHeader, header_value)
 
 
-                    
-            # if modifyXmlSubmit == 'doneModify':
-            #     request.session['modifyXml'] = None
-
-            # if modifyXmlSubmit == 'xmlEditor':
-
-            #     modXmlPath = os.path.join(settings.BASE_DIR, 'kSipP', 'xml', modifyXml)
-            #     newModXmlPath = os.path.join(settings.BASE_DIR, 'kSipP', 'xml', 'uas_kiran.xml')
-
-            #     with open(modXmlPath, 'r') as file:
-            #         xml_content = file.read()
-                
-            #     return render(request, 'xml_editor.html', {'xml_content':xml_content})
-
-
-    
     return render(request, 'modify_xml.html', locals())
 
 
 
 def aceXmlEditor(request):
+    xml_content = None
     if request.method == 'POST':
         xml_content = request.POST.get('xml_content')
+        xml_name = request.POST.get('xml_name')
+        new_xml_name = request.POST.get('new_xml_name')
+        save_type = request.POST.get('save')
         # Replace double line breaks with single line breaks
         xml_content = xml_content.replace('\r\n', '\n')
-        with open(os.path.join(settings.BASE_DIR, 'kSipP', 'xml', 'uas_kiran.xml'), 'w', encoding='utf-8') as file:
+
+        if save_type == 'save': savingXmlName = xml_name
+        elif save_type == 'save_as': savingXmlName = f'{xml_name}_{new_xml_name}'
+        else: return redirect('modify-xml')
+
+        with open(os.path.join(settings.BASE_DIR, 'kSipP', 'xml', f'{savingXmlName}.xml'), 'w', encoding='utf-8') as file:
             file.write(xml_content)
+    
+    if xml_content is None:
+        return HttpResponse('No xml selected <a href="/modify-xml">Select here!</a>')
 
-    return render(request, 'xml_editor.html', {'xml_content':xml_content})
-
-    # return HttpResponse('XML content saved successfully.')
-
-
-                        # if submit_type == 'save':
-                        #     xml_content = request.POST.get('xml_content')
-
-                        #     with open(newmodxml, 'w', encoding='utf-8') as file:
-                        #         file.write(xml_content)
-                        
-                        # else:
-                        #     with open(modxml, 'r') as file:
-                        #         xml_content = file.read()
-                        
-
-            # return render(request, 'xml_editor.html', {'xml_content':xml_content})
-
-
-
-        # printSelectedXml = f"Select Header to modify in {modifyXml}"
-        # modifyHeaderForm = modifyHeader(request.POST)
-
-        # # Handle form submissions here
-        # if selectXml == 'newHeader':
-        #     if modifyHeaderForm.is_valid():
-        #         selectedHeader = modifyHeaderForm.cleaned_data['selectHeader']
-        #         newHeader = modifyHeaderForm.cleaned_data['modifyHeader']
-        # elif selectXml == 'doneModify':
-        #     pass  # Handle the doneModify action if needed
-
-
-
-
-                # printSelectedXml = f"Select Header to modify in {modifyXml}"
-                # modifyHeaderForm = modifyHeader(request.POST)
-                # submit_type == request.POST['submitType']
-                # if submit_type == 'newHeader':
-                #     if modifyHeaderForm.is_valid():
-                #         selectedHeader = modifyHeaderForm.cleaned_data['selectHeader']
-                #         newHeader = modifyHeaderForm.cleaned_data['modifyHeader']
-
-
-                        # if submit_type == 'save':
-                        #     xml_content = request.POST.get('xml_content')
-
-                        #     with open(newmodxml, 'w', encoding='utf-8') as file:
-                        #         file.write(xml_content)
-                        
-                        # else:
-                        #     with open(modxml, 'r') as file:
-                        #         xml_content = file.read()
-                        
-
-                        # return render(request, 'xml_editor.html', {'xml_content':xml_content})
-
-
-                
-            
-
-                    
-                    
-                    
-                    
-
-
-
-#                 xmlContent = f'''[DEFAULT]\n
-# UAC = {selectUAC}
-# UAS = {selectUAS}
-# '''
-#                 xmlConfigFile = os.path.join(settings.BASE_DIR, 'xml.ini')
-#                 with open(xmlConfigFile, 'w') as file:
-#                     file.write(xmlContent)
-#                 return render(request, 'modify_xml.html', {'form': modifyXmlForm})
-            
-        # if 'xmlName' in request.POST:
-        #     xmlName = request.POST.get('xmlName')
-        #     if xmlName.is_valid():
-                
-
-        #         modifyXml_script = str(settings.BASE_DIR / 'kSipP' / 'scripts' / 'modifyHeader.py')
-        #     try:
-        #         result = subprocess.run(['python', modifyXml_script], capture_output=True, text=True)
-        #         return HttpResponse(result)
-        #     except subprocess.CalledProcessError as e:
-        #         # Handle any errors that may occur when running the script
-        #         return HttpResponse(f"Error occurred: {e}")
-
-
-    # modifyXmlForm = xmlForm()
-    # return render(request, 'modify_xml.html', locals())
-
+    return render(request, 'xml_editor.html', {'xml_content':xml_content, 'xml_name':savingXmlName, 'save':save_type})
 
 
 
@@ -408,15 +316,46 @@ def get_sipp_processes():
 
 def run_script_view(request):
 
-    sipp = str(settings.BASE_DIR / 'kSipP' / 'sipp' / 'sipp')
-    uacXml = str(settings.BASE_DIR / 'kSipP' / 'xml' / f'{xml_data["selectUAC"]}')
-    uasXml = str(settings.BASE_DIR / 'kSipP' / 'xml' / f'{xml_data["selectUAS"]}')
-    remote=f"{config_data['remoteAddr']}:{config_data['remotePort']}"
-    uacSrc=f"-i {config_data['localAddr']} -p {config_data['srcPortUac']}"
-    uasSrc=f"-i {config_data['localAddr']} -p {config_data['srcPortUas']}"
+    config_data = fetch_config_data()
 
-    print_uac_command = f"sipp -sf {xml_data['selectUAC']} {remote} {uacSrc} -m 1"
-    print_uas_command = f"sipp -sf {xml_data['selectUAS']} {remote} {uasSrc}"
+    uacXml = f'{config_data["select_uac"]}'
+    uasXml = f'{config_data["select_uas"]}'
+    uacSrcPort = int(f"{config_data['src_port_uac']}")
+    protocol_uac = f'{config_data["protocol_uac"]}'
+    uasSrcPort = int(f"{config_data['src_port_uas']}")
+    protocol_uas = f'{config_data["protocol_uas"]}'
+    noOfCalls = int(f"{config_data['total_no_of_calls']}")
+    cps = int(f"{config_data['cps']}")
+
+    stun_server = {config_data['stun_server']}
+
+    sipp = str(settings.BASE_DIR / 'kSipP' / 'sipp' / 'sipp')
+    uacXmlPath = str(settings.BASE_DIR / 'kSipP' / 'xml' / uacXml)
+    uasXmlPath = str(settings.BASE_DIR / 'kSipP' / 'xml' / uasXml)
+    remote=f"{config_data['remote_addr']}:{config_data['remote_port']}"
+    uacSrc=f"-i {config_data['local_addr']} -p {uacSrcPort}"
+    uasSrc=f"-i {config_data['local_addr']} -p {uasSrcPort}"
+
+    print_uac_command = f"sipp -sf {uacXml} {remote} {uacSrc} -m {noOfCalls}"
+    if cps > 1: print_uac_command += f" -r {cps}"
+    if protocol_uac == 'tn' : print_uac_command += f" -t {protocol_uac}"
+
+    print_uas_command = f"sipp -sf {uasXml} {remote} {uasSrc}"
+    if protocol_uas == 'tn': print_uas_command += f" -t {protocol_uas}"
+
+
+
+    
+    ######## For behind NAT sipp
+    def stun4nat(xmlName, srcPort, stunServer):
+        stun_host_str = ''.join(stunServer)
+        nat_type, external_ip, external_port = stun.get_ip_info(stun_host=stun_host_str, source_port=int(srcPort))
+        if external_ip is not None and external_port is not None:
+            newXmlPath = tmpXmlBehindNAT(xmlName, external_ip, external_port)
+        else:
+            return None
+        return newXmlPath
+
 
     if request.method == 'POST':
 
@@ -428,24 +367,58 @@ def run_script_view(request):
         scriptName = request.POST.get('script')
         if scriptName == 'UAC':
             try:
-                uacCommand = f"{sipp} -sf {uacXml} {remote} {uacSrc} -m 1"
-                outputFile = f'{xml_data["selectUAC"]}.log'
+                if any(stun_server):
+                    stunnedPath = stun4nat(uacXml, uacSrcPort, stun_server)
+                    if stunnedPath is not None:
+                        uacXmlPath = stunnedPath
+
+                    else: return HttpResponse(f'Stun server at {stun_server} is not responding!')
+
+                uacCommand = f"{sipp} -sf {uacXmlPath} {remote} {uacSrc} -m {noOfCalls} -r {cps} -t {protocol_uac}"
+                outputFile = f'{uacXml}.log'
                 uacProc = run_sipp_in_background(uacCommand, outputFile)
                 # uacProc=subprocess.Popen(uacCommand,shell=True)
-                time.sleep(0.2)
+                time.sleep(0.3)
+                # Check if Process has immediately exited
+                return_code = uacProc.poll()
+                if return_code != 0:
+                    outputFilePath = os.path.join(settings.BASE_DIR, outputFile)
+                    with open(outputFilePath, 'r') as file:
+                        lines = file.readlines()
+                        # Extract the last 'num_lines' lines from the list
+                        last_lines = lines[-15:]
+                        sipp_error = '*****'.join(last_lines)
 
             except Exception as e:
-                print(f"Error: {e}")
+                sipp_error = f"Error: {e}"
+                # return HttpResponse(f"Error: {e}")
             
         if scriptName =='UAS':
             try:
-                uasCommand = f"{sipp} -sf {uasXml} {remote} {uasSrc} -t t1"
-                outputFile = f'{xml_data["selectUAS"]}.log'
-                uasProc=run_sipp_in_background(uasCommand, outputFile)
-                time.sleep(0.2)
+                if any(stun_server):                    
+                    stunnedPath = stun4nat(uasXml, uasSrcPort, stun_server)
+                    if stunnedPath is not None:
+                        uasXmlPath = stunnedPath
 
+                    else: return HttpResponse(f'Stun server at {stun_server} is not responding!')
+
+                uasCommand = f"{sipp} -sf {uasXmlPath} {remote} {uasSrc} -t {protocol_uas}"
+                outputFile = f'{uasXml}.log'
+                uasProc=run_sipp_in_background(uasCommand, outputFile)
+                time.sleep(0.3)
+                # Check if Process has immediately exited
+                return_code = uasProc.poll()
+                if return_code != 0:
+                    outputFilePath = os.path.join(settings.BASE_DIR, outputFile)
+                    with open(outputFilePath, 'r') as file:
+                        lines = file.readlines()
+                        # Extract the last 'num_lines' lines from the list
+                        last_lines = lines[-15:]
+                        sipp_error = '*****'.join(last_lines)
+                        
             except Exception as e:
-                print(f"Error: {e}")            
+                sipp_error = f"Error: {e}"
+                # return HttpResponse(f"Error: {e}")
 
     if request.method == 'POST' and 'send_signal' in request.POST:
         send_signal = request.POST.get('send_signal')
@@ -519,11 +492,11 @@ def display_sipp_screen(request, xml, pid):
         # Handle the POST request for killing the process here
         pid_to_kill = request.POST.get('pid_to_kill')        
         if send_signal == 'Kill':
-            process = psutil.Process(int(pid_to_kill))
             try:
+                process = psutil.Process(int(pid_to_kill))
                 process.terminate()  # use process.kill() for a more forceful termination
             except psutil.NoSuchProcess:
-                pass  # The process with the given PID doesn't exist or already terminated
+                return HttpResponse("The SipP process with the given PID doesn't exist or already terminated")
         
         elif send_signal == 'CheckOutput':
             try:
