@@ -15,13 +15,12 @@
 
     <!-- Form for selecting xml file to modify-->
     {% if not modifySelectedHeaderForSipMsgsForm %}
-    <form method="post">
+    <form method="post" style="margin-top: 15px">
         {% csrf_token %}
-        {{ modifyXmlForm.select_uac }}
-        <button type="submit" name="selectXml" value="modifyUAC">Modify UAC</button><br/>
-        {{ modifyXmlForm.select_uas }}
-        <button type="submit" name="selectXml" value="modifyUAS">Modify UAS</button>
-        <br/>
+        <p>{{ modifyXmlForm.select_uac }}
+        <button type="submit" name="selectXml" value="modifyUAC">Modify UAC</button></p>
+        <p>{{ modifyXmlForm.select_uas }}
+        <button type="submit" name="selectXml" value="modifyUAS">Modify UAS</button></p>
         <br/>
     </form>
     {% endif %}
@@ -60,21 +59,10 @@
         {% if modifyHeaderFormData or modified_headers %}
         {% csrf_token %}
         <button type="submit" name="modifyXmlSubmit" value="xmlEditor">Open in XML Editor</button>
-        <button type="submit" name="modifyXmlSubmit" value="doneModify">Cancel</button>
+        <button type="submit" name="modifyXmlSubmit" value="doneModify">Done</button>
         {% endif %}
     </form>
     <br />
-
-
-
-    <form method="post">
-        {% csrf_token %}
-        {% for field in modifyHeaderFormDataNew %}
-            {{ field.label_tag }}: {{ field }}
-            <br>
-        {% endfor %}
-        <button type="submit">New Header Form</button>
-    </form>
 
 
 </body>

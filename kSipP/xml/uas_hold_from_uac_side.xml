@@ -50,9 +50,9 @@
   <recv request="ACK" crlf="true">
   </recv>
 
-  <nop display=">>>> Sending media <<<<<" crlf="true">
+  <nop display="Sending media" crlf="true">
     <action>
-        <exec play_pcap_audio="../pcap/g711a.pcap"/>
+        <exec play_pcap_audio="g711a.pcap"/>
     </action>
   </nop>
 
@@ -60,7 +60,7 @@
   <recv request="INVITE" rtd="true" crlf="true">
   </recv>
   
-  <nop display=">>>>> Received hold re-INVITE <<<<" crlf="true">
+  <nop display="Received hold re-INVITE" crlf="true">
   </nop>
 
   <!-- answer with SDP with a=recvonly -->
@@ -98,7 +98,7 @@
   <recv request="INVITE" rtd="true" crlf="true">
   </recv>
 
-  <nop display=">>>>> Received retreive re-INVITE <<<<<" crlf="true">
+  <nop display="Received retreive re-INVITE" crlf="true">
   </nop>
   
   <!-- accept the re-INVITE with a=sendrecv -->

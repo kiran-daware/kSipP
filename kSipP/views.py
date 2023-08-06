@@ -52,13 +52,27 @@ def index(request):
 
     config_data = fetch_config_data()
     
+
+    uacXml = f'{config_data["select_uac"]}'
+    uasXml = f'{config_data["select_uas"]}'
+    uacSrcPort = int(f"{config_data['src_port_uac']}")
+    protocol_uac = f'{config_data["protocol_uac"]}'
+    uasSrcPort = int(f"{config_data['src_port_uas']}")
+    protocol_uas = f'{config_data["protocol_uas"]}'
+    noOfCalls = int(f"{config_data['total_no_of_calls']}")
+    cps = int(f"{config_data['cps']}")
+
     remote=f"{config_data['remote_addr']}:{config_data['remote_port']}"
-    uacSrc=f"-i {config_data['local_addr']} -p {config_data['src_port_uac']}"
-    uasSrc=f"-i {config_data['local_addr']} -p {config_data['src_port_uas']}"
+    uacSrc=f"-i {config_data['local_addr']} -p {uacSrcPort}"
+    uasSrc=f"-i {config_data['local_addr']} -p {uasSrcPort}"
 
     # below vars used on index.html
-    print_uac_command = f"sipp -sf {config_data['select_uac']} {remote} {uacSrc} -m 1"
-    print_uas_command = f"sipp -sf {config_data['select_uas']} {remote} {uasSrc}"
+    print_uac_command = f"sipp -sf {uacXml} {remote} {uacSrc} -m {noOfCalls}"
+    if cps > 1: print_uac_command += f" -r {cps}"
+    if protocol_uac == 'tn' : print_uac_command += f" -t {protocol_uac}"
+
+    print_uas_command = f"sipp -sf {uasXml} {remote} {uasSrc}"
+    if protocol_uas == 'tn': print_uas_command += f" -t {protocol_uas}"
 
     # loading xmlForm and configForm
     selectXml = xmlForm(initial=config_data)
@@ -125,13 +139,26 @@ def index(request):
 
 
                 #update script prints on homepage
+                uacXml = f'{config_data["select_uac"]}'
+                uasXml = f'{config_data["select_uas"]}'
+                uacSrcPort = int(f"{config_data['src_port_uac']}")
+                protocol_uac = f'{config_data["protocol_uac"]}'
+                uasSrcPort = int(f"{config_data['src_port_uas']}")
+                protocol_uas = f'{config_data["protocol_uas"]}'
+                noOfCalls = int(f"{config_data['total_no_of_calls']}")
+                cps = int(f"{config_data['cps']}")
+
                 remote=f"{config_data['remote_addr']}:{config_data['remote_port']}"
-                uacSrc=f"-i {config_data['local_addr']} -p {config_data['src_port_uac']}"
-                uasSrc=f"-i {config_data['local_addr']} -p {config_data['src_port_uas']}"
+                uacSrc=f"-i {config_data['local_addr']} -p {uacSrcPort}"
+                uasSrc=f"-i {config_data['local_addr']} -p {uasSrcPort}"
 
                 # below vars used on index.html
-                print_uac_command = f"sipp -sf {config_data['select_uac']} {remote} {uacSrc} -m 1"
-                print_uas_command = f"sipp -sf {config_data['select_uas']} {remote} {uasSrc}"
+                print_uac_command = f"sipp -sf {uacXml} {remote} {uacSrc} -m {noOfCalls}"
+                if cps > 1: print_uac_command += f" -r {cps}"
+                if protocol_uac == 'tn' : print_uac_command += f" -t {protocol_uac}"
+
+                print_uas_command = f"sipp -sf {uasXml} {remote} {uasSrc}"
+                if protocol_uas == 'tn': print_uas_command += f" -t {protocol_uas}"
 
                 sipp_processes = get_sipp_processes()
                 return render(request, 'index.html', locals())
@@ -188,11 +215,11 @@ def modifyXml(request):
             if modifyXmlSubmit == 'xmlEditor':
 
                 modXmlPath = os.path.join(settings.BASE_DIR, 'kSipP', 'xml', modifyXml)
-                # newModXmlPath = os.path.join(settings.BASE_DIR, 'kSipP', 'xml', 'uas_kiran.xml')
+                modifyXml_noext = modifyXml.rsplit(".", 1)[0]
                 with open(modXmlPath, 'r') as file:
                     xml_content = file.read()
                 
-                return render(request, 'xml_editor.html', {'xml_content':xml_content, 'modifyXml':modifyXml})
+                return render(request, 'xml_editor.html', {'xml_content':xml_content, 'xml_name':modifyXml_noext})
 
                     
         if request.method == 'POST' and 'modifiedHeaderDone' in request.POST:
@@ -229,128 +256,31 @@ def modifyXml(request):
                         modifyHeaderScript(modifyXml, sipMessage, selectedHeader, header_value)
 
 
-                    
-            # if modifyXmlSubmit == 'doneModify':
-            #     request.session['modifyXml'] = None
-
-            # if modifyXmlSubmit == 'xmlEditor':
-
-            #     modXmlPath = os.path.join(settings.BASE_DIR, 'kSipP', 'xml', modifyXml)
-            #     newModXmlPath = os.path.join(settings.BASE_DIR, 'kSipP', 'xml', 'uas_kiran.xml')
-
-            #     with open(modXmlPath, 'r') as file:
-            #         xml_content = file.read()
-                
-            #     return render(request, 'xml_editor.html', {'xml_content':xml_content})
-
-
-    
     return render(request, 'modify_xml.html', locals())
 
 
 
 def aceXmlEditor(request):
+    xml_content = None
     if request.method == 'POST':
         xml_content = request.POST.get('xml_content')
         xml_name = request.POST.get('xml_name')
+        new_xml_name = request.POST.get('new_xml_name')
+        save_type = request.POST.get('save')
         # Replace double line breaks with single line breaks
         xml_content = xml_content.replace('\r\n', '\n')
-        with open(os.path.join(settings.BASE_DIR, 'kSipP', 'xml', xml_name), 'w', encoding='utf-8') as file:
+
+        if save_type == 'save': savingXmlName = xml_name
+        elif save_type == 'save_as': savingXmlName = f'{xml_name}_{new_xml_name}'
+        else: return redirect('modify-xml')
+
+        with open(os.path.join(settings.BASE_DIR, 'kSipP', 'xml', f'{savingXmlName}.xml'), 'w', encoding='utf-8') as file:
             file.write(xml_content)
+    
+    if xml_content is None:
+        return HttpResponse('No xml selected <a href="/modify-xml">Select here!</a>')
 
-    return render(request, 'xml_editor.html', {'xml_content':xml_content})
-
-    # return HttpResponse('XML content saved successfully.')
-
-
-                        # if submit_type == 'save':
-                        #     xml_content = request.POST.get('xml_content')
-
-                        #     with open(newmodxml, 'w', encoding='utf-8') as file:
-                        #         file.write(xml_content)
-                        
-                        # else:
-                        #     with open(modxml, 'r') as file:
-                        #         xml_content = file.read()
-                        
-
-            # return render(request, 'xml_editor.html', {'xml_content':xml_content})
-
-
-
-        # printSelectedXml = f"Select Header to modify in {modifyXml}"
-        # modifyHeaderForm = modifyHeader(request.POST)
-
-        # # Handle form submissions here
-        # if selectXml == 'newHeader':
-        #     if modifyHeaderForm.is_valid():
-        #         selectedHeader = modifyHeaderForm.cleaned_data['selectHeader']
-        #         newHeader = modifyHeaderForm.cleaned_data['modifyHeader']
-        # elif selectXml == 'doneModify':
-        #     pass  # Handle the doneModify action if needed
-
-
-
-
-                # printSelectedXml = f"Select Header to modify in {modifyXml}"
-                # modifyHeaderForm = modifyHeader(request.POST)
-                # submit_type == request.POST['submitType']
-                # if submit_type == 'newHeader':
-                #     if modifyHeaderForm.is_valid():
-                #         selectedHeader = modifyHeaderForm.cleaned_data['selectHeader']
-                #         newHeader = modifyHeaderForm.cleaned_data['modifyHeader']
-
-
-                        # if submit_type == 'save':
-                        #     xml_content = request.POST.get('xml_content')
-
-                        #     with open(newmodxml, 'w', encoding='utf-8') as file:
-                        #         file.write(xml_content)
-                        
-                        # else:
-                        #     with open(modxml, 'r') as file:
-                        #         xml_content = file.read()
-                        
-
-                        # return render(request, 'xml_editor.html', {'xml_content':xml_content})
-
-
-                
-            
-
-                    
-                    
-                    
-                    
-
-
-
-#                 xmlContent = f'''[DEFAULT]\n
-# UAC = {selectUAC}
-# UAS = {selectUAS}
-# '''
-#                 xmlConfigFile = os.path.join(settings.BASE_DIR, 'xml.ini')
-#                 with open(xmlConfigFile, 'w') as file:
-#                     file.write(xmlContent)
-#                 return render(request, 'modify_xml.html', {'form': modifyXmlForm})
-            
-        # if 'xmlName' in request.POST:
-        #     xmlName = request.POST.get('xmlName')
-        #     if xmlName.is_valid():
-                
-
-        #         modifyXml_script = str(settings.BASE_DIR / 'kSipP' / 'scripts' / 'modifyHeader.py')
-        #     try:
-        #         result = subprocess.run(['python', modifyXml_script], capture_output=True, text=True)
-        #         return HttpResponse(result)
-        #     except subprocess.CalledProcessError as e:
-        #         # Handle any errors that may occur when running the script
-        #         return HttpResponse(f"Error occurred: {e}")
-
-
-    # modifyXmlForm = xmlForm()
-    # return render(request, 'modify_xml.html', locals())
-
+    return render(request, 'xml_editor.html', {'xml_content':xml_content, 'xml_name':savingXmlName, 'save':save_type})
 
 
 
@@ -406,8 +336,12 @@ def run_script_view(request):
     uacSrc=f"-i {config_data['local_addr']} -p {uacSrcPort}"
     uasSrc=f"-i {config_data['local_addr']} -p {uasSrcPort}"
 
-    print_uac_command = f"sipp -sf {uacXml} {remote} {uacSrc} -m 1"
+    print_uac_command = f"sipp -sf {uacXml} {remote} {uacSrc} -m {noOfCalls}"
+    if cps > 1: print_uac_command += f" -r {cps}"
+    if protocol_uac == 'tn' : print_uac_command += f" -t {protocol_uac}"
+
     print_uas_command = f"sipp -sf {uasXml} {remote} {uasSrc}"
+    if protocol_uas == 'tn': print_uas_command += f" -t {protocol_uas}"
 
 
 
@@ -456,7 +390,8 @@ def run_script_view(request):
                         sipp_error = '*****'.join(last_lines)
 
             except Exception as e:
-                return HttpResponse(f"Error: {e}")
+                sipp_error = f"Error: {e}"
+                # return HttpResponse(f"Error: {e}")
             
         if scriptName =='UAS':
             try:
@@ -482,7 +417,8 @@ def run_script_view(request):
                         sipp_error = '*****'.join(last_lines)
                         
             except Exception as e:
-                return HttpResponse(f"Error: {e}")
+                sipp_error = f"Error: {e}"
+                # return HttpResponse(f"Error: {e}")
 
     if request.method == 'POST' and 'send_signal' in request.POST:
         send_signal = request.POST.get('send_signal')

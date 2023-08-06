@@ -1,4 +1,0 @@
-SEQUENTIAL
-# user, domain, authentication
-test;pbx.saghul.lan;[authentication username=test password=test]
-

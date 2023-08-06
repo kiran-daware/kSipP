@@ -68,7 +68,7 @@
 
   <nop crlf="true">
     <action>
-        <exec play_pcap_audio="../pcap/g711a.pcap"/>
+        <exec play_pcap_audio="g711a.pcap"/>
     </action>
   </nop>
   
@@ -80,7 +80,7 @@
   <!-- NOTE: add the [peer_tag_param], increase the CSeq and the SDB ver. -->
   <!-- and a=inactive -->
 
-  <nop display=">>>>> Sending hold re-INVITE <<<<" crlf="true">
+  <nop display=" Sending hold re-INVITE " crlf="true">
   </nop>
 
   <send retrans="500">
@@ -140,7 +140,7 @@
 
   <pause milliseconds="3000" crlf="true"/>
 
-  <nop display=">>>>> Sending hold retrieve <<<<" crlf="true">
+  <nop display=" Sending hold retrieve " crlf="true">
   </nop>
 
   <send retrans="500">
