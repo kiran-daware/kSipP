@@ -51,7 +51,7 @@ def getHeadersFromSipMsgs(xml_file, header):
             
                 headersBySipMessage[sipMessage] = headerLine
 
-    pprint.pprint(headersBySipMessage)
+    # pprint.pprint(headersBySipMessage)
     return headersBySipMessage
 
 
@@ -60,9 +60,10 @@ def getHeadersFromSipMsgs(xml_file, header):
 # Modify Header in xml
 def modifyHeaderScript(xml_file, sipMessage, header, newHeader, newXmlFileName = None):
     logging.info(xml_file + sipMessage + header + newHeader)
-    xml_file_noExt = xml_file.rsplit(".", 1)[0]
+    # xml_file_noExt = xml_file.rsplit(".", 1)[0]
+    uacuas = 'uac' if xml_file.startswith('uac') else ('uas' if xml_file.startswith('uas') else None)
     if newXmlFileName is not None:
-        new_xml_file = os.path.join(baseDir, 'kSipP', 'xml', f'{xml_file_noExt}_{newXmlFileName}.xml')
+        new_xml_file = os.path.join(baseDir, 'kSipP', 'xml', f'{uacuas}_{newXmlFileName}.xml')
     else:
         new_xml_file = os.path.join(baseDir, 'kSipP', 'xml', f'{xml_file}')
 

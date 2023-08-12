@@ -4,13 +4,16 @@
 <html>
 <head>
     <title>Run Scripts</title>
+    <title>Modify XML</title>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'styles.css' %}">
 </head>
 <body>
-    <h3>Run Scripts</h3>
-    <div class="menubar" style="margin: 10px;">
-        <a style="padding: 10px;" href="/">Home</a>
-        <a style="padding: 10px;" href="/run-script">Run Scripts</a>
-        <a style="padding: 10px;" href="/modify-xml">Modify Xml</a>
+    {% include "header.html" %}
+    <div class="menubar">
+        <a href="/">Home</a>
+        <a class="active" href="/run-script">Run Scripts</a>
+        <a href="/modify-xml">Modify Xml</a>
     </div>
 
     <p>uac: <span> {{ print_uac_command }}</span></p>

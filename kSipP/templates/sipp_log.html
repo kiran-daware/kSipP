@@ -2,9 +2,11 @@
 <html>
 <head>
     <title>{{ log_name }}</title>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'styles.css' %}">
 </head>
 <body>
-    <h3>{{ log_name }}</h3>
+    <h1 class="newpageh1">{{ log_name }}</h3>
 
     {% if pid %}
         <form method="post" action="{% url 'display_sipp_screen' pid xml %}" id="checkSignalForm">
