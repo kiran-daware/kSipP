@@ -2,6 +2,7 @@ from django import forms
 from django.conf import settings
 import xml.etree.ElementTree as ET
 import os
+from django.core.exceptions import ValidationError
 
 
 
@@ -59,29 +60,6 @@ class modifyHeaderForm(forms.Form):
     ]
     whichHeader = forms.ChoiceField(choices=optHeader, label='Select Header')
 
-    # modifyHeader = forms.CharField(
-    #     label='Modify Header',
-    #     max_length=200,  # You can set the maximum length for the text input.
-    #     widget=forms.TextInput(attrs={'style': 'width: 500px;'}),
-    # )
-
-
-
-
-# class modifySelectedHeaderForSipMsgs(forms.Form):
-#     def __init__(self, headersBySipMessage, *args, **kwargs):
-#         super().__init__(*args, **kwargs)
-        
-#         for sipMessage, header in headersBySipMessage.items():
-#             self.fields[sipMessage] = forms.CharField(
-#                 label=sipMessage,
-#                 initial='\n'.join(header),
-#                 max_length=200,
-#                 widget=forms.TextInput(attrs={'style': 'width: 500px;'}),
-#                 required=False,  # Optional, set to True if modification is mandatory.
-#             )
-#             self.fields[sipMessage].widget = forms.TextInput(attrs={'value': sipMessage})
-
 
 
 
@@ -102,20 +80,15 @@ class modifySelectedHeaderForSipMsgs(forms.Form):
 
 
 
-# class modifySelectedHeaderForSipMsgs(forms.Form):
-#     def __init__(self, headersBySipMessage, *args, **kwargs):
-#         super().__init__(*args, **kwargs)
-        
-#         for sipMessage, header in headersBySipMessage.items():
-#             label_value = sipMessage
-#             field_name = f"{sipMessage}_field"  # Create a unique field name for each label
-#             self.fields[field_name] = forms.CharField(
-#                 initial='\n'.join(header),
-#                 widget=forms.TextInput(attrs={'style': 'width: 500px;'}),
-#                 required=False,  # Optional, set to True if modification is mandatory.
-#             )
-#             # Add a hidden input field for the label
-#             self.fields[field_name].label = False
-#             self.fields[field_name].widget = forms.HiddenInput(attrs={'value': label_value})
+class xmlUploadForm(forms.Form):
+    file = forms.FileField(label='Select an XML file', help_text='File name should start with "uac" or "uas".',
+                           widget=forms.ClearableFileInput(attrs={'accept': '.xml', 'max_upload_size': 102400}))
 
-
+    def clean_file(self):
+        uploaded_file = self.cleaned_data.get('file')
+        if not uploaded_file.name.lower().startswith(('uac', 'uas')) or not uploaded_file.name.lower().endswith('.xml'):
+            raise ValidationError('File name should start with "uac" or "uas" and have .xml extension.')
+        max_upload_size = 102400  # 100 KB in bytes
+        if uploaded_file.size > max_upload_size:
+            raise ValidationError('File size exceeds the maximum allowed limit (250 KB).')
+        return uploaded_file

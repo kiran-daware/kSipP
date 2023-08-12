@@ -1,16 +1,18 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>EasySipP</title>
+    <title>kSipP</title>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'styles.css' %}">
+    
 </head>
 <body>
-    <h1><span style="font-size: 48px;">k</span>SipP</h1>
-    <p>Trying an idea which may make SipP easier for everyone.</p>
-    
-    <div class="menubar" style="margin: 10px;">
-        <a style="padding: 10px;" href="/">Home</a>
-        <a style="padding: 10px;" href="/run-script">Run Scripts</a>
-        <a style="padding: 10px;" href="/modify-xml">Modify Xml</a>
+    {% include "header.html" %} 
+
+    <div class="menubar">
+        <a class="active" href="/">Home</a>
+        <a href="/run-script">Run Scripts</a>
+        <a href="/modify-xml">Modify Xml</a>
     </div>
 
     <div style="float: left; padding: 20px; width: 38%;">

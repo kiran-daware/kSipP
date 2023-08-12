@@ -4,6 +4,9 @@ from django.shortcuts import render, redirect
 from django.conf import settings
 from django.contrib.sessions.models import Session
 from .forms import configForm, xmlForm, modifyHeaderForm, moreSippOptionsForm, modifySelectedHeaderForSipMsgs
+from .forms import xmlUploadForm
+from django.http import HttpResponseBadRequest
+import xml.etree.ElementTree as ET
 import configparser
 import os
 import subprocess
@@ -226,9 +229,10 @@ def modifyXml(request):
             modifiedHeaderDone = request.POST['modifiedHeaderDone']
             newXmlFileName = None
             if modifiedHeaderDone == 'modifiedHeaderDoneNewFile':
-                newXmlFileName = request.POST['newXmlFileName']
+                newXmlFileName = request.POST['new_xml_name']
 
-            modifyXml_noext = modifyXml.rsplit(".", 1)[0]
+            # modifyXml_noext = modifyXml.rsplit(".", 1)[0]
+            uacuas = 'uac' if modifyXml.startswith('uac') else ('uas' if modifyXml.startswith('uas') else None)
             headersBySipMessage = request.session['headersBySipMessage']
             selectedHeader = request.session['selectedHeader']
             modifySelectedHeaderForSipMsgsForm = modifySelectedHeaderForSipMsgs(request.POST, hbsm=headersBySipMessage)
@@ -237,7 +241,7 @@ def modifyXml(request):
 
                 if newXmlFileName is not None:
                     # delete if already a file exists with xml_name_modified.xml to avoid conflicts after editing
-                    modXmlPath = os.path.join(settings.BASE_DIR, 'kSipP', 'xml', f'{modifyXml_noext}_{newXmlFileName}.xml')                    
+                    modXmlPath = os.path.join(settings.BASE_DIR, 'kSipP', 'xml', f'{uacuas}_{newXmlFileName}.xml')                    
                     if os.path.exists(modXmlPath):
                         try:
                             os.remove(modXmlPath)
@@ -250,11 +254,12 @@ def modifyXml(request):
                     if newXmlFileName is not None:
                         modifyHeaderScript(modifyXml, sipMessage, selectedHeader, header_value, newXmlFileName)
                         # update session with new modified xml file name (statically defined in modifyHeader.py)
-                        request.session['modifyXml'] = f'{modifyXml_noext}_{newXmlFileName}.xml'
+                        request.session['modifyXml'] = f'{uacuas}_{newXmlFileName}.xml'
+                        successM = f'{uacuas}_{newXmlFileName}.xml'
 
                     else:
                         modifyHeaderScript(modifyXml, sipMessage, selectedHeader, header_value)
-
+                        successM = modifyXml
 
     return render(request, 'modify_xml.html', locals())
 
@@ -271,9 +276,11 @@ def aceXmlEditor(request):
         xml_content = xml_content.replace('\r\n', '\n')
 
         if save_type == 'save': savingXmlName = xml_name
-        elif save_type == 'save_as': savingXmlName = f'{xml_name}_{new_xml_name}'
+        elif save_type == 'save_as': 
+            uacuas = 'uac' if xml_name.startswith('uac') else ('uas' if xml_name.startswith('uas') else None)
+            savingXmlName = f'{uacuas}_{new_xml_name}'
         else: return redirect('modify-xml')
-
+        
         with open(os.path.join(settings.BASE_DIR, 'kSipP', 'xml', f'{savingXmlName}.xml'), 'w', encoding='utf-8') as file:
             file.write(xml_content)
     
@@ -518,6 +525,49 @@ def display_sipp_screen(request, xml, pid):
 
 
 
-def sbc_api(request):
-    return render(request, 'sbc_api.html')
 
+
+
+def xml_management(request):
+    xml_upload_form = xmlUploadForm()
+    xml_dir = os.path.join(settings.BASE_DIR, 'kSipP', 'xml')
+    xml_files = [file for file in os.listdir(xml_dir) if file.endswith(".xml")]
+    xml_list = sorted(xml_files)
+
+    if request.method == 'POST' and 'submitType' in request.POST:
+        submitType = request.POST.get('submitType')
+        if submitType == 'upload':
+            upload_success = False
+            xml_upload_form = xmlUploadForm(request.POST, request.FILES)
+            if xml_upload_form.is_valid():
+                uploaded_file = request.FILES['file']
+                file_path = os.path.join(xml_dir, uploaded_file.name)
+                with open(file_path, 'wb+') as destination:
+                    for chunk in uploaded_file.chunks():
+                        destination.write(chunk)
+                
+                # Validate the uploaded XML file
+                try:
+                    tree = ET.parse(file_path)
+                except ET.ParseError as e:
+                    os.remove(file_path)  # Remove the invalid file
+                    return HttpResponseBadRequest(f"Invalid XML file :** {uploaded_file.name} **: {e} <br><br> <b><a href='/xml-management'>Return to upload</a></b>")
+
+                upload_success = True
+                xml_files = [file for file in os.listdir(xml_dir) if file.endswith(".xml")]
+                xml_list = sorted(xml_files)
+            return render(request, 'xml_management.html', {'xml_upload_form': xml_upload_form,
+                                                           'xml_list': xml_list,
+                                                           'upload_success': upload_success})
+            
+        if submitType == 'delete':
+            xml_name = request.POST.get('xml_name')
+            xml_path = os.path.join(xml_dir, xml_name)
+            if os.path.exists(xml_path):
+                os.remove(xml_path)
+
+            xml_files = [file for file in os.listdir(xml_dir) if file.endswith(".xml")]
+            xml_list = sorted(xml_files)
+
+
+    return render(request, 'xml_management.html', {'xml_upload_form': xml_upload_form, 'xml_list': xml_list})

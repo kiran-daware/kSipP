@@ -4,14 +4,17 @@
 <html>
 <head>
     <title>Modify XML</title>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'styles.css' %}">
 </head>
 <body>
-    <h2>Modify XML</h2>
-    <div class="menubar" style="margin: 10px;">
-        <a style="padding: 10px;" href="/">Home</a>
-        <a style="padding: 10px;" href="/run-script">Run Scripts</a>
-        <a style="padding: 10px;" href="/modify-xml">Modify Xml</a>
-    </div>    
+    {% include "header.html" %}
+    <div class="menubar">
+        <a href="/">Home</a>
+        <a href="/run-script">Run Scripts</a>
+        <a class="active" href="/modify-xml">Modify Xml</a>
+    </div>
+    <a href="/xml-management"><button style="margin-top: 10px;">Upload or Remove xml scenarios</button></a>
 
     <!-- Form for selecting xml file to modify-->
     {% if not modifySelectedHeaderForSipMsgsForm %}
@@ -21,13 +24,12 @@
         <button type="submit" name="selectXml" value="modifyUAC">Modify UAC</button></p>
         <p>{{ modifyXmlForm.select_uas }}
         <button type="submit" name="selectXml" value="modifyUAS">Modify UAS</button></p>
-        <br/>
     </form>
     {% endif %}
 
 
     {% if modifyHeaderFormData %}
-    <h3>Selected xml file is: <b>{{ modifyXml }}</b></h3>
+    <div style="margin: 15px 0;">Selected xml : <b class="xmlname">{{ modifyXml }}</b></div>
     <form method="post">
         {% csrf_token %}
         {{ modifyHeaderFormData.whichHeader }}
@@ -37,19 +39,26 @@
             {% if not headersBySipMessage %}
             <br>Header not found in selected xml<br><br>
             {% endif %}
-        <form method="post">
+        <form method="post" id="modifyHeaderForm">
             {% csrf_token %}
             {{ modifySelectedHeaderForSipMsgsForm.as_p }}
-            <button type="submit" name="modifiedHeaderDone" value="modifiedHeaderDone">Save</button> Or <br>
-            <label for="text_input">Save as new file: {{ modifyXml_noext }}_</label>
-            <input type="text" id="newXmlFileName" name="newXmlFileName" maxlength="10" value="new"><span>.xml</span>
-            <button type="submit" name="modifiedHeaderDone" value="modifiedHeaderDoneNewFile">Save as</button>
+            <button type="button" onclick="submitSave()">Save in the same xml</button> Or 
+            <button type="button" onclick="showFileNamePrompt()" id="save_as_button">Save as a new xml</button>
+            <div id="fileNamePrompt" style="display: none;">
+                <b><span>{% if modifyXml|slice:"0:3" == "uac" %}uac_{% elif modifyXml|slice:"0:3" == "uas" %}uas_{% endif %}</span></b>
+                <input type="text" name="new_xml_name" id="new_xml_name" maxlength="20" value="">
+                <span>.xml</span>
+                <button type="button" onclick="submitSaveAs()">Save</button>
+            </div>
+            <input type="hidden" name="modifiedHeaderDone" id="clickedButtonInput" value="">
         </form>
         {% endif %}
     {% endif %}
+    
+    <div style="clear: both;" />
 
-    {% if modified_headers %}
-    Successfully modified {{ modified_headers }}
+    {% if successM %}
+    <div style="padding-top: 15px">Successfully modified <b>{{ successM }}</b></div>
     {% endif %}
 
 <br>
@@ -64,6 +73,42 @@
     </form>
     <br />
 
+    <script>
+
+    function submitSave() {
+        var clickedButtonInput = document.getElementById("clickedButtonInput");
+        clickedButtonInput.value = 'modifiedHeaderDone';
+        document.getElementById("modifyHeaderForm").submit();
+    }
+
+    function showFileNamePrompt() {
+        var fileNamePrompt = document.getElementById("fileNamePrompt");
+        fileNamePrompt.style.display = "inline";
+        var saveAsButton = document.getElementById("save_as_button")
+        saveAsButton.style.display = "none"
+    }
+
+    function submitSaveAs() {
+        var newFileNameInput = document.getElementById("new_xml_name");
+        var newFileName = newFileNameInput.value.trim();
+        
+        if (newFileName) {
+            var clickedButtonInput = document.getElementById("clickedButtonInput");
+            clickedButtonInput.value = 'modifiedHeaderDoneNewFile';
+            document.getElementById("modifyHeaderForm").submit();
+        } else {
+            alert("Please enter a valid file name.");
+        }
+    }
+
+    document.getElementById("new_xml_name").addEventListener("keydown", function(event) {
+        if (event.key === "Enter") {
+            event.preventDefault(); // Prevent form submission
+            submitSaveAs();
+        }
+    });
+
+    </script>
 
 </body>
 </html>
