@@ -68,7 +68,7 @@
 
   <nop crlf="true">
     <action>
-        <exec play_pcap_audio="g711a.pcap"/>
+        <exec play_pcap_audio="/home/kiran/python/EasySipP_wsl_venv/kSipP-1.11/kSipP/xml/pcap/g711a.pcap"/>
     </action>
   </nop>
   

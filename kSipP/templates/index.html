@@ -27,7 +27,8 @@
         <button id="showMoreOptions">More Options</button>
         <br>
         <div style="clear: both;">
-        <p>Remote Address: {{ ipConfig.remote_addr }} {{ ipConfig.remote_port }}</p>
+        <p>UAC Remote: {{ ipConfig.uac_remote }} {{ ipConfig.uac_remote_port }}</p>
+        <p>UAS Remote: {{ ipConfig.uas_remote }} {{ ipConfig.uas_remote_port }}</p>
         <p>Local Address: {{ ipConfig.local_addr }}</p>
         <p>UAC Src Port: {{ ipConfig.src_port_uac }} {{ ipConfig.protocol_uac }}</p>
         <p>UAS Src Port: {{ ipConfig.src_port_uas }} {{ ipConfig.protocol_uas }}</p>

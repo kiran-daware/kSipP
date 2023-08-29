@@ -41,8 +41,10 @@ class moreSippOptionsForm(forms.Form):
 
 
 class configForm(forms.Form):
-    remote_addr = forms.GenericIPAddressField(label='Remote Address', protocol='IPv4')
-    remote_port = forms.IntegerField(label='Remote Port', min_value=1000, max_value=9999, initial=5060)
+    uac_remote = forms.GenericIPAddressField(label='UAC Remote Address', protocol='IPv4')
+    uac_remote_port = forms.IntegerField(label='UAC Remote Port', min_value=1000, max_value=9999, initial=5060)
+    uas_remote = forms.GenericIPAddressField(label='UAS Remote Address', protocol='IPv4')
+    uas_remote_port = forms.IntegerField(label='UAS Remote Port', min_value=1000, max_value=9999, initial=5060)
     local_addr = forms.GenericIPAddressField(label='Local Address', protocol='IPv4')
     src_port_uac = forms.IntegerField(label='UAC Src Port', min_value=1000, max_value=9999, initial=5060)
     src_port_uas = forms.IntegerField(label='UAS Src Port', min_value=1000, max_value=9999, initial=5060)

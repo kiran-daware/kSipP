@@ -46,7 +46,7 @@
             <button type="button" onclick="showFileNamePrompt()" id="save_as_button">Save as a new xml</button>
             <div id="fileNamePrompt" style="display: none;">
                 <b><span>{% if modifyXml|slice:"0:3" == "uac" %}uac_{% elif modifyXml|slice:"0:3" == "uas" %}uas_{% endif %}</span></b>
-                <input type="text" name="new_xml_name" id="new_xml_name" maxlength="20" value="">
+                <input type="text" name="new_xml_name" id="new_xml_name" maxlength="35" value="">
                 <span>.xml</span>
                 <button type="button" onclick="submitSaveAs()">Save</button>
             </div>

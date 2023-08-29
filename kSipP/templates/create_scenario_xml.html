@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SIP Scenario Creator</title>
+  {% load static %}
+  <!-- Include the Ace Editor library -->
+  <script src="{% static 'ace/ace.js' %}"></script>
+  <script src="{% static 'ace/mode-xml.js' %}"></script>
+  <script src="{% static 'ace/worker-xml.js' %}"></script>
+  <script src="{% static 'ace/theme-chrome.js' %}"></script>
+  <style>
+    button {
+      margin:2px;
+    }
+  </style>
+</head>
+<body>
+  <h1>kSipP Scenario Creator</h1>
+  <div id="scenario-creator" style="width: 39%; float: left;">
+
+  <button id="createUAC">UAC</button>
+  <button id="createUAS">UAS</button>
+  <button id="reset" style="display: none;">Reset</button>
+
+  <div id="scen-d" style="margin: 10px 0; display: none;">
+    <input name="scenario-name" id="scenario-name" value="scenario_name">
+    <button id="start">Start</button>
+  </div>
+
+<!-- ***************** Buttons for UAC xml start ******************** -->
+    <div id="uacFirst" style="display: none;">
+    <button id="send-invite">Send INVITE</button>
+      <div id="send-invite-div" style="display: none;">
+        <button id="invite-with-sdp">invite with SDP</button>
+        <button id="invite-without-sdp">without SDP</button>
+      </div>
+    </div>
+
+    <div id="recv-1xx" style="display: none;">
+      <button id="recv-100">Recv 100</button>
+      <button id="recv-180">Recv 180</button>
+      <button id="recv-183">Recv 183</button>
+      <div id="100rel-d" style="display: none;">
+        <button id="100-rel">Reliable</button>
+        <button id="no-100-rel">Non-Reliable</button>
+      </div>
+    </div>
+    <div id="prack-d" style="display: none;">
+      <button id="p-wo-sdp-b">Send PRACK without sdp</button>
+      <button id="p-with-sdp-b">PRACK with sdp</button>
+      <button id="recv-200prack-b" style="display: none;">Recv 200 (prack)</button>
+    </div>
+
+    <div id="recv-2xx" style="display: none;">
+      <button id="recv-200">Recv 200 (invite)</button>
+    </div>
+
+    <div id="recv-failcode" style="display: none;">
+      <button id="recv-fxx">Recv 4xx/5xx/6xx</button>
+      <div id="recv-cause" style="display: none;">
+        CauseCode: <input id="r-cause-code" type="number" min="400" max="699" value="503">
+        <button id="fail-ack">Recv this and Send ACK</button>
+      </div>
+    </div>
+
+    <div id="send-ack-div" style="display: none;">
+      <button id="send-ack">Send ACK without sdp</button>
+      <button id="send-ack-sdp">ACK with sdp</button>
+    </div>
+
+      <button id="play-media-b" style="display: none;">Play Media</button>
+
+    <div id="pause-d" style="display: none;">
+      <input id="pause-ms" type="number" min="1" max="999999" value="500"> ms
+      <button id="pause-b">Pause</button>
+    </div>
+
+    <div id="mid-dia-req" style="display: none;"">
+      <button id="reinv-b">Send Re-INVITE</button>
+      <button id="update-b">Send UPDATE</button>
+      <button id="refer-b">Send REFER</button>
+    </div>
+    <div id="mid-dia-sdp-div" style="display: none;">
+      <button id="mid-without-sdp">without SDP</button>
+      <button id="mid-with-sdp">with SDP</button>
+    </div>
+    <button id="mid-req-200-b" style="display: none;">Recv 200</button>
+
+    <div id="sendrecv-bye" style="display: none;">
+      <button id="send-bye">Send BYE</button>
+      <button id="recv-bye">Recv BYE</button>
+    </div>
+
+<!-- ***************** Buttons for UAC xml end ******************** -->
+<!-- ***************** Buttons for UAS xml start ******************** -->
+
+    <!-- <div id="uasFirst" style="display: none;">
+    <button id="recv-invite">Send INVITE</button>
+      <div id="send-invite-div" style="display: none;">
+        <button id="invite-with-sdp">invite with SDP</button>
+        <button id="invite-without-sdp">without SDP</button>
+      </div>
+    </div> -->
+
+<!-- ***************** Buttons for UAS xml end ******************** -->
+
+  </div> <!-- scenario-creator div end -->
+
+  <div style="float: left; width: 59%;">
+  <!-- <textarea id="scenario-output" cols="100" rows="25"></textarea> -->
+  <!-- <input type="hidden" name="xml_content" id="scenario-output" value=""> -->
+  <div id="xml-editor" style="height: 520px;"></div>
+
+  </div>
+
+  <script src="{% static 'createUACxml.js' %}"></script>
+
+</body>
+</html>

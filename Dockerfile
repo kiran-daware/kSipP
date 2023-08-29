@@ -16,7 +16,8 @@ EXPOSE 6062/udp
 EXPOSE 6062
 
 # Create a non-root user with a specific UID (5678)
-RUN adduser --system --uid 5678 --disabled-password --gecos "" appuser
+RUN addgroup --gid 1234 kuser && \
+    adduser --system --uid 5678 --gid 1234 --disabled-password --gecos "" kuser
 
 # Set the working directory
 WORKDIR /app
@@ -31,11 +32,12 @@ COPY . .
 # Collect static files
 RUN python manage.py collectstatic --noinput
 
+RUN chown -R kuser:kuser /app
+RUN chown -R kuser:kuser /var/lib/nginx /var/log/nginx /run
+
 # Grant necessary permissions
 RUN chmod +s /app/kSipP/sipp/sipp
 RUN setcap cap_net_raw=ep /app/kSipP/sipp/sipp
-RUN chown -R 5678:5678 /app
-RUN chown -R 5678:5678 /var/lib/nginx /var/log/nginx /run
 
 # # Copy the Nginx configuration
 # COPY nginx.conf /etc/nginx/nginx.conf
@@ -48,7 +50,7 @@ COPY entrypoint.sh /entrypoint.sh
 RUN chmod +x /entrypoint.sh
 
 # Switch to the non-root user before running the container
-USER appuser
+USER kuser
 
 # Set the entrypoint for the container
 ENTRYPOINT ["/entrypoint.sh"]
