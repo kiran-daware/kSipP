@@ -28,8 +28,10 @@ configd = config['DEFAULT']
 def fetch_config_data():
     # Read initial data from config file
     config_data = {
-        'remote_addr': configd.get('remote_addr'),
-        'remote_port': configd.get('remote_port'),
+        'uac_remote': configd.get('uac_remote'),
+        'uac_remote_port': configd.get('uac_remote_port'),
+        'uas_remote': configd.get('uas_remote'),
+        'uas_remote_port': configd.get('uas_remote_port'),
         'local_addr': configd.get('local_addr'),
         'src_port_uac': configd.get('src_port_uac'),
         'src_port_uas': configd.get('src_port_uas'),
@@ -65,16 +67,17 @@ def index(request):
     noOfCalls = int(f"{config_data['total_no_of_calls']}")
     cps = int(f"{config_data['cps']}")
 
-    remote=f"{config_data['remote_addr']}:{config_data['remote_port']}"
+    uac_remote=f"{config_data['uac_remote']}:{config_data['uac_remote_port']}"
+    uas_remote=f"{config_data['uas_remote']}:{config_data['uas_remote_port']}"
     uacSrc=f"-i {config_data['local_addr']} -p {uacSrcPort}"
     uasSrc=f"-i {config_data['local_addr']} -p {uasSrcPort}"
 
     # below vars used on index.html
-    print_uac_command = f"sipp -sf {uacXml} {remote} {uacSrc} -m {noOfCalls}"
+    print_uac_command = f"sipp -sf {uacXml} {uac_remote} {uacSrc} -m {noOfCalls}"
     if cps > 1: print_uac_command += f" -r {cps}"
     if protocol_uac == 'tn' : print_uac_command += f" -t {protocol_uac}"
 
-    print_uas_command = f"sipp -sf {uasXml} {remote} {uasSrc}"
+    print_uas_command = f"sipp -sf {uasXml} {uas_remote} {uasSrc}"
     if protocol_uas == 'tn': print_uas_command += f" -t {protocol_uas}"
 
     # loading xmlForm and configForm
@@ -115,8 +118,10 @@ def index(request):
                 config_data['select_uac'] = selectXml.cleaned_data['select_uac']
                 config_data['select_uas'] = selectXml.cleaned_data['select_uas']
                 
-                config_data['remote_addr'] = ipConfig.cleaned_data['remote_addr']
-                config_data['remote_port'] = ipConfig.cleaned_data['remote_port']
+                config_data['uac_remote'] = ipConfig.cleaned_data['uac_remote']
+                config_data['uac_remote_port'] = ipConfig.cleaned_data['uac_remote_port']
+                config_data['uas_remote'] = ipConfig.cleaned_data['uas_remote']
+                config_data['uas_remote_port'] = ipConfig.cleaned_data['uas_remote_port']
                 config_data['local_addr'] = ipConfig.cleaned_data['local_addr']
                 config_data['src_port_uac'] = ipConfig.cleaned_data['src_port_uac']
                 config_data['src_port_uas'] = ipConfig.cleaned_data['src_port_uas']
@@ -151,16 +156,17 @@ def index(request):
                 noOfCalls = int(f"{config_data['total_no_of_calls']}")
                 cps = int(f"{config_data['cps']}")
 
-                remote=f"{config_data['remote_addr']}:{config_data['remote_port']}"
+                uac_remote=f"{config_data['uac_remote']}:{config_data['uac_remote_port']}"
+                uas_remote=f"{config_data['uas_remote']}:{config_data['uas_remote_port']}"
                 uacSrc=f"-i {config_data['local_addr']} -p {uacSrcPort}"
                 uasSrc=f"-i {config_data['local_addr']} -p {uasSrcPort}"
 
                 # below vars used on index.html
-                print_uac_command = f"sipp -sf {uacXml} {remote} {uacSrc} -m {noOfCalls}"
+                print_uac_command = f"sipp -sf {uacXml} {uac_remote} {uacSrc} -m {noOfCalls}"
                 if cps > 1: print_uac_command += f" -r {cps}"
                 if protocol_uac == 'tn' : print_uac_command += f" -t {protocol_uac}"
 
-                print_uas_command = f"sipp -sf {uasXml} {remote} {uasSrc}"
+                print_uas_command = f"sipp -sf {uasXml} {uas_remote} {uasSrc}"
                 if protocol_uas == 'tn': print_uas_command += f" -t {protocol_uas}"
 
                 sipp_processes = get_sipp_processes()
@@ -339,15 +345,16 @@ def run_script_view(request):
     sipp = str(settings.BASE_DIR / 'kSipP' / 'sipp' / 'sipp')
     uacXmlPath = str(settings.BASE_DIR / 'kSipP' / 'xml' / uacXml)
     uasXmlPath = str(settings.BASE_DIR / 'kSipP' / 'xml' / uasXml)
-    remote=f"{config_data['remote_addr']}:{config_data['remote_port']}"
+    uac_remote=f"{config_data['uac_remote']}:{config_data['uac_remote_port']}"
+    uas_remote=f"{config_data['uas_remote']}:{config_data['uas_remote_port']}"
     uacSrc=f"-i {config_data['local_addr']} -p {uacSrcPort}"
     uasSrc=f"-i {config_data['local_addr']} -p {uasSrcPort}"
 
-    print_uac_command = f"sipp -sf {uacXml} {remote} {uacSrc} -m {noOfCalls}"
+    print_uac_command = f"sipp -sf {uacXml} {uac_remote} {uacSrc} -m {noOfCalls}"
     if cps > 1: print_uac_command += f" -r {cps}"
     if protocol_uac == 'tn' : print_uac_command += f" -t {protocol_uac}"
 
-    print_uas_command = f"sipp -sf {uasXml} {remote} {uasSrc}"
+    print_uas_command = f"sipp -sf {uasXml} {uas_remote} {uasSrc}"
     if protocol_uas == 'tn': print_uas_command += f" -t {protocol_uas}"
 
 
@@ -381,7 +388,7 @@ def run_script_view(request):
 
                     else: return HttpResponse(f'Stun server at {stun_server} is not responding!')
 
-                uacCommand = f"{sipp} -sf {uacXmlPath} {remote} {uacSrc} -m {noOfCalls} -r {cps} -t {protocol_uac}"
+                uacCommand = f"{sipp} -sf {uacXmlPath} {uac_remote} {uacSrc} -m {noOfCalls} -r {cps} -t {protocol_uac}"
                 outputFile = f'{uacXml}.log'
                 uacProc = run_sipp_in_background(uacCommand, outputFile)
                 # uacProc=subprocess.Popen(uacCommand,shell=True)
@@ -409,7 +416,7 @@ def run_script_view(request):
 
                     else: return HttpResponse(f'Stun server at {stun_server} is not responding!')
 
-                uasCommand = f"{sipp} -sf {uasXmlPath} {remote} {uasSrc} -t {protocol_uas}"
+                uasCommand = f"{sipp} -sf {uasXmlPath} {uas_remote} {uasSrc} -t {protocol_uas}"
                 outputFile = f'{uasXml}.log'
                 uasProc=run_sipp_in_background(uasCommand, outputFile)
                 time.sleep(0.3)
@@ -571,3 +578,8 @@ def xml_management(request):
 
 
     return render(request, 'xml_management.html', {'xml_upload_form': xml_upload_form, 'xml_list': xml_list})
+
+
+def create_scenario_xml_view(request):
+
+    return render(request, 'create_scenario_xml.html')
