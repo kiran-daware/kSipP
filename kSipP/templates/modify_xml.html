@@ -13,6 +13,7 @@
         <a href="/">Home</a>
         <a href="/run-script">Run Scripts</a>
         <a class="active" href="/modify-xml">Modify Xml</a>
+        <a href="/create-scenario-xml">Create Xml</a>
     </div>
     <a href="/xml-management"><button style="margin-top: 10px;">Upload or Remove xml scenarios</button></a>
 
@@ -29,7 +30,7 @@
 
 
     {% if modifyHeaderFormData %}
-    <div style="margin: 15px 0;">Selected xml : <b class="xmlname">{{ modifyXml }}</b></div>
+    <div style="margin: 20px 0;">Selected xml : <b class="xmlname">{{ modifyXml }}</b></div>
     <form method="post">
         {% csrf_token %}
         {{ modifyHeaderFormData.whichHeader }}

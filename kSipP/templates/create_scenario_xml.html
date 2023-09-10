@@ -10,6 +10,7 @@
   <script src="{% static 'ace/mode-xml.js' %}"></script>
   <script src="{% static 'ace/worker-xml.js' %}"></script>
   <script src="{% static 'ace/theme-chrome.js' %}"></script>
+  <link rel="stylesheet" type="text/css" href="{% static 'styles.css' %}">
   <style>
     button {
       margin:2px;
@@ -17,12 +18,14 @@
   </style>
 </head>
 <body>
-  <h1>kSipP Scenario Creator</h1>
+  <h1 class="newpageh1">Create your sipP scenario</h1>
+
   <div id="scenario-creator" style="width: 39%; float: left;">
 
   <button id="createUAC">UAC</button>
   <button id="createUAS">UAS</button>
   <button id="reset" style="display: none;">Reset</button>
+  <a href="/"><button id="exit">Exit</button></a>
 
   <div id="scen-d" style="margin: 10px 0; display: none;">
     <input name="scenario-name" id="scenario-name" value="scenario_name">
@@ -96,13 +99,30 @@
 <!-- ***************** Buttons for UAC xml end ******************** -->
 <!-- ***************** Buttons for UAS xml start ******************** -->
 
-    <!-- <div id="uasFirst" style="display: none;">
-    <button id="recv-invite">Send INVITE</button>
-      <div id="send-invite-div" style="display: none;">
-        <button id="invite-with-sdp">invite with SDP</button>
-        <button id="invite-without-sdp">without SDP</button>
+    <div id="uasFirst" style="display: none;">
+    <button id="recv-invite-b">Recv INVITE</button>
+    </div>
+    <div id="send-1xx-d" style="display: none;">
+      <button id="send-100-b">Send 100</button>
+      <button id="send-180-b">Send 180</button>
+      <button id="send-183-b">Send 183</button>
+      <div id="s-100rel-d" style="display: none;">
+        <button id="s-100-rel">Reliable</button>
+        <button id="s-no-100-rel">Non-Reliable</button>
       </div>
-    </div> -->
+    </div>
+    <div id="s1xx-sdp-d" style="display: none;">
+      <button id="s1xx-wo-sdp-b">without sdp</button>
+      <button id="s1xx-with-sdp-b">with sdp</button>
+    </div>
+    <div id="s-prack-d" style="display: none;">
+      <button id="recv-prack-b" style="display: none;">Recv PRACK</button>
+      <button id="send-200p-b" style="display: none;">Send 200(prack) without SDP</button>
+      <button id="send-200p-sdp-b" style="display: none;">200(prack) with SDP</button>
+    </div>
+    <button id="send-200-inv-b" style="display: none;">Send 200OK (invite) with SDP</button>
+    <button id="send-200-inv-no-sdp-b" style="display: none;">200OK without SDP</button>
+
 
 <!-- ***************** Buttons for UAS xml end ******************** -->
 
@@ -116,6 +136,7 @@
   </div>
 
   <script src="{% static 'createUACxml.js' %}"></script>
+  <script src="{% static 'createUASxml.js' %}"></script>
 
 </body>
 </html>

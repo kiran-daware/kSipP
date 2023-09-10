@@ -79,12 +79,6 @@ createUAC.addEventListener('click', () => {
     sceType='uac';
 })
 
-createUAS.addEventListener('click', ()=>{
-    
-    createUAC.style.display='none';
-    reset.style.display='inline-block';
-})
-
 reset.addEventListener('click', ()=>{
     location.reload();
 })
@@ -106,7 +100,10 @@ start.addEventListener('click',()=>{
   editor.setValue(scenHeader);
   if(sceType==='uac'){
     uacFirst.style.display='block';
-  }
+  }else if (sceType==='uas'){
+    uasFirst.style.display='block';
+  };
+
 });
 
 // Send INVITE *************************
@@ -237,7 +234,7 @@ noRelB.addEventListener('click', () => {
 });
 
 function generate18x(rel){
-  const opt=rel?'':'optional="true"';
+  let opt=rel?'':'optional="true"';
   const ft=fromto?`
         <ereg regexp=".*" search_in="hdr" header="From:" check_it="true" assign_to="1" />
         <ereg regexp=".*" search_in="hdr" header="To:" check_it="true" assign_to="2" />`
