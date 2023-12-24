@@ -72,6 +72,7 @@ recvInviteB.addEventListener('click', () => {
   send200invB.disabled=false;
   send200invSdpB.disabled=false;
   uasRecvUpdateB.disabled=true;
+  uasSendInviteB.disabled=true;
 });
 
 
@@ -359,6 +360,7 @@ recvAckB.addEventListener('click',()=>{
    uasRecvRqstD.style.display='block';
    uasSendRqstD.style.display='block';
    uasRecvUpdateB.disabled=false;
+   uasSendInviteB.disabled=false;
    uasByeD.style.display='block';
 });
 
@@ -374,7 +376,7 @@ function newRequestFromUas(){
     
   var firstIndex = currentContent.indexOf(originalXML);
 
-  if (lastIndex !== -1) {
+  if (firstIndex !== -1) {
     var modifiedContent = currentContent.substring(0, firstIndex) + replacementXML + currentContent.substring(firstIndex + originalXML.length);
   }
   editor.setValue(modifiedContent);
@@ -413,6 +415,9 @@ uasRecvByeB.addEventListener('click',()=>{
   editor.setValue(`${editor.getValue()}\n${uasRecvBye}`);
   recvInviteB.disabled=true;
   uasRecvByeB.disabled=true;
+  uasSendByeB.disabled=true;
+  uasRecvUpdateB.disabled=true;
+  uasSendInviteB.disabled=true;
 });
 
 
@@ -420,7 +425,6 @@ uasRecvByeB.addEventListener('click',()=>{
 
 // Send BYE ********************************************************************************
 uasSendByeB.addEventListener('click',()=>{
-  console.log(uasCSeq);
   if (uasCSeq===1){newRequestFromUas();};
   uasCSeq++;
   const uasSendBye=`
@@ -457,4 +461,7 @@ uasSendByeB.addEventListener('click',()=>{
   editor.setValue(`${editor.getValue()}\n${uasSendBye}`);
   recvInviteB.disabled=true;
   uasRecvByeB.disabled=true;
+  uasSendByeB.disabled=true;
+  uasRecvUpdateB.disabled=true;
+  uasSendInviteB.disabled=true;
 });
