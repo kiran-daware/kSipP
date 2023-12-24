@@ -413,7 +413,7 @@ uasRecvByeB.addEventListener('click',()=>{
   editor.setValue(`${editor.getValue()}\n${uasRecvBye}`);
   recvInviteB.disabled=true;
   uasRecvByeB.disabled=true;
-})
+});
 
 
 
