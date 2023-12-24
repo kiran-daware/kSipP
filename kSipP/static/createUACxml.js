@@ -236,8 +236,8 @@ noRelB.addEventListener('click', () => {
 function generate18x(rel){
   let opt=rel?'':'optional="true"';
   const ft=fromto?`
-        <ereg regexp=".*" search_in="hdr" header="From:" check_it="true" assign_to="1" />
-        <ereg regexp=".*" search_in="hdr" header="To:" check_it="true" assign_to="2" />`
+        <ereg regexp=".*" search_in="hdr" header="From:" check_it="true" assign_to="remote_from" />
+        <ereg regexp=".*" search_in="hdr" header="To:" check_it="true" assign_to="remote_to" />`
   :'';
   const rel18x=rel
   ?`
@@ -295,8 +295,8 @@ function sendPrack(wosdp){
 
         PRACK sip:[service]@[remote_ip]:[remote_port] SIP/2.0
         Via: SIP/2.0/[transport] [local_ip]:[local_port];branch=[branch]
-        From: [$1]
-        To: [$2]
+        From: [$remote_from]
+        To: [$remote_to]
         Call-ID: [call_id]
         CSeq: ${cseq} PRACK
         Contact: sip:sipp@[local_ip]:[local_port]
