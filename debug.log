@@ -1,0 +1,22 @@
+INFO 2023-12-24 10:21:37,400 autoreload Watching for file changes with StatReloader
+INFO 2023-12-24 10:21:37,400 autoreload Watching for file changes with StatReloader
+INFO 2023-12-24 10:22:00,175 autoreload Watching for file changes with StatReloader
+INFO 2023-12-24 10:22:00,175 autoreload Watching for file changes with StatReloader
+INFO 2023-12-24 10:22:08,713 basehttp "GET / HTTP/1.1" 200 6970
+INFO 2023-12-24 10:22:08,713 basehttp "GET / HTTP/1.1" 200 6970
+INFO 2023-12-24 10:22:10,389 basehttp "GET /run-script HTTP/1.1" 200 1764
+INFO 2023-12-24 10:22:10,389 basehttp "GET /run-script HTTP/1.1" 200 1764
+INFO 2023-12-24 10:22:11,071 basehttp "GET / HTTP/1.1" 200 6970
+INFO 2023-12-24 10:22:11,071 basehttp "GET / HTTP/1.1" 200 6970
+INFO 2023-12-24 10:22:11,510 basehttp "GET /modify-xml HTTP/1.1" 200 3983
+INFO 2023-12-24 10:22:11,510 basehttp "GET /modify-xml HTTP/1.1" 200 3983
+INFO 2023-12-24 10:22:12,856 basehttp "GET /create-scenario-xml HTTP/1.1" 200 5685
+INFO 2023-12-24 10:22:12,856 basehttp "GET /create-scenario-xml HTTP/1.1" 200 5685
+INFO 2023-12-24 10:22:24,457 basehttp "GET /create-scenario-xml HTTP/1.1" 200 5685
+INFO 2023-12-24 10:22:24,457 basehttp "GET /create-scenario-xml HTTP/1.1" 200 5685
+INFO 2023-12-24 10:23:11,923 autoreload Watching for file changes with StatReloader
+INFO 2023-12-24 10:23:11,923 autoreload Watching for file changes with StatReloader
+INFO 2023-12-24 10:25:46,938 autoreload Watching for file changes with StatReloader
+INFO 2023-12-24 10:25:46,938 autoreload Watching for file changes with StatReloader
+INFO 2023-12-24 10:25:55,301 basehttp "GET / HTTP/1.1" 200 6970
+INFO 2023-12-24 10:25:55,301 basehttp "GET / HTTP/1.1" 200 6970
