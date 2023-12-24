@@ -42,7 +42,10 @@ const uasRecvRqstD=document.getElementById('uas-recv-rqst');
 const uasSendRqstD=document.getElementById('uas-send-request');
 const uasRecvUpdateB=document.getElementById('uas-recv-update-b');
 const uasSendInviteB=document.getElementById('uas-send-inv-b');
-
+// BYE
+const uasByeD=document.getElementById('uas-bye');
+const uasRecvByeB=document.getElementById('uas-recv-bye');
+const uasSendByeB=document.getElementById('uas-send-bye');
 
 
 // Recv INVITE **************************************************************************
@@ -52,6 +55,9 @@ let invSeqRel=0, newInvSeq=0;
 recvInviteB.addEventListener('click', () => {
   const recvInv = `
     <recv request="INVITE" crlf="true">
+      <action>
+        <!-- INV Placeholder to store vars -->
+      </action>
     </recv>
     `;
   editor.setValue(`${editor.getValue()}\n${recvInv}`);
@@ -196,16 +202,17 @@ function generateSend1xx(srel,ssdp){
 
     if(invSeqRel===newInvSeq){
     var currentContent=editor.getValue();
-    var originalXML=`<recv request="INVITE" crlf="true">`;
-    var replacementXML=`
-    <recv request="INVITE" crlf="true" rrs="true">
-      <action>
-        <ereg regexp=".*" search_in="hdr" header="Via:" check_it="true" assign_to="${invSeqRel}" />
+    var originalXML=`<!-- INV Placeholder to store vars -->`;
+    var replacementXML=`<ereg regexp=".*" search_in="hdr" header="Via:" check_it="true" assign_to="${invSeqRel}" />
         <ereg regexp=".*" search_in="hdr" header="CSeq:" check_it="true" assign_to="${50 + invSeqRel}" />
-      </action>`;
-        
-    var modifiedContent=currentContent.replace(originalXML, replacementXML);
-    
+        <!-- INV Placeholder to store vars -->`;
+      
+    var lastIndex = currentContent.lastIndexOf(originalXML);
+
+    if (lastIndex !== -1) {
+      var modifiedContent = currentContent.substring(0, lastIndex) + replacementXML + currentContent.substring(lastIndex + originalXML.length);
+    }
+
     // Set the modified content back to the editor
     editor.setValue(modifiedContent);
     };
@@ -279,10 +286,14 @@ send200pSdpB.addEventListener('click',()=>{
 
 // Send 200 for invite ******************************************************************************
 send200invSdpB.addEventListener('click',()=>{
-    if(sRseq>=1){
-        hVia='Via:[$1]';
-        hCSeq='CSeq:[$2]';
+  if(sRseq>=1 && invSeqRel===newInvSeq){
+    hVia='Via:[$' + invSeqRel + ']';
+    hCSeq='CSeq:[$' + (50+invSeqRel) + ']';
     }
+    else if (newInvSeq>invSeqRel){
+      hVia='[last_Via:]';
+      hCSeq='[last_CSeq:]';
+    };
     send200Ok(true);
     send200invB.disabled=true;
     send200invSdpB.disabled=true;
@@ -292,10 +303,14 @@ send200invSdpB.addEventListener('click',()=>{
     recvAckB.disabled=false;
 });
 send200invB.addEventListener('click',()=>{
-    if(sRseq>=1){
-        hVia='Via:[$1]';
-        hCSeq='CSeq:[$2]';
+  if(sRseq>=1 && invSeqRel===newInvSeq){
+    hVia='Via:[$' + invSeqRel + ']';
+    hCSeq='CSeq:[$' + (50+invSeqRel) + ']';
     }
+    else if (newInvSeq>invSeqRel){
+      hVia='[last_Via:]';
+      hCSeq='[last_CSeq:]';
+    };
     send200Ok(false);
     send200invB.disabled=true;
     send200invSdpB.disabled=true;
@@ -304,6 +319,7 @@ send200invB.addEventListener('click',()=>{
     recvAckB.style.display='block';
 });
 
+/* 200 Ok generation for both PRACK and INVITE */
 function send200Ok(sdp2){
     const sdp=sdp2
     ?`Content-Type: application/sdp
@@ -326,8 +342,8 @@ function send200Ok(sdp2){
         Contact: <sip:[local_ip]:[local_port];transport=[transport]>
         ${sdp}
  
-     ]]>
-   </send>
+      ]]>
+    </send>
     `;
     editor.setValue(`${editor.getValue()}\n${msg200}`);
 };
@@ -335,12 +351,110 @@ function send200Ok(sdp2){
 // Recv ACK ****************************************************************************************
 recvAckB.addEventListener('click',()=>{
   const recvAck=`
-   <recv request="ACK" optional="true" rtd="true" crlf="true">
-   </recv>`;
+    <recv request="ACK" rtd="true" crlf="true">
+    </recv>`;
    editor.setValue(`${editor.getValue()}\n${recvAck}`);
    recvAckB.disabled=true;
    recvInviteB.disabled=false;
    uasRecvRqstD.style.display='block';
    uasSendRqstD.style.display='block';
    uasRecvUpdateB.disabled=false;
+   uasByeD.style.display='block';
+});
+
+
+// New Request from UAS
+let uasCSeq=1;
+function newRequestFromUas(){
+  var currentContent=editor.getValue();
+  var originalXML=`<!-- INV Placeholder to store vars -->`;
+  var replacementXML=`<ereg regexp=".*" search_in="hdr" header="From:" check_it="true" assign_to="remote_from" />
+        <ereg regexp=".*" search_in="hdr" header="To:" check_it="true" assign_to="remote_to" />
+        <!-- INV Placeholder to store vars -->`;
+    
+  var firstIndex = currentContent.indexOf(originalXML);
+
+  if (lastIndex !== -1) {
+    var modifiedContent = currentContent.substring(0, firstIndex) + replacementXML + currentContent.substring(firstIndex + originalXML.length);
+  }
+  editor.setValue(modifiedContent);
+};
+
+
+// Recv BYE ****************************************************************************************
+uasRecvByeB.addEventListener('click',()=>{
+  const uasRecvBye=`
+    <recv request="BYE">
+    </recv>
+
+    <send>
+      <![CDATA[
+
+        SIP/2.0 200 OK
+        [last_Via:]
+        [last_From:]
+        [last_To:]
+        [last_Call-ID:]
+        [last_CSeq:]
+        Contact: <sip:[local_ip]:[local_port];transport=[transport]>
+        Content-Length: 0
+
+      ]]>
+    </send>
+
+  <!-- definition of the response time repartition table (unit is ms)   -->
+  <ResponseTimeRepartition value="10, 20, 30, 40, 50, 100, 150, 200"/>
+
+  <!-- definition of the call length repartition table (unit is ms)     -->
+  <CallLengthRepartition value="10, 50, 100, 500, 1000, 5000, 10000"/>
+
+</scenario>
+  `;
+  editor.setValue(`${editor.getValue()}\n${uasRecvBye}`);
+  recvInviteB.disabled=true;
+  uasRecvByeB.disabled=true;
+})
+
+
+
+
+// Send BYE ********************************************************************************
+uasSendByeB.addEventListener('click',()=>{
+  console.log(uasCSeq);
+  if (uasCSeq===1){newRequestFromUas();};
+  uasCSeq++;
+  const uasSendBye=`
+    <send retrans="500">
+      <![CDATA[
+
+        BYE sip:[service]@[remote_ip]:[remote_port] SIP/2.0
+        Via: SIP/2.0/[transport] [local_ip]:[local_port];branch=[branch]
+        From: [$remote_to];tag=[pid]SIPpTag01[call_number]
+        To: [$remote_from]
+        Call-ID: [call_id]
+        CSeq: ${uasCSeq} BYE
+        Contact: sip:sipp@[local_ip]:[local_port]
+        Max-Forwards: 70
+        Subject: Performance Test
+        Content-Length: 0
+
+      ]]>
+    </send>
+
+
+    <recv response="200" crlf="true">
+    </recv>
+
+
+    <!-- definition of the response time repartition table (unit is ms)   -->
+    <ResponseTimeRepartition value="10, 20, 30, 40, 50, 100, 150, 200"/>
+
+    <!-- definition of the call length repartition table (unit is ms)     -->
+    <CallLengthRepartition value="10, 50, 100, 500, 1000, 5000, 10000"/>
+
+</scenario>
+  `;
+  editor.setValue(`${editor.getValue()}\n${uasSendBye}`);
+  recvInviteB.disabled=true;
+  uasRecvByeB.disabled=true;
 });

@@ -30,3 +30,625 @@ INFO 2023-12-24 10:42:30,462 autoreload Watching for file changes with StatReloa
 INFO 2023-12-24 10:42:30,462 autoreload Watching for file changes with StatReloader
 INFO 2023-12-24 10:42:33,100 basehttp "GET /create-scenario-xml HTTP/1.1" 200 5685
 INFO 2023-12-24 10:42:33,100 basehttp "GET /create-scenario-xml HTTP/1.1" 200 5685
+INFO 2023-12-24 10:43:37,156 autoreload Watching for file changes with StatReloader
+INFO 2023-12-24 10:43:37,156 autoreload Watching for file changes with StatReloader
+INFO 2023-12-24 10:43:40,019 basehttp "GET /create-scenario-xml HTTP/1.1" 200 5685
+INFO 2023-12-24 10:43:40,019 basehttp "GET /create-scenario-xml HTTP/1.1" 200 5685
+INFO 2023-12-24 10:43:42,868 basehttp "GET /create-scenario-xml HTTP/1.1" 200 5685
+INFO 2023-12-24 10:43:42,868 basehttp "GET /create-scenario-xml HTTP/1.1" 200 5685
+INFO 2023-12-24 10:43:49,983 basehttp "GET /create-scenario-xml HTTP/1.1" 200 5685
+INFO 2023-12-24 10:43:49,983 basehttp "GET /create-scenario-xml HTTP/1.1" 200 5685
+INFO 2023-12-24 10:44:04,348 autoreload Watching for file changes with StatReloader
+INFO 2023-12-24 10:44:04,348 autoreload Watching for file changes with StatReloader
+INFO 2023-12-24 10:44:31,155 basehttp "GET /create-scenario-xml HTTP/1.1" 200 5685
+INFO 2023-12-24 10:44:31,155 basehttp "GET /create-scenario-xml HTTP/1.1" 200 5685
+INFO 2023-12-24 10:44:33,046 basehttp "GET /create-scenario-xml HTTP/1.1" 200 5685
+INFO 2023-12-24 10:44:33,046 basehttp "GET /create-scenario-xml HTTP/1.1" 200 5685
+INFO 2023-12-24 10:44:33,073 basehttp "GET /static/ace/ace.js HTTP/1.1" 200 437636
+INFO 2023-12-24 10:44:33,073 basehttp "GET /static/ace/ace.js HTTP/1.1" 200 437636
+INFO 2023-12-24 10:44:33,077 basehttp "GET /static/ace/mode-xml.js HTTP/1.1" 200 10215
+INFO 2023-12-24 10:44:33,077 basehttp "GET /static/ace/mode-xml.js HTTP/1.1" 200 10215
+INFO 2023-12-24 10:44:33,087 basehttp "GET /static/createUASxml.js HTTP/1.1" 200 10005
+INFO 2023-12-24 10:44:33,087 basehttp "GET /static/createUASxml.js HTTP/1.1" 200 10005
+INFO 2023-12-24 10:44:33,089 basehttp "GET /static/ace/theme-chrome.js HTTP/1.1" 200 3877
+INFO 2023-12-24 10:44:33,089 basehttp "GET /static/ace/theme-chrome.js HTTP/1.1" 200 3877
+INFO 2023-12-24 10:44:33,089 basehttp "GET /static/styles.css HTTP/1.1" 200 794
+INFO 2023-12-24 10:44:33,089 basehttp "GET /static/styles.css HTTP/1.1" 200 794
+INFO 2023-12-24 10:44:33,090 basehttp "GET /static/createUACxml.js HTTP/1.1" 200 17632
+INFO 2023-12-24 10:44:33,090 basehttp "GET /static/createUACxml.js HTTP/1.1" 200 17632
+INFO 2023-12-24 10:44:33,091 basehttp "GET /static/ace/worker-xml.js HTTP/1.1" 200 46923
+INFO 2023-12-24 10:44:33,091 basehttp "GET /static/ace/worker-xml.js HTTP/1.1" 200 46923
+WARNING 2023-12-24 10:44:33,161 log Not Found: /favicon.ico
+WARNING 2023-12-24 10:44:33,161 log Not Found: /favicon.ico
+WARNING 2023-12-24 10:44:33,162 basehttp "GET /favicon.ico HTTP/1.1" 404 3284
+WARNING 2023-12-24 10:44:33,162 basehttp "GET /favicon.ico HTTP/1.1" 404 3284
+INFO 2023-12-24 10:44:35,914 basehttp "GET /create-scenario-xml HTTP/1.1" 200 5685
+INFO 2023-12-24 10:44:35,914 basehttp "GET /create-scenario-xml HTTP/1.1" 200 5685
+INFO 2023-12-24 10:44:35,944 basehttp "GET /static/ace/ace.js HTTP/1.1" 200 437636
+INFO 2023-12-24 10:44:35,944 basehttp "GET /static/ace/ace.js HTTP/1.1" 200 437636
+INFO 2023-12-24 10:44:35,954 basehttp "GET /static/createUACxml.js HTTP/1.1" 200 17632
+INFO 2023-12-24 10:44:35,954 basehttp "GET /static/ace/mode-xml.js HTTP/1.1" 200 10215
+INFO 2023-12-24 10:44:35,954 basehttp "GET /static/ace/mode-xml.js HTTP/1.1" 200 10215
+INFO 2023-12-24 10:44:35,954 basehttp "GET /static/createUACxml.js HTTP/1.1" 200 17632
+INFO 2023-12-24 10:44:35,955 basehttp "GET /static/styles.css HTTP/1.1" 200 794
+INFO 2023-12-24 10:44:35,955 basehttp "GET /static/styles.css HTTP/1.1" 200 794
+INFO 2023-12-24 10:44:35,956 basehttp "GET /static/ace/worker-xml.js HTTP/1.1" 200 46923
+INFO 2023-12-24 10:44:35,955 basehttp "GET /static/ace/theme-chrome.js HTTP/1.1" 200 3877
+INFO 2023-12-24 10:44:35,955 basehttp "GET /static/ace/theme-chrome.js HTTP/1.1" 200 3877
+INFO 2023-12-24 10:44:35,956 basehttp "GET /static/ace/worker-xml.js HTTP/1.1" 200 46923
+INFO 2023-12-24 10:44:35,958 basehttp "GET /static/createUASxml.js HTTP/1.1" 200 10005
+INFO 2023-12-24 10:44:35,958 basehttp "GET /static/createUASxml.js HTTP/1.1" 200 10005
+WARNING 2023-12-24 10:44:36,037 log Not Found: /favicon.ico
+WARNING 2023-12-24 10:44:36,037 log Not Found: /favicon.ico
+WARNING 2023-12-24 10:44:36,037 basehttp "GET /favicon.ico HTTP/1.1" 404 3284
+WARNING 2023-12-24 10:44:36,037 basehttp "GET /favicon.ico HTTP/1.1" 404 3284
+INFO 2023-12-24 10:45:00,170 basehttp "GET /create-scenario-xml HTTP/1.1" 200 5685
+INFO 2023-12-24 10:45:00,170 basehttp "GET /create-scenario-xml HTTP/1.1" 200 5685
+INFO 2023-12-24 10:45:00,211 basehttp "GET /static/createUACxml.js HTTP/1.1" 304 0
+INFO 2023-12-24 10:45:00,211 basehttp "GET /static/createUACxml.js HTTP/1.1" 304 0
+INFO 2023-12-24 10:49:48,941 basehttp "GET /create-scenario-xml HTTP/1.1" 200 5685
+INFO 2023-12-24 10:49:48,941 basehttp "GET /create-scenario-xml HTTP/1.1" 200 5685
+INFO 2023-12-24 10:49:48,966 basehttp "GET /static/ace/ace.js HTTP/1.1" 304 0
+INFO 2023-12-24 10:49:48,966 basehttp "GET /static/ace/ace.js HTTP/1.1" 304 0
+INFO 2023-12-24 10:49:48,973 basehttp "GET /static/styles.css HTTP/1.1" 304 0
+INFO 2023-12-24 10:49:48,973 basehttp "GET /static/styles.css HTTP/1.1" 304 0
+INFO 2023-12-24 10:49:48,976 basehttp "GET /static/ace/mode-xml.js HTTP/1.1" 304 0
+INFO 2023-12-24 10:49:48,976 basehttp "GET /static/ace/mode-xml.js HTTP/1.1" 304 0
+INFO 2023-12-24 10:49:48,977 basehttp "GET /static/createUASxml.js HTTP/1.1" 304 0
+INFO 2023-12-24 10:49:48,977 basehttp "GET /static/createUASxml.js HTTP/1.1" 304 0
+INFO 2023-12-24 10:49:48,977 basehttp "GET /static/ace/worker-xml.js HTTP/1.1" 304 0
+INFO 2023-12-24 10:49:48,977 basehttp "GET /static/ace/worker-xml.js HTTP/1.1" 304 0
+INFO 2023-12-24 10:49:48,981 basehttp "GET /static/ace/theme-chrome.js HTTP/1.1" 304 0
+INFO 2023-12-24 10:49:48,981 basehttp "GET /static/ace/theme-chrome.js HTTP/1.1" 304 0
+INFO 2023-12-24 10:49:48,982 basehttp "GET /static/createUACxml.js HTTP/1.1" 304 0
+INFO 2023-12-24 10:49:48,982 basehttp "GET /static/createUACxml.js HTTP/1.1" 304 0
+INFO 2023-12-24 10:52:48,567 basehttp "GET /create-scenario-xml HTTP/1.1" 200 5685
+INFO 2023-12-24 10:52:48,567 basehttp "GET /create-scenario-xml HTTP/1.1" 200 5685
+INFO 2023-12-24 10:52:48,593 basehttp "GET /static/createUACxml.js HTTP/1.1" 304 0
+INFO 2023-12-24 10:52:48,593 basehttp "GET /static/createUACxml.js HTTP/1.1" 304 0
+INFO 2023-12-24 10:53:45,445 basehttp "GET /create-scenario-xml HTTP/1.1" 200 5685
+INFO 2023-12-24 10:53:45,445 basehttp "GET /create-scenario-xml HTTP/1.1" 200 5685
+INFO 2023-12-24 10:53:46,446 basehttp "GET /create-scenario-xml HTTP/1.1" 200 5685
+INFO 2023-12-24 10:53:46,446 basehttp "GET /create-scenario-xml HTTP/1.1" 200 5685
+INFO 2023-12-24 11:03:21,941 autoreload Watching for file changes with StatReloader
+INFO 2023-12-24 11:03:21,941 autoreload Watching for file changes with StatReloader
+INFO 2023-12-24 11:03:26,815 basehttp "GET /create-scenario-xml HTTP/1.1" 200 5837
+INFO 2023-12-24 11:03:26,815 basehttp "GET /create-scenario-xml HTTP/1.1" 200 5837
+INFO 2023-12-24 11:03:26,845 basehttp "GET /static/ace/ace.js HTTP/1.1" 200 437636
+INFO 2023-12-24 11:03:26,845 basehttp "GET /static/ace/ace.js HTTP/1.1" 200 437636
+INFO 2023-12-24 11:03:26,850 basehttp "GET /static/ace/mode-xml.js HTTP/1.1" 200 10215
+INFO 2023-12-24 11:03:26,850 basehttp "GET /static/ace/mode-xml.js HTTP/1.1" 200 10215
+INFO 2023-12-24 11:03:26,862 basehttp "GET /static/styles.css HTTP/1.1" 200 794
+INFO 2023-12-24 11:03:26,862 basehttp "GET /static/styles.css HTTP/1.1" 200 794
+INFO 2023-12-24 11:03:26,864 basehttp "GET /static/createUASxml.js HTTP/1.1" 200 11072
+INFO 2023-12-24 11:03:26,864 basehttp "GET /static/createUASxml.js HTTP/1.1" 200 11072
+INFO 2023-12-24 11:03:26,865 basehttp "GET /static/ace/theme-chrome.js HTTP/1.1" 200 3877
+INFO 2023-12-24 11:03:26,865 basehttp "GET /static/ace/theme-chrome.js HTTP/1.1" 200 3877
+INFO 2023-12-24 11:03:26,865 basehttp "GET /static/createUACxml.js HTTP/1.1" 200 17632
+INFO 2023-12-24 11:03:26,865 basehttp "GET /static/createUACxml.js HTTP/1.1" 200 17632
+INFO 2023-12-24 11:03:26,866 basehttp "GET /static/ace/worker-xml.js HTTP/1.1" 200 46923
+INFO 2023-12-24 11:03:26,866 basehttp "GET /static/ace/worker-xml.js HTTP/1.1" 200 46923
+WARNING 2023-12-24 11:03:26,950 log Not Found: /favicon.ico
+WARNING 2023-12-24 11:03:26,950 log Not Found: /favicon.ico
+WARNING 2023-12-24 11:03:26,951 basehttp "GET /favicon.ico HTTP/1.1" 404 3284
+WARNING 2023-12-24 11:03:26,951 basehttp "GET /favicon.ico HTTP/1.1" 404 3284
+INFO 2023-12-24 11:03:30,014 basehttp "GET /create-scenario-xml HTTP/1.1" 200 5837
+INFO 2023-12-24 11:03:30,014 basehttp "GET /create-scenario-xml HTTP/1.1" 200 5837
+INFO 2023-12-24 11:03:30,048 basehttp "GET /static/createUASxml.js HTTP/1.1" 304 0
+INFO 2023-12-24 11:03:30,048 basehttp "GET /static/createUASxml.js HTTP/1.1" 304 0
+INFO 2023-12-24 11:08:51,576 autoreload Watching for file changes with StatReloader
+INFO 2023-12-24 11:08:51,576 autoreload Watching for file changes with StatReloader
+INFO 2023-12-24 11:08:54,640 basehttp "GET /create-scenario-xml HTTP/1.1" 200 5837
+INFO 2023-12-24 11:08:54,640 basehttp "GET /create-scenario-xml HTTP/1.1" 200 5837
+INFO 2023-12-24 11:08:54,667 basehttp "GET /static/ace/ace.js HTTP/1.1" 200 437636
+INFO 2023-12-24 11:08:54,667 basehttp "GET /static/ace/ace.js HTTP/1.1" 200 437636
+INFO 2023-12-24 11:08:54,681 basehttp "GET /static/ace/mode-xml.js HTTP/1.1" 200 10215
+INFO 2023-12-24 11:08:54,681 basehttp "GET /static/ace/mode-xml.js HTTP/1.1" 200 10215
+INFO 2023-12-24 11:08:54,683 basehttp "GET /static/styles.css HTTP/1.1" 200 794
+INFO 2023-12-24 11:08:54,683 basehttp "GET /static/styles.css HTTP/1.1" 200 794
+INFO 2023-12-24 11:08:54,686 basehttp "GET /static/createUASxml.js HTTP/1.1" 200 11076
+INFO 2023-12-24 11:08:54,686 basehttp "GET /static/ace/theme-chrome.js HTTP/1.1" 200 3877
+INFO 2023-12-24 11:08:54,686 basehttp "GET /static/ace/theme-chrome.js HTTP/1.1" 200 3877
+INFO 2023-12-24 11:08:54,686 basehttp "GET /static/createUASxml.js HTTP/1.1" 200 11076
+INFO 2023-12-24 11:08:54,687 basehttp "GET /static/createUACxml.js HTTP/1.1" 200 17632
+INFO 2023-12-24 11:08:54,687 basehttp "GET /static/createUACxml.js HTTP/1.1" 200 17632
+INFO 2023-12-24 11:08:54,687 basehttp "GET /static/ace/worker-xml.js HTTP/1.1" 200 46923
+INFO 2023-12-24 11:08:54,687 basehttp "GET /static/ace/worker-xml.js HTTP/1.1" 200 46923
+WARNING 2023-12-24 11:08:54,775 log Not Found: /favicon.ico
+WARNING 2023-12-24 11:08:54,775 log Not Found: /favicon.ico
+WARNING 2023-12-24 11:08:54,775 basehttp "GET /favicon.ico HTTP/1.1" 404 3284
+WARNING 2023-12-24 11:08:54,775 basehttp "GET /favicon.ico HTTP/1.1" 404 3284
+INFO 2023-12-24 11:11:54,445 basehttp "GET /create-scenario-xml HTTP/1.1" 200 5837
+INFO 2023-12-24 11:11:54,445 basehttp "GET /create-scenario-xml HTTP/1.1" 200 5837
+INFO 2023-12-24 11:11:54,474 basehttp "GET /static/createUACxml.js HTTP/1.1" 304 0
+INFO 2023-12-24 11:11:54,474 basehttp "GET /static/createUACxml.js HTTP/1.1" 304 0
+INFO 2023-12-24 11:11:54,476 basehttp "GET /static/createUASxml.js HTTP/1.1" 200 11060
+INFO 2023-12-24 11:11:54,476 basehttp "GET /static/createUASxml.js HTTP/1.1" 200 11060
+INFO 2023-12-24 11:19:40,034 autoreload Watching for file changes with StatReloader
+INFO 2023-12-24 11:19:40,034 autoreload Watching for file changes with StatReloader
+INFO 2023-12-24 11:19:42,686 basehttp "GET /create-scenario-xml HTTP/1.1" 200 5837
+INFO 2023-12-24 11:19:42,686 basehttp "GET /create-scenario-xml HTTP/1.1" 200 5837
+INFO 2023-12-24 11:19:42,714 basehttp "GET /static/ace/ace.js HTTP/1.1" 200 437636
+INFO 2023-12-24 11:19:42,714 basehttp "GET /static/ace/ace.js HTTP/1.1" 200 437636
+INFO 2023-12-24 11:19:42,718 basehttp "GET /static/ace/mode-xml.js HTTP/1.1" 200 10215
+INFO 2023-12-24 11:19:42,718 basehttp "GET /static/ace/mode-xml.js HTTP/1.1" 200 10215
+INFO 2023-12-24 11:19:42,732 basehttp "GET /static/createUASxml.js HTTP/1.1" 200 11052
+INFO 2023-12-24 11:19:42,732 basehttp "GET /static/createUASxml.js HTTP/1.1" 200 11052
+INFO 2023-12-24 11:19:42,733 basehttp "GET /static/styles.css HTTP/1.1" 200 794
+INFO 2023-12-24 11:19:42,733 basehttp "GET /static/styles.css HTTP/1.1" 200 794
+INFO 2023-12-24 11:19:42,735 basehttp "GET /static/createUACxml.js HTTP/1.1" 200 17632
+INFO 2023-12-24 11:19:42,735 basehttp "GET /static/createUACxml.js HTTP/1.1" 200 17632
+INFO 2023-12-24 11:19:42,736 basehttp "GET /static/ace/theme-chrome.js HTTP/1.1" 200 3877
+INFO 2023-12-24 11:19:42,736 basehttp "GET /static/ace/theme-chrome.js HTTP/1.1" 200 3877
+INFO 2023-12-24 11:19:42,736 basehttp "GET /static/ace/worker-xml.js HTTP/1.1" 200 46923
+INFO 2023-12-24 11:19:42,736 basehttp "GET /static/ace/worker-xml.js HTTP/1.1" 200 46923
+WARNING 2023-12-24 11:19:42,797 log Not Found: /favicon.ico
+WARNING 2023-12-24 11:19:42,797 log Not Found: /favicon.ico
+WARNING 2023-12-24 11:19:42,798 basehttp "GET /favicon.ico HTTP/1.1" 404 3284
+WARNING 2023-12-24 11:19:42,798 basehttp "GET /favicon.ico HTTP/1.1" 404 3284
+INFO 2023-12-24 11:19:51,396 basehttp "GET /create-scenario-xml HTTP/1.1" 200 5837
+INFO 2023-12-24 11:19:51,396 basehttp "GET /create-scenario-xml HTTP/1.1" 200 5837
+INFO 2023-12-24 11:19:51,426 basehttp "GET /static/createUASxml.js HTTP/1.1" 304 0
+INFO 2023-12-24 11:19:51,426 basehttp "GET /static/createUASxml.js HTTP/1.1" 304 0
+INFO 2023-12-24 11:20:21,636 basehttp "GET /create-scenario-xml HTTP/1.1" 200 5837
+INFO 2023-12-24 11:20:21,636 basehttp "GET /create-scenario-xml HTTP/1.1" 200 5837
+INFO 2023-12-24 11:20:21,662 basehttp "GET /static/createUASxml.js HTTP/1.1" 304 0
+INFO 2023-12-24 11:20:21,662 basehttp "GET /static/createUASxml.js HTTP/1.1" 304 0
+INFO 2023-12-24 11:20:23,055 basehttp "GET /create-scenario-xml HTTP/1.1" 200 5837
+INFO 2023-12-24 11:20:23,055 basehttp "GET /create-scenario-xml HTTP/1.1" 200 5837
+INFO 2023-12-24 11:20:23,088 basehttp "GET /static/ace/ace.js HTTP/1.1" 200 437636
+INFO 2023-12-24 11:20:23,088 basehttp "GET /static/ace/ace.js HTTP/1.1" 200 437636
+INFO 2023-12-24 11:20:23,099 basehttp "GET /static/ace/theme-chrome.js HTTP/1.1" 200 3877
+INFO 2023-12-24 11:20:23,099 basehttp "GET /static/ace/theme-chrome.js HTTP/1.1" 200 3877
+INFO 2023-12-24 11:20:23,100 basehttp "GET /static/ace/mode-xml.js HTTP/1.1" 200 10215
+INFO 2023-12-24 11:20:23,100 basehttp "GET /static/ace/mode-xml.js HTTP/1.1" 200 10215
+INFO 2023-12-24 11:20:23,101 basehttp "GET /static/createUACxml.js HTTP/1.1" 200 17632
+INFO 2023-12-24 11:20:23,101 basehttp "GET /static/createUACxml.js HTTP/1.1" 200 17632
+INFO 2023-12-24 11:20:23,101 basehttp "GET /static/styles.css HTTP/1.1" 200 794
+INFO 2023-12-24 11:20:23,101 basehttp "GET /static/styles.css HTTP/1.1" 200 794
+INFO 2023-12-24 11:20:23,101 basehttp "GET /static/ace/worker-xml.js HTTP/1.1" 200 46923
+INFO 2023-12-24 11:20:23,101 basehttp "GET /static/ace/worker-xml.js HTTP/1.1" 200 46923
+INFO 2023-12-24 11:20:23,103 basehttp "GET /static/createUASxml.js HTTP/1.1" 200 11052
+INFO 2023-12-24 11:20:23,103 basehttp "GET /static/createUASxml.js HTTP/1.1" 200 11052
+WARNING 2023-12-24 11:20:23,191 log Not Found: /favicon.ico
+WARNING 2023-12-24 11:20:23,191 log Not Found: /favicon.ico
+WARNING 2023-12-24 11:20:23,191 basehttp "GET /favicon.ico HTTP/1.1" 404 3284
+WARNING 2023-12-24 11:20:23,191 basehttp "GET /favicon.ico HTTP/1.1" 404 3284
+INFO 2023-12-24 11:22:12,030 autoreload Watching for file changes with StatReloader
+INFO 2023-12-24 11:22:12,030 autoreload Watching for file changes with StatReloader
+INFO 2023-12-24 11:22:14,460 basehttp "GET /create-scenario-xml HTTP/1.1" 200 5837
+INFO 2023-12-24 11:22:14,460 basehttp "GET /create-scenario-xml HTTP/1.1" 200 5837
+INFO 2023-12-24 11:22:14,488 basehttp "GET /static/ace/ace.js HTTP/1.1" 200 437636
+INFO 2023-12-24 11:22:14,488 basehttp "GET /static/ace/ace.js HTTP/1.1" 200 437636
+INFO 2023-12-24 11:22:14,492 basehttp "GET /static/ace/mode-xml.js HTTP/1.1" 200 10215
+INFO 2023-12-24 11:22:14,492 basehttp "GET /static/ace/mode-xml.js HTTP/1.1" 200 10215
+INFO 2023-12-24 11:22:14,504 basehttp "GET /static/ace/theme-chrome.js HTTP/1.1" 200 3877
+INFO 2023-12-24 11:22:14,504 basehttp "GET /static/ace/theme-chrome.js HTTP/1.1" 200 3877
+INFO 2023-12-24 11:22:14,505 basehttp "GET /static/styles.css HTTP/1.1" 200 794
+INFO 2023-12-24 11:22:14,505 basehttp "GET /static/styles.css HTTP/1.1" 200 794
+INFO 2023-12-24 11:22:14,505 basehttp "GET /static/createUASxml.js HTTP/1.1" 200 11053
+INFO 2023-12-24 11:22:14,505 basehttp "GET /static/createUASxml.js HTTP/1.1" 200 11053
+INFO 2023-12-24 11:22:14,506 basehttp "GET /static/createUACxml.js HTTP/1.1" 200 17632
+INFO 2023-12-24 11:22:14,506 basehttp "GET /static/createUACxml.js HTTP/1.1" 200 17632
+INFO 2023-12-24 11:22:14,507 basehttp "GET /static/ace/worker-xml.js HTTP/1.1" 200 46923
+INFO 2023-12-24 11:22:14,507 basehttp "GET /static/ace/worker-xml.js HTTP/1.1" 200 46923
+WARNING 2023-12-24 11:22:14,621 log Not Found: /favicon.ico
+WARNING 2023-12-24 11:22:14,621 log Not Found: /favicon.ico
+WARNING 2023-12-24 11:22:14,621 basehttp "GET /favicon.ico HTTP/1.1" 404 3284
+WARNING 2023-12-24 11:22:14,621 basehttp "GET /favicon.ico HTTP/1.1" 404 3284
+INFO 2023-12-24 11:26:32,483 autoreload Watching for file changes with StatReloader
+INFO 2023-12-24 11:26:32,483 autoreload Watching for file changes with StatReloader
+INFO 2023-12-24 11:26:49,503 autoreload Watching for file changes with StatReloader
+INFO 2023-12-24 11:26:49,503 autoreload Watching for file changes with StatReloader
+INFO 2023-12-24 11:26:57,666 autoreload Watching for file changes with StatReloader
+INFO 2023-12-24 11:26:57,666 autoreload Watching for file changes with StatReloader
+INFO 2023-12-24 11:27:06,166 autoreload Watching for file changes with StatReloader
+INFO 2023-12-24 11:27:06,166 autoreload Watching for file changes with StatReloader
+INFO 2023-12-24 11:27:11,209 autoreload Watching for file changes with StatReloader
+INFO 2023-12-24 11:27:11,209 autoreload Watching for file changes with StatReloader
+INFO 2023-12-24 11:27:39,351 autoreload Watching for file changes with StatReloader
+INFO 2023-12-24 11:27:39,351 autoreload Watching for file changes with StatReloader
+INFO 2023-12-24 11:27:47,242 autoreload Watching for file changes with StatReloader
+INFO 2023-12-24 11:27:47,242 autoreload Watching for file changes with StatReloader
+INFO 2023-12-24 11:29:49,151 autoreload Watching for file changes with StatReloader
+INFO 2023-12-24 11:29:49,151 autoreload Watching for file changes with StatReloader
+INFO 2023-12-24 11:29:52,626 basehttp "GET / HTTP/1.1" 200 6970
+INFO 2023-12-24 11:29:52,626 basehttp "GET / HTTP/1.1" 200 6970
+WARNING 2023-12-24 11:29:52,736 log Not Found: /favicon.ico
+WARNING 2023-12-24 11:29:52,736 log Not Found: /favicon.ico
+WARNING 2023-12-24 11:29:52,736 basehttp "GET /favicon.ico HTTP/1.1" 404 3284
+WARNING 2023-12-24 11:29:52,736 basehttp "GET /favicon.ico HTTP/1.1" 404 3284
+INFO 2023-12-24 11:29:53,952 basehttp "GET /create-scenario-xml HTTP/1.1" 200 5837
+INFO 2023-12-24 11:29:53,952 basehttp "GET /create-scenario-xml HTTP/1.1" 200 5837
+INFO 2023-12-24 11:29:53,996 basehttp "GET /static/createUACxml.js HTTP/1.1" 304 0
+INFO 2023-12-24 11:29:53,996 basehttp "GET /static/createUACxml.js HTTP/1.1" 304 0
+INFO 2023-12-24 11:29:53,996 basehttp "GET /static/createUASxml.js HTTP/1.1" 200 11060
+INFO 2023-12-24 11:29:53,996 basehttp "GET /static/createUASxml.js HTTP/1.1" 200 11060
+INFO 2023-12-24 11:36:25,452 basehttp "GET /create-scenario-xml HTTP/1.1" 200 5837
+INFO 2023-12-24 11:36:25,452 basehttp "GET /create-scenario-xml HTTP/1.1" 200 5837
+INFO 2023-12-24 11:36:25,483 basehttp "GET /static/ace/mode-xml.js HTTP/1.1" 200 10215
+INFO 2023-12-24 11:36:25,483 basehttp "GET /static/ace/mode-xml.js HTTP/1.1" 200 10215
+INFO 2023-12-24 11:36:25,485 basehttp "GET /static/ace/ace.js HTTP/1.1" 200 437636
+INFO 2023-12-24 11:36:25,485 basehttp "GET /static/ace/ace.js HTTP/1.1" 200 437636
+INFO 2023-12-24 11:36:25,493 basehttp "GET /static/styles.css HTTP/1.1" 200 794
+INFO 2023-12-24 11:36:25,493 basehttp "GET /static/styles.css HTTP/1.1" 200 794
+INFO 2023-12-24 11:36:25,494 basehttp "GET /static/createUASxml.js HTTP/1.1" 200 11062
+INFO 2023-12-24 11:36:25,494 basehttp "GET /static/createUASxml.js HTTP/1.1" 200 11062
+INFO 2023-12-24 11:36:25,497 basehttp "GET /static/createUACxml.js HTTP/1.1" 200 17632
+INFO 2023-12-24 11:36:25,497 basehttp "GET /static/createUACxml.js HTTP/1.1" 200 17632
+INFO 2023-12-24 11:36:25,498 basehttp "GET /static/ace/worker-xml.js HTTP/1.1" 200 46923
+INFO 2023-12-24 11:36:25,498 basehttp "GET /static/ace/worker-xml.js HTTP/1.1" 200 46923
+INFO 2023-12-24 11:36:25,499 basehttp "GET /static/ace/theme-chrome.js HTTP/1.1" 200 3877
+INFO 2023-12-24 11:36:25,499 basehttp "GET /static/ace/theme-chrome.js HTTP/1.1" 200 3877
+WARNING 2023-12-24 11:36:25,574 log Not Found: /favicon.ico
+WARNING 2023-12-24 11:36:25,574 log Not Found: /favicon.ico
+WARNING 2023-12-24 11:36:25,575 basehttp "GET /favicon.ico HTTP/1.1" 404 3284
+WARNING 2023-12-24 11:36:25,575 basehttp "GET /favicon.ico HTTP/1.1" 404 3284
+INFO 2023-12-24 12:32:48,285 basehttp "GET /create-scenario-xml HTTP/1.1" 200 5837
+INFO 2023-12-24 12:32:48,285 basehttp "GET /create-scenario-xml HTTP/1.1" 200 5837
+INFO 2023-12-24 12:32:48,322 basehttp "GET /static/ace/ace.js HTTP/1.1" 304 0
+INFO 2023-12-24 12:32:48,322 basehttp "GET /static/ace/ace.js HTTP/1.1" 304 0
+INFO 2023-12-24 12:32:48,327 basehttp "GET /static/ace/mode-xml.js HTTP/1.1" 304 0
+INFO 2023-12-24 12:32:48,327 basehttp "GET /static/ace/mode-xml.js HTTP/1.1" 304 0
+INFO 2023-12-24 12:32:48,329 basehttp "GET /static/ace/worker-xml.js HTTP/1.1" 304 0
+INFO 2023-12-24 12:32:48,329 basehttp "GET /static/ace/worker-xml.js HTTP/1.1" 304 0
+INFO 2023-12-24 12:32:48,332 basehttp "GET /static/styles.css HTTP/1.1" 304 0
+INFO 2023-12-24 12:32:48,332 basehttp "GET /static/styles.css HTTP/1.1" 304 0
+INFO 2023-12-24 12:32:48,338 basehttp "GET /static/ace/theme-chrome.js HTTP/1.1" 304 0
+INFO 2023-12-24 12:32:48,338 basehttp "GET /static/ace/theme-chrome.js HTTP/1.1" 304 0
+INFO 2023-12-24 12:32:48,338 basehttp "GET /static/createUACxml.js HTTP/1.1" 304 0
+INFO 2023-12-24 12:32:48,338 basehttp "GET /static/createUACxml.js HTTP/1.1" 304 0
+INFO 2023-12-24 12:32:48,339 basehttp "GET /static/createUASxml.js HTTP/1.1" 200 11136
+INFO 2023-12-24 12:32:48,339 basehttp "GET /static/createUASxml.js HTTP/1.1" 200 11136
+INFO 2023-12-24 12:32:54,442 basehttp "GET /create-scenario-xml HTTP/1.1" 200 5837
+INFO 2023-12-24 12:32:54,442 basehttp "GET /create-scenario-xml HTTP/1.1" 200 5837
+INFO 2023-12-24 12:33:28,386 basehttp "GET /create-scenario-xml HTTP/1.1" 200 5837
+INFO 2023-12-24 12:33:28,386 basehttp "GET /create-scenario-xml HTTP/1.1" 200 5837
+INFO 2023-12-24 12:33:28,412 basehttp "GET /static/createUASxml.js HTTP/1.1" 304 0
+INFO 2023-12-24 12:33:28,412 basehttp "GET /static/createUASxml.js HTTP/1.1" 304 0
+INFO 2023-12-24 12:36:44,848 autoreload Watching for file changes with StatReloader
+INFO 2023-12-24 12:36:44,848 autoreload Watching for file changes with StatReloader
+INFO 2023-12-24 12:36:46,938 basehttp "GET /create-scenario-xml HTTP/1.1" 200 5837
+INFO 2023-12-24 12:36:46,938 basehttp "GET /create-scenario-xml HTTP/1.1" 200 5837
+INFO 2023-12-24 12:36:46,965 basehttp "GET /static/ace/ace.js HTTP/1.1" 200 437636
+INFO 2023-12-24 12:36:46,965 basehttp "GET /static/ace/ace.js HTTP/1.1" 200 437636
+INFO 2023-12-24 12:36:46,984 basehttp "GET /static/styles.css HTTP/1.1" 200 794
+INFO 2023-12-24 12:36:46,984 basehttp "GET /static/styles.css HTTP/1.1" 200 794
+INFO 2023-12-24 12:36:46,987 basehttp "GET /static/ace/mode-xml.js HTTP/1.1" 200 10215
+INFO 2023-12-24 12:36:46,987 basehttp "GET /static/ace/mode-xml.js HTTP/1.1" 200 10215
+INFO 2023-12-24 12:36:46,992 basehttp "GET /static/ace/theme-chrome.js HTTP/1.1" 200 3877
+INFO 2023-12-24 12:36:46,992 basehttp "GET /static/ace/theme-chrome.js HTTP/1.1" 200 3877
+INFO 2023-12-24 12:36:46,996 basehttp "GET /static/createUACxml.js HTTP/1.1" 200 17632
+INFO 2023-12-24 12:36:46,996 basehttp "GET /static/createUACxml.js HTTP/1.1" 200 17632
+INFO 2023-12-24 12:36:46,997 basehttp "GET /static/createUASxml.js HTTP/1.1" 200 11208
+INFO 2023-12-24 12:36:46,997 basehttp "GET /static/createUASxml.js HTTP/1.1" 200 11208
+INFO 2023-12-24 12:36:46,998 basehttp "GET /static/ace/worker-xml.js HTTP/1.1" 200 46923
+INFO 2023-12-24 12:36:46,998 basehttp "GET /static/ace/worker-xml.js HTTP/1.1" 200 46923
+WARNING 2023-12-24 12:36:47,065 log Not Found: /favicon.ico
+WARNING 2023-12-24 12:36:47,065 log Not Found: /favicon.ico
+WARNING 2023-12-24 12:36:47,065 basehttp "GET /favicon.ico HTTP/1.1" 404 3284
+WARNING 2023-12-24 12:36:47,065 basehttp "GET /favicon.ico HTTP/1.1" 404 3284
+INFO 2023-12-24 12:38:21,629 autoreload Watching for file changes with StatReloader
+INFO 2023-12-24 12:38:21,629 autoreload Watching for file changes with StatReloader
+INFO 2023-12-24 12:38:24,214 basehttp "GET /create-scenario-xml HTTP/1.1" 200 5837
+INFO 2023-12-24 12:38:24,214 basehttp "GET /create-scenario-xml HTTP/1.1" 200 5837
+INFO 2023-12-24 12:38:24,243 basehttp "GET /static/ace/ace.js HTTP/1.1" 200 437636
+INFO 2023-12-24 12:38:24,243 basehttp "GET /static/ace/ace.js HTTP/1.1" 200 437636
+INFO 2023-12-24 12:38:24,248 basehttp "GET /static/ace/mode-xml.js HTTP/1.1" 200 10215
+INFO 2023-12-24 12:38:24,248 basehttp "GET /static/ace/mode-xml.js HTTP/1.1" 200 10215
+INFO 2023-12-24 12:38:24,258 basehttp "GET /static/createUASxml.js HTTP/1.1" 200 11656
+INFO 2023-12-24 12:38:24,258 basehttp "GET /static/createUASxml.js HTTP/1.1" 200 11656
+INFO 2023-12-24 12:38:24,259 basehttp "GET /static/styles.css HTTP/1.1" 200 794
+INFO 2023-12-24 12:38:24,259 basehttp "GET /static/styles.css HTTP/1.1" 200 794
+INFO 2023-12-24 12:38:24,263 basehttp "GET /static/ace/theme-chrome.js HTTP/1.1" 200 3877
+INFO 2023-12-24 12:38:24,263 basehttp "GET /static/ace/theme-chrome.js HTTP/1.1" 200 3877
+INFO 2023-12-24 12:38:24,264 basehttp "GET /static/createUACxml.js HTTP/1.1" 200 17632
+INFO 2023-12-24 12:38:24,264 basehttp "GET /static/createUACxml.js HTTP/1.1" 200 17632
+INFO 2023-12-24 12:38:24,264 basehttp "GET /static/ace/worker-xml.js HTTP/1.1" 200 46923
+INFO 2023-12-24 12:38:24,264 basehttp "GET /static/ace/worker-xml.js HTTP/1.1" 200 46923
+WARNING 2023-12-24 12:38:24,332 log Not Found: /favicon.ico
+WARNING 2023-12-24 12:38:24,332 log Not Found: /favicon.ico
+WARNING 2023-12-24 12:38:24,333 basehttp "GET /favicon.ico HTTP/1.1" 404 3284
+WARNING 2023-12-24 12:38:24,333 basehttp "GET /favicon.ico HTTP/1.1" 404 3284
+INFO 2023-12-24 12:39:42,841 autoreload Watching for file changes with StatReloader
+INFO 2023-12-24 12:39:42,841 autoreload Watching for file changes with StatReloader
+INFO 2023-12-24 12:39:44,768 basehttp "GET /create-scenario-xml HTTP/1.1" 200 5837
+INFO 2023-12-24 12:39:44,768 basehttp "GET /create-scenario-xml HTTP/1.1" 200 5837
+INFO 2023-12-24 12:39:44,798 basehttp "GET /static/ace/mode-xml.js HTTP/1.1" 200 10215
+INFO 2023-12-24 12:39:44,798 basehttp "GET /static/ace/mode-xml.js HTTP/1.1" 200 10215
+INFO 2023-12-24 12:39:44,798 basehttp "GET /static/ace/ace.js HTTP/1.1" 200 437636
+INFO 2023-12-24 12:39:44,798 basehttp "GET /static/ace/ace.js HTTP/1.1" 200 437636
+INFO 2023-12-24 12:39:44,810 basehttp "GET /static/createUACxml.js HTTP/1.1" 200 17632
+INFO 2023-12-24 12:39:44,810 basehttp "GET /static/createUACxml.js HTTP/1.1" 200 17632
+INFO 2023-12-24 12:39:44,812 basehttp "GET /static/ace/theme-chrome.js HTTP/1.1" 200 3877
+INFO 2023-12-24 12:39:44,812 basehttp "GET /static/ace/theme-chrome.js HTTP/1.1" 200 3877
+INFO 2023-12-24 12:39:44,812 basehttp "GET /static/createUASxml.js HTTP/1.1" 200 11480
+INFO 2023-12-24 12:39:44,812 basehttp "GET /static/createUASxml.js HTTP/1.1" 200 11480
+INFO 2023-12-24 12:39:44,813 basehttp "GET /static/styles.css HTTP/1.1" 200 794
+INFO 2023-12-24 12:39:44,813 basehttp "GET /static/styles.css HTTP/1.1" 200 794
+INFO 2023-12-24 12:39:44,813 basehttp "GET /static/ace/worker-xml.js HTTP/1.1" 200 46923
+INFO 2023-12-24 12:39:44,813 basehttp "GET /static/ace/worker-xml.js HTTP/1.1" 200 46923
+WARNING 2023-12-24 12:39:44,896 log Not Found: /favicon.ico
+WARNING 2023-12-24 12:39:44,896 log Not Found: /favicon.ico
+WARNING 2023-12-24 12:39:44,896 basehttp "GET /favicon.ico HTTP/1.1" 404 3284
+WARNING 2023-12-24 12:39:44,896 basehttp "GET /favicon.ico HTTP/1.1" 404 3284
+INFO 2023-12-24 12:43:16,747 basehttp "GET /create-scenario-xml HTTP/1.1" 200 5837
+INFO 2023-12-24 12:43:16,747 basehttp "GET /create-scenario-xml HTTP/1.1" 200 5837
+INFO 2023-12-24 12:43:16,785 basehttp "GET /static/createUASxml.js HTTP/1.1" 304 0
+INFO 2023-12-24 12:43:16,785 basehttp "GET /static/createUASxml.js HTTP/1.1" 304 0
+INFO 2023-12-24 12:43:21,611 basehttp "GET /create-scenario-xml HTTP/1.1" 200 5837
+INFO 2023-12-24 12:43:21,611 basehttp "GET /create-scenario-xml HTTP/1.1" 200 5837
+INFO 2023-12-24 13:03:13,221 autoreload Watching for file changes with StatReloader
+INFO 2023-12-24 13:03:13,221 autoreload Watching for file changes with StatReloader
+INFO 2023-12-24 13:03:15,272 basehttp "GET /create-scenario-xml HTTP/1.1" 200 5837
+INFO 2023-12-24 13:03:15,272 basehttp "GET /create-scenario-xml HTTP/1.1" 200 5837
+INFO 2023-12-24 13:03:15,303 basehttp "GET /static/ace/ace.js HTTP/1.1" 200 437636
+INFO 2023-12-24 13:03:15,303 basehttp "GET /static/ace/ace.js HTTP/1.1" 200 437636
+INFO 2023-12-24 13:03:15,307 basehttp "GET /static/ace/mode-xml.js HTTP/1.1" 200 10215
+INFO 2023-12-24 13:03:15,307 basehttp "GET /static/ace/mode-xml.js HTTP/1.1" 200 10215
+INFO 2023-12-24 13:03:15,314 basehttp "GET /static/styles.css HTTP/1.1" 200 794
+INFO 2023-12-24 13:03:15,314 basehttp "GET /static/styles.css HTTP/1.1" 200 794
+INFO 2023-12-24 13:03:15,317 basehttp "GET /static/createUASxml.js HTTP/1.1" 200 11638
+INFO 2023-12-24 13:03:15,317 basehttp "GET /static/createUASxml.js HTTP/1.1" 200 11638
+INFO 2023-12-24 13:03:15,318 basehttp "GET /static/ace/theme-chrome.js HTTP/1.1" 200 3877
+INFO 2023-12-24 13:03:15,318 basehttp "GET /static/ace/theme-chrome.js HTTP/1.1" 200 3877
+INFO 2023-12-24 13:03:15,319 basehttp "GET /static/ace/worker-xml.js HTTP/1.1" 200 46923
+INFO 2023-12-24 13:03:15,319 basehttp "GET /static/ace/worker-xml.js HTTP/1.1" 200 46923
+INFO 2023-12-24 13:03:15,319 basehttp "GET /static/createUACxml.js HTTP/1.1" 200 17632
+INFO 2023-12-24 13:03:15,319 basehttp "GET /static/createUACxml.js HTTP/1.1" 200 17632
+WARNING 2023-12-24 13:03:15,394 log Not Found: /favicon.ico
+WARNING 2023-12-24 13:03:15,394 log Not Found: /favicon.ico
+WARNING 2023-12-24 13:03:15,395 basehttp "GET /favicon.ico HTTP/1.1" 404 3284
+WARNING 2023-12-24 13:03:15,395 basehttp "GET /favicon.ico HTTP/1.1" 404 3284
+INFO 2023-12-24 13:03:24,058 basehttp "GET /create-scenario-xml HTTP/1.1" 200 5837
+INFO 2023-12-24 13:03:24,058 basehttp "GET /create-scenario-xml HTTP/1.1" 200 5837
+INFO 2023-12-24 13:03:24,086 basehttp "GET /static/createUASxml.js HTTP/1.1" 304 0
+INFO 2023-12-24 13:03:24,086 basehttp "GET /static/createUASxml.js HTTP/1.1" 304 0
+INFO 2023-12-24 13:04:10,091 autoreload Watching for file changes with StatReloader
+INFO 2023-12-24 13:04:10,091 autoreload Watching for file changes with StatReloader
+INFO 2023-12-24 13:04:12,310 basehttp "GET /create-scenario-xml HTTP/1.1" 200 5837
+INFO 2023-12-24 13:04:12,310 basehttp "GET /create-scenario-xml HTTP/1.1" 200 5837
+INFO 2023-12-24 13:04:12,337 basehttp "GET /static/ace/ace.js HTTP/1.1" 200 437636
+INFO 2023-12-24 13:04:12,337 basehttp "GET /static/ace/ace.js HTTP/1.1" 200 437636
+INFO 2023-12-24 13:04:12,340 basehttp "GET /static/ace/mode-xml.js HTTP/1.1" 200 10215
+INFO 2023-12-24 13:04:12,340 basehttp "GET /static/ace/mode-xml.js HTTP/1.1" 200 10215
+INFO 2023-12-24 13:04:12,350 basehttp "GET /static/createUASxml.js HTTP/1.1" 200 11629
+INFO 2023-12-24 13:04:12,350 basehttp "GET /static/createUASxml.js HTTP/1.1" 200 11629
+INFO 2023-12-24 13:04:12,354 basehttp "GET /static/styles.css HTTP/1.1" 200 794
+INFO 2023-12-24 13:04:12,354 basehttp "GET /static/styles.css HTTP/1.1" 200 794
+INFO 2023-12-24 13:04:12,354 basehttp "GET /static/ace/theme-chrome.js HTTP/1.1" 200 3877
+INFO 2023-12-24 13:04:12,354 basehttp "GET /static/ace/theme-chrome.js HTTP/1.1" 200 3877
+INFO 2023-12-24 13:04:12,356 basehttp "GET /static/ace/worker-xml.js HTTP/1.1" 200 46923
+INFO 2023-12-24 13:04:12,356 basehttp "GET /static/ace/worker-xml.js HTTP/1.1" 200 46923
+INFO 2023-12-24 13:04:12,357 basehttp "GET /static/createUACxml.js HTTP/1.1" 200 17632
+INFO 2023-12-24 13:04:12,357 basehttp "GET /static/createUACxml.js HTTP/1.1" 200 17632
+WARNING 2023-12-24 13:04:12,433 log Not Found: /favicon.ico
+WARNING 2023-12-24 13:04:12,433 log Not Found: /favicon.ico
+WARNING 2023-12-24 13:04:12,433 basehttp "GET /favicon.ico HTTP/1.1" 404 3284
+WARNING 2023-12-24 13:04:12,433 basehttp "GET /favicon.ico HTTP/1.1" 404 3284
+INFO 2023-12-24 13:07:09,859 basehttp "GET /create-scenario-xml HTTP/1.1" 200 5837
+INFO 2023-12-24 13:07:09,859 basehttp "GET /create-scenario-xml HTTP/1.1" 200 5837
+INFO 2023-12-24 13:07:09,891 basehttp "GET /static/createUASxml.js HTTP/1.1" 304 0
+INFO 2023-12-24 13:07:09,891 basehttp "GET /static/createUASxml.js HTTP/1.1" 304 0
+INFO 2023-12-24 13:10:04,773 autoreload Watching for file changes with StatReloader
+INFO 2023-12-24 13:10:04,773 autoreload Watching for file changes with StatReloader
+INFO 2023-12-24 13:10:10,998 basehttp "GET /create-scenario-xml HTTP/1.1" 200 5837
+INFO 2023-12-24 13:10:10,998 basehttp "GET /create-scenario-xml HTTP/1.1" 200 5837
+INFO 2023-12-24 13:10:11,033 basehttp "GET /static/ace/mode-xml.js HTTP/1.1" 200 10215
+INFO 2023-12-24 13:10:11,033 basehttp "GET /static/ace/mode-xml.js HTTP/1.1" 200 10215
+INFO 2023-12-24 13:10:11,044 basehttp "GET /static/styles.css HTTP/1.1" 200 794
+INFO 2023-12-24 13:10:11,044 basehttp "GET /static/styles.css HTTP/1.1" 200 794
+INFO 2023-12-24 13:10:11,046 basehttp "GET /static/ace/theme-chrome.js HTTP/1.1" 200 3877
+INFO 2023-12-24 13:10:11,046 basehttp "GET /static/ace/theme-chrome.js HTTP/1.1" 200 3877
+INFO 2023-12-24 13:10:11,047 basehttp "GET /static/createUASxml.js HTTP/1.1" 200 11680
+INFO 2023-12-24 13:10:11,047 basehttp "GET /static/createUASxml.js HTTP/1.1" 200 11680
+INFO 2023-12-24 13:10:11,048 basehttp "GET /static/createUACxml.js HTTP/1.1" 200 17632
+INFO 2023-12-24 13:10:11,048 basehttp "GET /static/createUACxml.js HTTP/1.1" 200 17632
+INFO 2023-12-24 13:10:11,049 basehttp "GET /static/ace/ace.js HTTP/1.1" 200 437636
+INFO 2023-12-24 13:10:11,049 basehttp "GET /static/ace/ace.js HTTP/1.1" 200 437636
+INFO 2023-12-24 13:10:11,049 basehttp "GET /static/ace/worker-xml.js HTTP/1.1" 200 46923
+INFO 2023-12-24 13:10:11,049 basehttp "GET /static/ace/worker-xml.js HTTP/1.1" 200 46923
+WARNING 2023-12-24 13:10:11,149 log Not Found: /favicon.ico
+WARNING 2023-12-24 13:10:11,149 log Not Found: /favicon.ico
+WARNING 2023-12-24 13:10:11,149 basehttp "GET /favicon.ico HTTP/1.1" 404 3284
+WARNING 2023-12-24 13:10:11,149 basehttp "GET /favicon.ico HTTP/1.1" 404 3284
+INFO 2023-12-24 13:11:32,844 basehttp "GET /create-scenario-xml HTTP/1.1" 200 5837
+INFO 2023-12-24 13:11:32,844 basehttp "GET /create-scenario-xml HTTP/1.1" 200 5837
+INFO 2023-12-24 13:11:32,883 basehttp "GET /static/createUASxml.js HTTP/1.1" 200 11682
+INFO 2023-12-24 13:11:32,883 basehttp "GET /static/createUASxml.js HTTP/1.1" 200 11682
+INFO 2023-12-24 13:11:34,547 basehttp "GET /create-scenario-xml HTTP/1.1" 200 5837
+INFO 2023-12-24 13:11:34,547 basehttp "GET /create-scenario-xml HTTP/1.1" 200 5837
+INFO 2023-12-24 13:11:34,573 basehttp "GET /static/createUASxml.js HTTP/1.1" 304 0
+INFO 2023-12-24 13:11:34,573 basehttp "GET /static/createUASxml.js HTTP/1.1" 304 0
+INFO 2023-12-24 13:12:30,373 basehttp "GET /create-scenario-xml HTTP/1.1" 200 5837
+INFO 2023-12-24 13:12:30,373 basehttp "GET /create-scenario-xml HTTP/1.1" 200 5837
+INFO 2023-12-24 13:12:30,405 basehttp "GET /static/createUASxml.js HTTP/1.1" 304 0
+INFO 2023-12-24 13:12:30,405 basehttp "GET /static/createUASxml.js HTTP/1.1" 304 0
+INFO 2023-12-24 13:18:34,366 basehttp "GET /create-scenario-xml HTTP/1.1" 200 5837
+INFO 2023-12-24 13:18:34,366 basehttp "GET /create-scenario-xml HTTP/1.1" 200 5837
+INFO 2023-12-24 13:18:34,395 basehttp "GET /static/ace/mode-xml.js HTTP/1.1" 200 10215
+INFO 2023-12-24 13:18:34,395 basehttp "GET /static/ace/mode-xml.js HTTP/1.1" 200 10215
+INFO 2023-12-24 13:18:34,397 basehttp "GET /static/ace/ace.js HTTP/1.1" 200 437636
+INFO 2023-12-24 13:18:34,397 basehttp "GET /static/ace/ace.js HTTP/1.1" 200 437636
+INFO 2023-12-24 13:18:34,407 basehttp "GET /static/createUASxml.js HTTP/1.1" 200 11739
+INFO 2023-12-24 13:18:34,407 basehttp "GET /static/createUASxml.js HTTP/1.1" 200 11739
+INFO 2023-12-24 13:18:34,407 basehttp "GET /static/ace/theme-chrome.js HTTP/1.1" 200 3877
+INFO 2023-12-24 13:18:34,407 basehttp "GET /static/ace/theme-chrome.js HTTP/1.1" 200 3877
+INFO 2023-12-24 13:18:34,407 basehttp "GET /static/styles.css HTTP/1.1" 200 794
+INFO 2023-12-24 13:18:34,407 basehttp "GET /static/styles.css HTTP/1.1" 200 794
+INFO 2023-12-24 13:18:34,409 basehttp "GET /static/ace/worker-xml.js HTTP/1.1" 200 46923
+INFO 2023-12-24 13:18:34,409 basehttp "GET /static/ace/worker-xml.js HTTP/1.1" 200 46923
+INFO 2023-12-24 13:18:34,409 basehttp "GET /static/createUACxml.js HTTP/1.1" 200 17632
+INFO 2023-12-24 13:18:34,409 basehttp "GET /static/createUACxml.js HTTP/1.1" 200 17632
+WARNING 2023-12-24 13:18:34,492 log Not Found: /favicon.ico
+WARNING 2023-12-24 13:18:34,492 log Not Found: /favicon.ico
+WARNING 2023-12-24 13:18:34,493 basehttp "GET /favicon.ico HTTP/1.1" 404 3284
+WARNING 2023-12-24 13:18:34,493 basehttp "GET /favicon.ico HTTP/1.1" 404 3284
+INFO 2023-12-24 13:35:15,982 autoreload Watching for file changes with StatReloader
+INFO 2023-12-24 13:35:15,982 autoreload Watching for file changes with StatReloader
+INFO 2023-12-24 13:35:20,646 basehttp "GET /create-scenario-xml HTTP/1.1" 200 5837
+INFO 2023-12-24 13:35:20,646 basehttp "GET /create-scenario-xml HTTP/1.1" 200 5837
+INFO 2023-12-24 13:35:20,673 basehttp "GET /static/ace/ace.js HTTP/1.1" 200 437636
+INFO 2023-12-24 13:35:20,673 basehttp "GET /static/ace/ace.js HTTP/1.1" 200 437636
+INFO 2023-12-24 13:35:20,678 basehttp "GET /static/ace/mode-xml.js HTTP/1.1" 200 10215
+INFO 2023-12-24 13:35:20,678 basehttp "GET /static/ace/mode-xml.js HTTP/1.1" 200 10215
+INFO 2023-12-24 13:35:20,688 basehttp "GET /static/styles.css HTTP/1.1" 200 794
+INFO 2023-12-24 13:35:20,688 basehttp "GET /static/styles.css HTTP/1.1" 200 794
+INFO 2023-12-24 13:35:20,692 basehttp "GET /static/createUASxml.js HTTP/1.1" 200 13526
+INFO 2023-12-24 13:35:20,692 basehttp "GET /static/createUASxml.js HTTP/1.1" 200 13526
+INFO 2023-12-24 13:35:20,692 basehttp "GET /static/ace/theme-chrome.js HTTP/1.1" 200 3877
+INFO 2023-12-24 13:35:20,692 basehttp "GET /static/ace/theme-chrome.js HTTP/1.1" 200 3877
+INFO 2023-12-24 13:35:20,694 basehttp "GET /static/createUACxml.js HTTP/1.1" 200 17632
+INFO 2023-12-24 13:35:20,694 basehttp "GET /static/createUACxml.js HTTP/1.1" 200 17632
+INFO 2023-12-24 13:35:20,694 basehttp "GET /static/ace/worker-xml.js HTTP/1.1" 200 46923
+INFO 2023-12-24 13:35:20,694 basehttp "GET /static/ace/worker-xml.js HTTP/1.1" 200 46923
+WARNING 2023-12-24 13:35:20,759 log Not Found: /favicon.ico
+WARNING 2023-12-24 13:35:20,759 log Not Found: /favicon.ico
+WARNING 2023-12-24 13:35:20,759 basehttp "GET /favicon.ico HTTP/1.1" 404 3284
+WARNING 2023-12-24 13:35:20,759 basehttp "GET /favicon.ico HTTP/1.1" 404 3284
+INFO 2023-12-24 13:40:28,855 autoreload Watching for file changes with StatReloader
+INFO 2023-12-24 13:40:28,855 autoreload Watching for file changes with StatReloader
+INFO 2023-12-24 13:40:31,031 basehttp "GET /create-scenario-xml HTTP/1.1" 200 5837
+INFO 2023-12-24 13:40:31,031 basehttp "GET /create-scenario-xml HTTP/1.1" 200 5837
+INFO 2023-12-24 13:40:31,059 basehttp "GET /static/ace/ace.js HTTP/1.1" 200 437636
+INFO 2023-12-24 13:40:31,059 basehttp "GET /static/ace/ace.js HTTP/1.1" 200 437636
+INFO 2023-12-24 13:40:31,062 basehttp "GET /static/ace/mode-xml.js HTTP/1.1" 200 10215
+INFO 2023-12-24 13:40:31,062 basehttp "GET /static/ace/mode-xml.js HTTP/1.1" 200 10215
+INFO 2023-12-24 13:40:31,068 basehttp "GET /static/createUASxml.js HTTP/1.1" 200 13528
+INFO 2023-12-24 13:40:31,068 basehttp "GET /static/createUASxml.js HTTP/1.1" 200 13528
+INFO 2023-12-24 13:40:31,070 basehttp "GET /static/styles.css HTTP/1.1" 200 794
+INFO 2023-12-24 13:40:31,070 basehttp "GET /static/styles.css HTTP/1.1" 200 794
+INFO 2023-12-24 13:40:31,075 basehttp "GET /static/ace/theme-chrome.js HTTP/1.1" 200 3877
+INFO 2023-12-24 13:40:31,075 basehttp "GET /static/ace/theme-chrome.js HTTP/1.1" 200 3877
+INFO 2023-12-24 13:40:31,076 basehttp "GET /static/createUACxml.js HTTP/1.1" 200 17632
+INFO 2023-12-24 13:40:31,076 basehttp "GET /static/createUACxml.js HTTP/1.1" 200 17632
+INFO 2023-12-24 13:40:31,077 basehttp "GET /static/ace/worker-xml.js HTTP/1.1" 200 46923
+INFO 2023-12-24 13:40:31,077 basehttp "GET /static/ace/worker-xml.js HTTP/1.1" 200 46923
+WARNING 2023-12-24 13:40:31,166 log Not Found: /favicon.ico
+WARNING 2023-12-24 13:40:31,166 log Not Found: /favicon.ico
+WARNING 2023-12-24 13:40:31,166 basehttp "GET /favicon.ico HTTP/1.1" 404 3284
+WARNING 2023-12-24 13:40:31,166 basehttp "GET /favicon.ico HTTP/1.1" 404 3284
+INFO 2023-12-24 13:41:23,116 autoreload Watching for file changes with StatReloader
+INFO 2023-12-24 13:41:23,116 autoreload Watching for file changes with StatReloader
+INFO 2023-12-24 13:41:25,445 basehttp "GET /create-scenario-xml HTTP/1.1" 200 5837
+INFO 2023-12-24 13:41:25,445 basehttp "GET /create-scenario-xml HTTP/1.1" 200 5837
+INFO 2023-12-24 13:41:25,475 basehttp "GET /static/ace/ace.js HTTP/1.1" 200 437636
+INFO 2023-12-24 13:41:25,475 basehttp "GET /static/ace/ace.js HTTP/1.1" 200 437636
+INFO 2023-12-24 13:41:25,477 basehttp "GET /static/ace/mode-xml.js HTTP/1.1" 200 10215
+INFO 2023-12-24 13:41:25,477 basehttp "GET /static/ace/mode-xml.js HTTP/1.1" 200 10215
+INFO 2023-12-24 13:41:25,490 basehttp "GET /static/ace/theme-chrome.js HTTP/1.1" 200 3877
+INFO 2023-12-24 13:41:25,490 basehttp "GET /static/ace/theme-chrome.js HTTP/1.1" 200 3877
+INFO 2023-12-24 13:41:25,491 basehttp "GET /static/createUASxml.js HTTP/1.1" 200 13552
+INFO 2023-12-24 13:41:25,491 basehttp "GET /static/createUASxml.js HTTP/1.1" 200 13552
+INFO 2023-12-24 13:41:25,492 basehttp "GET /static/createUACxml.js HTTP/1.1" 200 17632
+INFO 2023-12-24 13:41:25,492 basehttp "GET /static/createUACxml.js HTTP/1.1" 200 17632
+INFO 2023-12-24 13:41:25,492 basehttp "GET /static/styles.css HTTP/1.1" 200 794
+INFO 2023-12-24 13:41:25,492 basehttp "GET /static/styles.css HTTP/1.1" 200 794
+INFO 2023-12-24 13:41:25,493 basehttp "GET /static/ace/worker-xml.js HTTP/1.1" 200 46923
+INFO 2023-12-24 13:41:25,493 basehttp "GET /static/ace/worker-xml.js HTTP/1.1" 200 46923
+WARNING 2023-12-24 13:41:25,582 log Not Found: /favicon.ico
+WARNING 2023-12-24 13:41:25,582 log Not Found: /favicon.ico
+WARNING 2023-12-24 13:41:25,582 basehttp "GET /favicon.ico HTTP/1.1" 404 3284
+WARNING 2023-12-24 13:41:25,582 basehttp "GET /favicon.ico HTTP/1.1" 404 3284
+INFO 2023-12-24 13:43:22,045 autoreload Watching for file changes with StatReloader
+INFO 2023-12-24 13:43:22,045 autoreload Watching for file changes with StatReloader
+INFO 2023-12-24 13:43:35,665 basehttp "GET /create-scenario-xml HTTP/1.1" 200 5837
+INFO 2023-12-24 13:43:35,665 basehttp "GET /create-scenario-xml HTTP/1.1" 200 5837
+INFO 2023-12-24 13:43:35,703 basehttp "GET /static/ace/mode-xml.js HTTP/1.1" 200 10215
+INFO 2023-12-24 13:43:35,703 basehttp "GET /static/ace/mode-xml.js HTTP/1.1" 200 10215
+INFO 2023-12-24 13:43:35,710 basehttp "GET /static/ace/theme-chrome.js HTTP/1.1" 200 3877
+INFO 2023-12-24 13:43:35,710 basehttp "GET /static/ace/theme-chrome.js HTTP/1.1" 200 3877
+INFO 2023-12-24 13:43:35,712 basehttp "GET /static/styles.css HTTP/1.1" 200 794
+INFO 2023-12-24 13:43:35,712 basehttp "GET /static/styles.css HTTP/1.1" 200 794
+INFO 2023-12-24 13:43:35,713 basehttp "GET /static/createUASxml.js HTTP/1.1" 200 13588
+INFO 2023-12-24 13:43:35,713 basehttp "GET /static/createUASxml.js HTTP/1.1" 200 13588
+INFO 2023-12-24 13:43:35,714 basehttp "GET /static/createUACxml.js HTTP/1.1" 200 17632
+INFO 2023-12-24 13:43:35,714 basehttp "GET /static/createUACxml.js HTTP/1.1" 200 17632
+INFO 2023-12-24 13:43:35,715 basehttp "GET /static/ace/worker-xml.js HTTP/1.1" 200 46923
+INFO 2023-12-24 13:43:35,715 basehttp "GET /static/ace/worker-xml.js HTTP/1.1" 200 46923
+INFO 2023-12-24 13:43:35,716 basehttp "GET /static/ace/ace.js HTTP/1.1" 200 437636
+INFO 2023-12-24 13:43:35,716 basehttp "GET /static/ace/ace.js HTTP/1.1" 200 437636
+WARNING 2023-12-24 13:43:35,843 log Not Found: /favicon.ico
+WARNING 2023-12-24 13:43:35,843 log Not Found: /favicon.ico
+WARNING 2023-12-24 13:43:35,844 basehttp "GET /favicon.ico HTTP/1.1" 404 3284
+WARNING 2023-12-24 13:43:35,844 basehttp "GET /favicon.ico HTTP/1.1" 404 3284
+INFO 2023-12-24 13:52:31,390 basehttp "GET /create-scenario-xml HTTP/1.1" 200 5837
+INFO 2023-12-24 13:52:31,390 basehttp "GET /create-scenario-xml HTTP/1.1" 200 5837
+INFO 2023-12-24 13:52:31,424 basehttp "GET /static/createUASxml.js HTTP/1.1" 304 0
+INFO 2023-12-24 13:52:31,424 basehttp "GET /static/createUASxml.js HTTP/1.1" 304 0
+INFO 2023-12-24 13:53:03,063 basehttp "GET /create-scenario-xml HTTP/1.1" 200 5837
+INFO 2023-12-24 13:53:03,063 basehttp "GET /create-scenario-xml HTTP/1.1" 200 5837
+INFO 2023-12-24 13:57:09,023 basehttp "GET /create-scenario-xml HTTP/1.1" 200 5837
+INFO 2023-12-24 13:57:09,023 basehttp "GET /create-scenario-xml HTTP/1.1" 200 5837
+INFO 2023-12-24 13:57:09,100 basehttp "GET /static/createUASxml.js HTTP/1.1" 200 13537
+INFO 2023-12-24 13:57:09,100 basehttp "GET /static/createUASxml.js HTTP/1.1" 200 13537
+INFO 2023-12-24 13:57:11,145 basehttp "GET /create-scenario-xml HTTP/1.1" 200 5837
+INFO 2023-12-24 13:57:11,145 basehttp "GET /create-scenario-xml HTTP/1.1" 200 5837
+INFO 2023-12-24 13:57:11,207 basehttp "GET /static/ace/ace.js HTTP/1.1" 200 437636
+INFO 2023-12-24 13:57:11,207 basehttp "GET /static/ace/ace.js HTTP/1.1" 200 437636
+INFO 2023-12-24 13:57:11,212 basehttp "GET /static/ace/mode-xml.js HTTP/1.1" 200 10215
+INFO 2023-12-24 13:57:11,212 basehttp "GET /static/ace/mode-xml.js HTTP/1.1" 200 10215
+INFO 2023-12-24 13:57:11,244 basehttp "GET /static/styles.css HTTP/1.1" 200 794
+INFO 2023-12-24 13:57:11,244 basehttp "GET /static/styles.css HTTP/1.1" 200 794
+INFO 2023-12-24 13:57:11,245 basehttp "GET /static/createUASxml.js HTTP/1.1" 200 13537
+INFO 2023-12-24 13:57:11,245 basehttp "GET /static/createUASxml.js HTTP/1.1" 200 13537
+INFO 2023-12-24 13:57:11,251 basehttp "GET /static/ace/theme-chrome.js HTTP/1.1" 200 3877
+INFO 2023-12-24 13:57:11,251 basehttp "GET /static/ace/theme-chrome.js HTTP/1.1" 200 3877
+INFO 2023-12-24 13:57:11,251 basehttp "GET /static/createUACxml.js HTTP/1.1" 200 17632
+INFO 2023-12-24 13:57:11,251 basehttp "GET /static/createUACxml.js HTTP/1.1" 200 17632
+INFO 2023-12-24 13:57:11,253 basehttp "GET /static/ace/worker-xml.js HTTP/1.1" 200 46923
+INFO 2023-12-24 13:57:11,253 basehttp "GET /static/ace/worker-xml.js HTTP/1.1" 200 46923
+WARNING 2023-12-24 13:57:11,347 log Not Found: /favicon.ico
+WARNING 2023-12-24 13:57:11,347 log Not Found: /favicon.ico
+WARNING 2023-12-24 13:57:11,348 basehttp "GET /favicon.ico HTTP/1.1" 404 3284
+WARNING 2023-12-24 13:57:11,348 basehttp "GET /favicon.ico HTTP/1.1" 404 3284
+INFO 2023-12-24 13:57:28,503 autoreload Watching for file changes with StatReloader
+INFO 2023-12-24 13:57:28,503 autoreload Watching for file changes with StatReloader
+INFO 2023-12-24 13:57:30,555 basehttp "GET /create-scenario-xml HTTP/1.1" 200 5837
+INFO 2023-12-24 13:57:30,555 basehttp "GET /create-scenario-xml HTTP/1.1" 200 5837
+INFO 2023-12-24 13:57:30,627 basehttp "GET /static/ace/ace.js HTTP/1.1" 200 437636
+INFO 2023-12-24 13:57:30,627 basehttp "GET /static/ace/ace.js HTTP/1.1" 200 437636
+INFO 2023-12-24 13:57:30,633 basehttp "GET /static/ace/mode-xml.js HTTP/1.1" 200 10215
+INFO 2023-12-24 13:57:30,633 basehttp "GET /static/ace/mode-xml.js HTTP/1.1" 200 10215
+INFO 2023-12-24 13:57:30,646 basehttp "GET /static/styles.css HTTP/1.1" 200 794
+INFO 2023-12-24 13:57:30,646 basehttp "GET /static/styles.css HTTP/1.1" 200 794
+INFO 2023-12-24 13:57:30,666 basehttp "GET /static/createUASxml.js HTTP/1.1" 200 13537
+INFO 2023-12-24 13:57:30,666 basehttp "GET /static/createUASxml.js HTTP/1.1" 200 13537
+INFO 2023-12-24 13:57:30,672 basehttp "GET /static/ace/theme-chrome.js HTTP/1.1" 200 3877
+INFO 2023-12-24 13:57:30,672 basehttp "GET /static/ace/theme-chrome.js HTTP/1.1" 200 3877
+INFO 2023-12-24 13:57:30,673 basehttp "GET /static/createUACxml.js HTTP/1.1" 200 17632
+INFO 2023-12-24 13:57:30,673 basehttp "GET /static/createUACxml.js HTTP/1.1" 200 17632
+INFO 2023-12-24 13:57:30,676 basehttp "GET /static/ace/worker-xml.js HTTP/1.1" 200 46923
+INFO 2023-12-24 13:57:30,676 basehttp "GET /static/ace/worker-xml.js HTTP/1.1" 200 46923
+WARNING 2023-12-24 13:57:30,781 log Not Found: /favicon.ico
+WARNING 2023-12-24 13:57:30,781 log Not Found: /favicon.ico
+WARNING 2023-12-24 13:57:30,781 basehttp "GET /favicon.ico HTTP/1.1" 404 3284
+WARNING 2023-12-24 13:57:30,781 basehttp "GET /favicon.ico HTTP/1.1" 404 3284
+INFO 2023-12-24 13:59:40,980 basehttp "GET /create-scenario-xml HTTP/1.1" 200 5837
+INFO 2023-12-24 13:59:40,980 basehttp "GET /create-scenario-xml HTTP/1.1" 200 5837
+INFO 2023-12-24 13:59:41,049 basehttp "GET /static/createUASxml.js HTTP/1.1" 200 13537
+INFO 2023-12-24 13:59:41,049 basehttp "GET /static/createUASxml.js HTTP/1.1" 200 13537
+INFO 2023-12-24 13:59:42,923 basehttp "GET /create-scenario-xml HTTP/1.1" 200 5837
+INFO 2023-12-24 13:59:42,923 basehttp "GET /create-scenario-xml HTTP/1.1" 200 5837
+INFO 2023-12-24 13:59:42,990 basehttp "GET /static/ace/mode-xml.js HTTP/1.1" 200 10215
+INFO 2023-12-24 13:59:42,990 basehttp "GET /static/ace/mode-xml.js HTTP/1.1" 200 10215
+INFO 2023-12-24 13:59:42,991 basehttp "GET /static/ace/ace.js HTTP/1.1" 200 437636
+INFO 2023-12-24 13:59:42,991 basehttp "GET /static/ace/ace.js HTTP/1.1" 200 437636
+INFO 2023-12-24 13:59:43,016 basehttp "GET /static/styles.css HTTP/1.1" 200 794
+INFO 2023-12-24 13:59:43,016 basehttp "GET /static/styles.css HTTP/1.1" 200 794
+INFO 2023-12-24 13:59:43,018 basehttp "GET /static/createUASxml.js HTTP/1.1" 200 13537
+INFO 2023-12-24 13:59:43,018 basehttp "GET /static/createUASxml.js HTTP/1.1" 200 13537
+INFO 2023-12-24 13:59:43,019 basehttp "GET /static/createUACxml.js HTTP/1.1" 200 17632
+INFO 2023-12-24 13:59:43,019 basehttp "GET /static/createUACxml.js HTTP/1.1" 200 17632
+INFO 2023-12-24 13:59:43,021 basehttp "GET /static/ace/theme-chrome.js HTTP/1.1" 200 3877
+INFO 2023-12-24 13:59:43,021 basehttp "GET /static/ace/theme-chrome.js HTTP/1.1" 200 3877
+INFO 2023-12-24 13:59:43,022 basehttp "GET /static/ace/worker-xml.js HTTP/1.1" 200 46923
+INFO 2023-12-24 13:59:43,022 basehttp "GET /static/ace/worker-xml.js HTTP/1.1" 200 46923
+WARNING 2023-12-24 13:59:43,148 log Not Found: /favicon.ico
+WARNING 2023-12-24 13:59:43,148 log Not Found: /favicon.ico
+WARNING 2023-12-24 13:59:43,149 basehttp "GET /favicon.ico HTTP/1.1" 404 3284
+WARNING 2023-12-24 13:59:43,149 basehttp "GET /favicon.ico HTTP/1.1" 404 3284
+INFO 2023-12-24 14:00:19,575 basehttp "GET /create-scenario-xml HTTP/1.1" 200 5837
+INFO 2023-12-24 14:00:19,575 basehttp "GET /create-scenario-xml HTTP/1.1" 200 5837
+INFO 2023-12-24 14:00:19,655 basehttp "GET /static/createUASxml.js HTTP/1.1" 304 0
+INFO 2023-12-24 14:00:19,655 basehttp "GET /static/createUASxml.js HTTP/1.1" 304 0
