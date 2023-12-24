@@ -35,26 +35,45 @@ const send200pSdpB=document.getElementById('send-200p-sdp-b');
 // 200 OK
 const send200invSdpB=document.getElementById('send-200-inv-b');
 const send200invB=document.getElementById('send-200-inv-no-sdp-b');
+// ACK 
+const recvAckB=document.getElementById('recv-ack');
+// UAS new Requests
+const uasRecvRqstD=document.getElementById('uas-recv-rqst');
+const uasSendRqstD=document.getElementById('uas-send-request');
+const uasRecvUpdateB=document.getElementById('uas-recv-update-b');
+const uasSendInviteB=document.getElementById('uas-send-inv-b');
 
-// Recv INVITE
+
+
+// Recv INVITE **************************************************************************
+
+let invSeqRel=0, newInvSeq=0;
+
 recvInviteB.addEventListener('click', () => {
   const recvInv = `
     <recv request="INVITE" crlf="true">
     </recv>
     `;
   editor.setValue(`${editor.getValue()}\n${recvInv}`);
+  newInvSeq++;
   recvInviteB.disabled=true;
   send1xxD.style.display='block';
   send200invB.style.display='inline-block';
   send200invSdpB.style.display='inline-block';
   start.disabled=true;
+  send180B.disabled=false;
+  send183B.disabled=false;
+  send200invB.disabled=false;
+  send200invSdpB.disabled=false;
+  uasRecvUpdateB.disabled=true;
 });
 
 
-// Send 1xx *************************
+// Send 1xx ***************************************************************************
 let s1xxCode=100;
 let s1xxTxt='Trying';
-let sRseq=0
+let sRseq=0;
+let s1xxRel=false;
 
 send100B.addEventListener('click',()=>{
   s1xxCode=100;
@@ -71,7 +90,11 @@ send180B.addEventListener('click',()=>{
   s100relD.style.display='block';
   send183B.disabled=true;
   sNo100relB.disabled=false;
+  sNo100relB.textContent='180 Not Reliable'
   s100relB.disabled=false;
+  s100relB.textContent='180 Reliable'
+  send200invB.disabled=true;
+  send200invSdpB.disabled=true;
   s1xxSdpD.style.display='none';
 });
 
@@ -83,45 +106,73 @@ send183B.addEventListener('click',()=>{
   s100relD.style.display='block';
   send180B.disabled=true;
   sNo100relB.disabled=false;
+  sNo100relB.textContent='183 Not Reliable'
   s100relB.disabled=false;
+  s100relB.textContent='183 Reliable'
   s1xxSdpD.style.display='none';
+  send200invB.disabled=true;
+  send200invSdpB.disabled=true;
 });
 
 s100relB.addEventListener('click',()=>{
+  invSeqRel=newInvSeq;
+  s1xxRel=true;
   s100relD.style.display='none';
   s1xxSdpD.style.display='block';
   s1xxWoSdpB.disabled=false;
+  s1xxWoSdpB.textContent=s1xxCode + ' without SDP';
   s1xxWsdpB.disabled=false;
+  s1xxWsdpB.textContent=s1xxCode + ' with SDP';
 });
 
 sNo100relB.addEventListener('click',()=>{
-  generateSend1xx(false,false);
+  s1xxRel=false;
+  s100relD.style.display='none';
+  s1xxSdpD.style.display='block';
   sNo100relB.disabled=true;
   s100relB.disabled=true;
-  send180B.disabled=false;
-  send183B.disabled=false;
+  s1xxWoSdpB.disabled=false;
+  s1xxWoSdpB.textContent=s1xxCode + ' without SDP';
+  s1xxWsdpB.disabled=false;
+  s1xxWsdpB.textContent=s1xxCode + ' with SDP';
 });
 
 s1xxWoSdpB.addEventListener('click',()=>{
-    sRseq++;
-    generateSend1xx(true,false);
+    if(s1xxRel===true){
+      sRseq++;
+      sPrackD.style.display='block';
+      recvPrackB.style.display='inline-block';
+      recvPrackB.disabled=false;
+    };
+    if(s1xxRel===false){
+      send180B.disabled=false;
+      send183B.disabled=false;
+      send200invB.disabled=false;
+      send200invSdpB.disabled=false;
+    };
+    generateSend1xx(s1xxRel,false);
     s1xxWoSdpB.disabled=true;
     s1xxWsdpB.disabled=true;
-    sPrackD.style.display='block';
-    recvPrackB.style.display='inline-block';
-    recvPrackB.disabled=false;
 });
 s1xxWsdpB.addEventListener('click',()=>{
-    sRseq++;
-    generateSend1xx(true,true);
+    if(s1xxRel===true){
+      sRseq++;
+      sPrackD.style.display='block';
+      recvPrackB.style.display='inline-block';
+      recvPrackB.disabled=false;
+    };
+    if(s1xxRel===false){
+      send180B.disabled=false;
+      send183B.disabled=false;
+      send200invB.disabled=false;
+      send200invSdpB.disabled=false;
+    };
+    generateSend1xx(s1xxRel,true);
     s1xxWoSdpB.disabled=true;
     s1xxWsdpB.disabled=true;
-    sPrackD.style.display='block';
-    recvPrackB.style.display='inline-block';
-    recvPrackB.disabled=false;
 });
 
-// ******** 
+// ********
 let hVia='[last_Via:]';
 let hCSeq='[last_CSeq:]';
 let sdpBody=`
@@ -134,19 +185,23 @@ let sdpBody=`
         a=rtpmap:0 PCMU/8000`;
 
 function generateSend1xx(srel,ssdp){
-    if(sRseq>=1){
-        hVia='Via:[$1]';
-        hCSeq='CSeq:[$2]';
+    if(sRseq>=1 && invSeqRel===newInvSeq){
+        hVia='Via:[$' + invSeqRel + ']';
+        hCSeq='CSeq:[$' + (50+invSeqRel) + ']';
     }
+    else if (newInvSeq>invSeqRel){
+      hVia='[last_Via:]';
+      hCSeq='[last_CSeq:]';
+    };
 
-    if(sRseq===1){
+    if(invSeqRel===newInvSeq){
     var currentContent=editor.getValue();
     var originalXML=`<recv request="INVITE" crlf="true">`;
     var replacementXML=`
     <recv request="INVITE" crlf="true" rrs="true">
       <action>
-        <ereg regexp=".*" search_in="hdr" header="Via:" check_it="true" assign_to="1" />
-        <ereg regexp=".*" search_in="hdr" header="CSeq:" check_it="true" assign_to="2" />
+        <ereg regexp=".*" search_in="hdr" header="Via:" check_it="true" assign_to="${invSeqRel}" />
+        <ereg regexp=".*" search_in="hdr" header="CSeq:" check_it="true" assign_to="${50 + invSeqRel}" />
       </action>`;
         
     var modifiedContent=currentContent.replace(originalXML, replacementXML);
@@ -184,7 +239,7 @@ function generateSend1xx(srel,ssdp){
   editor.setValue(`${editor.getValue()}\n${send1xx}`);
 };
 
-// Recv PRACK
+// Recv PRACK ***********************************************************************************
 recvPrackB.addEventListener('click',()=>{
     const recvPrack=`
     <recv request="PRACK" crlf="true">
@@ -197,7 +252,7 @@ recvPrackB.addEventListener('click',()=>{
     send200pSdpB.disabled=false;
 });
 
-// Send 200 for PRACK 
+// Send 200 for PRACK ******************************************************************************
 send200pB.addEventListener('click',()=>{
     hVia='[last_Via:]';
     hCSeq='[last_CSeq:]';
@@ -206,6 +261,8 @@ send200pB.addEventListener('click',()=>{
     send200pSdpB.disabled=true;
     send180B.disabled=false;
     send183B.disabled=false;
+    send200invB.disabled=false;
+    send200invSdpB.disabled=false;
 });
 
 send200pSdpB.addEventListener('click',()=>{
@@ -216,8 +273,11 @@ send200pSdpB.addEventListener('click',()=>{
     send200pSdpB.disabled=true;
     send180B.disabled=false;
     send183B.disabled=false;
+    send200invB.disabled=false;
+    send200invSdpB.disabled=false;
 });
 
+// Send 200 for invite ******************************************************************************
 send200invSdpB.addEventListener('click',()=>{
     if(sRseq>=1){
         hVia='Via:[$1]';
@@ -228,6 +288,8 @@ send200invSdpB.addEventListener('click',()=>{
     send200invSdpB.disabled=true;
     send180B.disabled=true;
     send183B.disabled=true;
+    recvAckB.style.display='block';
+    recvAckB.disabled=false;
 });
 send200invB.addEventListener('click',()=>{
     if(sRseq>=1){
@@ -239,6 +301,7 @@ send200invB.addEventListener('click',()=>{
     send200invSdpB.disabled=true;
     send180B.disabled=true;
     send183B.disabled=true;
+    recvAckB.style.display='block';
 });
 
 function send200Ok(sdp2){
@@ -268,3 +331,16 @@ function send200Ok(sdp2){
     `;
     editor.setValue(`${editor.getValue()}\n${msg200}`);
 };
+
+// Recv ACK ****************************************************************************************
+recvAckB.addEventListener('click',()=>{
+  const recvAck=`
+   <recv request="ACK" optional="true" rtd="true" crlf="true">
+   </recv>`;
+   editor.setValue(`${editor.getValue()}\n${recvAck}`);
+   recvAckB.disabled=true;
+   recvInviteB.disabled=false;
+   uasRecvRqstD.style.display='block';
+   uasSendRqstD.style.display='block';
+   uasRecvUpdateB.disabled=false;
+});
