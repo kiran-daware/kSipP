@@ -1,11 +1,3 @@
-var editor = ace.edit("xml-editor");
-editor.session.setMode("ace/mode/xml");
-editor.setTheme("ace/theme/chrome");
-editor.setFontSize('13px');
-// Scroll to the bottom line
-editor.session.on('change', () => {
-    editor.renderer.scrollToLine(Number.POSITIVE_INFINITY)
-})
 // Select UAC/UAS/Reset
 const createUAC=document.getElementById('createUAC');
 const createUAS=document.getElementById('createUAS');

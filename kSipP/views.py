@@ -581,5 +581,7 @@ def xml_management(request):
 
 
 def create_scenario_xml_view(request):
+    if request.method == 'POST':
+        return HttpResponse(request.POST.get('xml_content'))
 
     return render(request, 'create_scenario_xml.html')

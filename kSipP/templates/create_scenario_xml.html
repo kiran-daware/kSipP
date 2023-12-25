@@ -96,6 +96,7 @@
       <button id="recv-bye">Recv BYE</button>
     </div>
 
+
 <!-- ***************** Buttons for UAC xml end ******************** -->
 <!-- ***************** Buttons for UAS xml start ******************** -->
 
@@ -142,17 +143,81 @@
 
 <!-- ***************** Buttons for UAS xml end ******************** -->
 
+    <div class="savebuttons">
+      <b><span>uac_</span></b>
+      <input type="text" name="new_xml_name" id="new_xml_name" maxlength="35" value="">
+      <span>.xml</span>
+      <button type="button" onclick="submitSaveAs()">Save</button>
+    </div>
+
   </div> <!-- scenario-creator div end -->
 
   <div style="float: left; width: 59%;">
-  <!-- <textarea id="scenario-output" cols="100" rows="25"></textarea> -->
-  <!-- <input type="hidden" name="xml_content" id="scenario-output" value=""> -->
-  <div id="xml-editor" style="height: 520px;"></div>
+  
+    <form id="scen-creator-ace" method="post" action="{% url 'create_scenario_xml' %}">
+      {% csrf_token %}
+      <input type="hidden" name="xml_content" id="xmlContentInput" value="{{ xml_content }}">
+      <input type="hidden" name="file_name" >
+      <div id="xml-editor" style="height: 520px;"></div>
+    </form>
 
   </div>
 
   <script src="{% static 'createUACxml.js' %}"></script>
   <script src="{% static 'createUASxml.js' %}"></script>
+
+  <script>
+  
+  var editor = ace.edit("xml-editor");
+  editor.session.setMode("ace/mode/xml");
+  editor.setTheme("ace/theme/chrome");
+  editor.setFontSize('13px');
+  // Scroll to the bottom line
+  editor.session.on('change', () => {
+      editor.renderer.scrollToLine(Number.POSITIVE_INFINITY)
+  })
+  // Update the hidden input with the XML content before submitting the form
+  var xmlContentInput = document.getElementById("xmlContentInput");
+  editor.getSession().on("change", function () {
+      var xmlContent = editor.getValue();
+      xmlContentInput.value = xmlContent;
+  })
+
+  // function for xml validation
+  function validateAndSubmit() {
+      var annotations = editor.getSession().getAnnotations();
+      var hasErrors = annotations.some(annotation => annotation.type === "error");
+
+      if (hasErrors) {
+          alert("There are syntax errors. Please fix them before saving.");
+          return false;
+      } else {
+          document.querySelector("form").submit();
+      }
+  }
+
+  function submitSaveAs() {
+      var newFileNameInput = document.getElementById("new_xml_name");
+      var newFileName = newFileNameInput.value.trim();
+
+      document.getElementById('scen-creator-ace').querySelector('input[name="file_name"]').value = newFileName;
+      
+      if (newFileName) {
+          validateAndSubmit();
+      } else {
+          alert("Please enter a valid file name.");
+      }
+  }
+
+  document.getElementById("new_xml_name").addEventListener("keydown", function(event) {
+      if (event.key === "Enter") {
+          event.preventDefault(); // Prevent form submission
+          submitSaveAs();
+      }
+  });
+
+  
+  </script>
 
 </body>
 </html>

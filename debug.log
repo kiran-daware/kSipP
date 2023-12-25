@@ -840,3 +840,337 @@ INFO 2023-12-24 15:09:26,462 basehttp "GET /create-scenario-xml HTTP/1.1" 200 58
 INFO 2023-12-24 15:09:26,462 basehttp "GET /create-scenario-xml HTTP/1.1" 200 5837
 INFO 2023-12-24 15:09:26,516 basehttp "GET /static/createUASxml.js HTTP/1.1" 304 0
 INFO 2023-12-24 15:09:26,516 basehttp "GET /static/createUASxml.js HTTP/1.1" 304 0
+INFO 2023-12-25 13:52:39,652 autoreload Watching for file changes with StatReloader
+INFO 2023-12-25 13:52:39,652 autoreload Watching for file changes with StatReloader
+INFO 2023-12-25 13:52:43,656 basehttp "GET / HTTP/1.1" 200 6970
+INFO 2023-12-25 13:52:43,656 basehttp "GET / HTTP/1.1" 200 6970
+INFO 2023-12-25 13:52:43,724 basehttp "GET /static/styles.css HTTP/1.1" 304 0
+INFO 2023-12-25 13:52:43,724 basehttp "GET /static/styles.css HTTP/1.1" 304 0
+WARNING 2023-12-25 13:52:43,911 log Not Found: /favicon.ico
+WARNING 2023-12-25 13:52:43,911 log Not Found: /favicon.ico
+WARNING 2023-12-25 13:52:43,912 basehttp "GET /favicon.ico HTTP/1.1" 404 3284
+WARNING 2023-12-25 13:52:43,912 basehttp "GET /favicon.ico HTTP/1.1" 404 3284
+INFO 2023-12-25 13:52:46,904 basehttp "GET /create-scenario-xml HTTP/1.1" 200 5837
+INFO 2023-12-25 13:52:46,904 basehttp "GET /create-scenario-xml HTTP/1.1" 200 5837
+INFO 2023-12-25 13:52:46,967 basehttp "GET /static/ace/ace.js HTTP/1.1" 304 0
+INFO 2023-12-25 13:52:46,967 basehttp "GET /static/ace/ace.js HTTP/1.1" 304 0
+INFO 2023-12-25 13:52:46,987 basehttp "GET /static/ace/mode-xml.js HTTP/1.1" 304 0
+INFO 2023-12-25 13:52:46,987 basehttp "GET /static/ace/mode-xml.js HTTP/1.1" 304 0
+INFO 2023-12-25 13:52:46,988 basehttp "GET /static/ace/worker-xml.js HTTP/1.1" 304 0
+INFO 2023-12-25 13:52:46,988 basehttp "GET /static/ace/worker-xml.js HTTP/1.1" 304 0
+INFO 2023-12-25 13:52:47,005 basehttp "GET /static/createUASxml.js HTTP/1.1" 304 0
+INFO 2023-12-25 13:52:47,005 basehttp "GET /static/createUASxml.js HTTP/1.1" 304 0
+INFO 2023-12-25 13:52:47,005 basehttp "GET /static/ace/theme-chrome.js HTTP/1.1" 304 0
+INFO 2023-12-25 13:52:47,005 basehttp "GET /static/ace/theme-chrome.js HTTP/1.1" 304 0
+INFO 2023-12-25 13:52:47,006 basehttp "GET /static/createUACxml.js HTTP/1.1" 304 0
+INFO 2023-12-25 13:52:47,006 basehttp "GET /static/createUACxml.js HTTP/1.1" 304 0
+INFO 2023-12-25 13:54:15,537 basehttp "GET /create-scenario-xml HTTP/1.1" 200 5837
+INFO 2023-12-25 13:54:15,537 basehttp "GET /create-scenario-xml HTTP/1.1" 200 5837
+INFO 2023-12-25 14:43:57,023 autoreload Watching for file changes with StatReloader
+INFO 2023-12-25 14:43:57,023 autoreload Watching for file changes with StatReloader
+INFO 2023-12-25 14:43:59,430 basehttp "GET /create-scenario-xml HTTP/1.1" 200 6078
+INFO 2023-12-25 14:43:59,430 basehttp "GET /create-scenario-xml HTTP/1.1" 200 6078
+INFO 2023-12-25 14:44:05,402 basehttp "GET /create-scenario-xml HTTP/1.1" 200 6078
+INFO 2023-12-25 14:44:05,402 basehttp "GET /create-scenario-xml HTTP/1.1" 200 6078
+INFO 2023-12-25 14:44:10,762 basehttp "GET /create-scenario-xml HTTP/1.1" 200 6078
+INFO 2023-12-25 14:44:10,762 basehttp "GET /create-scenario-xml HTTP/1.1" 200 6078
+INFO 2023-12-25 14:44:15,855 basehttp "GET / HTTP/1.1" 200 6970
+INFO 2023-12-25 14:44:15,855 basehttp "GET / HTTP/1.1" 200 6970
+INFO 2023-12-25 14:44:17,157 basehttp "GET /create-scenario-xml HTTP/1.1" 200 6078
+INFO 2023-12-25 14:44:17,157 basehttp "GET /create-scenario-xml HTTP/1.1" 200 6078
+INFO 2023-12-25 14:44:41,395 autoreload Watching for file changes with StatReloader
+INFO 2023-12-25 14:44:41,395 autoreload Watching for file changes with StatReloader
+INFO 2023-12-25 14:44:43,529 basehttp "GET /create-scenario-xml HTTP/1.1" 200 6090
+INFO 2023-12-25 14:44:43,529 basehttp "GET /create-scenario-xml HTTP/1.1" 200 6090
+INFO 2023-12-25 14:44:43,623 basehttp "GET /static/ace/mode-xml.js HTTP/1.1" 200 10215
+INFO 2023-12-25 14:44:43,623 basehttp "GET /static/ace/mode-xml.js HTTP/1.1" 200 10215
+INFO 2023-12-25 14:44:43,633 basehttp "GET /static/ace/ace.js HTTP/1.1" 200 437636
+INFO 2023-12-25 14:44:43,633 basehttp "GET /static/ace/ace.js HTTP/1.1" 200 437636
+INFO 2023-12-25 14:44:43,642 basehttp "GET /static/createUASxml.js HTTP/1.1" 200 13799
+INFO 2023-12-25 14:44:43,642 basehttp "GET /static/createUASxml.js HTTP/1.1" 200 13799
+INFO 2023-12-25 14:44:43,664 basehttp "GET /static/styles.css HTTP/1.1" 200 794
+INFO 2023-12-25 14:44:43,664 basehttp "GET /static/styles.css HTTP/1.1" 200 794
+INFO 2023-12-25 14:44:43,667 basehttp "GET /static/ace/worker-xml.js HTTP/1.1" 200 46923
+INFO 2023-12-25 14:44:43,667 basehttp "GET /static/ace/worker-xml.js HTTP/1.1" 200 46923
+INFO 2023-12-25 14:44:43,678 basehttp "GET /static/ace/theme-chrome.js HTTP/1.1" 200 3877
+INFO 2023-12-25 14:44:43,678 basehttp "GET /static/ace/theme-chrome.js HTTP/1.1" 200 3877
+INFO 2023-12-25 14:44:43,680 basehttp "GET /static/createUACxml.js HTTP/1.1" 200 17632
+INFO 2023-12-25 14:44:43,680 basehttp "GET /static/createUACxml.js HTTP/1.1" 200 17632
+WARNING 2023-12-25 14:44:43,797 log Not Found: /favicon.ico
+WARNING 2023-12-25 14:44:43,797 log Not Found: /favicon.ico
+WARNING 2023-12-25 14:44:43,804 basehttp "GET /favicon.ico HTTP/1.1" 404 3284
+WARNING 2023-12-25 14:44:43,804 basehttp "GET /favicon.ico HTTP/1.1" 404 3284
+INFO 2023-12-25 15:19:25,735 autoreload /home/kiran/python/kSipP-12.0/kSipP/kSipP/views.py changed, reloading.
+INFO 2023-12-25 15:19:25,735 autoreload /home/kiran/python/kSipP-12.0/kSipP/kSipP/views.py changed, reloading.
+INFO 2023-12-25 15:19:26,054 autoreload Watching for file changes with StatReloader
+INFO 2023-12-25 15:19:26,054 autoreload Watching for file changes with StatReloader
+INFO 2023-12-25 15:19:30,027 autoreload Watching for file changes with StatReloader
+INFO 2023-12-25 15:19:30,027 autoreload Watching for file changes with StatReloader
+ERROR 2023-12-25 15:19:33,627 log Internal Server Error: /create-scenario-xml
+Traceback (most recent call last):
+  File "/home/kiran/python/kSipP-12.0/kSipP/venv/lib/python3.8/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/kiran/python/kSipP-12.0/kSipP/venv/lib/python3.8/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/kiran/python/kSipP-12.0/kSipP/kSipP/views.py", line 587, in create_scenario_xml_view
+    return render(request, 'create_scenario_xml.html')
+  File "/home/kiran/python/kSipP-12.0/kSipP/venv/lib/python3.8/site-packages/django/shortcuts.py", line 24, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "/home/kiran/python/kSipP-12.0/kSipP/venv/lib/python3.8/site-packages/django/template/loader.py", line 62, in render_to_string
+    return template.render(context, request)
+  File "/home/kiran/python/kSipP-12.0/kSipP/venv/lib/python3.8/site-packages/django/template/backends/django.py", line 62, in render
+    return self.template.render(context)
+  File "/home/kiran/python/kSipP-12.0/kSipP/venv/lib/python3.8/site-packages/django/template/base.py", line 175, in render
+    return self._render(context)
+  File "/home/kiran/python/kSipP-12.0/kSipP/venv/lib/python3.8/site-packages/django/template/base.py", line 167, in _render
+    return self.nodelist.render(context)
+  File "/home/kiran/python/kSipP-12.0/kSipP/venv/lib/python3.8/site-packages/django/template/base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/kiran/python/kSipP-12.0/kSipP/venv/lib/python3.8/site-packages/django/template/base.py", line 1005, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/kiran/python/kSipP-12.0/kSipP/venv/lib/python3.8/site-packages/django/template/base.py", line 966, in render_annotated
+    return self.render(context)
+  File "/home/kiran/python/kSipP-12.0/kSipP/venv/lib/python3.8/site-packages/django/template/defaulttags.py", line 472, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+  File "/home/kiran/python/kSipP-12.0/kSipP/venv/lib/python3.8/site-packages/django/urls/base.py", line 88, in reverse
+    return resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+  File "/home/kiran/python/kSipP-12.0/kSipP/venv/lib/python3.8/site-packages/django/urls/resolvers.py", line 828, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'create-scenario-xml' not found. 'create-scenario-xml' is not a valid view function or pattern name.
+ERROR 2023-12-25 15:19:33,627 log Internal Server Error: /create-scenario-xml
+Traceback (most recent call last):
+  File "/home/kiran/python/kSipP-12.0/kSipP/venv/lib/python3.8/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/kiran/python/kSipP-12.0/kSipP/venv/lib/python3.8/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/kiran/python/kSipP-12.0/kSipP/kSipP/views.py", line 587, in create_scenario_xml_view
+    return render(request, 'create_scenario_xml.html')
+  File "/home/kiran/python/kSipP-12.0/kSipP/venv/lib/python3.8/site-packages/django/shortcuts.py", line 24, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "/home/kiran/python/kSipP-12.0/kSipP/venv/lib/python3.8/site-packages/django/template/loader.py", line 62, in render_to_string
+    return template.render(context, request)
+  File "/home/kiran/python/kSipP-12.0/kSipP/venv/lib/python3.8/site-packages/django/template/backends/django.py", line 62, in render
+    return self.template.render(context)
+  File "/home/kiran/python/kSipP-12.0/kSipP/venv/lib/python3.8/site-packages/django/template/base.py", line 175, in render
+    return self._render(context)
+  File "/home/kiran/python/kSipP-12.0/kSipP/venv/lib/python3.8/site-packages/django/template/base.py", line 167, in _render
+    return self.nodelist.render(context)
+  File "/home/kiran/python/kSipP-12.0/kSipP/venv/lib/python3.8/site-packages/django/template/base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/kiran/python/kSipP-12.0/kSipP/venv/lib/python3.8/site-packages/django/template/base.py", line 1005, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/kiran/python/kSipP-12.0/kSipP/venv/lib/python3.8/site-packages/django/template/base.py", line 966, in render_annotated
+    return self.render(context)
+  File "/home/kiran/python/kSipP-12.0/kSipP/venv/lib/python3.8/site-packages/django/template/defaulttags.py", line 472, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+  File "/home/kiran/python/kSipP-12.0/kSipP/venv/lib/python3.8/site-packages/django/urls/base.py", line 88, in reverse
+    return resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+  File "/home/kiran/python/kSipP-12.0/kSipP/venv/lib/python3.8/site-packages/django/urls/resolvers.py", line 828, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'create-scenario-xml' not found. 'create-scenario-xml' is not a valid view function or pattern name.
+ERROR 2023-12-25 15:19:33,628 basehttp "GET /create-scenario-xml HTTP/1.1" 500 117709
+ERROR 2023-12-25 15:19:33,628 basehttp "GET /create-scenario-xml HTTP/1.1" 500 117709
+WARNING 2023-12-25 15:19:33,772 log Not Found: /favicon.ico
+WARNING 2023-12-25 15:19:33,772 log Not Found: /favicon.ico
+WARNING 2023-12-25 15:19:33,773 basehttp "GET /favicon.ico HTTP/1.1" 404 3284
+WARNING 2023-12-25 15:19:33,773 basehttp "GET /favicon.ico HTTP/1.1" 404 3284
+INFO 2023-12-25 15:20:54,760 autoreload Watching for file changes with StatReloader
+INFO 2023-12-25 15:20:54,760 autoreload Watching for file changes with StatReloader
+ERROR 2023-12-25 15:20:56,934 log Internal Server Error: /create-scenario-xml
+Traceback (most recent call last):
+  File "/home/kiran/python/kSipP-12.0/kSipP/venv/lib/python3.8/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/kiran/python/kSipP-12.0/kSipP/venv/lib/python3.8/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/kiran/python/kSipP-12.0/kSipP/kSipP/views.py", line 587, in create_scenario_xml_view
+    return render(request, 'create_scenario_xml.html')
+  File "/home/kiran/python/kSipP-12.0/kSipP/venv/lib/python3.8/site-packages/django/shortcuts.py", line 24, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "/home/kiran/python/kSipP-12.0/kSipP/venv/lib/python3.8/site-packages/django/template/loader.py", line 62, in render_to_string
+    return template.render(context, request)
+  File "/home/kiran/python/kSipP-12.0/kSipP/venv/lib/python3.8/site-packages/django/template/backends/django.py", line 62, in render
+    return self.template.render(context)
+  File "/home/kiran/python/kSipP-12.0/kSipP/venv/lib/python3.8/site-packages/django/template/base.py", line 175, in render
+    return self._render(context)
+  File "/home/kiran/python/kSipP-12.0/kSipP/venv/lib/python3.8/site-packages/django/template/base.py", line 167, in _render
+    return self.nodelist.render(context)
+  File "/home/kiran/python/kSipP-12.0/kSipP/venv/lib/python3.8/site-packages/django/template/base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/kiran/python/kSipP-12.0/kSipP/venv/lib/python3.8/site-packages/django/template/base.py", line 1005, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/kiran/python/kSipP-12.0/kSipP/venv/lib/python3.8/site-packages/django/template/base.py", line 966, in render_annotated
+    return self.render(context)
+  File "/home/kiran/python/kSipP-12.0/kSipP/venv/lib/python3.8/site-packages/django/template/defaulttags.py", line 472, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+  File "/home/kiran/python/kSipP-12.0/kSipP/venv/lib/python3.8/site-packages/django/urls/base.py", line 88, in reverse
+    return resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+  File "/home/kiran/python/kSipP-12.0/kSipP/venv/lib/python3.8/site-packages/django/urls/resolvers.py", line 828, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'create_scenario_xml_view' not found. 'create_scenario_xml_view' is not a valid view function or pattern name.
+ERROR 2023-12-25 15:20:56,934 log Internal Server Error: /create-scenario-xml
+Traceback (most recent call last):
+  File "/home/kiran/python/kSipP-12.0/kSipP/venv/lib/python3.8/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/kiran/python/kSipP-12.0/kSipP/venv/lib/python3.8/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/kiran/python/kSipP-12.0/kSipP/kSipP/views.py", line 587, in create_scenario_xml_view
+    return render(request, 'create_scenario_xml.html')
+  File "/home/kiran/python/kSipP-12.0/kSipP/venv/lib/python3.8/site-packages/django/shortcuts.py", line 24, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "/home/kiran/python/kSipP-12.0/kSipP/venv/lib/python3.8/site-packages/django/template/loader.py", line 62, in render_to_string
+    return template.render(context, request)
+  File "/home/kiran/python/kSipP-12.0/kSipP/venv/lib/python3.8/site-packages/django/template/backends/django.py", line 62, in render
+    return self.template.render(context)
+  File "/home/kiran/python/kSipP-12.0/kSipP/venv/lib/python3.8/site-packages/django/template/base.py", line 175, in render
+    return self._render(context)
+  File "/home/kiran/python/kSipP-12.0/kSipP/venv/lib/python3.8/site-packages/django/template/base.py", line 167, in _render
+    return self.nodelist.render(context)
+  File "/home/kiran/python/kSipP-12.0/kSipP/venv/lib/python3.8/site-packages/django/template/base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/kiran/python/kSipP-12.0/kSipP/venv/lib/python3.8/site-packages/django/template/base.py", line 1005, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/kiran/python/kSipP-12.0/kSipP/venv/lib/python3.8/site-packages/django/template/base.py", line 966, in render_annotated
+    return self.render(context)
+  File "/home/kiran/python/kSipP-12.0/kSipP/venv/lib/python3.8/site-packages/django/template/defaulttags.py", line 472, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+  File "/home/kiran/python/kSipP-12.0/kSipP/venv/lib/python3.8/site-packages/django/urls/base.py", line 88, in reverse
+    return resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+  File "/home/kiran/python/kSipP-12.0/kSipP/venv/lib/python3.8/site-packages/django/urls/resolvers.py", line 828, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'create_scenario_xml_view' not found. 'create_scenario_xml_view' is not a valid view function or pattern name.
+ERROR 2023-12-25 15:20:56,935 basehttp "GET /create-scenario-xml HTTP/1.1" 500 117834
+ERROR 2023-12-25 15:20:56,935 basehttp "GET /create-scenario-xml HTTP/1.1" 500 117834
+WARNING 2023-12-25 15:20:57,006 log Not Found: /favicon.ico
+WARNING 2023-12-25 15:20:57,006 log Not Found: /favicon.ico
+WARNING 2023-12-25 15:20:57,006 basehttp "GET /favicon.ico HTTP/1.1" 404 3284
+WARNING 2023-12-25 15:20:57,006 basehttp "GET /favicon.ico HTTP/1.1" 404 3284
+INFO 2023-12-25 15:21:35,927 autoreload Watching for file changes with StatReloader
+INFO 2023-12-25 15:21:35,927 autoreload Watching for file changes with StatReloader
+INFO 2023-12-25 15:21:38,185 basehttp "GET /create-scenario-xml HTTP/1.1" 200 7934
+INFO 2023-12-25 15:21:38,185 basehttp "GET /create-scenario-xml HTTP/1.1" 200 7934
+INFO 2023-12-25 15:21:38,216 basehttp "GET /static/ace/mode-xml.js HTTP/1.1" 200 10215
+INFO 2023-12-25 15:21:38,216 basehttp "GET /static/ace/mode-xml.js HTTP/1.1" 200 10215
+INFO 2023-12-25 15:21:38,220 basehttp "GET /static/ace/ace.js HTTP/1.1" 200 437636
+INFO 2023-12-25 15:21:38,220 basehttp "GET /static/ace/ace.js HTTP/1.1" 200 437636
+INFO 2023-12-25 15:21:38,222 basehttp "GET /static/createUASxml.js HTTP/1.1" 200 13799
+INFO 2023-12-25 15:21:38,222 basehttp "GET /static/createUASxml.js HTTP/1.1" 200 13799
+INFO 2023-12-25 15:21:38,224 basehttp "GET /static/styles.css HTTP/1.1" 200 794
+INFO 2023-12-25 15:21:38,224 basehttp "GET /static/styles.css HTTP/1.1" 200 794
+INFO 2023-12-25 15:21:38,227 basehttp "GET /static/ace/worker-xml.js HTTP/1.1" 200 46923
+INFO 2023-12-25 15:21:38,227 basehttp "GET /static/ace/worker-xml.js HTTP/1.1" 200 46923
+INFO 2023-12-25 15:21:38,229 basehttp "GET /static/ace/theme-chrome.js HTTP/1.1" 200 3877
+INFO 2023-12-25 15:21:38,229 basehttp "GET /static/ace/theme-chrome.js HTTP/1.1" 200 3877
+INFO 2023-12-25 15:21:38,231 basehttp "GET /static/createUACxml.js HTTP/1.1" 200 17363
+INFO 2023-12-25 15:21:38,231 basehttp "GET /static/createUACxml.js HTTP/1.1" 200 17363
+WARNING 2023-12-25 15:21:38,337 log Not Found: /favicon.ico
+WARNING 2023-12-25 15:21:38,337 log Not Found: /favicon.ico
+WARNING 2023-12-25 15:21:38,338 basehttp "GET /favicon.ico HTTP/1.1" 404 3284
+WARNING 2023-12-25 15:21:38,338 basehttp "GET /favicon.ico HTTP/1.1" 404 3284
+INFO 2023-12-25 15:21:42,900 basehttp "POST /create-scenario-xml HTTP/1.1" 200 186
+INFO 2023-12-25 15:21:42,900 basehttp "POST /create-scenario-xml HTTP/1.1" 200 186
+INFO 2023-12-25 15:21:46,517 basehttp "GET /create-scenario-xml HTTP/1.1" 200 7934
+INFO 2023-12-25 15:21:46,517 basehttp "GET /create-scenario-xml HTTP/1.1" 200 7934
+INFO 2023-12-25 15:21:53,179 basehttp "POST /create-scenario-xml HTTP/1.1" 200 725
+INFO 2023-12-25 15:21:53,179 basehttp "POST /create-scenario-xml HTTP/1.1" 200 725
+INFO 2023-12-25 15:23:10,665 autoreload /home/kiran/python/kSipP-12.0/kSipP/kSipP/views.py changed, reloading.
+INFO 2023-12-25 15:23:10,665 autoreload /home/kiran/python/kSipP-12.0/kSipP/kSipP/views.py changed, reloading.
+INFO 2023-12-25 15:23:10,856 autoreload Watching for file changes with StatReloader
+INFO 2023-12-25 15:23:10,856 autoreload Watching for file changes with StatReloader
+INFO 2023-12-25 15:23:14,673 autoreload Watching for file changes with StatReloader
+INFO 2023-12-25 15:23:14,673 autoreload Watching for file changes with StatReloader
+INFO 2023-12-25 15:23:18,011 basehttp "POST /create-scenario-xml HTTP/1.1" 200 517
+INFO 2023-12-25 15:23:18,011 basehttp "POST /create-scenario-xml HTTP/1.1" 200 517
+WARNING 2023-12-25 15:23:18,051 log Not Found: /favicon.ico
+WARNING 2023-12-25 15:23:18,051 log Not Found: /favicon.ico
+WARNING 2023-12-25 15:23:18,052 basehttp "GET /favicon.ico HTTP/1.1" 404 3284
+WARNING 2023-12-25 15:23:18,052 basehttp "GET /favicon.ico HTTP/1.1" 404 3284
+INFO 2023-12-25 15:23:20,409 basehttp "GET /create-scenario-xml HTTP/1.1" 200 7934
+INFO 2023-12-25 15:23:20,409 basehttp "GET /create-scenario-xml HTTP/1.1" 200 7934
+INFO 2023-12-25 15:23:51,889 basehttp "GET /create-scenario-xml HTTP/1.1" 200 7934
+INFO 2023-12-25 15:23:51,889 basehttp "GET /create-scenario-xml HTTP/1.1" 200 7934
+INFO 2023-12-25 15:24:20,237 autoreload /home/kiran/python/kSipP-12.0/kSipP/kSipP/views.py changed, reloading.
+INFO 2023-12-25 15:24:20,237 autoreload /home/kiran/python/kSipP-12.0/kSipP/kSipP/views.py changed, reloading.
+INFO 2023-12-25 15:24:20,417 autoreload Watching for file changes with StatReloader
+INFO 2023-12-25 15:24:20,417 autoreload Watching for file changes with StatReloader
+INFO 2023-12-25 15:24:22,770 basehttp "GET /create-scenario-xml HTTP/1.1" 200 7934
+INFO 2023-12-25 15:24:22,770 basehttp "GET /create-scenario-xml HTTP/1.1" 200 7934
+INFO 2023-12-25 15:24:27,634 autoreload Watching for file changes with StatReloader
+INFO 2023-12-25 15:24:27,634 autoreload Watching for file changes with StatReloader
+INFO 2023-12-25 15:25:03,670 basehttp "GET /create-scenario-xml HTTP/1.1" 200 7934
+INFO 2023-12-25 15:25:03,670 basehttp "GET /create-scenario-xml HTTP/1.1" 200 7934
+INFO 2023-12-25 15:25:03,712 basehttp "GET /static/createUACxml.js HTTP/1.1" 304 0
+INFO 2023-12-25 15:25:03,712 basehttp "GET /static/createUACxml.js HTTP/1.1" 304 0
+INFO 2023-12-25 15:26:45,976 autoreload Watching for file changes with StatReloader
+INFO 2023-12-25 15:26:45,976 autoreload Watching for file changes with StatReloader
+INFO 2023-12-25 15:26:48,212 basehttp "GET /create-scenario-xml HTTP/1.1" 200 7934
+INFO 2023-12-25 15:26:48,212 basehttp "GET /create-scenario-xml HTTP/1.1" 200 7934
+INFO 2023-12-25 15:26:48,250 basehttp "GET /static/ace/mode-xml.js HTTP/1.1" 200 10215
+INFO 2023-12-25 15:26:48,250 basehttp "GET /static/ace/mode-xml.js HTTP/1.1" 200 10215
+INFO 2023-12-25 15:26:48,251 basehttp "GET /static/ace/ace.js HTTP/1.1" 200 437636
+INFO 2023-12-25 15:26:48,251 basehttp "GET /static/ace/ace.js HTTP/1.1" 200 437636
+INFO 2023-12-25 15:26:48,263 basehttp "GET /static/ace/theme-chrome.js HTTP/1.1" 200 3877
+INFO 2023-12-25 15:26:48,263 basehttp "GET /static/ace/theme-chrome.js HTTP/1.1" 200 3877
+INFO 2023-12-25 15:26:48,264 basehttp "GET /static/styles.css HTTP/1.1" 200 794
+INFO 2023-12-25 15:26:48,264 basehttp "GET /static/styles.css HTTP/1.1" 200 794
+INFO 2023-12-25 15:26:48,264 basehttp "GET /static/createUASxml.js HTTP/1.1" 200 13799
+INFO 2023-12-25 15:26:48,264 basehttp "GET /static/createUASxml.js HTTP/1.1" 200 13799
+INFO 2023-12-25 15:26:48,265 basehttp "GET /static/createUACxml.js HTTP/1.1" 200 17363
+INFO 2023-12-25 15:26:48,265 basehttp "GET /static/createUACxml.js HTTP/1.1" 200 17363
+INFO 2023-12-25 15:26:48,266 basehttp "GET /static/ace/worker-xml.js HTTP/1.1" 200 46923
+INFO 2023-12-25 15:26:48,266 basehttp "GET /static/ace/worker-xml.js HTTP/1.1" 200 46923
+WARNING 2023-12-25 15:26:48,382 log Not Found: /favicon.ico
+WARNING 2023-12-25 15:26:48,382 log Not Found: /favicon.ico
+WARNING 2023-12-25 15:26:48,382 basehttp "GET /favicon.ico HTTP/1.1" 404 3284
+WARNING 2023-12-25 15:26:48,382 basehttp "GET /favicon.ico HTTP/1.1" 404 3284
+INFO 2023-12-25 15:26:55,219 basehttp "POST /create-scenario-xml HTTP/1.1" 200 727
+INFO 2023-12-25 15:26:55,219 basehttp "POST /create-scenario-xml HTTP/1.1" 200 727
+INFO 2023-12-25 15:27:37,396 autoreload /home/kiran/python/kSipP-12.0/kSipP/kSipP/views.py changed, reloading.
+INFO 2023-12-25 15:27:37,396 autoreload /home/kiran/python/kSipP-12.0/kSipP/kSipP/views.py changed, reloading.
+INFO 2023-12-25 15:27:37,586 autoreload Watching for file changes with StatReloader
+INFO 2023-12-25 15:27:37,586 autoreload Watching for file changes with StatReloader
+INFO 2023-12-25 15:27:43,488 autoreload Watching for file changes with StatReloader
+INFO 2023-12-25 15:27:43,488 autoreload Watching for file changes with StatReloader
+INFO 2023-12-25 15:27:45,526 basehttp "POST /create-scenario-xml HTTP/1.1" 200 517
+INFO 2023-12-25 15:27:45,526 basehttp "POST /create-scenario-xml HTTP/1.1" 200 517
+WARNING 2023-12-25 15:27:45,573 log Not Found: /favicon.ico
+WARNING 2023-12-25 15:27:45,573 log Not Found: /favicon.ico
+WARNING 2023-12-25 15:27:45,574 basehttp "GET /favicon.ico HTTP/1.1" 404 3284
+WARNING 2023-12-25 15:27:45,574 basehttp "GET /favicon.ico HTTP/1.1" 404 3284
+INFO 2023-12-25 15:27:48,347 basehttp "GET /create-scenario-xml HTTP/1.1" 200 7934
+INFO 2023-12-25 15:27:48,347 basehttp "GET /create-scenario-xml HTTP/1.1" 200 7934
+INFO 2023-12-25 15:28:05,399 basehttp "POST /create-scenario-xml HTTP/1.1" 200 4021
+INFO 2023-12-25 15:28:05,399 basehttp "POST /create-scenario-xml HTTP/1.1" 200 4021
+INFO 2023-12-25 15:28:31,100 basehttp "POST /create-scenario-xml HTTP/1.1" 200 4021
+INFO 2023-12-25 15:28:31,100 basehttp "POST /create-scenario-xml HTTP/1.1" 200 4021
+INFO 2023-12-25 15:28:33,070 basehttp "POST /create-scenario-xml HTTP/1.1" 200 4021
+INFO 2023-12-25 15:28:33,070 basehttp "POST /create-scenario-xml HTTP/1.1" 200 4021
+INFO 2023-12-25 15:28:35,053 basehttp "GET /create-scenario-xml HTTP/1.1" 200 7934
+INFO 2023-12-25 15:28:35,053 basehttp "GET /create-scenario-xml HTTP/1.1" 200 7934
+INFO 2023-12-25 15:28:43,669 basehttp "POST /create-scenario-xml HTTP/1.1" 200 1339
+INFO 2023-12-25 15:28:43,669 basehttp "POST /create-scenario-xml HTTP/1.1" 200 1339
+INFO 2023-12-25 15:29:18,707 basehttp "GET /create-scenario-xml HTTP/1.1" 200 7934
+INFO 2023-12-25 15:29:18,707 basehttp "GET /create-scenario-xml HTTP/1.1" 200 7934
+INFO 2023-12-25 15:29:20,452 basehttp "POST /create-scenario-xml HTTP/1.1" 200 0
+INFO 2023-12-25 15:29:20,452 basehttp "POST /create-scenario-xml HTTP/1.1" 200 0
+INFO 2023-12-25 15:29:22,529 basehttp "GET /create-scenario-xml HTTP/1.1" 200 7934
+INFO 2023-12-25 15:29:22,529 basehttp "GET /create-scenario-xml HTTP/1.1" 200 7934
+INFO 2023-12-25 15:29:27,140 basehttp "POST /create-scenario-xml HTTP/1.1" 200 517
+INFO 2023-12-25 15:29:27,140 basehttp "POST /create-scenario-xml HTTP/1.1" 200 517
+INFO 2023-12-25 15:29:29,784 basehttp "GET /create-scenario-xml HTTP/1.1" 200 7934
+INFO 2023-12-25 15:29:29,784 basehttp "GET /create-scenario-xml HTTP/1.1" 200 7934
+INFO 2023-12-25 15:29:33,734 basehttp "POST /create-scenario-xml HTTP/1.1" 200 0
+INFO 2023-12-25 15:29:33,734 basehttp "POST /create-scenario-xml HTTP/1.1" 200 0
+INFO 2023-12-25 15:29:36,148 basehttp "GET /create-scenario-xml HTTP/1.1" 200 7934
+INFO 2023-12-25 15:29:36,148 basehttp "GET /create-scenario-xml HTTP/1.1" 200 7934
+INFO 2023-12-25 15:29:39,558 basehttp "GET /create-scenario-xml HTTP/1.1" 200 7934
+INFO 2023-12-25 15:29:39,558 basehttp "GET /create-scenario-xml HTTP/1.1" 200 7934
+INFO 2023-12-25 15:29:46,279 basehttp "POST /create-scenario-xml HTTP/1.1" 200 660
+INFO 2023-12-25 15:29:46,279 basehttp "POST /create-scenario-xml HTTP/1.1" 200 660
+INFO 2023-12-25 15:30:55,702 basehttp "GET /create-scenario-xml HTTP/1.1" 200 7934
+INFO 2023-12-25 15:30:55,702 basehttp "GET /create-scenario-xml HTTP/1.1" 200 7934
+INFO 2023-12-25 15:30:55,751 basehttp "GET /static/createUACxml.js HTTP/1.1" 304 0
+INFO 2023-12-25 15:30:55,751 basehttp "GET /static/createUACxml.js HTTP/1.1" 304 0
+INFO 2023-12-25 15:31:06,400 basehttp "POST /create-scenario-xml HTTP/1.1" 200 2271
+INFO 2023-12-25 15:31:06,400 basehttp "POST /create-scenario-xml HTTP/1.1" 200 2271
+INFO 2023-12-25 15:31:29,655 basehttp "GET /create-scenario-xml HTTP/1.1" 200 7934
+INFO 2023-12-25 15:31:29,655 basehttp "GET /create-scenario-xml HTTP/1.1" 200 7934
