@@ -67,6 +67,7 @@ recvInviteB.addEventListener('click', () => {
   send200invB.style.display='inline-block';
   send200invSdpB.style.display='inline-block';
   start.disabled=true;
+  sceName.disabled=true;
   send180B.disabled=false;
   send183B.disabled=false;
   send200invB.disabled=false;
@@ -298,6 +299,7 @@ send200invSdpB.addEventListener('click',()=>{
     send200Ok(true);
     send200invB.disabled=true;
     send200invSdpB.disabled=true;
+    send100B.disabled=true;
     send180B.disabled=true;
     send183B.disabled=true;
     recvAckB.style.display='block';
@@ -315,6 +317,7 @@ send200invB.addEventListener('click',()=>{
     send200Ok(false);
     send200invB.disabled=true;
     send200invSdpB.disabled=true;
+    send100B.disabled=true;
     send180B.disabled=true;
     send183B.disabled=true;
     recvAckB.style.display='block';

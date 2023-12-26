@@ -144,19 +144,22 @@
 <!-- ***************** Buttons for UAS xml end ******************** -->
 
     <div class="savebuttons">
-      <b><span>uac_</span></b>
-      <input type="text" name="new_xml_name" id="new_xml_name" maxlength="35" value="">
-      <span>.xml</span>
-      <button type="button" onclick="submitSaveAs()">Save</button>
+      <button type="button" onclick="showFileNamePrompt()" id="save_as_button">Save as a new xml</button>
+      <div id="fileNamePrompt" style="display: none;">
+        <b><span id="sv-scen-type">uac_</span></b>
+        <input type="text" name="new_xml_name" id="new_xml_name" maxlength="35" value="">
+        <span>.xml</span>
+        <button type="button" onclick="submitSaveAs()">Save</button>
+      </div>
     </div>
 
   </div> <!-- scenario-creator div end -->
 
   <div style="float: left; width: 59%;">
   
-    <form id="scen-creator-ace" method="post" action="{% url 'create_scenario_xml' %}">
+    <form id="scen-creator-ace-form" method="post" action="{% url 'create_scenario_xml' %}">
       {% csrf_token %}
-      <input type="hidden" name="xml_content" id="xmlContentInput" value="{{ xml_content }}">
+      <input type="hidden" name="xml_content" id="xmlContentInput">
       <input type="hidden" name="file_name" >
       <div id="xml-editor" style="height: 520px;"></div>
     </form>
@@ -183,6 +186,20 @@
       xmlContentInput.value = xmlContent;
   })
 
+  // Save as file name prompt
+  function showFileNamePrompt() {
+    var svScenType=document.getElementById("sv-scen-type");
+    svScenType.textContent=sceType + "_";
+    var scenarioName=document.getElementById("scenario-name");
+    document.getElementById("new_xml_name").value=scenarioName.value.trim();
+
+    var fileNamePrompt = document.getElementById("fileNamePrompt");
+    fileNamePrompt.style.display = "inline";
+    var saveAsButton = document.getElementById("save_as_button")
+    saveAsButton.style.display = "none"
+  }
+
+
   // function for xml validation
   function validateAndSubmit() {
       var annotations = editor.getSession().getAnnotations();
@@ -199,8 +216,7 @@
   function submitSaveAs() {
       var newFileNameInput = document.getElementById("new_xml_name");
       var newFileName = newFileNameInput.value.trim();
-
-      document.getElementById('scen-creator-ace').querySelector('input[name="file_name"]').value = newFileName;
+      document.getElementById('scen-creator-ace-form').querySelector('input[name="file_name"]').value = sceType + "_" + newFileName +".xml";
       
       if (newFileName) {
           validateAndSubmit();

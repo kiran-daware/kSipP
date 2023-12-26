@@ -582,6 +582,9 @@ def xml_management(request):
 
 def create_scenario_xml_view(request):
     if request.method == 'POST':
-        return HttpResponse(request.POST.get('xml_content'))
+        xmlContent=request.POST.get('xml_content')
+        fileName=request.POST.get('file_name')
+        with open(os.path.join(settings.BASE_DIR, 'kSipP', 'xml', fileName), 'w', encoding='utf-8') as file:
+            file.write(xmlContent)
 
     return render(request, 'create_scenario_xml.html')
