@@ -74,6 +74,8 @@ recvInviteB.addEventListener('click', () => {
   send200invSdpB.disabled=false;
   uasRecvUpdateB.disabled=true;
   uasSendInviteB.disabled=true;
+  uasRecvByeB.disabled=true;
+  uasSendByeB.disabled=true;
 });
 
 
@@ -321,6 +323,7 @@ send200invB.addEventListener('click',()=>{
     send180B.disabled=true;
     send183B.disabled=true;
     recvAckB.style.display='block';
+    recvAckB.disabled=false;
 });
 
 /* 200 Ok generation for both PRACK and INVITE */
@@ -365,6 +368,8 @@ recvAckB.addEventListener('click',()=>{
    uasRecvUpdateB.disabled=false;
    uasSendInviteB.disabled=false;
    uasByeD.style.display='block';
+   uasRecvByeB.disabled=false;
+   uasSendByeB.disabled=false;
 });
 
 
@@ -421,6 +426,7 @@ uasRecvByeB.addEventListener('click',()=>{
   uasSendByeB.disabled=true;
   uasRecvUpdateB.disabled=true;
   uasSendInviteB.disabled=true;
+  saveButtonB.style.display='block';
 });
 
 
@@ -467,4 +473,5 @@ uasSendByeB.addEventListener('click',()=>{
   uasSendByeB.disabled=true;
   uasRecvUpdateB.disabled=true;
   uasSendInviteB.disabled=true;
+  saveButtonB.style.display='block';
 });

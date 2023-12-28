@@ -55,7 +55,10 @@ const midRecv200B=document.getElementById('mid-req-200-b');
 const sendrecvByeD=document.getElementById('sendrecv-bye');
 const sendByeB=document.getElementById('send-bye');
 const recvByeB=document.getElementById('recv-bye');
+// Save buttons
+const saveButtonB=document.getElementById('save_as_button'); 
 
+/////////////////////////////
 let cseq=1;
 let invcseq=1
 let sceType='uac'
@@ -571,6 +574,7 @@ referB.disabled=true;
 playMediaB.disabled=true;
 pauseB.disabled=true;
 pauseMsI.disabled=true;
+saveButtonB.style.display='block';
 });
 
 
@@ -613,5 +617,6 @@ referB.disabled=true;
 playMediaB.disabled=true;
 pauseB.disabled=true;
 pauseMsI.disabled=true;
+saveButtonB.style.display='block';
 });
 
