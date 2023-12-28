@@ -1840,3 +1840,73 @@ INFO 2023-12-26 15:59:07,969 basehttp "GET /create-scenario-xml HTTP/1.1" 200 86
 INFO 2023-12-26 15:59:07,969 basehttp "GET /create-scenario-xml HTTP/1.1" 200 8682
 INFO 2023-12-26 15:59:38,849 basehttp "GET / HTTP/1.1" 200 7114
 INFO 2023-12-26 15:59:38,849 basehttp "GET / HTTP/1.1" 200 7114
+INFO 2023-12-28 10:06:26,180 autoreload Watching for file changes with StatReloader
+INFO 2023-12-28 10:06:26,180 autoreload Watching for file changes with StatReloader
+INFO 2023-12-28 10:06:38,751 basehttp "GET / HTTP/1.1" 200 6970
+INFO 2023-12-28 10:06:38,751 basehttp "GET / HTTP/1.1" 200 6970
+INFO 2023-12-28 10:06:38,850 basehttp "GET /static/styles.css HTTP/1.1" 304 0
+INFO 2023-12-28 10:06:38,850 basehttp "GET /static/styles.css HTTP/1.1" 304 0
+WARNING 2023-12-28 10:06:38,959 log Not Found: /favicon.ico
+WARNING 2023-12-28 10:06:38,959 log Not Found: /favicon.ico
+WARNING 2023-12-28 10:06:38,959 basehttp "GET /favicon.ico HTTP/1.1" 404 3284
+WARNING 2023-12-28 10:06:38,959 basehttp "GET /favicon.ico HTTP/1.1" 404 3284
+INFO 2023-12-28 10:06:41,315 basehttp "GET /create-scenario-xml HTTP/1.1" 200 8682
+INFO 2023-12-28 10:06:41,315 basehttp "GET /create-scenario-xml HTTP/1.1" 200 8682
+INFO 2023-12-28 10:06:41,346 basehttp "GET /static/ace/ace.js HTTP/1.1" 304 0
+INFO 2023-12-28 10:06:41,346 basehttp "GET /static/ace/ace.js HTTP/1.1" 304 0
+INFO 2023-12-28 10:06:41,354 basehttp "GET /static/ace/mode-xml.js HTTP/1.1" 304 0
+INFO 2023-12-28 10:06:41,354 basehttp "GET /static/ace/mode-xml.js HTTP/1.1" 304 0
+INFO 2023-12-28 10:06:41,359 basehttp "GET /static/ace/theme-chrome.js HTTP/1.1" 304 0
+INFO 2023-12-28 10:06:41,359 basehttp "GET /static/ace/theme-chrome.js HTTP/1.1" 304 0
+INFO 2023-12-28 10:06:41,360 basehttp "GET /static/ace/worker-xml.js HTTP/1.1" 304 0
+INFO 2023-12-28 10:06:41,360 basehttp "GET /static/ace/worker-xml.js HTTP/1.1" 304 0
+INFO 2023-12-28 10:06:41,362 basehttp "GET /static/createUACxml.js HTTP/1.1" 304 0
+INFO 2023-12-28 10:06:41,362 basehttp "GET /static/createUACxml.js HTTP/1.1" 304 0
+INFO 2023-12-28 10:06:41,363 basehttp "GET /static/createUASxml.js HTTP/1.1" 304 0
+INFO 2023-12-28 10:06:41,363 basehttp "GET /static/createUASxml.js HTTP/1.1" 304 0
+INFO 2023-12-28 10:07:23,676 basehttp "POST /create-scenario-xml HTTP/1.1" 200 8682
+INFO 2023-12-28 10:07:23,676 basehttp "POST /create-scenario-xml HTTP/1.1" 200 8682
+INFO 2023-12-28 10:11:04,825 autoreload Watching for file changes with StatReloader
+INFO 2023-12-28 10:11:04,825 autoreload Watching for file changes with StatReloader
+INFO 2023-12-28 10:11:10,809 basehttp "GET /create-scenario-xml HTTP/1.1" 200 8682
+INFO 2023-12-28 10:11:10,809 basehttp "GET /create-scenario-xml HTTP/1.1" 200 8682
+INFO 2023-12-28 10:11:36,482 basehttp "GET /create-scenario-xml HTTP/1.1" 200 8682
+INFO 2023-12-28 10:11:36,482 basehttp "GET /create-scenario-xml HTTP/1.1" 200 8682
+INFO 2023-12-28 10:16:12,963 basehttp "GET /create-scenario-xml HTTP/1.1" 200 8682
+INFO 2023-12-28 10:16:12,963 basehttp "GET /create-scenario-xml HTTP/1.1" 200 8682
+INFO 2023-12-28 10:16:15,634 basehttp "GET /create-scenario-xml HTTP/1.1" 200 8682
+INFO 2023-12-28 10:16:15,634 basehttp "GET /create-scenario-xml HTTP/1.1" 200 8682
+INFO 2023-12-28 10:16:18,568 basehttp "GET /create-scenario-xml HTTP/1.1" 200 8682
+INFO 2023-12-28 10:16:18,568 basehttp "GET /create-scenario-xml HTTP/1.1" 200 8682
+INFO 2023-12-28 10:16:20,665 basehttp "GET /create-scenario-xml HTTP/1.1" 200 8682
+INFO 2023-12-28 10:16:20,665 basehttp "GET /create-scenario-xml HTTP/1.1" 200 8682
+INFO 2023-12-28 10:16:22,228 basehttp "GET / HTTP/1.1" 200 6970
+INFO 2023-12-28 10:16:22,228 basehttp "GET / HTTP/1.1" 200 6970
+INFO 2023-12-28 10:16:23,767 basehttp "GET /create-scenario-xml HTTP/1.1" 200 8682
+INFO 2023-12-28 10:16:23,767 basehttp "GET /create-scenario-xml HTTP/1.1" 200 8682
+INFO 2023-12-28 10:17:54,221 basehttp "GET /create-scenario-xml HTTP/1.1" 200 8682
+INFO 2023-12-28 10:17:54,221 basehttp "GET /create-scenario-xml HTTP/1.1" 200 8682
+INFO 2023-12-28 10:18:00,873 basehttp "GET /create-scenario-xml HTTP/1.1" 200 8682
+INFO 2023-12-28 10:18:00,873 basehttp "GET /create-scenario-xml HTTP/1.1" 200 8682
+INFO 2023-12-28 10:31:58,747 autoreload Watching for file changes with StatReloader
+INFO 2023-12-28 10:31:58,747 autoreload Watching for file changes with StatReloader
+INFO 2023-12-28 10:32:03,822 basehttp "POST /create-scenario-xml HTTP/1.1" 200 8682
+INFO 2023-12-28 10:32:03,822 basehttp "POST /create-scenario-xml HTTP/1.1" 200 8682
+INFO 2023-12-28 10:32:03,876 basehttp "GET /static/styles.css HTTP/1.1" 200 794
+INFO 2023-12-28 10:32:03,876 basehttp "GET /static/styles.css HTTP/1.1" 200 794
+INFO 2023-12-28 10:32:03,876 basehttp "GET /static/ace/mode-xml.js HTTP/1.1" 200 10215
+INFO 2023-12-28 10:32:03,876 basehttp "GET /static/ace/mode-xml.js HTTP/1.1" 200 10215
+INFO 2023-12-28 10:32:03,881 basehttp "GET /static/ace/theme-chrome.js HTTP/1.1" 200 3877
+INFO 2023-12-28 10:32:03,881 basehttp "GET /static/ace/theme-chrome.js HTTP/1.1" 200 3877
+INFO 2023-12-28 10:32:03,885 basehttp "GET /static/ace/worker-xml.js HTTP/1.1" 200 46923
+INFO 2023-12-28 10:32:03,885 basehttp "GET /static/ace/worker-xml.js HTTP/1.1" 200 46923
+INFO 2023-12-28 10:32:03,886 basehttp "GET /static/createUACxml.js HTTP/1.1" 200 17363
+INFO 2023-12-28 10:32:03,886 basehttp "GET /static/createUACxml.js HTTP/1.1" 200 17363
+INFO 2023-12-28 10:32:03,886 basehttp "GET /static/createUASxml.js HTTP/1.1" 200 13880
+INFO 2023-12-28 10:32:03,886 basehttp "GET /static/createUASxml.js HTTP/1.1" 200 13880
+INFO 2023-12-28 10:32:03,896 basehttp "GET /static/ace/ace.js HTTP/1.1" 200 437636
+INFO 2023-12-28 10:32:03,896 basehttp "GET /static/ace/ace.js HTTP/1.1" 200 437636
+WARNING 2023-12-28 10:32:04,022 log Not Found: /favicon.ico
+WARNING 2023-12-28 10:32:04,022 log Not Found: /favicon.ico
+WARNING 2023-12-28 10:32:04,022 basehttp "GET /favicon.ico HTTP/1.1" 404 3284
+WARNING 2023-12-28 10:32:04,022 basehttp "GET /favicon.ico HTTP/1.1" 404 3284
