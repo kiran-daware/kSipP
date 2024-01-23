@@ -50,7 +50,7 @@ const uasSendByeB=document.getElementById('uas-send-bye');
 
 // Recv INVITE **************************************************************************
 
-let invSeqRel=0, newInvSeq=0;
+let invSeqRel=0, newInvSeq=0, newInv=0;
 
 recvInviteB.addEventListener('click', () => {
   const recvInv = `
@@ -62,6 +62,7 @@ recvInviteB.addEventListener('click', () => {
     `;
   editor.setValue(`${editor.getValue()}\n${recvInv}`);
   newInvSeq++;
+  newInv=0;
   recvInviteB.disabled=true;
   send1xxD.style.display='block';
   send200invB.style.display='inline-block';
@@ -204,21 +205,22 @@ function generateSend1xx(srel,ssdp){
       hCSeq='[last_CSeq:]';
     };
 
-    if(invSeqRel===newInvSeq){
-    var currentContent=editor.getValue();
-    var originalXML=`<!-- INV Placeholder to store vars -->`;
-    var replacementXML=`<ereg regexp=".*" search_in="hdr" header="Via:" check_it="true" assign_to="${invSeqRel}" />
+    if(invSeqRel===newInvSeq && newInv===0){
+      newInv++;
+      var currentContent=editor.getValue();
+      var originalXML=`<!-- INV Placeholder to store vars -->`;
+      var replacementXML=`<ereg regexp=".*" search_in="hdr" header="Via:" check_it="true" assign_to="${invSeqRel}" />
         <ereg regexp=".*" search_in="hdr" header="CSeq:" check_it="true" assign_to="${50 + invSeqRel}" />
         <!-- INV Placeholder to store vars -->`;
-      
-    var lastIndex = currentContent.lastIndexOf(originalXML);
+        
+      var lastIndex = currentContent.lastIndexOf(originalXML);
 
-    if (lastIndex !== -1) {
-      var modifiedContent = currentContent.substring(0, lastIndex) + replacementXML + currentContent.substring(lastIndex + originalXML.length);
-    }
+      if (lastIndex !== -1) {
+        var modifiedContent = currentContent.substring(0, lastIndex) + replacementXML + currentContent.substring(lastIndex + originalXML.length);
+      }
 
-    // Set the modified content back to the editor
-    editor.setValue(modifiedContent);
+      // Set the modified content back to the editor
+      editor.setValue(modifiedContent);
     };
 
     let sRequire=srel?`
