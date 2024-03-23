@@ -224,7 +224,7 @@ function generateSend1xx(srel,ssdp){
     };
 
     let sRequire=srel?`
-        Require:100Rel
+        Require:100rel
         RSeq:${sRseq}`:'';
 
     const sdp=ssdp

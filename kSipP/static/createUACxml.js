@@ -151,6 +151,7 @@ function generateRequest(includeSDP) {
         From: sipp <sip:sipp@[local_ip]:[local_port]>;tag=[pid]SIPpTag00[call_number]
         To: sut <sip:[service]@[remote_ip]:[remote_port]>
         Call-ID: [call_id]
+        Supported: timer,100rel
         CSeq: ${cseq} ${method}
         Contact: sip:sipp@[local_ip]:[local_port]
         Max-Forwards: 70
