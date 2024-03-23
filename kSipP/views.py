@@ -16,7 +16,7 @@ import time
 import re, stun
 
 from .scripts.showXmlFlow import showXmlFlowScript
-from .scripts.modifyHeader import modifyHeaderScript, getHeadersFromSipMsgs, tmpXmlBehindNAT
+from .scripts.modifyHeader import modifyHeaderScript, getHeadersFromSipMsgs, tmpXmlBehindNAT, modifynumberxmlpath
 
 # Read initial data from config file
 config_file = os.path.join(str(settings.BASE_DIR), 'config.ini')
@@ -340,6 +340,8 @@ def run_script_view(request):
     noOfCalls = int(f"{config_data['total_no_of_calls']}")
     cps = int(f"{config_data['cps']}")
 
+    dialed_number = f'{config_data["called_party_number"]}'
+    calling_number = f'{config_data["calling_party_number"]}'
     stun_server = {config_data['stun_server']}
 
     sipp = str(settings.BASE_DIR / 'kSipP' / 'sipp' / 'sipp')
@@ -369,7 +371,7 @@ def run_script_view(request):
         else:
             return None
         return newXmlPath
-
+    
 
     if request.method == 'POST':
 
@@ -387,6 +389,9 @@ def run_script_view(request):
                         uacXmlPath = stunnedPath
 
                     else: return HttpResponse(f'Stun server at {stun_server} is not responding!')
+
+                if dialed_number or calling_number:
+                    uacXmlPath = modifynumberxmlpath(uacXml, calling_number, dialed_number)
 
                 uacCommand = f"{sipp} -sf {uacXmlPath} {uac_remote} {uacSrc} -m {noOfCalls} -r {cps} -t {protocol_uac}"
                 outputFile = f'{uacXml}.log'
