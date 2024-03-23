@@ -146,6 +146,8 @@ def tmpXmlBehindNAT(xml, externalIp, externalPort):
 def modifynumberxmlpath(xml, calling_number="sipp", dialed_number="[service]"):
     if not calling_number: calling_number = "sipp"
     if not dialed_number: dialed_number = "[service]"
+    calling_display=f'"{calling_number}" '
+    dailed_display=f'"{dialed_number}" '
 
     xmlPath = str(settings.BASE_DIR / 'kSipP' / 'xml' / xml)
     with open(xmlPath, 'r') as file:
@@ -153,17 +155,17 @@ def modifynumberxmlpath(xml, calling_number="sipp", dialed_number="[service]"):
     
     logging.debug("Opened xml for modifying number = %s", xmlPath)
 
-    from_pattern = r'(?i)\bFrom\b\:\s*"?(\w*)"?\s*<?sip:([^@\:\;\n]+)@'
-    updated_xml = re.sub(from_pattern, r'From: '+ calling_number +' <sip:'+ calling_number +'@', xml_content)
+    from_pattern = r'(?i)\bFrom\b\:\s*"?(\w*)"?\s*(<?sip:)([^@\:\;\n]+)@'
+    updated_xml = re.sub(from_pattern, lambda m: f'From: {calling_display if m.group(1) else ""}{m.group(2)}{calling_number}@', xml_content)
 
-    contact_pattern = r'(?i)\bContact\b\:\s*"?(\w*)"?\s*<?sip:([^@\:\;\n]+)@'
-    updated_xml = re.sub(contact_pattern, r'Contact: '+ calling_number +' <sip:'+ calling_number +'@', updated_xml)
+    contact_pattern = r'(?i)\bContact\b\:\s*"?(\w*)"?\s*(<?sip:)([^@\:\;\n]+)@'
+    updated_xml = re.sub(contact_pattern, lambda m: f'Contact: {calling_display + " " if m.group(1) else ""}{m.group(2)}{calling_number}@', updated_xml)
 
     ruri_pattern = r'(INVITE|ACK|BYE|CANCEL|OPTIONS|REGISTER)\s*sip:([^@\:\;\n]+)@'
     updated_xml = re.sub(ruri_pattern, r'\1 sip:'+ dialed_number +'@', updated_xml)
 
-    to_pattern = r'(?i)\bTo\b\:\s*(\[|"?)(\w*)(\]|"?)\s*<?sip:([^@\:\;\n]+)@'
-    updated_xml = re.sub(to_pattern, r'To: '+ dialed_number +' <sip:'+ dialed_number +'@', updated_xml)
+    to_pattern = r'(?i)\bTo\b\:\s*(\[|"?)(\w*)(\]|"?)\s*(<?sip:)([^@\:\;\n]+)@'
+    updated_xml = re.sub(to_pattern, lambda m: f'To: {dailed_display + " " if m.group(2) else ""}{m.group(4)}{dialed_number}@', updated_xml)
     
     tmpXmlPath = str(settings.BASE_DIR / 'kSipP' / 'xml' / 'tmp' / xml)
     with open(tmpXmlPath, 'w') as file:
