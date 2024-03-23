@@ -96,6 +96,7 @@
       <button id="recv-bye">Recv BYE</button>
     </div>
 
+
 <!-- ***************** Buttons for UAC xml end ******************** -->
 <!-- ***************** Buttons for UAS xml start ******************** -->
 
@@ -131,25 +132,108 @@
     <div id="uas-send-request" style="display: none;">
       <button id="uas-send-inv-b">Send INVITE</button>
     </div>
+    <div id="uas-bye" style="display: none;">
+      <button id="uas-recv-bye">Recv BYE</button>
+      <button id="uas-send-bye">Send BYE</button>
+    </div>
 
-    
 
 
 
 
 <!-- ***************** Buttons for UAS xml end ******************** -->
 
+    <div class="savebuttons">
+      <button type="button" onclick="showFileNamePrompt()" id="save_as_button" style="display: none;">Save as a new xml</button>
+      <div id="fileNamePrompt" style="display: none;">
+        <b><span id="sv-scen-type">uac_</span></b>
+        <input type="text" name="new_xml_name" id="new_xml_name" maxlength="35" value="">
+        <span>.xml</span>
+        <button type="button" onclick="submitSaveAs()">Save</button>
+      </div>
+    </div>
+
   </div> <!-- scenario-creator div end -->
 
   <div style="float: left; width: 59%;">
-  <!-- <textarea id="scenario-output" cols="100" rows="25"></textarea> -->
-  <!-- <input type="hidden" name="xml_content" id="scenario-output" value=""> -->
-  <div id="xml-editor" style="height: 520px;"></div>
+  
+    <form id="scen-creator-ace-form" method="post" action="{% url 'create_scenario_xml' %}">
+      {% csrf_token %}
+      <input type="hidden" name="xml_content" id="xmlContentInput">
+      <input type="hidden" name="file_name" >
+      <div id="xml-editor" style="height: 520px;"></div>
+    </form>
 
   </div>
 
   <script src="{% static 'createUACxml.js' %}"></script>
   <script src="{% static 'createUASxml.js' %}"></script>
+
+  <script>
+  
+  var editor = ace.edit("xml-editor");
+  editor.session.setMode("ace/mode/xml");
+  editor.setTheme("ace/theme/chrome");
+  editor.setFontSize('13px');
+  // Scroll to the bottom line
+  editor.session.on('change', () => {
+      editor.renderer.scrollToLine(Number.POSITIVE_INFINITY)
+  })
+  // Update the hidden input with the XML content before submitting the form
+  var xmlContentInput = document.getElementById("xmlContentInput");
+  editor.getSession().on("change", function () {
+      var xmlContent = editor.getValue();
+      xmlContentInput.value = xmlContent;
+  })
+
+  // Save as file name prompt
+  function showFileNamePrompt() {
+    var svScenType=document.getElementById("sv-scen-type");
+    svScenType.textContent=sceType + "_";
+    var scenarioName=document.getElementById("scenario-name");
+    document.getElementById("new_xml_name").value=scenarioName.value.trim();
+
+    var fileNamePrompt = document.getElementById("fileNamePrompt");
+    fileNamePrompt.style.display = "inline";
+    var saveAsButton = document.getElementById("save_as_button")
+    saveAsButton.style.display = "none"
+  }
+
+
+  // function for xml validation
+  function validateAndSubmit() {
+      var annotations = editor.getSession().getAnnotations();
+      var hasErrors = annotations.some(annotation => annotation.type === "error");
+
+      if (hasErrors) {
+          alert("There are syntax errors. Please fix them before saving.");
+          return false;
+      } else {
+          document.querySelector("form").submit();
+      }
+  }
+
+  function submitSaveAs() {
+      var newFileNameInput = document.getElementById("new_xml_name");
+      var newFileName = newFileNameInput.value.trim();
+      document.getElementById('scen-creator-ace-form').querySelector('input[name="file_name"]').value = sceType + "_" + newFileName +".xml";
+      
+      if (newFileName) {
+          validateAndSubmit();
+      } else {
+          alert("Please enter a valid file name.");
+      }
+  }
+
+  document.getElementById("new_xml_name").addEventListener("keydown", function(event) {
+      if (event.key === "Enter") {
+          event.preventDefault(); // Prevent form submission
+          submitSaveAs();
+      }
+  });
+
+  
+  </script>
 
 </body>
 </html>

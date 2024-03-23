@@ -1,11 +1,3 @@
-var editor = ace.edit("xml-editor");
-editor.session.setMode("ace/mode/xml");
-editor.setTheme("ace/theme/chrome");
-editor.setFontSize('13px');
-// Scroll to the bottom line
-editor.session.on('change', () => {
-    editor.renderer.scrollToLine(Number.POSITIVE_INFINITY)
-})
 // Select UAC/UAS/Reset
 const createUAC=document.getElementById('createUAC');
 const createUAS=document.getElementById('createUAS');
@@ -63,7 +55,10 @@ const midRecv200B=document.getElementById('mid-req-200-b');
 const sendrecvByeD=document.getElementById('sendrecv-bye');
 const sendByeB=document.getElementById('send-bye');
 const recvByeB=document.getElementById('recv-bye');
+// Save buttons
+const saveButtonB=document.getElementById('save_as_button'); 
 
+/////////////////////////////
 let cseq=1;
 let invcseq=1
 let sceType='uac'
@@ -156,6 +151,7 @@ function generateRequest(includeSDP) {
         From: sipp <sip:sipp@[local_ip]:[local_port]>;tag=[pid]SIPpTag00[call_number]
         To: sut <sip:[service]@[remote_ip]:[remote_port]>
         Call-ID: [call_id]
+        Supported: timer,100rel
         CSeq: ${cseq} ${method}
         Contact: sip:sipp@[local_ip]:[local_port]
         Max-Forwards: 70
@@ -236,8 +232,8 @@ noRelB.addEventListener('click', () => {
 function generate18x(rel){
   let opt=rel?'':'optional="true"';
   const ft=fromto?`
-        <ereg regexp=".*" search_in="hdr" header="From:" check_it="true" assign_to="1" />
-        <ereg regexp=".*" search_in="hdr" header="To:" check_it="true" assign_to="2" />`
+        <ereg regexp=".*" search_in="hdr" header="From:" check_it="true" assign_to="remote_from" />
+        <ereg regexp=".*" search_in="hdr" header="To:" check_it="true" assign_to="remote_to" />`
   :'';
   const rel18x=rel
   ?`
@@ -295,8 +291,8 @@ function sendPrack(wosdp){
 
         PRACK sip:[service]@[remote_ip]:[remote_port] SIP/2.0
         Via: SIP/2.0/[transport] [local_ip]:[local_port];branch=[branch]
-        From: [$1]
-        To: [$2]
+        From: [$remote_from]
+        To: [$remote_to]
         Call-ID: [call_id]
         CSeq: ${cseq} PRACK
         Contact: sip:sipp@[local_ip]:[local_port]
@@ -579,6 +575,7 @@ referB.disabled=true;
 playMediaB.disabled=true;
 pauseB.disabled=true;
 pauseMsI.disabled=true;
+saveButtonB.style.display='block';
 });
 
 
@@ -621,5 +618,6 @@ referB.disabled=true;
 playMediaB.disabled=true;
 pauseB.disabled=true;
 pauseMsI.disabled=true;
+saveButtonB.style.display='block';
 });
 
