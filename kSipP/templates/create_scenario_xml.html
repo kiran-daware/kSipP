@@ -33,13 +33,12 @@
   </div>
 
 <!-- ***************** Buttons for UAC xml start ******************** -->
-    <div id="uacFirst" style="display: none;">
+  <div id="uacFirst" style="display: none;">
     <button id="send-invite">Send INVITE</button>
       <div id="send-invite-div" style="display: none;">
         <button id="invite-with-sdp">invite with SDP</button>
         <button id="invite-without-sdp">without SDP</button>
       </div>
-    </div>
 
     <div id="recv-1xx" style="display: none;">
       <button id="recv-100">Recv 100</button>
@@ -61,6 +60,7 @@
     </div>
 
     <div id="recv-failcode" style="display: none;">
+      <br>
       <button id="recv-fxx">Recv 4xx/5xx/6xx</button>
       <div id="recv-cause" style="display: none;">
         CauseCode: <input id="r-cause-code" type="number" min="400" max="699" value="503">
@@ -73,6 +73,8 @@
       <button id="send-ack-sdp">ACK with sdp</button>
     </div>
 
+    <br>
+
       <button id="play-media-b" style="display: none;">Play Media</button>
 
     <div id="pause-d" style="display: none;">
@@ -80,10 +82,11 @@
       <input id="pause-ms" type="number" min="1" max="999999" value="1000"> ms
     </div>
 
+    <br><br>
+
     <div id="mid-dia-req" style="display: none;"">
       <button id="reinv-b">Send Re-INVITE</button>
       <button id="update-b">Send UPDATE</button>
-      <button id="refer-b">Send REFER</button>
     </div>
     <div id="mid-dia-sdp-div" style="display: none;">
       <button id="mid-without-sdp">without SDP</button>
@@ -91,18 +94,21 @@
     </div>
     <button id="mid-req-200-b" style="display: none;">Recv 200OK</button>
 
+    <br>
+
     <div id="sendrecv-bye" style="display: none;">
       <button id="send-bye">Send BYE</button>
       <button id="recv-bye">Recv BYE</button>
     </div>
 
+  </div>
 
 <!-- ***************** Buttons for UAC xml end ******************** -->
 <!-- ***************** Buttons for UAS xml start ******************** -->
 
-    <div id="uasFirst" style="display: none;">
+  <div id="uasFirst" style="display: none;">
     <button id="recv-invite-b">Recv INVITE</button>
-    </div>
+    
     <div id="send-1xx-d" style="display: none;">
       <button id="send-100-b">Send 100</button>
       <button id="send-180-b">Send 180</button>
@@ -126,21 +132,30 @@
       <button id="send-200-inv-no-sdp-b" style="display: none;">200OK (invite) without SDP</button>
     </div>
       <button id="recv-ack" style="display: none;">Recv ACK</button>
+    
+    <br>
+    
     <div id="uas-recv-rqst" style="display: none;">
       <button id="uas-recv-update-b">Recv UPDATE</button>
+      <button id="uas-200-update-sdp" style="display: none;">Send 200OK(update) with SDP</button>
+      <button id="uas-200-update-nosdp" style="display: none;">200OK(update) without SDP</button>
     </div>
+
+    <br>
+
     <div id="uas-send-request" style="display: none;">
       <button id="uas-send-inv-b">Send INVITE</button>
     </div>
+    
+    <br>
+
     <div id="uas-bye" style="display: none;">
       <button id="uas-recv-bye">Recv BYE</button>
       <button id="uas-send-bye">Send BYE</button>
     </div>
 
 
-
-
-
+  </div>
 <!-- ***************** Buttons for UAS xml end ******************** -->
 
     <div class="savebuttons">

@@ -21,8 +21,8 @@ const reliableD=document.getElementById('100rel-d');
 const relB=document.getElementById('100-rel');
 const noRelB=document.getElementById('no-100-rel');
 const prackD=document.getElementById('prack-d');
-const pWithSdp=document.getElementById('p-with-sdp-b');
-const pWoSdp=document.getElementById('p-wo-sdp-b');
+const pWithSdpB=document.getElementById('p-with-sdp-b');
+const pWoSdpB=document.getElementById('p-wo-sdp-b');
 const recv200PrackB=document.getElementById('recv-200prack-b');
 // 2xx
 const recv2xxD=document.getElementById('recv-2xx');
@@ -46,7 +46,6 @@ const pauseMsI=document.getElementById('pause-ms');
 const midDiaReqD=document.getElementById('mid-dia-req');
 const reInvB=document.getElementById('reinv-b');
 const updateB=document.getElementById('update-b');
-const referB=document.getElementById('refer-b');
 const midDiaSdpD=document.getElementById('mid-dia-sdp-div');
 const midWsdp=document.getElementById('mid-with-sdp');
 const midWoSdp=document.getElementById('mid-without-sdp');
@@ -221,6 +220,9 @@ relB.addEventListener('click', () => {
   generate18x(true);
   reliableD.style.display='none';
   prackD.style.display='inline-block';
+  pWithSdpB.style.display='inline-block';
+  pWoSdpB.style.display='inline-block';
+  recv200PrackB.style.display='none';
 });
 
 noRelB.addEventListener('click', () => {
@@ -249,8 +251,8 @@ function generate18x(rel){
   if(rel){
     fromto=false;
     prackD.style.display='block';
-    pWithSdp.disabled=false;
-    pWoSdp.disabled=false;
+    pWithSdpB.disabled=false;
+    pWoSdpB.disabled=false;
   }else{
     receive180B.disabled=false;
     receive183B.disabled=false;
@@ -260,15 +262,15 @@ function generate18x(rel){
 
 
 // PRACK *************************
-pWithSdp.addEventListener('click',()=>{
+pWithSdpB.addEventListener('click',()=>{
   sendPrack(true);
-  pWithSdp.disabled=true;
-  pWoSdp.disabled=true;
+  pWithSdpB.disabled=true;
+  pWoSdpB.disabled=true;
 });
-pWoSdp.addEventListener('click',()=>{
+pWoSdpB.addEventListener('click',()=>{
   sendPrack(false);
-  pWithSdp.disabled=true;
-  pWoSdp.disabled=true;
+  pWithSdpB.disabled=true;
+  pWoSdpB.disabled=true;
 });
 
 function sendPrack(wosdp){
@@ -307,6 +309,8 @@ function sendPrack(wosdp){
   receive100B.disabled=true;
   recv200PrackB.disabled=false;
   recv200PrackB.style.display='inline-block';
+  pWithSdpB.style.display='none';
+  pWoSdpB.style.display='none';
   cseq++;
   rseq++;
 };
@@ -422,14 +426,12 @@ function disableButtsForAck(){
   midDiaReqD.style.display='block';
   reInvB.disabled=false;
   updateB.disabled=false;
-  referB.disabled=false;
   pauseD.style.display='inline-block';
   pauseB.disabled=false;
   sendByeB.disabled=false;
   recvByeB.disabled=false;
   reInvB.disabled=false;
   updateB.disabled=false;
-  referB.disabled=false;
 };
 sendAckB.addEventListener('click', () => {
   sendAck(false);
@@ -472,7 +474,6 @@ reInvB.addEventListener('click',()=>{
   midDiaSdpD.style.display='block';
   reInvB.disabled=true;
   updateB.disabled=true;
-  referB.disabled=true;
   method='INVITE';
   pauseB.disabled=true;
   pauseMsI.disabled=true;
@@ -481,7 +482,6 @@ reInvB.addEventListener('click',()=>{
   recvByeB.disabled=true;
   reInvB.disabled=true;
   updateB.disabled=true;
-  referB.disabled=true;
 });
 // mid-dialogue UPDATE
 updateB.addEventListener('click',()=>{
@@ -495,7 +495,6 @@ updateB.addEventListener('click',()=>{
   recvByeB.disabled=true;
   reInvB.disabled=true;
   updateB.disabled=true;
-  referB.disabled=true;
 });
 
 midWsdp.addEventListener('click',()=>{
@@ -504,6 +503,7 @@ midWsdp.addEventListener('click',()=>{
   midDiaSdpD.style.display='none';
   if(method!='INVITE'){midRecv200B.style.display='block';
     midRecv200B.disabled=false;};
+  receive100B.disabled=true;
 });
 
 midWoSdp.addEventListener('click',()=>{
@@ -512,6 +512,7 @@ midWoSdp.addEventListener('click',()=>{
   midDiaSdpD.style.display='none';
   if(method!='INVITE'){midRecv200B.style.display='block';
     midRecv200B.disabled=false;};
+  receive100B.disabled=true;
 });
 
 midRecv200B.addEventListener('click', () => {
@@ -527,7 +528,6 @@ midRecv200B.addEventListener('click', () => {
   recvByeB.disabled=false;
   reInvB.disabled=false;
   updateB.disabled=false;
-  referB.disabled=false;
   midRecv200B.disabled=true;
 });
 
@@ -571,7 +571,6 @@ recvByeB.disabled=true;
 sendInviteB.disabled=true;
 reInvB.disabled=true;
 updateB.disabled=true;
-referB.disabled=true;
 playMediaB.disabled=true;
 pauseB.disabled=true;
 pauseMsI.disabled=true;
@@ -614,7 +613,6 @@ recvByeB.disabled=true;
 sendInviteB.disabled=true;
 reInvB.disabled=true;
 updateB.disabled=true;
-referB.disabled=true;
 playMediaB.disabled=true;
 pauseB.disabled=true;
 pauseMsI.disabled=true;
