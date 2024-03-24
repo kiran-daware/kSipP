@@ -100,9 +100,6 @@ def index(request):
                     uasflow = showXmlFlowScript(selectUAS)
                     return render(request, 'show_xml_flow.html', locals())
             
-            if submit_type == 'moreOptions':
-                # Load moreSippOptionsForm
-                showMoreOptionsForm = True
 
 
     if request.method == 'POST':
@@ -171,6 +168,10 @@ def index(request):
 
                 sipp_processes = get_sipp_processes()
                 return render(request, 'index.html', locals())
+            
+            elif not moreOptionsForm.is_valid():
+                showMoreOptionsForm = True
+
     
     sipp_processes = get_sipp_processes()
     return render(request, 'index.html', locals())

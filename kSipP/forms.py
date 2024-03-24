@@ -2,6 +2,7 @@ from django import forms
 from django.conf import settings
 import xml.etree.ElementTree as ET
 import os
+from django.core.validators import RegexValidator
 from django.core.exceptions import ValidationError
 
 
@@ -32,8 +33,10 @@ class xmlForm(forms.Form):
 
 
 class moreSippOptionsForm(forms.Form):
-    called_party_number = forms.CharField(label='Called Party Number', max_length=30, required=False, initial='1234')
-    calling_party_number = forms.CharField(label='Calling Party Number', max_length=30, required=False, initial='9876')
+    called_party_number = forms.CharField(label='Dialed Number', max_length=30, required=False, initial='1234',
+                                          validators=[RegexValidator(r'^[a-zA-Z0-9]+$','Only alphanumeric characters are allowed.')])
+    calling_party_number = forms.CharField(label='Calling Party Number', max_length=30, required=False, initial='9876',
+                                           validators=[RegexValidator(r'^[a-zA-Z0-9]+$','Only alphanumeric characters are allowed.')] )
     total_no_of_calls = forms.IntegerField(label='No. of calls to send', min_value=1, max_value=9999, required=False, initial=1)
     cps = forms.IntegerField(label='Calls Per Second', min_value=1, max_value=100, required=False, initial=1) 
     stun_server = forms.GenericIPAddressField(label='Stun Server', protocol='IPv4', required=False, initial='')
