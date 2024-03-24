@@ -37,10 +37,12 @@ const send200invSdpB=document.getElementById('send-200-inv-b');
 const send200invB=document.getElementById('send-200-inv-no-sdp-b');
 // ACK 
 const recvAckB=document.getElementById('recv-ack');
-// UAS new Requests
+// UAS Mid Dialogue Requests
 const uasRecvRqstD=document.getElementById('uas-recv-rqst');
 const uasSendRqstD=document.getElementById('uas-send-request');
 const uasRecvUpdateB=document.getElementById('uas-recv-update-b');
+const uasSend200updateSdpB=document.getElementById('uas-200-update-sdp');
+const uasSend200updateNosdpB=document.getElementById('uas-200-update-nosdp');
 const uasSendInviteB=document.getElementById('uas-send-inv-b');
 // BYE
 const uasByeD=document.getElementById('uas-bye');
@@ -375,6 +377,55 @@ recvAckB.addEventListener('click',()=>{
 });
 
 
+
+
+// Recv mid dialogue Requests from UAS
+
+uasRecvUpdateB.addEventListener('click',()=>{
+  const recvMidUpdate=`
+    <recv request="UPDATE" crlf="true" rrs="true">
+    </recv>`;
+    editor.setValue(`${editor.getValue()}\n${recvMidUpdate}`);
+    uasRecvUpdateB.disabled=true;
+    recvInviteB.disabled=true;
+    uasSendInviteB.disabled=true;
+    uasSendByeB.disabled=true;
+    uasRecvByeB.disabled=true;
+    uasSend200updateSdpB.style.display='inline-block';
+    uasSend200updateNosdpB.style.display='inline-block';
+    uasSend200updateSdpB.disabled=false;
+    uasSend200updateNosdpB.disabled=false;
+});
+
+uasSend200updateSdpB.addEventListener('click',()=>{
+  hVia='[last_Via:]';
+  hCSeq='[last_CSeq:]';
+  send200Ok(true);
+  uasSend200updateSdpB.disabled=true;
+  uasSend200updateNosdpB.disabled=true;
+  recvInviteB.disabled=false;
+  uasRecvUpdateB.disabled=false;
+  uasSendInviteB.disabled=false;
+  uasSendByeB.disabled=false;
+  uasRecvByeB.disabled=false;
+});
+
+uasSend200updateNosdpB.addEventListener('click',()=>{
+  hVia='[last_Via:]';
+  hCSeq='[last_CSeq:]';
+  send200Ok(false);
+  uasSend200updateSdpB.disabled=true;
+  uasSend200updateNosdpB.disabled=true;
+  recvInviteB.disabled=false;
+  uasRecvUpdateB.disabled=false;
+  uasSendInviteB.disabled=false;
+  uasSendByeB.disabled=false;
+  uasRecvByeB.disabled=false;
+})
+
+
+
+
 // New Request from UAS
 let uasCSeq=1;
 function newRequestFromUas(){
@@ -391,6 +442,55 @@ function newRequestFromUas(){
   }
   editor.setValue(modifiedContent);
 };
+
+
+function generateUASRequest(uasMethod, includeSDP) {
+  if (uasCSeq===1){newRequestFromUas();};
+  const method=uasMethod
+  const sdp=includeSDP
+    ?`Content-Type: application/sdp
+        Content-Length: [len]
+
+        v=0
+        o=user1 53655765 2353687639 IN IP[local_ip_type] [local_ip]
+        s=-
+        c=IN IP[media_ip_type] [media_ip]
+        t=0 0
+        m=audio [media_port] RTP/AVP 0
+        a=rtpmap:0 PCMU/8000`
+    : 'Content-Length: 0';
+
+    const reqMessage=`
+    <send retrans="500">
+      <![CDATA[
+
+        ${method} sip:[service]@[remote_ip]:[remote_port] SIP/2.0
+        Via: SIP/2.0/[transport] [local_ip]:[local_port];branch=[branch]
+        From: [$remote_to];tag=[pid]SIPpTag01[call_number]
+        To: [$remote_from]
+        Call-ID: [call_id]
+        Supported: timer,100rel
+        CSeq: ${uasCSeq} ${method}
+        Contact: sip:sipp@[local_ip]:[local_port]
+        Max-Forwards: 70
+        Subject: Performance Test
+        ${sdp}
+
+      ]]>
+    </send>
+    `;
+uasCSeq++;
+editor.setValue(`${editor.getValue()}\n${reqMessage}`);
+}
+
+
+
+// Send Re-INVITE ****************************************************************************************
+uasSendInviteB.addEventListener('click',()=>{
+  generateUASRequest("INVITE", true);
+  
+});
+
 
 
 // Recv BYE ****************************************************************************************
@@ -437,7 +537,6 @@ uasRecvByeB.addEventListener('click',()=>{
 // Send BYE ********************************************************************************
 uasSendByeB.addEventListener('click',()=>{
   if (uasCSeq===1){newRequestFromUas();};
-  uasCSeq++;
   const uasSendBye=`
     <send retrans="500">
       <![CDATA[

@@ -21,20 +21,30 @@
         {% csrf_token %}
         {{ selectXml.as_p }}
         <button type="submit" name="submitType" value="checkFlow" style="float: left; margin: 0 10px 10px 0;">Check XML Call Flow</button>
-        <div id="MoreOptions" style="display: none;">
-            <div style="clear: both;">{{ moreOptionsForm.as_p }}</div>
+        <div id="MoreOptions" {% if not showMoreOptionsForm %}style="display: none;"{% endif %}>
+            <div style="clear: both;">
+                <p>Dialed Number: {{moreOptionsForm.called_party_number}}{{moreOptionsForm.called_party_number.errors}}</p>
+                <p>Calling Party Number: {{moreOptionsForm.calling_party_number}}{{moreOptionsForm.calling_party_number.errors}}</p>
+                <p>No. of Calls: {{moreOptionsForm.total_no_of_calls}}  ||  CPS : {{moreOptionsForm.cps}}</p>
+                <p>Stun Server: {{moreOptionsForm.stun_server}}{{moreOptionsForm.stun_server.errors}}</p>
+                <!-- {{ moreOptionsForm.as_p }} -->
+            </div>
             <button type="submit" name="submitType" value="moreOptionsClose">OK</button>
+            
         </div>        
-        <button id="showMoreOptions">More Options</button>
+        <button id="showMoreOptions" {% if showMoreOptionsForm %}style="display: none;"{% endif %}>More Options</button>
         <br>
         <div style="clear: both;">
-        <p>UAC Remote: {{ ipConfig.uac_remote }} {{ ipConfig.uac_remote_port }}</p>
-        <p>UAS Remote: {{ ipConfig.uas_remote }} {{ ipConfig.uas_remote_port }}</p>
-        <p>Local Address: {{ ipConfig.local_addr }}</p>
+        <p>UAC Remote: {{ ipConfig.uac_remote }} {{ ipConfig.uac_remote_port }}
+            {{ ipConfig.uac_remote.errors }}</p>
+        <p>UAS Remote: {{ ipConfig.uas_remote }} {{ ipConfig.uas_remote_port }}
+            {{ ipConfig.uas_remote.errors }}
+        </p>
+        <p>Local Address: {{ ipConfig.local_addr }} {{ ipConfig.local_addr.errors }}</p>
         <p>UAC Src Port: {{ ipConfig.src_port_uac }} {{ ipConfig.protocol_uac }}</p>
         <p>UAS Src Port: {{ ipConfig.src_port_uas }} {{ ipConfig.protocol_uas }}</p>
         </div>
-        <button type="submit" name="submitType" value="config">Save Config</button>
+        <button id="save_config" type="submit" name="submitType" value="config">Save Config</button>
     </form>
     </div>
 
@@ -106,6 +116,18 @@
         // Add click event listeners to the buttons
         showButton.addEventListener("click", showDiv);
         showButton.addEventListener("click", hideButton);
+
+
+        document.addEventListener("keydown", function(event) {
+        // Check if the key pressed is Enter
+            if (event.key === "Enter") {
+                // Prevent the default behavior of the Enter key
+                event.preventDefault();
+                var submitButton = document.getElementById("save_config");
+                submitButton.click();
+            }
+        });
+
       </script>
       
       
