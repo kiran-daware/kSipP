@@ -426,7 +426,7 @@ uasSend200updateNosdpB.addEventListener('click',()=>{
 
 
 
-// New Request from UAS
+// New Mid-dialogue Request from UAS
 let uasCSeq=1;
 function newRequestFromUas(){
   var currentContent=editor.getValue();
@@ -487,7 +487,7 @@ editor.setValue(`${editor.getValue()}\n${reqMessage}`);
 
 // Send Re-INVITE ****************************************************************************************
 uasSendInviteB.addEventListener('click',()=>{
-  generateUASRequest("INVITE", true);
+  // generateUASRequest("INVITE", true);
   
 });
 
