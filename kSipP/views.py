@@ -13,7 +13,8 @@ import subprocess
 import psutil
 import signal
 import time
-import re, stun
+import re
+from .scripts.kstun import get_ip_info
 
 from .scripts.showXmlFlow import showXmlFlowScript
 from .scripts.modifyHeader import modifyHeaderScript, getHeadersFromSipMsgs, tmpXmlBehindNAT, modifynumberxmlpath
@@ -366,7 +367,7 @@ def run_script_view(request):
     ######## For behind NAT sipp
     def stun4nat(xmlName, srcPort, stunServer):
         stun_host_str = ''.join(stunServer)
-        nat_type, external_ip, external_port = stun.get_ip_info(stun_host=stun_host_str, source_port=int(srcPort))
+        nat_type, external_ip, external_port = get_ip_info(stun_host=stun_host_str, source_port=int(srcPort))
         if external_ip is not None and external_port is not None:
             newXmlPath = tmpXmlBehindNAT(xmlName, external_ip, external_port)
         else:
@@ -392,7 +393,7 @@ def run_script_view(request):
                     else: return HttpResponse(f'Stun server at {stun_server} is not responding!')
 
                 if dialed_number or calling_number:
-                    uacXmlPath = modifynumberxmlpath(uacXml, calling_number, dialed_number)
+                    uacXmlPath = modifynumberxmlpath(uacXmlPath, calling_number, dialed_number)
 
                 uacCommand = f"{sipp} -sf {uacXmlPath} {uac_remote} {uacSrc} -m {noOfCalls} -r {cps} -t {protocol_uac}"
                 outputFile = f'{uacXml}.log'

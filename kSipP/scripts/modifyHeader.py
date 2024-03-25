@@ -143,13 +143,12 @@ def tmpXmlBehindNAT(xml, externalIp, externalPort):
 
 # code for modifying Calling party number and dialed number is any one is present
 
-def modifynumberxmlpath(xml, calling_number="sipp", dialed_number="[service]"):
+def modifynumberxmlpath(xmlPath, calling_number="sipp", dialed_number="[service]"):
     if not calling_number: calling_number = "sipp"
     if not dialed_number: dialed_number = "[service]"
     calling_display=f'"{calling_number}" '
     dailed_display=f'"{dialed_number}" '
 
-    xmlPath = str(settings.BASE_DIR / 'kSipP' / 'xml' / xml)
     with open(xmlPath, 'r') as file:
         xml_content = file.read()
     
@@ -167,7 +166,7 @@ def modifynumberxmlpath(xml, calling_number="sipp", dialed_number="[service]"):
     to_pattern = r'(?i)\bTo\b\:\s*(\[|"?)(\w*)(\]|"?)\s*(<?sip:)([^@\:\;\n]+)@'
     updated_xml = re.sub(to_pattern, lambda m: f'To: {dailed_display if m.group(2) else ""}{m.group(4)}{dialed_number}@', updated_xml)
     
-    tmpXmlPath = str(settings.BASE_DIR / 'kSipP' / 'xml' / 'tmp' / xml)
+    tmpXmlPath = str(settings.BASE_DIR / 'kSipP' / 'xml' / 'tmp' / xmlPath)
     with open(tmpXmlPath, 'w') as file:
         file.write(updated_xml)
         
