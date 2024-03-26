@@ -190,11 +190,11 @@ let hVia='[last_Via:]';
 let hCSeq='[last_CSeq:]';
 let sdpBody=`
         v=0
-        o=user1 53655765 2353687637 IN IP[local_ip_type] [local_ip]
+        o=user1 53655765 3353687637 IN IP[local_ip_type] [local_ip]
         s=-
         c=IN IP[media_ip_type] [media_ip]
         t=0 0
-        m=audio [media_port] RTP/AVP 0
+        m=audio [media_port+20000] RTP/AVP 0
         a=rtpmap:0 PCMU/8000`;
 
 function generateSend1xx(srel,ssdp){
@@ -452,11 +452,11 @@ function generateUASRequest(uasMethod, includeSDP) {
         Content-Length: [len]
 
         v=0
-        o=user1 53655765 2353687639 IN IP[local_ip_type] [local_ip]
+        o=user1 53655765 3353687639 IN IP[local_ip_type] [local_ip]
         s=-
         c=IN IP[media_ip_type] [media_ip]
         t=0 0
-        m=audio [media_port] RTP/AVP 0
+        m=audio [media_port+20000] RTP/AVP 0
         a=rtpmap:0 PCMU/8000`
     : 'Content-Length: 0';
 
