@@ -17,7 +17,7 @@ import re
 from .scripts.kstun import get_ip_info
 
 from .scripts.showXmlFlow import showXmlFlowScript
-from .scripts.modifyHeader import modifyHeaderScript, getHeadersFromSipMsgs, tmpXmlBehindNAT, modifynumberxmlpath
+from .scripts.modify import modifyHeaderScript, getHeadersFromSipMsgs, tmpXmlBehindNAT, modifynumberxmlpath
 
 # Read initial data from config file
 config_file = os.path.join(str(settings.BASE_DIR), 'config.ini')
