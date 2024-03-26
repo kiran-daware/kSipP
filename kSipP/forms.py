@@ -37,8 +37,8 @@ class moreSippOptionsForm(forms.Form):
                                           validators=[RegexValidator(r'^[a-zA-Z0-9]+$','Only alphanumeric characters are allowed.')])
     calling_party_number = forms.CharField(label='Calling Party Number', max_length=30, required=False, initial='9876',
                                            validators=[RegexValidator(r'^[a-zA-Z0-9]+$','Only alphanumeric characters are allowed.')] )
-    total_no_of_calls = forms.IntegerField(label='No. of calls to send', min_value=1, max_value=9999, required=False, initial=1)
-    cps = forms.IntegerField(label='Calls Per Second', min_value=1, max_value=100, required=False, initial=1) 
+    total_no_of_calls = forms.IntegerField(label='No. of calls to send', min_value=1, max_value=9999, required=True, initial=1)
+    cps = forms.IntegerField(label='Calls Per Second', min_value=1, max_value=100, required=True, initial=1) 
     stun_server = forms.GenericIPAddressField(label='Stun Server', protocol='IPv4', required=False, initial='')
 
 

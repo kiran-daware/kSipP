@@ -17,9 +17,11 @@
     </div>
 
     <div style="float: left; padding: 20px; width: 38%;">
-    <form method="post">
+    <form method="post" id="mainForm">
+
         {% csrf_token %}
         {{ selectXml.as_p }}
+
         <button type="submit" name="submitType" value="checkFlow" style="float: left; margin: 0 10px 10px 0;">Check XML Call Flow</button>
         <div id="MoreOptions" {% if not showMoreOptionsForm %}style="display: none;"{% endif %}>
             <div style="clear: both;">
@@ -97,6 +99,21 @@
 
 
     <script>
+
+        //Submit the xml name as soon as selected
+        document.addEventListener('DOMContentLoaded', function() {
+            document.getElementById('id_select_uac').addEventListener('change', function() {
+                var submitButton = document.getElementById("save_config");
+                submitButton.click();
+            });
+            document.getElementById('id_select_uas').addEventListener('change', function() {
+                var submitButton = document.getElementById("save_config");
+                submitButton.click();
+            });
+        });
+
+
+        //show-hide MoreOptions Form
         const showButton = document.getElementById("showMoreOptions");
         // const hideButton = document.getElementById("hideMoreOptions");
         const MoreOptions = document.getElementById("MoreOptions");
@@ -131,7 +148,6 @@
       </script>
       
       
-
 
 </body>
 </html>
