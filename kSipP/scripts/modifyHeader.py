@@ -166,7 +166,9 @@ def modifynumberxmlpath(xmlPath, calling_number="sipp", dialed_number="[service]
     to_pattern = r'(?i)\bTo\b\:\s*(\[|"?)(\w*)(\]|"?)\s*(<?sip:)([^@\:\;\n]+)@'
     updated_xml = re.sub(to_pattern, lambda m: f'To: {dailed_display if m.group(2) else ""}{m.group(4)}{dialed_number}@', updated_xml)
     
-    tmpXmlPath = str(settings.BASE_DIR / 'kSipP' / 'xml' / 'tmp' / xmlPath)
+    xmlName = os.path.basename(xmlPath)
+    tmpXmlPath = str(settings.BASE_DIR / 'kSipP' / 'xml' / 'tmp' / xmlName)
+    
     with open(tmpXmlPath, 'w') as file:
         file.write(updated_xml)
         
