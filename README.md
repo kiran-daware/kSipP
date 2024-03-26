@@ -26,7 +26,7 @@ Once your container is up and running, open it http://localhost:8080/ (or whatev
 
 We welcome contributions from the community! Feel free to fork the repository, propose bug fixes, or add new features through pull requests.
 
-![kSipP - Easy SipP GUI for Everyone](https://github.com/kiran-daware/kSipP/blob/master/screenshot.png)
+![kSipP - Easy SipP GUI for Everyone](https://raw.githubusercontent.com/kiran-daware/kSipP/main/screenshot.png)
 
 ### Disclaimer: 
 This project is still work in progress and is uploaded on git hub as is without any warranty of any kind. The project has included the sipp binary from https://github.com/SIPp/sipp which is licenced under GNU General Public License.
