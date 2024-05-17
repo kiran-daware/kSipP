@@ -44,6 +44,10 @@ const uasRecvUpdateB=document.getElementById('uas-recv-update-b');
 const uasSend200updateSdpB=document.getElementById('uas-200-update-sdp');
 const uasSend200updateNosdpB=document.getElementById('uas-200-update-nosdp');
 const uasSendInviteB=document.getElementById('uas-send-inv-b');
+const uasSendInvD=document.getElementById('uas-send-inv');
+const uasSendInvSdpB=document.getElementById('uas-send-inv-sdp-b');
+const uasSendInvNoSdpB=document.getElementById('uas-send-inv-nosdp-b');
+
 // BYE
 const uasByeD=document.getElementById('uas-bye');
 const uasRecvByeB=document.getElementById('uas-recv-bye');
@@ -487,8 +491,21 @@ editor.setValue(`${editor.getValue()}\n${reqMessage}`);
 
 // Send Re-INVITE ****************************************************************************************
 uasSendInviteB.addEventListener('click',()=>{
+  uasSendRqstD.style.display='none';
+  uasSendInvD.style.display='block';
   // generateUASRequest("INVITE", true);
-  
+});
+
+uasSendInvSdpB.addEventListener('click',()=>{
+  generateUASRequest("INVITE", true);
+  uasSendInvD.style.display='none';
+  uasSendRqstD.style.display='block';
+});
+
+uasSendInvNoSdpB.addEventListener('click',()=>{
+  generateUASRequest("INVITE", false);
+  uasSendInvD.style.display='none';
+  uasSendRqstD.style.display='block';
 });
 
 
