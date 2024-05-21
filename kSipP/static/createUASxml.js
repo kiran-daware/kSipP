@@ -48,6 +48,11 @@ const uasSendInvD=document.getElementById('uas-send-inv');
 const uasSendInvSdpB=document.getElementById('uas-send-inv-sdp-b');
 const uasSendInvNoSdpB=document.getElementById('uas-send-inv-nosdp-b');
 
+const uasRecv200SendAckD=document.getElementById('uas-recv200-sendack');
+const uasRecv200B=document.getElementById('uas-recv-200');
+const uasSendAckNoSdpB=document.getElementById('uas-send-ack-nosdp');
+const uasSendAckSdpB=document.getElementById('uas-send-ack-sdp');
+
 // BYE
 const uasByeD=document.getElementById('uas-bye');
 const uasRecvByeB=document.getElementById('uas-recv-bye');
@@ -434,10 +439,16 @@ uasSend200updateNosdpB.addEventListener('click',()=>{
 let uasCSeq=1;
 function newRequestFromUas(){
   var currentContent=editor.getValue();
-  var originalXML=`<!-- INV Placeholder to store vars -->`;
+  var originalXML=`<!-- INV Placeholder to store vars -->
+      </action>
+    </recv>`;
   var replacementXML=`<ereg regexp=".*" search_in="hdr" header="From:" check_it="true" assign_to="remote_from" />
-        <ereg regexp=".*" search_in="hdr" header="To:" check_it="true" assign_to="remote_to" />
-        <!-- INV Placeholder to store vars -->`;
+        <ereg regexp="sip:(.*)>.*" search_in="hdr" header="Contact" assign_to="trash,remote_contact"/>
+        <!-- INV Placeholder to store vars -->
+      </action>
+    </recv>
+    <!-- since SIPp complains about not used variable reference the trach var -->
+    <Reference variables="trash"/>`;
     
   var firstIndex = currentContent.indexOf(originalXML);
 
@@ -468,9 +479,9 @@ function generateUASRequest(uasMethod, includeSDP) {
     <send retrans="500">
       <![CDATA[
 
-        ${method} sip:[service]@[remote_ip]:[remote_port] SIP/2.0
+        ${method} sip:[$remote_contact] SIP/2.0
         Via: SIP/2.0/[transport] [local_ip]:[local_port];branch=[branch]
-        From: [$remote_to];tag=[pid]SIPpTag01[call_number]
+        From: sipp <sip:sipp@[local_ip]:[local_port]>;tag=[pid]SIPpTag01[call_number]
         To: [$remote_from]
         Call-ID: [call_id]
         Supported: timer,100rel
@@ -493,21 +504,107 @@ editor.setValue(`${editor.getValue()}\n${reqMessage}`);
 uasSendInviteB.addEventListener('click',()=>{
   uasSendRqstD.style.display='none';
   uasSendInvD.style.display='block';
-  // generateUASRequest("INVITE", true);
+  uasSendInviteB.disabled=true;
+  recvInviteB.disabled=true;
+  uasRecvUpdateB.disabled=true;
+  uasRecvByeB.disabled=true;
+  uasSendByeB.disabled=true;
 });
 
 uasSendInvSdpB.addEventListener('click',()=>{
   generateUASRequest("INVITE", true);
   uasSendInvD.style.display='none';
   uasSendRqstD.style.display='block';
+  uasRecv200SendAckD.style.display='block';
+  uasRecv200B.disabled=false;
 });
 
 uasSendInvNoSdpB.addEventListener('click',()=>{
   generateUASRequest("INVITE", false);
   uasSendInvD.style.display='none';
   uasSendRqstD.style.display='block';
+  uasRecv200SendAckD.style.display='block';
+  uasRecv200B.disabled=false;
 });
 
+
+
+// Recv 200OK ****************************************************************************************
+uasRecv200B.addEventListener('click',()=>{
+  const response200 =`
+    <recv response="200" rtd="true">
+    </recv>
+    `;
+  editor.setValue(`${editor.getValue()}\n${response200}`);
+  uasRecv200B.disabled=true;
+  uasSendAckNoSdpB.style.display='inline-block';
+  uasSendAckNoSdpB.disabled=false;
+  uasSendAckSdpB.style.display='inline-block';
+  uasSendAckSdpB.disabled=false;
+});
+
+// UAS Send ACK **************************************************************************************
+
+function generateUASAck(includeSDP) {
+  const sdp=includeSDP
+    ?`Content-Type: application/sdp
+        Content-Length: [len]
+
+        v=0
+        o=user1 53655765 3353687639 IN IP[local_ip_type] [local_ip]
+        s=-
+        c=IN IP[media_ip_type] [media_ip]
+        t=0 0
+        m=audio [media_port+20000] RTP/AVP 0
+        a=rtpmap:0 PCMU/8000`
+    : 'Content-Length: 0';
+
+    const reqMessage=`
+    <send retrans="500">
+      <![CDATA[
+
+        ACK sip:[$remote_contact] SIP/2.0
+        Via: SIP/2.0/[transport] [local_ip]:[local_port];branch=[branch]
+        From: sipp <sip:sipp@[local_ip]:[local_port]>;tag=[pid]SIPpTag01[call_number]
+        To: [$remote_from]
+        Call-ID: [call_id]
+        Supported: timer,100rel
+        CSeq: ${uasCSeq} ${method}
+        Contact: sip:sipp@[local_ip]:[local_port]
+        Max-Forwards: 70
+        Subject: Performance Test
+        ${sdp}
+
+      ]]>
+    </send>
+    `;
+uasCSeq++;
+editor.setValue(`${editor.getValue()}\n${reqMessage}`);
+};
+
+uasSendAckNoSdpB.addEventListener('click',()=>{
+  uasCSeq--;
+  generateUASAck(false);
+  uasSendAckNoSdpB.disabled=true;
+  uasSendAckSdpB.disabled=true;
+  recvInviteB.disabled=false;
+  uasRecvUpdateB.disabled=false;
+  uasSendInviteB.disabled=false;
+  uasRecvByeB.disabled=false;
+  uasSendByeB.disabled=false;
+});
+
+uasSendAckSdpB.addEventListener('click',()=>{
+  uasCSeq--;
+  generateUASAck(true);
+  uasSendAckNoSdpB.disabled=true;
+  uasSendAckSdpB.disabled=true;
+  recvInviteB.disabled=false;
+  uasRecvUpdateB.disabled=false;
+  uasSendInviteB.disabled=false;
+  uasRecvByeB.disabled=false;
+  uasSendByeB.disabled=false;
+});
 
 
 // Recv BYE ****************************************************************************************
@@ -558,9 +655,9 @@ uasSendByeB.addEventListener('click',()=>{
     <send retrans="500">
       <![CDATA[
 
-        BYE sip:[service]@[remote_ip]:[remote_port] SIP/2.0
+        BYE sip:[$remote_contact] SIP/2.0
         Via: SIP/2.0/[transport] [local_ip]:[local_port];branch=[branch]
-        From: [$remote_to];tag=[pid]SIPpTag01[call_number]
+        From: sipp <sip:sipp@[local_ip]:[local_port]>;tag=[pid]SIPpTag01[call_number]
         To: [$remote_from]
         Call-ID: [call_id]
         CSeq: ${uasCSeq} BYE
