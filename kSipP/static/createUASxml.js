@@ -513,6 +513,11 @@ uasSendInviteB.addEventListener('click',()=>{
 
 uasSendInvSdpB.addEventListener('click',()=>{
   generateUASRequest("INVITE", true);
+  const response100 =`
+    <recv response="100" optional="true">
+    </recv>
+  `;
+  editor.setValue(`${editor.getValue()}\n${response100}`);
   uasSendInvD.style.display='none';
   uasSendRqstD.style.display='block';
   uasRecv200SendAckD.style.display='block';
@@ -521,6 +526,11 @@ uasSendInvSdpB.addEventListener('click',()=>{
 
 uasSendInvNoSdpB.addEventListener('click',()=>{
   generateUASRequest("INVITE", false);
+  const response100 =`
+    <recv response="100" optional="true">
+    </recv>
+  `;
+  editor.setValue(`${editor.getValue()}\n${response100}`);
   uasSendInvD.style.display='none';
   uasSendRqstD.style.display='block';
   uasRecv200SendAckD.style.display='block';
