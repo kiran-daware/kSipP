@@ -161,7 +161,7 @@
       ]]>
     </send>
     
-    <recv response="100" rtd="true">
+    <recv response="100" optional="true">
     </recv>
 
     <recv response="200" rtd="true">
