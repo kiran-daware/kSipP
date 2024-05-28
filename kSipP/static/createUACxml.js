@@ -13,7 +13,6 @@ const inviteWithSdpB=document.getElementById('invite-with-sdp');
 const inviteWithoutSdpB=document.getElementById('invite-without-sdp');
 // 1xx
 const receive1xxD=document.getElementById('recv-1xx');
-const receive100B=document.getElementById('recv-100');
 const receive180B=document.getElementById('recv-180');
 const receive183B=document.getElementById('recv-183');
 // Rel / Norel
@@ -167,24 +166,17 @@ function generateRequest(includeSDP) {
   sceName.disabled=true;
   start.disabled=true;
   if(method==='INVITE'){
-  receive100B.disabled=false;
   receive180B.disabled=false;
   receive183B.disabled=false;
   recv2xxD.style.display='block';
   recv200B.disabled=false;
-  }else{};
-};
-
-
-// Recv 1xx *************************
-receive100B.addEventListener('click', () => {
-const response100 = `
+  const response100 = `
     <recv response="100" optional="true">
     </recv>
     `;
-editor.setValue(`${editor.getValue()}\n${response100}`);
-receive100B.disabled=true;
-});
+  editor.setValue(`${editor.getValue()}\n${response100}`);
+  }else{};
+};
 
 let oxx=180;
 let fromto=true;
@@ -194,7 +186,6 @@ receive180B.addEventListener('click', () => {
   reliableD.style.display='block';
   prackD.style.display='none';
   oxx=180;
-  receive100B.disabled=true;
   receive180B.disabled=true;
   receive183B.disabled=true;
   recv200B.disabled=true;
@@ -207,7 +198,6 @@ receive183B.addEventListener('click', () => {
   reliableD.style.display='block';
   prackD.style.display='none';
   oxx=183;
-  receive100B.disabled=true;
   receive180B.disabled=true;
   receive183B.disabled=true;
   recv200B.disabled=true;
@@ -306,7 +296,6 @@ function sendPrack(wosdp){
     </send>
   `;
   editor.setValue(`${editor.getValue()}\n${sendPrack}`);
-  receive100B.disabled=true;
   recv200PrackB.disabled=false;
   recv200PrackB.style.display='inline-block';
   pWithSdpB.style.display='none';
@@ -338,7 +327,6 @@ const response200 =`
     </recv>
     `;
 editor.setValue(`${editor.getValue()}\n${response200}`);
-receive100B.disabled=true;
 receive180B.disabled=true;
 receive183B.disabled=true;
 recv200B.disabled=true;
@@ -352,7 +340,6 @@ recvFailCodeD.style.display='none';
 // Recv Failure Cause Code
 recvFxxB.addEventListener('click',()=>{
   recvCauseD.style.display='block';
-  receive100B.disabled=true;
   receive180B.disabled=true;
   receive183B.disabled=true;
   recv200B.disabled=true;
@@ -503,7 +490,6 @@ midWsdp.addEventListener('click',()=>{
   midDiaSdpD.style.display='none';
   if(method!='INVITE'){midRecv200B.style.display='block';
     midRecv200B.disabled=false;};
-  receive100B.disabled=true;
 });
 
 midWoSdp.addEventListener('click',()=>{
@@ -512,7 +498,6 @@ midWoSdp.addEventListener('click',()=>{
   midDiaSdpD.style.display='none';
   if(method!='INVITE'){midRecv200B.style.display='block';
     midRecv200B.disabled=false;};
-  receive100B.disabled=true;
 });
 
 midRecv200B.addEventListener('click', () => {
