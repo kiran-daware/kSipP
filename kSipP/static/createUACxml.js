@@ -140,7 +140,7 @@ function generateRequest(includeSDP) {
         Content-Length: [len]
 
         v=0
-        o=user1 53655765 2353687637 IN IP[local_ip_type] [local_ip]
+        o=user1 53655765 235368763${cseq} IN IP[local_ip_type] [local_ip]
         s=-
         c=IN IP[media_ip_type] [media_ip]
         t=0 0
@@ -155,7 +155,7 @@ function generateRequest(includeSDP) {
         ${method} sip:[service]@[remote_ip]:[remote_port] SIP/2.0
         Via: SIP/2.0/[transport] [local_ip]:[local_port];branch=[branch]
         From: sipp <sip:sipp@[local_ip]:[local_port]>;tag=[pid]SIPpTag00[call_number]
-        To: sut <sip:[service]@[remote_ip]:[remote_port]>
+        To: sut <sip:[service]@[remote_ip]:[remote_port]>[peer_tag_param]
         Call-ID: [call_id]
         Supported: timer,100rel
         CSeq: ${cseq} ${method}
@@ -277,7 +277,7 @@ function sendPrack(wosdp){
         Content-Length: [len]
 
         v=0
-        o=user1 53655765 2353687638 IN IP[local_ip_type] [local_ip]
+        o=user1 53655765 235368763${cseq} IN IP[local_ip_type] [local_ip]
         s=-
         c=IN IP[media_ip_type] [media_ip]
         t=0 0
@@ -384,7 +384,7 @@ const sdp=wosdp
         Content-Length: [len]
 
         v=0
-        o=user1 53655765 2353687639 IN IP[local_ip_type] [local_ip]
+        o=user1 53655765 235368763${cseq} IN IP[local_ip_type] [local_ip]
         s=-
         c=IN IP[media_ip_type] [media_ip]
         t=0 0
@@ -567,7 +567,7 @@ function uacSendMid200(isSdp){
         Content-Length: [len]
 
         v=0
-        o=user1 53655765 2353687640 IN IP[local_ip_type] [local_ip]
+        o=user1 53655765 235368763${cseq} IN IP[local_ip_type] [local_ip]
         s=-
         c=IN IP[media_ip_type] [media_ip]
         t=0 0
@@ -685,6 +685,8 @@ updateB.disabled=true;
 playMediaB.disabled=true;
 pauseB.disabled=true;
 pauseMsI.disabled=true;
+uacRecvMidInvB.disabled=true;
+uacRecvMidUpdateB.disabled=true;
 saveButtonB.style.display='block';
 });
 
@@ -727,6 +729,7 @@ updateB.disabled=true;
 playMediaB.disabled=true;
 pauseB.disabled=true;
 pauseMsI.disabled=true;
+uacRecvMidInvB.disabled=true;
+uacRecvMidUpdateB.disabled=true;
 saveButtonB.style.display='block';
 });
-
