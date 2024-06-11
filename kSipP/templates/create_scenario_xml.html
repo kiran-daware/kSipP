@@ -95,6 +95,18 @@
 
     <br>
 
+    <div id="uac-r-mid-req-d" style="display:none;">
+      <button id="uac-r-mid-invite-b">Recv INVITE</button>
+      <button id="uac-r-mid-update-b">Recv UPDATE</button>
+    </div>
+    <div id="uac-s-mid-200-d" style="display:none;">
+      <button id="uac-s-mid-200-sdp-b">Send 200OK with SDP</button>
+      <button id="uac-s-mid-200-nosdp-b">200OK without SDP</button>
+      <button id="uac-r-mid-ack-b" style="display:none;">Recv ACK</button>
+    </div>
+    
+    <br>
+
     <div id="sendrecv-bye" style="display: none;">
       <button id="send-bye">Send BYE</button>
       <button id="recv-bye">Recv BYE</button>
@@ -144,10 +156,15 @@
 
     <div id="uas-send-request" style="display: none;">
       <button id="uas-send-inv-b">Send INVITE</button>
+      <button id="uas-send-update-b">Send Update</button>
     </div>
     <div id="uas-send-inv" style="display: none;">
       <button id="uas-send-inv-sdp-b">Send INVITE with SDP</button>
       <button id="uas-send-inv-nosdp-b">without SDP</button>
+    </div>
+    <div id="uas-send-update" style="display: none;">
+      <button id="uas-send-update-sdp-b">Send UPDATE with SDP</button>
+      <button id="uas-send-update-nosdp-b">without SDP</button>
     </div>
     <div id="uas-recv200-sendack" style="display: none;">
       <button id="uas-recv-200">Recv 200OK</button>

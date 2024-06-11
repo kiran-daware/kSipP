@@ -41,7 +41,7 @@ const playMediaB=document.getElementById('play-media-b');
 const pauseD=document.getElementById('pause-d');
 const pauseB=document.getElementById('pause-b');
 const pauseMsI=document.getElementById('pause-ms');
-// mid dialogue requests
+// send mid dialogue requests
 const midDiaReqD=document.getElementById('mid-dia-req');
 const reInvB=document.getElementById('reinv-b');
 const updateB=document.getElementById('update-b');
@@ -49,6 +49,14 @@ const midDiaSdpD=document.getElementById('mid-dia-sdp-div');
 const midWsdp=document.getElementById('mid-with-sdp');
 const midWoSdp=document.getElementById('mid-without-sdp');
 const midRecv200B=document.getElementById('mid-req-200-b');
+// recv mid dialogue requests
+const uacRecvMidReqD=document.getElementById("uac-r-mid-req-d");
+const uacRecvMidInvB=document.getElementById("uac-r-mid-invite-b");
+const uacRecvMidUpdateB=document.getElementById("uac-r-mid-update-b");
+const uacSendMid200D=document.getElementById("uac-s-mid-200-d");
+const uacSendMid200SdpB=document.getElementById("uac-s-mid-200-sdp-b");
+const uacSendMid200NoSdpB=document.getElementById("uac-s-mid-200-nosdp-b");
+const uacRecvMidAckB=document.getElementById("uac-r-mid-ack-b");
 // BYE
 const sendrecvByeD=document.getElementById('sendrecv-bye');
 const sendByeB=document.getElementById('send-bye');
@@ -132,7 +140,7 @@ function generateRequest(includeSDP) {
         Content-Length: [len]
 
         v=0
-        o=user1 53655765 2353687637 IN IP[local_ip_type] [local_ip]
+        o=user1 53655765 235368763${cseq} IN IP[local_ip_type] [local_ip]
         s=-
         c=IN IP[media_ip_type] [media_ip]
         t=0 0
@@ -147,7 +155,7 @@ function generateRequest(includeSDP) {
         ${method} sip:[service]@[remote_ip]:[remote_port] SIP/2.0
         Via: SIP/2.0/[transport] [local_ip]:[local_port];branch=[branch]
         From: sipp <sip:sipp@[local_ip]:[local_port]>;tag=[pid]SIPpTag00[call_number]
-        To: sut <sip:[service]@[remote_ip]:[remote_port]>
+        To: sut <sip:[service]@[remote_ip]:[remote_port]>[peer_tag_param]
         Call-ID: [call_id]
         Supported: timer,100rel
         CSeq: ${cseq} ${method}
@@ -269,7 +277,7 @@ function sendPrack(wosdp){
         Content-Length: [len]
 
         v=0
-        o=user1 53655765 2353687638 IN IP[local_ip_type] [local_ip]
+        o=user1 53655765 235368763${cseq} IN IP[local_ip_type] [local_ip]
         s=-
         c=IN IP[media_ip_type] [media_ip]
         t=0 0
@@ -376,7 +384,7 @@ const sdp=wosdp
         Content-Length: [len]
 
         v=0
-        o=user1 53655765 2353687639 IN IP[local_ip_type] [local_ip]
+        o=user1 53655765 235368763${cseq} IN IP[local_ip_type] [local_ip]
         s=-
         c=IN IP[media_ip_type] [media_ip]
         t=0 0
@@ -411,6 +419,7 @@ function disableButtsForAck(){
   playMediaB.disabled=false;
   invcseq++;
   midDiaReqD.style.display='block';
+  uacRecvMidReqD.style.display='block';
   reInvB.disabled=false;
   updateB.disabled=false;
   pauseD.style.display='inline-block';
@@ -454,7 +463,7 @@ pauseB.addEventListener('click',()=>{
   pauseMsI.disabled=true;
 });
 
-// mid dialogue requests
+// send mid dialogue requests
 // re-INVITE
 reInvB.addEventListener('click',()=>{
   midDiaReqD.style.display='none';
@@ -517,6 +526,123 @@ midRecv200B.addEventListener('click', () => {
 });
 
 
+
+// Recv mid dialogue requests ***************************
+
+function recvMidReq(method){
+  const recvReq =`
+    <recv request="${method}">
+    </recv>
+  `;
+  editor.setValue(`${editor.getValue()}\n${recvReq}`);
+  reInvB.disabled=true;
+  updateB.disabled=true;
+  playMediaB.disabled=true;
+  pauseB.disabled=true;
+  sendByeB.disabled=true;
+  recvByeB.disabled=true;
+  uacSendMid200D.style.display="block";
+  uacRecvMidInvB.disabled=true;
+  uacRecvMidUpdateB.disabled=true;
+  uacSendMid200SdpB.disabled=false;
+  uacSendMid200NoSdpB.disabled=false;
+}
+
+let isMidInvite=false;
+
+uacRecvMidInvB.addEventListener('click', () => {
+  recvMidReq("INVITE");
+  isMidInvite=true;
+});
+uacRecvMidUpdateB.addEventListener('click', () => {
+  recvMidReq("UPDATE");
+  isMidInvite=false;
+});
+
+
+
+function uacSendMid200(isSdp){
+  const sdp=isSdp
+  ?`Content-Type: application/sdp
+        Content-Length: [len]
+
+        v=0
+        o=user1 53655765 235368763${cseq} IN IP[local_ip_type] [local_ip]
+        s=-
+        c=IN IP[media_ip_type] [media_ip]
+        t=0 0
+        m=audio [media_port+10000] RTP/AVP 0
+        a=rtpmap:0 PCMU/8000`
+  : 'Content-Length: 0';
+
+  const msg200=`
+    <send>
+      <![CDATA[
+
+        SIP/2.0 200 OK
+        [last_Via:]
+        [last_From:]
+        [last_To:]
+        [last_Call-ID:]
+        [last_CSeq:]
+        [last_Record-Route:]
+        Supported: timer,100rel
+        Contact: <sip:[local_ip]:[local_port];transport=[transport]>
+        ${sdp}
+
+      ]]>
+    </send>
+  `;
+  editor.setValue(`${editor.getValue()}\n${msg200}`);
+};
+
+function isMidInvDisEnButts1(){
+  uacRecvMidAckB.style.display="inline-block";
+  uacRecvMidAckB.disabled=false;
+  uacSendMid200SdpB.disabled=true;
+  uacSendMid200NoSdpB.disabled=true;
+};
+
+function isMidInvDisEnButts2(){
+  uacSendMid200SdpB.disabled=true;
+  uacSendMid200NoSdpB.disabled=true;
+  uacRecvMidInvB.disabled=false;
+  uacRecvMidUpdateB.disabled=false;
+  reInvB.disabled=false;
+  updateB.disabled=false;
+  playMediaB.disabled=false;
+  pauseB.disabled=false;
+  sendByeB.disabled=false;
+  recvByeB.disabled=false;
+};
+
+uacSendMid200SdpB.addEventListener('click', () => {
+  uacSendMid200(true);
+  isMidInvite?isMidInvDisEnButts1():isMidInvDisEnButts2();
+});
+
+uacSendMid200NoSdpB.addEventListener('click', () => {
+  uacSendMid200(false);
+  isMidInvite?isMidInvDisEnButts1():isMidInvDisEnButts2();
+});
+
+uacRecvMidAckB.addEventListener('click', ()=>{
+  const recvAck=`
+    <recv request="ACK" crlf="true">
+    </recv>`;
+   editor.setValue(`${editor.getValue()}\n${recvAck}`);
+   uacRecvMidAckB.disabled=true;
+   uacRecvMidInvB.disabled=false;
+   uacRecvMidUpdateB.disabled=false;
+   reInvB.disabled=false;
+   updateB.disabled=false;
+   playMediaB.disabled=false;
+   pauseB.disabled=false;
+   sendByeB.disabled=false;
+   recvByeB.disabled=false;
+});
+
+
 // Send BYE *************************
 sendByeB.addEventListener('click',()=>{
 const sendBye=`
@@ -559,6 +685,8 @@ updateB.disabled=true;
 playMediaB.disabled=true;
 pauseB.disabled=true;
 pauseMsI.disabled=true;
+uacRecvMidInvB.disabled=true;
+uacRecvMidUpdateB.disabled=true;
 saveButtonB.style.display='block';
 });
 
@@ -601,6 +729,7 @@ updateB.disabled=true;
 playMediaB.disabled=true;
 pauseB.disabled=true;
 pauseMsI.disabled=true;
+uacRecvMidInvB.disabled=true;
+uacRecvMidUpdateB.disabled=true;
 saveButtonB.style.display='block';
 });
-

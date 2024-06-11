@@ -48,6 +48,11 @@ const uasSendInvD=document.getElementById('uas-send-inv');
 const uasSendInvSdpB=document.getElementById('uas-send-inv-sdp-b');
 const uasSendInvNoSdpB=document.getElementById('uas-send-inv-nosdp-b');
 
+const uasSendUpdateB=document.getElementById('uas-send-update-b');
+const uasSendUpdateD=document.getElementById('uas-send-update');
+const uasSendUpdateSdpB=document.getElementById('uas-send-update-sdp-b');
+const uasSendUpdateNosdpB=document.getElementById('uas-send-update-nosdp-b');
+
 const uasRecv200SendAckD=document.getElementById('uas-recv200-sendack');
 const uasRecv200B=document.getElementById('uas-recv-200');
 const uasSendAckNoSdpB=document.getElementById('uas-send-ack-nosdp');
@@ -86,6 +91,7 @@ recvInviteB.addEventListener('click', () => {
   send200invSdpB.disabled=false;
   uasRecvUpdateB.disabled=true;
   uasSendInviteB.disabled=true;
+  uasSendUpdateB.disabled=true;
   uasRecvByeB.disabled=true;
   uasSendByeB.disabled=true;
 });
@@ -380,6 +386,7 @@ recvAckB.addEventListener('click',()=>{
    uasSendRqstD.style.display='block';
    uasRecvUpdateB.disabled=false;
    uasSendInviteB.disabled=false;
+   uasSendUpdateB.disabled=false;
    uasByeD.style.display='block';
    uasRecvByeB.disabled=false;
    uasSendByeB.disabled=false;
@@ -388,7 +395,7 @@ recvAckB.addEventListener('click',()=>{
 
 
 
-// Recv mid dialogue Requests from UAS
+// Recv mid dialogue Requests 
 
 uasRecvUpdateB.addEventListener('click',()=>{
   const recvMidUpdate=`
@@ -398,6 +405,7 @@ uasRecvUpdateB.addEventListener('click',()=>{
     uasRecvUpdateB.disabled=true;
     recvInviteB.disabled=true;
     uasSendInviteB.disabled=true;
+    uasSendUpdateB.disabled=true;
     uasSendByeB.disabled=true;
     uasRecvByeB.disabled=true;
     uasSend200updateSdpB.style.display='inline-block';
@@ -413,6 +421,7 @@ uasSend200updateSdpB.addEventListener('click',()=>{
   uasSend200updateSdpB.disabled=true;
   uasSend200updateNosdpB.disabled=true;
   recvInviteB.disabled=false;
+  uasSendUpdateB.disabled=false;
   uasRecvUpdateB.disabled=false;
   uasSendInviteB.disabled=false;
   uasSendByeB.disabled=false;
@@ -426,6 +435,7 @@ uasSend200updateNosdpB.addEventListener('click',()=>{
   uasSend200updateSdpB.disabled=true;
   uasSend200updateNosdpB.disabled=true;
   recvInviteB.disabled=false;
+  uasSendUpdateB.disabled=false;
   uasRecvUpdateB.disabled=false;
   uasSendInviteB.disabled=false;
   uasSendByeB.disabled=false;
@@ -435,7 +445,7 @@ uasSend200updateNosdpB.addEventListener('click',()=>{
 
 
 
-// New Mid-dialogue Request from UAS
+// Send New Mid-dialogue Request from UAS
 let uasCSeq=1;
 function newRequestFromUas(){
   var currentContent=editor.getValue();
@@ -501,6 +511,8 @@ editor.setValue(`${editor.getValue()}\n${reqMessage}`);
 
 
 // Send Re-INVITE ****************************************************************************************
+let isUasMidInvite = false;
+
 uasSendInviteB.addEventListener('click',()=>{
   uasSendRqstD.style.display='none';
   uasSendInvD.style.display='block';
@@ -509,10 +521,12 @@ uasSendInviteB.addEventListener('click',()=>{
   uasRecvUpdateB.disabled=true;
   uasRecvByeB.disabled=true;
   uasSendByeB.disabled=true;
+  uasSendUpdateB.disabled=true;
 });
 
 uasSendInvSdpB.addEventListener('click',()=>{
   generateUASRequest("INVITE", true);
+  isUasMidInvite = true;
   const response100 =`
     <recv response="100" optional="true">
     </recv>
@@ -526,6 +540,7 @@ uasSendInvSdpB.addEventListener('click',()=>{
 
 uasSendInvNoSdpB.addEventListener('click',()=>{
   generateUASRequest("INVITE", false);
+  isUasMidInvite = true;
   const response100 =`
     <recv response="100" optional="true">
     </recv>
@@ -538,6 +553,25 @@ uasSendInvNoSdpB.addEventListener('click',()=>{
 });
 
 
+function uasMidInvDEbutts200(){
+  uasRecv200B.disabled=true;
+  uasSendAckNoSdpB.style.display='inline-block';
+  uasSendAckNoSdpB.disabled=false;
+  uasSendAckSdpB.style.display='inline-block';
+  uasSendAckSdpB.disabled=false;
+}
+
+function uasMidReqDEbutts200(){
+  uasRecv200B.disabled=true;
+  uasSendInviteB.disabled=false;
+  uasSendUpdateB.disabled=false;
+  uasSendAckNoSdpB.disabled=true;
+  uasSendAckSdpB.disabled=true;
+  recvInviteB.disabled=false;
+  uasRecvUpdateB.disabled=false;
+  uasRecvByeB.disabled=false;
+  uasSendByeB.disabled=false;
+}
 
 // Recv 200OK ****************************************************************************************
 uasRecv200B.addEventListener('click',()=>{
@@ -546,11 +580,7 @@ uasRecv200B.addEventListener('click',()=>{
     </recv>
     `;
   editor.setValue(`${editor.getValue()}\n${response200}`);
-  uasRecv200B.disabled=true;
-  uasSendAckNoSdpB.style.display='inline-block';
-  uasSendAckNoSdpB.disabled=false;
-  uasSendAckSdpB.style.display='inline-block';
-  uasSendAckSdpB.disabled=false;
+  isUasMidInvite?uasMidInvDEbutts200():uasMidReqDEbutts200();
 });
 
 // UAS Send ACK **************************************************************************************
@@ -590,30 +620,48 @@ function generateUASAck(includeSDP) {
     `;
 uasCSeq++;
 editor.setValue(`${editor.getValue()}\n${reqMessage}`);
+uasMidReqDEbutts200();
 };
 
 uasSendAckNoSdpB.addEventListener('click',()=>{
   uasCSeq--;
   generateUASAck(false);
-  uasSendAckNoSdpB.disabled=true;
-  uasSendAckSdpB.disabled=true;
-  recvInviteB.disabled=false;
-  uasRecvUpdateB.disabled=false;
-  uasSendInviteB.disabled=false;
-  uasRecvByeB.disabled=false;
-  uasSendByeB.disabled=false;
 });
 
 uasSendAckSdpB.addEventListener('click',()=>{
   uasCSeq--;
   generateUASAck(true);
-  uasSendAckNoSdpB.disabled=true;
-  uasSendAckSdpB.disabled=true;
-  recvInviteB.disabled=false;
-  uasRecvUpdateB.disabled=false;
-  uasSendInviteB.disabled=false;
-  uasRecvByeB.disabled=false;
-  uasSendByeB.disabled=false;
+});
+
+
+// Send UPDATE from UAS
+uasSendUpdateB.addEventListener('click',()=>{
+  uasSendRqstD.style.display='none';
+  uasSendUpdateD.style.display='block';
+  uasSendInviteB.disabled=true;
+  recvInviteB.disabled=true;
+  uasRecvUpdateB.disabled=true;
+  uasRecvByeB.disabled=true;
+  uasSendByeB.disabled=true;
+  uasSendUpdateB.disabled=true;
+});
+
+uasSendUpdateSdpB.addEventListener('click',()=>{
+  generateUASRequest("UPDATE", true);
+  isUasMidInvite=false;
+  uasSendUpdateD.style.display='none';
+  uasSendRqstD.style.display='block';
+  uasRecv200SendAckD.style.display='block';
+  uasRecv200B.disabled=false;
+});
+
+uasSendUpdateNosdpB.addEventListener('click',()=>{
+  generateUASRequest("UPDATE", false);
+  isUasMidInvite=false;
+  uasSendUpdateD.style.display='none';
+  uasSendRqstD.style.display='block';
+  uasRecv200SendAckD.style.display='block';
+  uasRecv200B.disabled=false;
 });
 
 
@@ -652,6 +700,7 @@ uasRecvByeB.addEventListener('click',()=>{
   uasSendByeB.disabled=true;
   uasRecvUpdateB.disabled=true;
   uasSendInviteB.disabled=true;
+  uasSendUpdateB.disabled=true;
   saveButtonB.style.display='block';
 });
 
@@ -698,5 +747,6 @@ uasSendByeB.addEventListener('click',()=>{
   uasSendByeB.disabled=true;
   uasRecvUpdateB.disabled=true;
   uasSendInviteB.disabled=true;
+  uasSendUpdateB.disabled=true;
   saveButtonB.style.display='block';
 });
