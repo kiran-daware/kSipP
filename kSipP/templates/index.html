@@ -9,7 +9,7 @@
 <body>
     {% include "header.html" %} 
     
-    <div style="float: left; padding: 20px; width: 38%;">
+    <div style="float: left; width: 38%;">
     <form method="post" id="mainForm">
 
         {% csrf_token %}
@@ -45,7 +45,7 @@
 
 
 
-    <div style="float: left; padding: 20px; width: 52%;">
+    <div style="float: left; width: 52%;">
     
         <h3>Run SipP Scripts</h3>
         <p>uac: <span> {{ print_uac_command }}</span></p>

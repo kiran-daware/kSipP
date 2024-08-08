@@ -6,8 +6,6 @@ from django.core.validators import RegexValidator
 from django.core.exceptions import ValidationError
 
 
-
-
 class xmlForm(forms.Form):
 
     xmlPath = str(settings.BASE_DIR / 'kSipP' / 'xml')

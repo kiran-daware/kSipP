@@ -19,6 +19,8 @@ h1 a {
 .header {
   display: flex;
   align-items: end;
+  margin-bottom: 14px;
+  border-bottom: 4px solid #71695e;
 }
 #klogo {margin-right: 14px;}
 .menubar {
