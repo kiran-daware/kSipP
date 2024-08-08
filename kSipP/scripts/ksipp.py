@@ -38,9 +38,34 @@ def save_config_data(config_data):
     ConfigFile = os.path.join(settings.BASE_DIR, 'config.ini')
     with open(ConfigFile, 'w') as configfile:
         config.write(configfile)
-
 #########################################################################################
-############# function to get running Sipp Process ###############################
+############# Get Sipp Commands ######################################
+def sipp_commands(config_data):    
+    uacXml = f'{config_data["select_uac"]}'
+    uasXml = f'{config_data["select_uas"]}'
+    uacSrcPort = int(f"{config_data['src_port_uac']}")
+    protocol_uac = f'{config_data["protocol_uac"]}'
+    uasSrcPort = int(f"{config_data['src_port_uas']}")
+    protocol_uas = f'{config_data["protocol_uas"]}'
+    noOfCalls = int(f"{config_data['total_no_of_calls']}")
+    cps = int(f"{config_data['cps']}")
+
+    uac_remote=f"{config_data['uac_remote']}:{config_data['uac_remote_port']}"
+    uas_remote=f"{config_data['uas_remote']}:{config_data['uas_remote_port']}"
+    uacSrc=f"-i {config_data['local_addr']} -p {uacSrcPort}"
+    uasSrc=f"-i {config_data['local_addr']} -p {uasSrcPort}"
+
+    # below vars used on index.html
+    print_uac_command = f"sipp -sf {uacXml} {uac_remote} {uacSrc} -m {noOfCalls}"
+    if cps > 1: print_uac_command += f" -r {cps}"
+    if protocol_uac == 'tn' : print_uac_command += f" -t {protocol_uac}"
+
+    print_uas_command = f"sipp -sf {uasXml} {uas_remote} {uasSrc}"
+    if protocol_uas == 'tn': print_uas_command += f" -t {protocol_uas}"
+
+    return print_uac_command, print_uas_command
+#########################################################################################
+############# function to get running Sipp Process ######################################
 def get_sipp_processes():
     sipp_processes = []
     sipp_pattern = r"sipp"  # Regular expression to match "sipp" in the command-line

@@ -14,19 +14,13 @@
     <p>uac: <span> {{ print_uac_command }}</span></p>
     <p>uas: <span> {{ print_uas_command }} </span></p>
     <br />
-
+ 
     <form method="post" action="{% url 'run-script' %}" style="float: left; margin-right: 50px;">
         {% csrf_token %}
-        <input type="hidden" name="script" value="UAS">
-        <input type="submit" value="Run UAS">
+        <button type="submit" name="script" value="UAS">Run UAS</button>
+        <button type="submit" name="script" value="UAC">Run UAC</button>
     </form>
 
-    <form method="post" action="{% url 'run-script' %}" style="float: left; margin-right: 50px;">
-        {% csrf_token %}
-        <input type="hidden" name="script" value="UAC">
-        <input type="submit" value="Run UAC">
-    </form>
-    
     <div style="clear:both; max-width: 800px; padding-top: 20px;">    
     {{ sipp_error }}
     </div>
