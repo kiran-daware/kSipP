@@ -42,6 +42,13 @@
     editor.session.setMode("ace/mode/xml");
     editor.setTheme("ace/theme/chrome");
     editor.setFontSize('14px');
+    editor.commands.addCommand({
+        name: "find",
+        bindKey: { win: "Ctrl-F", mac: "Command-F" },
+        exec: function(editor) {
+            editor.execCommand("find");
+        }
+      });
 
     // Update the hidden input with the XML content before submitting the form
     var xmlContentInput = document.getElementById("xmlContentInput");

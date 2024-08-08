@@ -7,12 +7,7 @@
 </head>
 <body>
     {% include "header.html" %}
-    <div class="menubar">
-        <a class="active" href="/">Home</a>
-        <a href="/run-script">Run Scripts</a>
-        <a href="/modify-xml">Modify Xml</a>
-        <a href="/create-scenario-xml">Create Xml</a>
-    </div>
+
     <pre style="float: left; margin-right: 20px;">
         <h2 style="margin-left: 50px;">UAC Scenario: {{ selectUAC }}</h2>
         {% for line in uacflow %}

@@ -595,3 +595,8 @@ def create_scenario_xml_view(request):
             file.write(xmlContent)
 
     return render(request, 'create_scenario_xml.html')
+
+
+def xml_list_view(request):
+
+    return render(request, 'xml_list.html')
