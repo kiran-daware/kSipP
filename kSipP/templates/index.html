@@ -15,7 +15,7 @@
         {% csrf_token %}
         {{ selectXml.as_p }}
 
-        <button type="submit" name="submitType" value="checkFlow" style="float: left; margin: 0 10px 10px 0;">Check XML Call Flow</button>
+        <button id="show-flow-button" class="show-flow" data-filename="uac_basic.xml" type="button" style="float: left; margin: 0 10px 10px 0;">Check XML Call Flow</button>
         <div id="MoreOptions" {% if not showMoreOptionsForm %}style="display: none;"{% endif %}>
             <div style="clear: both;">
                 <p>Dialed Number: {{moreOptionsForm.called_party_number}}{{moreOptionsForm.called_party_number.errors}}</p>
@@ -44,6 +44,12 @@
     </div>
 
 
+    <div id="flow-modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <div id="flow-diagram"></div>
+        </div>
+    </div>
 
     <div style="float: left; width: 61%;">
         <h3>Run SipP Scripts</h3>
@@ -134,10 +140,14 @@
             }
         });
 
+        let kpacketId = 1;
 
       </script>
-      
-      
+
+      <script src="{% static 'sdjs/snap.svg-min.js' %}"></script>
+      <script src="{% static 'sdjs/underscore-min.js' %}"></script>
+      <script src="{% static 'sdjs/sequence-diagram-kmod2.js' %}"></script>
+      <script src="{% static 'kflow.js' %}"></script>      
 
 </body>
 </html>
