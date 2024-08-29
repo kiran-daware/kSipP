@@ -1,8 +1,15 @@
 function generateUMLText(xmlDoc, fileName) {
-    let umlText = `
+    let umlText = '';
+    if(fileName.startsWith("uac")){
+    umlText = `
 participant ${fileName} as thisXml
 participant farEnd
-`;
+`;}
+    else if(fileName.startsWith("uas")){
+    umlText = `
+participant farEnd
+participant ${fileName} as thisXml
+`;}
     const allElements = xmlDoc.getElementsByTagName("*"); // Get all elements
     const sipMessages = [];
 
@@ -60,9 +67,9 @@ function parseXML(xmlString) {
     return xmlDoc;
 }
 
-function renderDiagram(umlText) {
+function renderDiagram(umlText, container) {
     const diagram = Diagram.parse(umlText);
-    diagram.drawSVG('flow-diagram', {theme: 'simple'});
+    diagram.drawSVG(container, {theme: 'simple'});
 }
 
 async function fetchXMLFile(fileName) {
@@ -75,23 +82,35 @@ async function fetchXMLFile(fileName) {
 }
 
 // Event listener for View Diagram links
+// Event listener for View Diagram links
 document.addEventListener('click', async (event) => {
     if (event.target && event.target.classList.contains('show-flow')) {
         event.preventDefault();
+
         // Clear the old diagram
-        const container = document.getElementById('flow-diagram');
+        const container = document.getElementById('flow-diagram1');
+        const container2 = document.getElementById('flow-diagram2');
         container.innerHTML = '';
+        container2.innerHTML = '';
 
         const fileName = event.target.getAttribute('data-filename');
-        try {
-            const xmlText = await fetchXMLFile(fileName);
-            const xmlDoc = parseXML(xmlText);
-            const umlText = generateUMLText(xmlDoc, fileName);
-            renderDiagram(umlText);
-        } catch (error) {
-            console.error("Error:", error);
-            container.innerHTML = `<br>${error}`
-        }
+        const filename2 = event.target.getAttribute('data-filename2');
+
+        const renderFile = async (filename, container) => {
+            try {
+                const xmlText = await fetchXMLFile(filename);
+                const xmlDoc = parseXML(xmlText);
+                const umlText = generateUMLText(xmlDoc, filename);
+                renderDiagram(umlText, container);
+            } catch (error) {
+                console.error("Error:", error);
+                container.innerHTML = `<br>${error}`;
+            }
+        };
+
+        // Render both diagrams
+        await renderFile(fileName, container);
+        await renderFile(filename2, container2);
     }
 });
 

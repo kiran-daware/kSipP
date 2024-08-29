@@ -15,7 +15,7 @@
         {% csrf_token %}
         {{ selectXml.as_p }}
 
-        <button id="show-flow-button" class="show-flow" data-filename="uac_basic.xml" type="button" style="float: left; margin: 0 10px 10px 0;">Check XML Call Flow</button>
+        <button id="show-flow-button" class="show-flow" data-filename="{{config_data.select_uac}}" data-filename2="{{config_data.select_uas}}" type="button" style="float: left; margin: 0 10px 10px 0;">Check XML Call Flow</button>
         <div id="MoreOptions" {% if not showMoreOptionsForm %}style="display: none;"{% endif %}>
             <div style="clear: both;">
                 <p>Dialed Number: {{moreOptionsForm.called_party_number}}{{moreOptionsForm.called_party_number.errors}}</p>
@@ -47,7 +47,8 @@
     <div id="flow-modal" class="modal">
         <div class="modal-content">
             <span class="close">&times;</span>
-            <div id="flow-diagram"></div>
+            <div id="flow-diagram1"></div>
+            <div id="flow-diagram2"></div>
         </div>
     </div>
 

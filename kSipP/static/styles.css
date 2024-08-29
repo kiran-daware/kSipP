@@ -1,18 +1,13 @@
-
 html {
-  font-family: sans-serif;
-  color: #49443d;
-  background-color: #f8f6f2;
+  font-family:sans-serif; color:#49443d; background-color:#f8f6f2; height:100%;
 }
 body {
-  margin: 10px;
+  margin:10px; min-height:98%;
 }
 h1 a {
   color: #ff943f;
   text-decoration: underline #aeaeae;
 }
-
-li {margin-bottom: 10px;}
 .label1 {color: chocolate;
   background-color: beige;
   line-height: 28px;
@@ -93,19 +88,71 @@ li {margin-bottom: 10px;}
   padding: 20px;
   border: 1px solid #888;
   width: 80%; /* Could be more or less, depending on screen size */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px; /* Add space between diagrams */
+}
+
+/* Style for flow diagrams */
+#flow-diagram1, #flow-diagram2 {
+  flex: 1; /* Allow diagrams to grow and fill the available space */
+  max-width: 45%; /* Adjust the maximum width of each diagram */
+  min-width: 200px; /* Ensure a minimum width */
+  height: auto; /* Keep height auto to maintain aspect ratio */
+  border: 1px solid #ddd; /* Optional: add border to diagrams */
+  padding: 10px; /* Optional: add padding to diagrams */
+  box-sizing: border-box; /* Ensure padding does not affect width */
 }
 
 /* The Close Button */
 .close {
-  color: #aaa;
-  float: right;
-  font-size: 28px;
+  color: #fff;
+  position: absolute; /* Position the close button at the top right corner */
+  top: 38px;
+  left: 56px;
+  font-size: 32px;
+  padding: 28px;
   font-weight: bold;
+  cursor: pointer;
 }
 
 .close:hover,
 .close:focus {
   color: black;
   text-decoration: none;
-  cursor: pointer;
+}
+
+
+
+ul {
+  list-style-type: none;
+}
+li {
+  padding: 5px 10px;
+  transition: transform .2s
+}
+li:nth-child(odd) {
+  background-color: #f1f1f1;
+}
+li:nth-child(even) {
+  background-color: #eaeaea;
+}
+li:hover{background-color: #ffffff; transform: scale(1.04);} 
+.selected{background-color: #71695e !important; color: #f1f1f1 !important;}
+.selected a {color: #f1f1f1;}
+.selected a:hover {color: #ffffff;}
+#xml-lists ul {padding:0; width:49%; display: inline-block;}
+#xml-flow {float: left; width:33%; min-height: 80vh; background-color: beige;text-align: center;}
+.show-flow {cursor: default;}
+.download-button {
+  display: inline-flex;
+  align-items: center;
+  padding: 5px 9px;
+  transition: transform .2s;
+  color: #ababab;
+}
+.download-button:hover {
+  transform: scale(1.4);
+  color: #3b3b3b;
 }

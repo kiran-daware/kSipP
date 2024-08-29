@@ -10,6 +10,51 @@
 <body>
     {% include "header.html" %}
     
+    <div id="xml-lists" style="float: left; width:66%;">
+        <ul id="uac-list">
+            <!-- The list of UAC XML files will be dynamically inserted here -->
+        </ul>
+        <ul id="uas-list">
+            <!-- The list of UAS XML files will be dynamically inserted here -->
+        </ul>
+    </div>
+    <div id="xml-flow"style="float: left; width:33%;">
+        <div id="flow-diagram"></div>
+    </div> 
+    
+        <script>
+            // List of XML files
+            const uacXmlFiles=[
+             'uac_basic.xml',
+             'uac_hold_A.xml',
+             'uac_hold_B.xml',
+             'uac_media.xml',
+             'uac_options.xml',
+             'uac_prack.xml',
+             'uac_register_quick.xml',
+             'uac_reinvite_from_B.xml',
+             'uac_send_recv_update.xml'
+            ]
+            const uasXmlFiles=[
+             'uas_basic.xml',
+             'uas_hold_A.xml',
+             'uas_hold_B.xml',
+             'uas_media.xml',
+             'uas_options.xml',
+             'uas_prack.xml',
+             'uas_register_quick.xml',
+             'uas_reinvite_from_B.xml',
+             'uas_send_recv_update.xml'
+            ]
+    
+            // used in sequence-diagram-kmod.js
+            let kpacketId = 1;
+            console.log('kiran');
+        </script>
+        <script src="{% static 'sdjs/snap.svg-min.js' %}"></script>
+        <script src="{% static 'sdjs/underscore-min.js' %}"></script>
+        <script src="{% static 'sdjs/sequence-diagram-kmod2.js' %}"></script>
+        <script src="{% static 'listXml.js' %}"></script>  
     
 </body>
 </html>

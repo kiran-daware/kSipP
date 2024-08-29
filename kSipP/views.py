@@ -11,7 +11,6 @@ import os, time, signal, re, json
 import subprocess, psutil
 from .scripts.ksipp import get_sipp_processes, fetch_config_data, save_config_data, sipp_commands
 from .scripts.kstun import get_ip_info
-from .scripts.showXmlFlow import showXmlFlowScript
 from .scripts.modify import modifyHeaderScript, getHeadersFromSipMsgs, tmpXmlBehindNAT, modifynumberxmlpath
 
 
@@ -26,36 +25,6 @@ def index(request):
     selectXml = xmlForm(initial=config_data)
     ipConfig = configForm(initial=config_data)
     moreOptionsForm = moreSippOptionsForm(initial=config_data)
-
-    # Check XML file call Flow 
-    # if request.method =="POST" and 'submitType' in request.POST:
-    #     submit_type = request.POST['submitType']
-    #     if submit_type == 'checkFlow':
-    #         selectXml = xmlForm(request.POST)
-    #         if selectXml.is_valid():
-    #             selectUAC = selectXml.cleaned_data['select_uac']
-    #             selectUAS = selectXml.cleaned_data['select_uas']
-    #             # xml_file_path = str(settings.BASE_DIR / 'kSipP' / 'xml' / 'uac.xml')
-
-    #             uacflow = showXmlFlowScript(selectUAC)
-    #             uasflow = showXmlFlowScript(selectUAS)
-    #             return render(request, 'show_xml_flow.html', locals())
-    #################     
-    if request.method =="POST" and 'submitType' in request.POST:
-        submit_type = request.POST['submitType']
-        if submit_type == 'checkFlow':
-            selectXml = xmlForm(request.POST)
-            if selectXml.is_valid():
-                selectUAC = selectXml.cleaned_data['select_uac']
-                selectUAS = selectXml.cleaned_data['select_uas']
-
-                uacXmlPath = str(settings.BASE_DIR / 'kSipP' / 'xml' / selectUAC)
-                uasXmlPath = str(settings.BASE_DIR / 'kSipP' / 'xml' / selectUAS)
-
-                with open(uacXmlPath, "r") as f:
-                    xml_data = f.read()
-
-    ###########################
 
     if request.method == 'POST' and 'submitType' in request.POST:
         # submit_type = request.POST['submitType']
@@ -224,8 +193,7 @@ def index(request):
         'moreOptionsForm': moreOptionsForm,
         'sipp_processes': sipp_processes,
         'showMoreOptionsForm': showMoreOptionsForm if 'showMoreOptionsForm' in locals() else False,
-        'sipp_error':sipp_error if 'sipp_error' in locals() else False,
-        'xml_data': json.dumps(xml_data) if 'xml_data' in locals() else False
+        'sipp_error':sipp_error if 'sipp_error' in locals() else False
         }
 
     return render(request, 'index.html', context)
