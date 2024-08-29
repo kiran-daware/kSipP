@@ -329,152 +329,181 @@ def aceXmlEditor(request):
 
 
 
+def xmlEditor(request):
+    xmlName=request.GET.get('xml')
+    xmlPath = str(settings.BASE_DIR / 'kSipP' / 'xml' / xmlName)
+    with open(xmlPath, 'r') as file:
+        xmlContent = file.read()
+
+    # if request.method == 'POST':
+    #     xmlContent = request.POST.get('xml_content')
+    #     xmlName = request.POST.get('xml_name')
+    #     new_xml_name = request.POST.get('new_xml_name')
+    #     save_type = request.POST.get('save')
+    #     # Replace double line breaks with single line breaks
+    #     xmlContent = xmlContent.replace('\r\n', '\n')
+
+    #     if save_type == 'save': savingXmlName = xmlName
+    #     elif save_type == 'save_as': 
+    #         uacuas = 'uac' if xmlName.startswith('uac') else ('uas' if xmlName.startswith('uas') else None)
+    #         savingXmlName = f'{uacuas}_{new_xml_name}'
+    #     else: return redirect('modify-xml')
+        
+    #     with open(os.path.join(settings.BASE_DIR, 'kSipP', 'xml', f'{savingXmlName}.xml'), 'w', encoding='utf-8') as file:
+    #         file.write(xmlContent)
+    
+    if xmlContent is None:
+        return HttpResponse('No xml selected <a href="/modify-xml">Select here!</a>')
+
+    return render(request, 'xml_editor.html', {'xml_content':xmlContent, 'xml_name':xmlName})
+
+
+
 
 
 
 
 ########################## Run SipP Scripts ##########################
 
-def run_script_view(request):
+# def run_script_view(request):
 
-    config_data = fetch_config_data()
+#     config_data = fetch_config_data()
 
-    uacXml = f'{config_data["select_uac"]}'
-    uasXml = f'{config_data["select_uas"]}'
-    uacSrcPort = int(f"{config_data['src_port_uac']}")
-    protocol_uac = f'{config_data["protocol_uac"]}'
-    uasSrcPort = int(f"{config_data['src_port_uas']}")
-    protocol_uas = f'{config_data["protocol_uas"]}'
-    noOfCalls = int(f"{config_data['total_no_of_calls']}")
-    cps = int(f"{config_data['cps']}")
+#     uacXml = f'{config_data["select_uac"]}'
+#     uasXml = f'{config_data["select_uas"]}'
+#     uacSrcPort = int(f"{config_data['src_port_uac']}")
+#     protocol_uac = f'{config_data["protocol_uac"]}'
+#     uasSrcPort = int(f"{config_data['src_port_uas']}")
+#     protocol_uas = f'{config_data["protocol_uas"]}'
+#     noOfCalls = int(f"{config_data['total_no_of_calls']}")
+#     cps = int(f"{config_data['cps']}")
 
-    dialed_number = f'{config_data["called_party_number"]}'
-    calling_number = f'{config_data["calling_party_number"]}'
-    stun_server = {config_data['stun_server']}
+#     dialed_number = f'{config_data["called_party_number"]}'
+#     calling_number = f'{config_data["calling_party_number"]}'
+#     stun_server = {config_data['stun_server']}
 
-    sipp = str(settings.BASE_DIR / 'kSipP' / 'sipp' / 'sipp')
-    uacXmlPath = str(settings.BASE_DIR / 'kSipP' / 'xml' / uacXml)
-    uasXmlPath = str(settings.BASE_DIR / 'kSipP' / 'xml' / uasXml)
-    uac_remote=f"{config_data['uac_remote']}:{config_data['uac_remote_port']}"
-    uas_remote=f"{config_data['uas_remote']}:{config_data['uas_remote_port']}"
-    uacSrc=f"-i {config_data['local_addr']} -p {uacSrcPort}"
-    uasSrc=f"-i {config_data['local_addr']} -p {uasSrcPort}"
+#     sipp = str(settings.BASE_DIR / 'kSipP' / 'sipp' / 'sipp')
+#     uacXmlPath = str(settings.BASE_DIR / 'kSipP' / 'xml' / uacXml)
+#     uasXmlPath = str(settings.BASE_DIR / 'kSipP' / 'xml' / uasXml)
+#     uac_remote=f"{config_data['uac_remote']}:{config_data['uac_remote_port']}"
+#     uas_remote=f"{config_data['uas_remote']}:{config_data['uas_remote_port']}"
+#     uacSrc=f"-i {config_data['local_addr']} -p {uacSrcPort}"
+#     uasSrc=f"-i {config_data['local_addr']} -p {uasSrcPort}"
 
-    print_uac_command = f"sipp -sf {uacXml} {uac_remote} {uacSrc} -m {noOfCalls}"
-    if cps > 1: print_uac_command += f" -r {cps}"
-    if protocol_uac == 'tn' : print_uac_command += f" -t {protocol_uac}"
+#     print_uac_command = f"sipp -sf {uacXml} {uac_remote} {uacSrc} -m {noOfCalls}"
+#     if cps > 1: print_uac_command += f" -r {cps}"
+#     if protocol_uac == 'tn' : print_uac_command += f" -t {protocol_uac}"
 
-    print_uas_command = f"sipp -sf {uasXml} {uas_remote} {uasSrc}"
-    if protocol_uas == 'tn': print_uas_command += f" -t {protocol_uas}"
+#     print_uas_command = f"sipp -sf {uasXml} {uas_remote} {uasSrc}"
+#     if protocol_uas == 'tn': print_uas_command += f" -t {protocol_uas}"
 
 
 
     
-    ######## For behind NAT sipp
-    def stun4nat(xmlName, srcPort, stunServer):
-        stun_host_str = ''.join(stunServer)
-        nat_type, external_ip, external_port = get_ip_info(stun_host=stun_host_str, source_port=int(srcPort))
-        if external_ip is not None and external_port is not None:
-            newXmlPath = tmpXmlBehindNAT(xmlName, external_ip, external_port)
-        else:
-            return None
-        return newXmlPath
+#     ######## For behind NAT sipp
+#     def stun4nat(xmlName, srcPort, stunServer):
+#         stun_host_str = ''.join(stunServer)
+#         nat_type, external_ip, external_port = get_ip_info(stun_host=stun_host_str, source_port=int(srcPort))
+#         if external_ip is not None and external_port is not None:
+#             newXmlPath = tmpXmlBehindNAT(xmlName, external_ip, external_port)
+#         else:
+#             return None
+#         return newXmlPath
     
 
-    if request.method == 'POST':
+#     if request.method == 'POST':
 
-        def run_sipp_in_background(command, output_file):
-            with open(output_file, 'w') as f:
-                process = subprocess.Popen(command, stdout=f, stderr=subprocess.STDOUT,shell=True, text=True)
-            return process
+#         def run_sipp_in_background(command, output_file):
+#             with open(output_file, 'w') as f:
+#                 process = subprocess.Popen(command, stdout=f, stderr=subprocess.STDOUT,shell=True, text=True)
+#             return process
 
-        scriptName = request.POST.get('script')
-        if scriptName == 'UAC':
-            try:
-                if any(stun_server):
-                    stunnedPath = stun4nat(uacXml, uacSrcPort, stun_server)
-                    if stunnedPath is not None:
-                        uacXmlPath = stunnedPath
+#         scriptName = request.POST.get('script')
+#         if scriptName == 'UAC':
+#             try:
+#                 if any(stun_server):
+#                     stunnedPath = stun4nat(uacXml, uacSrcPort, stun_server)
+#                     if stunnedPath is not None:
+#                         uacXmlPath = stunnedPath
 
-                    else: return HttpResponse(f'Stun server at {stun_server} is not responding!')
+#                     else: return HttpResponse(f'Stun server at {stun_server} is not responding!')
 
-                if dialed_number or calling_number:
-                    uacXmlPath = modifynumberxmlpath(uacXmlPath, calling_number, dialed_number)
+#                 if dialed_number or calling_number:
+#                     uacXmlPath = modifynumberxmlpath(uacXmlPath, calling_number, dialed_number)
 
-                uacCommand = f"{sipp} -sf {uacXmlPath} {uac_remote} {uacSrc} -m {noOfCalls} -r {cps} -t {protocol_uac}"
-                outputFile = f'{uacXml}.log'
-                uacProc = run_sipp_in_background(uacCommand, outputFile)
-                # uacProc=subprocess.Popen(uacCommand,shell=True)
-                time.sleep(0.3)
-                # Check if Process has immediately exited
-                return_code = uacProc.poll()
-                if return_code != 0:
-                    outputFilePath = os.path.join(settings.BASE_DIR, outputFile)
-                    with open(outputFilePath, 'r') as file:
-                        lines = file.readlines()
-                        # Extract the last 'num_lines' lines from the list
-                        last_lines = lines[-15:]
-                        sipp_error = '*****'.join(last_lines)
+#                 uacCommand = f"{sipp} -sf {uacXmlPath} {uac_remote} {uacSrc} -m {noOfCalls} -r {cps} -t {protocol_uac}"
+#                 outputFile = f'{uacXml}.log'
+#                 uacProc = run_sipp_in_background(uacCommand, outputFile)
+#                 # uacProc=subprocess.Popen(uacCommand,shell=True)
+#                 time.sleep(0.3)
+#                 # Check if Process has immediately exited
+#                 return_code = uacProc.poll()
+#                 if return_code != 0:
+#                     outputFilePath = os.path.join(settings.BASE_DIR, outputFile)
+#                     with open(outputFilePath, 'r') as file:
+#                         lines = file.readlines()
+#                         # Extract the last 'num_lines' lines from the list
+#                         last_lines = lines[-15:]
+#                         sipp_error = '*****'.join(last_lines)
 
-            except Exception as e:
-                sipp_error = f"Error: {e}"
-                # return HttpResponse(f"Error: {e}")
+#             except Exception as e:
+#                 sipp_error = f"Error: {e}"
+#                 # return HttpResponse(f"Error: {e}")
             
-        if scriptName =='UAS':
-            try:
-                if any(stun_server):                    
-                    stunnedPath = stun4nat(uasXml, uasSrcPort, stun_server)
-                    if stunnedPath is not None:
-                        uasXmlPath = stunnedPath
+#         if scriptName =='UAS':
+#             try:
+#                 if any(stun_server):                    
+#                     stunnedPath = stun4nat(uasXml, uasSrcPort, stun_server)
+#                     if stunnedPath is not None:
+#                         uasXmlPath = stunnedPath
 
-                    else: return HttpResponse(f'Stun server at {stun_server} is not responding!')
+#                     else: return HttpResponse(f'Stun server at {stun_server} is not responding!')
 
-                uasCommand = f"{sipp} -sf {uasXmlPath} {uas_remote} {uasSrc} -t {protocol_uas}"
-                outputFile = f'{uasXml}.log'
-                uasProc=run_sipp_in_background(uasCommand, outputFile)
-                time.sleep(0.3)
-                # Check if Process has immediately exited
-                return_code = uasProc.poll()
-                if return_code != 0:
-                    outputFilePath = os.path.join(settings.BASE_DIR, outputFile)
-                    with open(outputFilePath, 'r') as file:
-                        lines = file.readlines()
-                        # Extract the last 'num_lines' lines from the list
-                        last_lines = lines[-15:]
-                        sipp_error = '*****'.join(last_lines)
+#                 uasCommand = f"{sipp} -sf {uasXmlPath} {uas_remote} {uasSrc} -t {protocol_uas}"
+#                 outputFile = f'{uasXml}.log'
+#                 uasProc=run_sipp_in_background(uasCommand, outputFile)
+#                 time.sleep(0.3)
+#                 # Check if Process has immediately exited
+#                 return_code = uasProc.poll()
+#                 if return_code != 0:
+#                     outputFilePath = os.path.join(settings.BASE_DIR, outputFile)
+#                     with open(outputFilePath, 'r') as file:
+#                         lines = file.readlines()
+#                         # Extract the last 'num_lines' lines from the list
+#                         last_lines = lines[-15:]
+#                         sipp_error = '*****'.join(last_lines)
                         
-            except Exception as e:
-                sipp_error = f"Error: {e}"
-                # return HttpResponse(f"Error: {e}")
+#             except Exception as e:
+#                 sipp_error = f"Error: {e}"
+#                 # return HttpResponse(f"Error: {e}")
 
-    if request.method == 'POST' and 'send_signal' in request.POST:
-        send_signal = request.POST.get('send_signal')
-        # Handle the POST request for killing the process here
-        pid_to_kill = request.POST.get('pid_to_kill')
-        script_name = request.POST.get('script_name')
+#     if request.method == 'POST' and 'send_signal' in request.POST:
+#         send_signal = request.POST.get('send_signal')
+#         # Handle the POST request for killing the process here
+#         pid_to_kill = request.POST.get('pid_to_kill')
+#         script_name = request.POST.get('script_name')
 
-        xml_wo_ext = script_name.rsplit(".", 1)[0]
+#         xml_wo_ext = script_name.rsplit(".", 1)[0]
 
-        if send_signal == 'Kill':
-            try:
-                process = psutil.Process(int(pid_to_kill))
-                process.terminate()  # You can also use process.kill() for a more forceful termination
-            except psutil.NoSuchProcess:
-                pass  # The process with the given PID doesn't exist or already terminated
+#         if send_signal == 'Kill':
+#             try:
+#                 process = psutil.Process(int(pid_to_kill))
+#                 process.terminate()  # You can also use process.kill() for a more forceful termination
+#             except psutil.NoSuchProcess:
+#                 pass  # The process with the given PID doesn't exist or already terminated
         
-        elif send_signal == 'CheckOutput':
-            try:
-                process = psutil.Process(int(pid_to_kill))
-                os.kill(process.pid, signal.SIGUSR2)
-                return redirect('display_sipp_screen', xml=xml_wo_ext, pid=process.pid)
+#         elif send_signal == 'CheckOutput':
+#             try:
+#                 process = psutil.Process(int(pid_to_kill))
+#                 os.kill(process.pid, signal.SIGUSR2)
+#                 return redirect('display_sipp_screen', xml=xml_wo_ext, pid=process.pid)
 
-            except (psutil.NoSuchProcess, ProcessLookupError):
-                return redirect('display_sipp_screen', xml=xml_wo_ext, pid=pid_to_kill)
+#             except (psutil.NoSuchProcess, ProcessLookupError):
+#                 return redirect('display_sipp_screen', xml=xml_wo_ext, pid=pid_to_kill)
 
-    sipp_processes = get_sipp_processes()
+#     sipp_processes = get_sipp_processes()
 
-    return render(request, 'run_script_template.html', locals())
-
+#     return render(request, 'run_script_template.html', locals())
 
 
 

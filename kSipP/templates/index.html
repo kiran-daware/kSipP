@@ -71,7 +71,7 @@
         <div style="clear: both;"></div>
         <h3>Running SipP Processes:</h3>
         {% if sipp_processes %}
-            <ul>
+            <ul id="running-sipp-list">
                 {% for process in sipp_processes %}
                     <li>
                         pid: {{ process.pid }}, {{ process.command_line }}
