@@ -10,11 +10,11 @@
 <body>
     {% include "header.html" %}
     
-    <div id="xml-lists" style="float: left; width:66%;">
+    <div id="xml-lists" style="float: left; width:66%; display:flex;">
         <ul id="uac-list">
             <!-- The list of UAC XML files will be dynamically inserted here -->
         </ul>
-        <ul id="uas-list">
+        <ul id="uas-list" style="margin-left:5px;">
             <!-- The list of UAS XML files will be dynamically inserted here -->
         </ul>
     </div>
@@ -28,8 +28,8 @@
         <script>
             const uacListJson = document.getElementById('uac-list-json')
             const uacXmlFiles = JSON.parse(uacListJson.textContent);
-            const uasListJson = document.getElementById('uac-list-json')
-            const uasXmlFiles = JSON.parse(uacListJson.textContent);
+            const uasListJson = document.getElementById('uas-list-json')
+            const uasXmlFiles = JSON.parse(uasListJson.textContent);
             console.log(uasXmlFiles)
 
             // List of XML files

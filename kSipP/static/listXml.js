@@ -76,7 +76,7 @@ document.addEventListener('click', async (event) => {
 });
 
 async function fetchXMLFile(fileName) {
-    const response = await fetch(`https://kiran-daware.github.io/sipp-xml/xml/${fileName}`);
+    const response = await fetch(`/xml/${fileName}`);
     if (!response.ok) {
         throw new Error(`Could not fetch ${fileName}`);
     }
