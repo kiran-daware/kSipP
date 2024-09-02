@@ -12,8 +12,8 @@
 
 
 <!-- Create a div to contain the editor -->
-<h1 class="newpageh1">{{ xml_name }}.xml</h1>
-<form method="post" action="{% url 'xml-editor' %}">
+<h1 class="newpageh1">{{ xml_name }}</h1>
+<form method="post" action="{% url 'edit-xml' %}">
 {% csrf_token %}
 <input type="hidden" name="xml_content" id="xmlContentInput" value="{{ xml_content }}">
 <input type="hidden" name="xml_name" value="{{ xml_name }}">
@@ -31,7 +31,7 @@
     <button type="submit" name="exit" value="exit">Exit</button>
     <input type="hidden" name="save" id="clickedButtonInput" value="">
     {% if save %}
-    Successfully Saved to <b>{{ xml_name }}.xml</b>
+    Successfully Saved to <b>{{ xml_name }}</b>
     {% endif %}
 </div>
 </form>

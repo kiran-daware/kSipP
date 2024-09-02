@@ -301,63 +301,72 @@ def modifyXml(request):
 
 
 
-def aceXmlEditor(request):
-    xml_content = None
-    if request.method == 'POST':
-        xml_content = request.POST.get('xml_content')
-        xml_name = request.POST.get('xml_name')
-        new_xml_name = request.POST.get('new_xml_name')
-        save_type = request.POST.get('save')
-        # Replace double line breaks with single line breaks
-        xml_content = xml_content.replace('\r\n', '\n')
+# def aceXmlEditor(request):
+#     xml_content = None
+#     if request.method == 'POST':
+#         xml_content = request.POST.get('xml_content')
+#         xml_name = request.POST.get('xml_name')
+#         new_xml_name = request.POST.get('new_xml_name')
+#         save_type = request.POST.get('save')
+#         # Replace double line breaks with single line breaks
+#         xml_content = xml_content.replace('\r\n', '\n')
 
-        if save_type == 'save': savingXmlName = xml_name
-        elif save_type == 'save_as': 
-            uacuas = 'uac' if xml_name.startswith('uac') else ('uas' if xml_name.startswith('uas') else None)
-            savingXmlName = f'{uacuas}_{new_xml_name}'
-        else: return redirect('modify-xml')
+#         if save_type == 'save': savingXmlName = xml_name
+#         elif save_type == 'save_as': 
+#             uacuas = 'uac' if xml_name.startswith('uac') else ('uas' if xml_name.startswith('uas') else None)
+#             savingXmlName = f'{uacuas}_{new_xml_name}'
+#         else: return redirect('modify-xml')
         
-        with open(os.path.join(settings.BASE_DIR, 'kSipP', 'xml', f'{savingXmlName}.xml'), 'w', encoding='utf-8') as file:
-            file.write(xml_content)
+#         with open(os.path.join(settings.BASE_DIR, 'kSipP', 'xml', f'{savingXmlName}.xml'), 'w', encoding='utf-8') as file:
+#             file.write(xml_content)
     
-    if xml_content is None:
-        return HttpResponse('No xml selected <a href="/modify-xml">Select here!</a>')
+#     if xml_content is None:
+#         return HttpResponse('No xml selected <a href="/modify-xml">Select here!</a>')
 
-    return render(request, 'xml_editor.html', {'xml_content':xml_content, 'xml_name':savingXmlName, 'save':save_type})
+#     return render(request, 'xml_editor.html', {'xml_content':xml_content, 'xml_name':savingXmlName, 'save':save_type})
 
 
 
 
 
 def xmlEditor(request):
-    xmlName=request.GET.get('xml')
-    xmlPath = str(settings.BASE_DIR / 'kSipP' / 'xml' / xmlName)
-    with open(xmlPath, 'r') as file:
-        xmlContent = file.read()
+    if request.method != 'POST':
+        xmlName=request.GET.get('xml')
+        if xmlName is None:
+            return HttpResponse('No xml selected <a href="/xml-list/">Select here!</a>')
+        xmlPath = str(settings.BASE_DIR / 'kSipP' / 'xml' / xmlName)
+        with open(xmlPath, 'r') as file:
+            xmlContent = file.read()
 
-    # if request.method == 'POST':
-    #     xmlContent = request.POST.get('xml_content')
-    #     xmlName = request.POST.get('xml_name')
-    #     new_xml_name = request.POST.get('new_xml_name')
-    #     save_type = request.POST.get('save')
-    #     # Replace double line breaks with single line breaks
-    #     xmlContent = xmlContent.replace('\r\n', '\n')
+    if request.method == 'POST':
+        xmlContent = request.POST.get('xml_content')
+        xmlName = request.POST.get('xml_name')
+        new_xml_name = request.POST.get('new_xml_name')
+        save_type = request.POST.get('save')
+        # Replace double line breaks with single line breaks
+        xmlContent = xmlContent.replace('\r\n', '\n')
 
-    #     if save_type == 'save': savingXmlName = xmlName
-    #     elif save_type == 'save_as': 
-    #         uacuas = 'uac' if xmlName.startswith('uac') else ('uas' if xmlName.startswith('uas') else None)
-    #         savingXmlName = f'{uacuas}_{new_xml_name}'
-    #     else: return redirect('modify-xml')
-        
-    #     with open(os.path.join(settings.BASE_DIR, 'kSipP', 'xml', f'{savingXmlName}.xml'), 'w', encoding='utf-8') as file:
-    #         file.write(xmlContent)
+        if save_type == 'save': savingXmlName = xmlName
+        elif save_type == 'save_as': 
+            uacuas = 'uac' if xmlName.startswith('uac') else ('uas' if xmlName.startswith('uas') else None)
+            savingXmlName = f'{uacuas}_{new_xml_name}.xml'
+        else: return redirect('index')
+
+        with open(os.path.join(settings.BASE_DIR, 'kSipP', 'xml', savingXmlName), 'w', encoding='utf-8') as file:
+            file.write(xmlContent)
+
+        xmlName = savingXmlName
+
     
     if xmlContent is None:
-        return HttpResponse('No xml selected <a href="/modify-xml">Select here!</a>')
+        return HttpResponse('No xml selected <a href="/xml-list">Select here!</a>')
 
-    return render(request, 'xml_editor.html', {'xml_content':xmlContent, 'xml_name':xmlName})
-
-
+    context = {
+        'xml_content':xmlContent,
+        'xml_name':xmlName,
+        'save': save_type if 'save_type' in locals() else False,
+    }
+    return render(request, 'xml_editor.html', context)
 
 
 ################### Show Sipp Screen ###############
