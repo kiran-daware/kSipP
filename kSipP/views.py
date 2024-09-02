@@ -12,6 +12,7 @@ import subprocess, psutil
 from .scripts.ksipp import get_sipp_processes, fetch_config_data, save_config_data, sipp_commands
 from .scripts.kstun import get_ip_info
 from .scripts.modify import modifyHeaderScript, getHeadersFromSipMsgs, tmpXmlBehindNAT, modifynumberxmlpath
+from .scripts.list import list_files_in_directory
 
 
 ################### Index Page Functions #############################
@@ -301,34 +302,6 @@ def modifyXml(request):
 
 
 
-# def aceXmlEditor(request):
-#     xml_content = None
-#     if request.method == 'POST':
-#         xml_content = request.POST.get('xml_content')
-#         xml_name = request.POST.get('xml_name')
-#         new_xml_name = request.POST.get('new_xml_name')
-#         save_type = request.POST.get('save')
-#         # Replace double line breaks with single line breaks
-#         xml_content = xml_content.replace('\r\n', '\n')
-
-#         if save_type == 'save': savingXmlName = xml_name
-#         elif save_type == 'save_as': 
-#             uacuas = 'uac' if xml_name.startswith('uac') else ('uas' if xml_name.startswith('uas') else None)
-#             savingXmlName = f'{uacuas}_{new_xml_name}'
-#         else: return redirect('modify-xml')
-        
-#         with open(os.path.join(settings.BASE_DIR, 'kSipP', 'xml', f'{savingXmlName}.xml'), 'w', encoding='utf-8') as file:
-#             file.write(xml_content)
-    
-#     if xml_content is None:
-#         return HttpResponse('No xml selected <a href="/modify-xml">Select here!</a>')
-
-#     return render(request, 'xml_editor.html', {'xml_content':xml_content, 'xml_name':savingXmlName, 'save':save_type})
-
-
-
-
-
 def xmlEditor(request):
     if request.method != 'POST':
         xmlName=request.GET.get('xml')
@@ -358,9 +331,6 @@ def xmlEditor(request):
         xmlName = savingXmlName
 
     
-    if xmlContent is None:
-        return HttpResponse('No xml selected <a href="/xml-list">Select here!</a>')
-
     context = {
         'xml_content':xmlContent,
         'xml_name':xmlName,
@@ -493,5 +463,9 @@ def create_scenario_xml_view(request):
 
 
 def xml_list_view(request):
+    xml_dir = os.path.join(settings.BASE_DIR, 'kSipP', 'xml')
+    uac_list, uas_list = list_files_in_directory(xml_dir)
 
-    return render(request, 'xml_list.html')
+    context = {'uac_list':uac_list, 'uas_list':uas_list}
+
+    return render(request, 'xml_list.html', context)

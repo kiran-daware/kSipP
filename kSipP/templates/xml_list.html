@@ -21,10 +21,19 @@
     <div id="xml-flow"style="float: left; width:33%;">
         <div id="flow-diagram"></div>
     </div> 
-    
+
+    {{ uac_list|json_script:"uac-list-json" }}
+    {{ uas_list|json_script:"uas-list-json" }}
+
         <script>
+            const uacListJson = document.getElementById('uac-list-json')
+            const uacXmlFiles = JSON.parse(uacListJson.textContent);
+            const uasListJson = document.getElementById('uac-list-json')
+            const uasXmlFiles = JSON.parse(uacListJson.textContent);
+            console.log(uasXmlFiles)
+
             // List of XML files
-            const uacXmlFiles=[
+            /*const uacXmlFiles=[
              'uac_basic.xml',
              'uac_hold_A.xml',
              'uac_hold_B.xml',
@@ -34,8 +43,9 @@
              'uac_register_quick.xml',
              'uac_reinvite_from_B.xml',
              'uac_send_recv_update.xml'
-            ]
-            const uasXmlFiles=[
+            ]*/
+
+            /*const uasXmlFiles=[
              'uas_basic.xml',
              'uas_hold_A.xml',
              'uas_hold_B.xml',
@@ -45,7 +55,7 @@
              'uas_register_quick.xml',
              'uas_reinvite_from_B.xml',
              'uas_send_recv_update.xml'
-            ]
+            ]*/
     
             // used in sequence-diagram-kmod.js
             let kpacketId = 1;
