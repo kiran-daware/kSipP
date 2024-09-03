@@ -305,6 +305,7 @@ def modifyXml(request):
 def xmlEditor(request):
     if request.method != 'POST':
         xmlName=request.GET.get('xml')
+        referer=request.GET.get('back', 'index')
         if xmlName is None:
             return HttpResponse('No xml selected <a href="/xml-list/">Select here!</a>')
         xmlPath = str(settings.BASE_DIR / 'kSipP' / 'xml' / xmlName)
@@ -316,6 +317,7 @@ def xmlEditor(request):
         xmlName = request.POST.get('xml_name')
         new_xml_name = request.POST.get('new_xml_name')
         save_type = request.POST.get('save')
+        referer = request.POST.get('exit')
         # Replace double line breaks with single line breaks
         xmlContent = xmlContent.replace('\r\n', '\n')
 
@@ -323,7 +325,7 @@ def xmlEditor(request):
         elif save_type == 'save_as': 
             uacuas = 'uac' if xmlName.startswith('uac') else ('uas' if xmlName.startswith('uas') else None)
             savingXmlName = f'{uacuas}_{new_xml_name}.xml'
-        else: return redirect('index')
+        else:  return redirect(referer)
 
         with open(os.path.join(settings.BASE_DIR, 'kSipP', 'xml', savingXmlName), 'w', encoding='utf-8') as file:
             file.write(xmlContent)
@@ -335,6 +337,7 @@ def xmlEditor(request):
         'xml_content':xmlContent,
         'xml_name':xmlName,
         'save': save_type if 'save_type' in locals() else False,
+        'referer': referer if 'referer' in locals() else False,
     }
     return render(request, 'xml_editor.html', context)
 
