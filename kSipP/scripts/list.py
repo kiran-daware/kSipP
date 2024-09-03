@@ -1,6 +1,6 @@
 import os
 
-def list_files_in_directory(directory):
+def listXmlFiles(directory):
     try:
         uac_files = []
         uas_files = []

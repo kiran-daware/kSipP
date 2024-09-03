@@ -28,6 +28,7 @@
         <span>.xml</span>
         <button type="button" onclick="submitSaveAs()">Save</button>
     </div>
+    <input type="hidden" name="exit" value="{{referer}}">
     <button type="submit" name="exit" value="{{referer}}">Exit</button>
     <input type="hidden" name="save" id="clickedButtonInput" value="">
     {% if save %}

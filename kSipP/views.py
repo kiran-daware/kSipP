@@ -12,7 +12,7 @@ import subprocess, psutil
 from .scripts.ksipp import get_sipp_processes, fetch_config_data, save_config_data, sipp_commands
 from .scripts.kstun import get_ip_info
 from .scripts.modify import modifyHeaderScript, getHeadersFromSipMsgs, tmpXmlBehindNAT, modifynumberxmlpath
-from .scripts.list import list_files_in_directory
+from .scripts.list import listXmlFiles
 
 
 ################### Index Page Functions #############################
@@ -466,9 +466,16 @@ def create_scenario_xml_view(request):
 
 
 def xml_list_view(request):
-    xml_dir = os.path.join(settings.BASE_DIR, 'kSipP', 'xml')
-    uac_list, uas_list = list_files_in_directory(xml_dir)
+    xmlDir = os.path.join(settings.BASE_DIR, 'kSipP', 'xml')
+    uacList, uasList = listXmlFiles(xmlDir)
 
-    context = {'uac_list':uac_list, 'uas_list':uas_list}
+    if request.method =='GET' and 'delete' in request.GET:
+        deleteXmlName=request.GET.get('delete')
+        deleteXmlPath = os.path.join(xmlDir, deleteXmlName)
+        if os.path.exists(deleteXmlPath):
+            os.remove(deleteXmlPath)
+        
+        uacList, uasList = listXmlFiles(xmlDir)
 
+    context = {'uac_list':uacList, 'uas_list':uasList}
     return render(request, 'xml_list.html', context)
