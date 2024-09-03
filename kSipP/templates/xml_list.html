@@ -9,18 +9,22 @@
 </head>
 <body>
     {% include "header.html" %}
-    
-    <div id="xml-lists" style="float: left; width:66%; display:flex;">
+    <button>Upload new xml</button>
+    <button>Download all xml files</button>
+    <button>Restore preloaded xmls</button>
+    <div id="xml-lists">
         <ul id="uac-list">
             <!-- The list of UAC XML files will be dynamically inserted here -->
         </ul>
-        <ul id="uas-list" style="margin-left:5px;">
+        <ul id="uas-list">
             <!-- The list of UAS XML files will be dynamically inserted here -->
         </ul>
+    
+        <div id="xml-flow">
+            <div id="flow-diagram"></div>
+        </div> 
+
     </div>
-    <div id="xml-flow"style="float: left; width:33%;">
-        <div id="flow-diagram"></div>
-    </div> 
 
     {{ uac_list|json_script:"uac-list-json" }}
     {{ uas_list|json_script:"uas-list-json" }}
