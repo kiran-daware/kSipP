@@ -1,26 +1,20 @@
-
 html {
-  font-family: sans-serif;
-  color: #49443d;
-  background-color: #f8f6f2;
+  font-family:sans-serif; color:#49443d; background-color:#f8f6f2; height:100%;
 }
 body {
-  margin: 10px;
+  margin:10px; min-height:98%;
 }
 h1 a {
   color: #ff943f;
   text-decoration: underline #aeaeae;
 }
-
-li {margin-bottom: 10px;}
-label {color: chocolate;
+.label1 {color: chocolate;
   background-color: beige;
   line-height: 28px;
   font-weight: bold;}
 
 .newpageh1 {
   color: #ff943f; font-size: 18px; background-color: #f8f6f2;
-  padding: 5px;
 }
 
 .header {
@@ -30,10 +24,14 @@ label {color: chocolate;
   border-bottom: 4px solid #71695e;
 }
 #klogo {margin-right: 14px;}
+
+
 .menubar {
-  display: flex; flex-grow: 1; 
+  display: flex; 
+  flex-grow: 1; 
   background-color: #ff943f;
 }
+
 .menubar a {
   color: #f8f6f2;
   padding: 12px 16px;
@@ -41,16 +39,18 @@ label {color: chocolate;
   text-shadow: 0 0 4px #615a50;
   font-size: 17px;
 }
+
 .menubar a:hover {
   background-color: #ddd;
   color: #615a50;
   text-shadow: none;
 }
-  
+
 .menubar a.active {
   background-color: #71695e;
   color: white;
 }
+
 
 .savebuttons {margin-top:12px; float: left;}
 
@@ -69,3 +69,157 @@ label {color: chocolate;
 }
 
 .xmlname {color:#331d0c;}
+
+
+#running-sipp-list {padding-left: 0;}
+
+
+/* The Modal (background) */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal Content */
+.modal-content {
+  background-color: beige;
+  margin: 50px auto; /* 15% from the top and centered */
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%; /* Could be more or less, depending on screen size */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px; /* Add space between diagrams */
+}
+
+/* Style for flow diagrams */
+#flow-diagram1, #flow-diagram2 {
+  flex: 1; /* Allow diagrams to grow and fill the available space */
+  max-width: 45%; /* Adjust the maximum width of each diagram */
+  min-width: 200px; /* Ensure a minimum width */
+  height: auto; /* Keep height auto to maintain aspect ratio */
+  border: 1px solid #ddd; /* Optional: add border to diagrams */
+  padding: 10px; /* Optional: add padding to diagrams */
+  box-sizing: border-box; /* Ensure padding does not affect width */
+}
+
+/* The Close Button */
+.close {
+  color: #fff;
+  position: absolute; /* Position the close button at the top right corner */
+  top: 38px;
+  left: 56px;
+  font-size: 32px;
+  padding: 28px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+}
+
+
+
+ul {
+  list-style-type: none;
+}
+
+#xml-lists li {
+  padding: 8px 10px;
+  transition: transform .2s;
+  display: flex;
+  flex-wrap: wrap;
+}
+#xml-lists li:nth-child(odd) {
+  background-color: #f1f1f1;
+}
+#xml-lists li:nth-child(even) {
+  background-color: #eaeaea;
+}
+#xml-lists li:hover{background-color: #ffffff; transform: scale(1.04);} 
+
+.selected{background-color: #71695e !important; color: #f1f1f1 !important;}
+.selected a {color: #f1f1f1;}
+.selected a:hover {color: #ffffff;}
+
+#xml-lists {display: flex; margin-top: 14px;}
+#xml-lists ul {padding:0; margin: 0;flex:1}
+#uas-list {margin-left: 5px!important;}
+#xml-flow {min-height: 100vh; background-color: beige;text-align: center; flex:1; margin-left: 5px;}
+.show-flow {cursor: default;}
+#xml-lists li span {padding: 2px 7px 2px 0;}
+.xml-li-button {
+  display: inline-flex;
+  align-items: center;
+  padding: 2px 7px;
+  transition: transform .2s;
+  color: #ababab;
+}
+.xml-li-button:hover {
+  transform: scale(1.4);
+  color: #3b3b3b;
+}
+
+
+#options-container {
+  width: 100%;
+  height: 8px;
+  padding: 8px;
+  background-color: #f0f0f0;
+  justify-content: center;
+  align-items: center;
+  transition: height 0.7s ease-in-out;
+  overflow: hidden;
+}
+#options-container:hover {
+  height: 36px;
+}
+
+#dots {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  opacity: 1;
+  transition: opacity 0.4s ease-in-out;
+}
+#buttons {
+  opacity: 0;
+  pointer-events: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: opacity 0.4s ease-in-out;
+}
+
+.dot {
+  width: 8px;
+  height: 8px;
+  background-color: #333;
+  border-radius: 50%;
+}
+
+#options-container:hover #dots {
+  opacity: 0;
+}
+
+#options-container:hover #buttons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  opacity: 1;
+  pointer-events: auto;
+}
