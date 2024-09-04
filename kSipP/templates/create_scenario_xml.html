@@ -214,6 +214,13 @@
   editor.session.setMode("ace/mode/xml");
   editor.setTheme("ace/theme/chrome");
   editor.setFontSize('13px');
+  editor.commands.addCommand({
+    name: "find",
+    bindKey: { win: "Ctrl-F", mac: "Command-F" },
+    exec: function(editor) {
+        editor.execCommand("find");
+    }
+  });
   // Scroll to the bottom line
   editor.session.on('change', () => {
       editor.renderer.scrollToLine(Number.POSITIVE_INFINITY)

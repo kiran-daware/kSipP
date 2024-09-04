@@ -12,8 +12,8 @@
 
 
 <!-- Create a div to contain the editor -->
-<h1 class="newpageh1">{{ xml_name }}.xml</h1>
-<form method="post" action="{% url 'xml-editor' %}">
+<h1 class="newpageh1">{{ xml_name }}</h1>
+<form method="post" action="{% url 'edit-xml' %}">
 {% csrf_token %}
 <input type="hidden" name="xml_content" id="xmlContentInput" value="{{ xml_content }}">
 <input type="hidden" name="xml_name" value="{{ xml_name }}">
@@ -28,10 +28,11 @@
         <span>.xml</span>
         <button type="button" onclick="submitSaveAs()">Save</button>
     </div>
-    <button type="submit" name="exit" value="exit">Exit</button>
+    <input type="hidden" name="exit" value="{{referer}}">
+    <button type="submit" name="exit" value="{{referer}}">Exit</button>
     <input type="hidden" name="save" id="clickedButtonInput" value="">
     {% if save %}
-    Successfully Saved to <b>{{ xml_name }}.xml</b>
+    Successfully Saved to <b>{{ xml_name }}</b>
     {% endif %}
 </div>
 </form>
@@ -42,6 +43,13 @@
     editor.session.setMode("ace/mode/xml");
     editor.setTheme("ace/theme/chrome");
     editor.setFontSize('14px');
+    editor.commands.addCommand({
+        name: "find",
+        bindKey: { win: "Ctrl-F", mac: "Command-F" },
+        exec: function(editor) {
+            editor.execCommand("find");
+        }
+      });
 
     // Update the hidden input with the XML content before submitting the form
     var xmlContentInput = document.getElementById("xmlContentInput");

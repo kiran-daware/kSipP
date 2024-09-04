@@ -1,46 +1,71 @@
 
 html {
-    font-family: sans-serif;
-    color: #49443d;
-    background-color: #f8f6f2;
+  font-family: sans-serif;
+  color: #49443d;
+  background-color: #f8f6f2;
 }
 body {
-    margin: 10px;
+  margin: 10px;
 }
-h1 {margin: 0;}
 h1 a {
-    color: #ff943f;
-    text-decoration: underline #aeaeae;}
+  color: #ff943f;
+  text-decoration: underline #aeaeae;
+}
 
+li {margin-bottom: 10px;}
+label {color: chocolate;
+  background-color: beige;
+  line-height: 28px;
+  font-weight: bold;}
+
+.newpageh1 {
+  color: #ff943f; font-size: 18px; background-color: #f8f6f2;
+  padding: 5px;
+}
+
+.header {
+  display: flex;
+  align-items: end;
+  margin-bottom: 14px;
+  border-bottom: 4px solid #71695e;
+}
+#klogo {margin-right: 14px;}
 .menubar {
-    overflow: hidden;
-    background-color: #ff943f;
-    margin-top: 10px;
-  }
+  display: flex; flex-grow: 1; 
+  background-color: #ff943f;
+}
+.menubar a {
+  color: #f8f6f2;
+  padding: 12px 16px;
+  text-decoration: none;
+  text-shadow: 0 0 4px #615a50;
+  font-size: 17px;
+}
+.menubar a:hover {
+  background-color: #ddd;
+  color: #615a50;
+  text-shadow: none;
+}
   
-  .menubar a {
-    float: left;
-    color: #f8f6f2;
-    text-align: center;
-    padding: 12px 16px;
-    text-decoration: none;
-    font-size: 17px;
-  }
-  
-  .menubar a:hover {
-    background-color: #ddd;
-    color: #615a50;
-  }
-  
-  .menubar a.active {
-    background-color: #71695e;
-    color: white;
-  }
-
-.newpageh1 {font-family: sans-serif;
-    color: #ff943f; font-size: 18px; background-color: #f8f6f2;
-    padding: 5px;}
+.menubar a.active {
+  background-color: #71695e;
+  color: white;
+}
 
 .savebuttons {margin-top:12px; float: left;}
+
+.kbutton {
+  padding: 10px 16px;
+  background-color: #ddd;
+  border: 2px solid #71695e;
+  color: #3b3b3b;
+  font-size: 16px;
+  display: inline-block;
+}
+
+.kbutton:hover {
+  background-color: #71695e;
+  color: #ffffff;
+}
 
 .xmlname {color:#331d0c;}

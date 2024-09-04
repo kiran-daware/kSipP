@@ -1,0 +1,219 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE scenario SYSTEM "sipp.dtd">
+
+<!-- This program is distributed in the hope that it will be useful,    -->
+<!-- but WITHOUT ANY WARRANTY; without even the implied warranty of     -->
+<!-- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the      -->
+<!-- GNU General Public License for more details.                       -->
+
+<!-- This scenario is created by kSipP scenario Creator                 -->
+
+<scenario name="uas_my_uas_scenario">
+  
+
+    <recv request="INVITE" crlf="true">
+      <action>
+        <ereg regexp=".*" search_in="hdr" header="Via:" check_it="true" assign_to="1" />
+        <ereg regexp=".*" search_in="hdr" header="CSeq:" check_it="true" assign_to="51" />
+        <ereg regexp=".*" search_in="hdr" header="From:" check_it="true" assign_to="remote_from" />
+        <ereg regexp="sip:(.*)>.*" search_in="hdr" header="Contact" assign_to="trash,remote_contact"/>
+        <!-- INV Placeholder to store vars -->
+      </action>
+    </recv>
+    <!-- since SIPp complains about not used variable reference the trach var -->
+    <Reference variables="trash"/>
+    
+
+    <send>
+      <![CDATA[
+
+        SIP/2.0 100 Trying
+        [last_Via:]
+        [last_From:]
+        [last_To:];tag=[pid]SIPpTag01[call_number]
+        [last_Call-ID:]
+        [last_CSeq:] 
+        Contact: <sip:[local_ip]:[local_port];transport=[transport]>
+        Content-Length: 0
+
+      ]]>
+    </send>
+  
+
+    <send>
+      <![CDATA[
+
+        SIP/2.0 180 Ringing
+        Via:[$1]
+        [last_From:]
+        [last_To:];tag=[pid]SIPpTag01[call_number]
+        [last_Call-ID:]
+        CSeq:[$51]
+        Require:100rel
+        RSeq:1
+        Contact: <sip:[local_ip]:[local_port];transport=[transport]>
+        Content-Type: application/sdp
+        Content-Length: [len]
+        
+        v=0
+        o=user1 53655765 3353687637 IN IP[local_ip_type] [local_ip]
+        s=-
+        c=IN IP[media_ip_type] [media_ip]
+        t=0 0
+        m=audio [media_port+20000] RTP/AVP 0
+        a=rtpmap:0 PCMU/8000
+
+      ]]>
+    </send>
+  
+
+    <recv request="PRACK" crlf="true">
+    </recv>
+
+    <send>
+      <![CDATA[
+ 
+        SIP/2.0 200 OK
+        [last_Via:]
+        [last_From:]
+        [last_To:]
+        [last_Call-ID:]
+        [last_CSeq:]
+        [last_Record-Route:]
+        Supported: timer,100rel
+        Contact: <sip:[local_ip]:[local_port];transport=[transport]>
+        Content-Length: 0
+ 
+      ]]>
+    </send>
+    
+
+    <send>
+      <![CDATA[
+
+        SIP/2.0 183 Session Progress
+        Via:[$1]
+        [last_From:]
+        [last_To:];tag=[pid]SIPpTag01[call_number]
+        [last_Call-ID:]
+        CSeq:[$51] 
+        Contact: <sip:[local_ip]:[local_port];transport=[transport]>
+        Content-Length: 0
+
+      ]]>
+    </send>
+  
+
+    <send>
+      <![CDATA[
+ 
+        SIP/2.0 200 OK
+        Via:[$1]
+        [last_From:]
+        [last_To:]
+        [last_Call-ID:]
+        CSeq:[$51]
+        [last_Record-Route:]
+        Supported: timer,100rel
+        Contact: <sip:[local_ip]:[local_port];transport=[transport]>
+        Content-Type: application/sdp
+        Content-Length: [len]
+        
+        v=0
+        o=user1 53655765 3353687637 IN IP[local_ip_type] [local_ip]
+        s=-
+        c=IN IP[media_ip_type] [media_ip]
+        t=0 0
+        m=audio [media_port+20000] RTP/AVP 0
+        a=rtpmap:0 PCMU/8000
+ 
+      ]]>
+    </send>
+    
+
+    <recv request="ACK" rtd="true" crlf="true">
+    </recv>
+
+    <send retrans="500">
+      <![CDATA[
+
+        INVITE sip:[$remote_contact] SIP/2.0
+        Via: SIP/2.0/[transport] [local_ip]:[local_port];branch=[branch]
+        From: sipp <sip:sipp@[local_ip]:[local_port]>;tag=[pid]SIPpTag01[call_number]
+        To: [$remote_from]
+        Call-ID: [call_id]
+        Supported: timer,100rel
+        CSeq: 1 INVITE
+        Contact: sip:sipp@[local_ip]:[local_port]
+        Max-Forwards: 70
+        Subject: Performance Test
+        Content-Type: application/sdp
+        Content-Length: [len]
+
+        v=0
+        o=user1 53655765 3353687639 IN IP[local_ip_type] [local_ip]
+        s=-
+        c=IN IP[media_ip_type] [media_ip]
+        t=0 0
+        m=audio [media_port+20000] RTP/AVP 0
+        a=rtpmap:0 PCMU/8000
+
+      ]]>
+    </send>
+    
+    <recv response="100" optional="true">
+    </recv>
+
+    <recv response="200" rtd="true">
+    </recv>
+    
+
+    <send retrans="500">
+      <![CDATA[
+
+        ACK sip:[$remote_contact] SIP/2.0
+        Via: SIP/2.0/[transport] [local_ip]:[local_port];branch=[branch]
+        From: sipp <sip:sipp@[local_ip]:[local_port]>;tag=[pid]SIPpTag01[call_number]
+        To: [$remote_from]
+        Call-ID: [call_id]
+        Supported: timer,100rel
+        CSeq: 1 INVITE
+        Contact: sip:sipp@[local_ip]:[local_port]
+        Max-Forwards: 70
+        Subject: Performance Test
+        Content-Length: 0
+
+      ]]>
+    </send>
+    
+
+    <send retrans="500">
+      <![CDATA[
+
+        BYE sip:[$remote_contact] SIP/2.0
+        Via: SIP/2.0/[transport] [local_ip]:[local_port];branch=[branch]
+        From: sipp <sip:sipp@[local_ip]:[local_port]>;tag=[pid]SIPpTag01[call_number]
+        To: [$remote_from]
+        Call-ID: [call_id]
+        CSeq: 2 BYE
+        Contact: sip:sipp@[local_ip]:[local_port]
+        Max-Forwards: 70
+        Subject: Performance Test
+        Content-Length: 0
+
+      ]]>
+    </send>
+
+
+    <recv response="200" crlf="true">
+    </recv>
+
+
+    <!-- definition of the response time repartition table (unit is ms)   -->
+    <ResponseTimeRepartition value="10, 20, 30, 40, 50, 100, 150, 200"/>
+
+    <!-- definition of the call length repartition table (unit is ms)     -->
+    <CallLengthRepartition value="10, 50, 100, 500, 1000, 5000, 10000"/>
+
+</scenario>
+  

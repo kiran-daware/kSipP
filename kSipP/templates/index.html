@@ -8,21 +8,16 @@
 </head>
 <body>
     {% include "header.html" %} 
-
-    <div class="menubar">
-        <a class="active" href="/">Home</a>
-        <a href="/run-script">Run Scripts</a>
-        <a href="/modify-xml">Modify Xml</a>
-        <a href="/create-scenario-xml">Create Xml</a>
-    </div>
-
-    <div style="float: left; padding: 20px; width: 38%;">
-    <form method="post" id="mainForm">
+    
+    <div style="float: left; width: 38%;">
+    <form method="post" id="mainForm" action="{% url 'index' %}">
 
         {% csrf_token %}
-        {{ selectXml.as_p }}
+        <p>UAC xml: {{ selectXml.select_uac }} <a title="Edit" class="xml-li-button" href="/edit-xml/?xml={{config_data.select_uac}}"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" height="16px" width="16px" fill="currentColor"><path d="M471.6 21.7c-21.9-21.9-57.3-21.9-79.2 0L362.3 51.7l97.9 97.9 30.1-30.1c21.9-21.9 21.9-57.3 0-79.2L471.6 21.7zm-299.2 220c-6.1 6.1-10.8 13.6-13.5 21.9l-29.6 88.8c-2.9 8.6-.6 18.1 5.8 24.6s15.9 8.7 24.6 5.8l88.8-29.6c8.2-2.7 15.7-7.4 21.9-13.5L437.7 172.3 339.7 74.3 172.4 241.7zM96 64C43 64 0 107 0 160L0 416c0 53 43 96 96 96l256 0c53 0 96-43 96-96l0-96c0-17.7-14.3-32-32-32s-32 14.3-32 32l0 96c0 17.7-14.3 32-32 32L96 448c-17.7 0-32-14.3-32-32l0-256c0-17.7 14.3-32 32-32l96 0c17.7 0 32-14.3 32-32s-14.3-32-32-32L96 64z"/></svg></a></p>
 
-        <button type="submit" name="submitType" value="checkFlow" style="float: left; margin: 0 10px 10px 0;">Check XML Call Flow</button>
+        <p>UAS xml: {{ selectXml.select_uas }} <a title="Edit" class="xml-li-button" href="/edit-xml/?xml={{config_data.select_uas}}"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" height="16px" width="16px" fill="currentColor"><path d="M471.6 21.7c-21.9-21.9-57.3-21.9-79.2 0L362.3 51.7l97.9 97.9 30.1-30.1c21.9-21.9 21.9-57.3 0-79.2L471.6 21.7zm-299.2 220c-6.1 6.1-10.8 13.6-13.5 21.9l-29.6 88.8c-2.9 8.6-.6 18.1 5.8 24.6s15.9 8.7 24.6 5.8l88.8-29.6c8.2-2.7 15.7-7.4 21.9-13.5L437.7 172.3 339.7 74.3 172.4 241.7zM96 64C43 64 0 107 0 160L0 416c0 53 43 96 96 96l256 0c53 0 96-43 96-96l0-96c0-17.7-14.3-32-32-32s-32 14.3-32 32l0 96c0 17.7-14.3 32-32 32L96 448c-17.7 0-32-14.3-32-32l0-256c0-17.7 14.3-32 32-32l96 0c17.7 0 32-14.3 32-32s-14.3-32-32-32L96 64z"/></svg></a></p>
+
+        <button id="show-flow-button" class="show-flow" data-filename="{{config_data.select_uac}}" data-filename2="{{config_data.select_uas}}" type="button" style="float: left; margin: 0 10px 10px 0;">Check XML Call Flow</button>
         <div id="MoreOptions" {% if not showMoreOptionsForm %}style="display: none;"{% endif %}>
             <div style="clear: both;">
                 <p>Dialed Number: {{moreOptionsForm.called_party_number}}{{moreOptionsForm.called_party_number.errors}}</p>
@@ -51,35 +46,40 @@
     </div>
 
 
+    <div id="flow-modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <div id="flow-diagram1"></div>
+            <div id="flow-diagram2"></div>
+        </div>
+    </div>
 
-    <div style="float: left; padding: 20px; width: 52%;">
-    
+    <div style="float: left; width: 61%;">
         <h3>Run SipP Scripts</h3>
         <p>uac: <span> {{ print_uac_command }}</span></p>
         <p>uas: <span> {{ print_uas_command }} </span></p>
-        <br />
 
-        <form method="post" action="{% url 'run-script' %}" style="float: left; margin-right: 50px;">
+        <form method="post" action="{% url 'index' %}" style="float: left; margin-bottom: 10px;">
             {% csrf_token %}
-            <input type="hidden" name="script" value="UAS">
-            <input type="submit" value="Run UAS">
+            <button type="submit" name="runScript" value="UAS">Run UAS</button>
+            <button type="submit" name="runScript" value="UAC">Run UAC</button>
         </form>
-    
-        <form method="post" action="{% url 'run-script' %}" style="float: left; margin-right: 50px;">
-            {% csrf_token %}
-            <input type="hidden" name="script" value="UAC">
-            <input type="submit" value="Run UAC">
-        </form>
+        <!-- Error Modal -->
+        {% if sipp_error %}
+        <div style="clear: both;" id="sipp_error">
+            <span>{{ sipp_error }}</span>
+        </div>
+        {% endif %}
         <div style="clear: both;"></div>
         <h3>Running SipP Processes:</h3>
         {% if sipp_processes %}
-            <ul>
+            <ul id="running-sipp-list">
                 {% for process in sipp_processes %}
                     <li>
-                        pid: {{ process.pid }}, {{ process.command_line }}, {{ process.script_name }}
-                        
-                        <form method="post" action="{% url 'run-script' %}">
+                        pid: {{ process.pid }}, {{ process.command_line }}
+                        <form method="post" action="{% url 'index' %}">
                             {% csrf_token %}
+                            <label class="label1">{{ process.script_name }}</label>
                             <input type="hidden" name="script_name" value="{{ process.script_name}}">
                             <input type="hidden" name="pid_to_kill" value="{{ process.pid }}">
                             <input type="submit" name="send_signal" value="Kill">
@@ -91,8 +91,6 @@
         {% else %}
             <p>No SipP processes currently running.</p>
         {% endif %}
-
-
 
     </div>
     
@@ -145,9 +143,14 @@
             }
         });
 
+        let kpacketId = 1;
+
       </script>
-      
-      
+
+      <script src="{% static 'sdjs/snap.svg-min.js' %}"></script>
+      <script src="{% static 'sdjs/underscore-min.js' %}"></script>
+      <script src="{% static 'sdjs/sequence-diagram-kmod2.js' %}"></script>
+      <script src="{% static 'kflow.js' %}"></script>      
 
 </body>
 </html>
