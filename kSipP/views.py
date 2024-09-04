@@ -467,7 +467,28 @@ def create_scenario_xml_view(request):
 
 def xml_list_view(request):
     xmlDir = os.path.join(settings.BASE_DIR, 'kSipP', 'xml')
-    uacList, uasList = listXmlFiles(xmlDir)
+    xmlUploadF = xmlUploadForm()
+
+    if request.method == 'POST' and 'submitType' in request.POST:
+        submitType = request.POST.get('submitType')
+        if submitType == 'upload':
+            xmlUploadF = xmlUploadForm(request.POST, request.FILES)
+            if xmlUploadF.is_valid():
+                uploaded_file = request.FILES['file']
+                file_path = os.path.join(xmlDir, uploaded_file.name)
+                
+                # Validate the uploaded XML file
+                try:
+                    with open(file_path, 'wb+') as destination:
+                        for chunk in uploaded_file.chunks():
+                            destination.write(chunk)
+                    tree = ET.parse(file_path)
+                    uploadMsg = f"File '{uploaded_file.name}' uploaded successfully."
+                    
+                except ET.ParseError as e:
+                    os.remove(file_path)  # Remove the invalid file
+                    uploadMsg = f"Invalid XML file '{uploaded_file.name}': {e}"
+
 
     if request.method =='GET' and 'delete' in request.GET:
         deleteXmlName=request.GET.get('delete')
@@ -475,7 +496,11 @@ def xml_list_view(request):
         if os.path.exists(deleteXmlPath):
             os.remove(deleteXmlPath)
         
-        uacList, uasList = listXmlFiles(xmlDir)
-
-    context = {'uac_list':uacList, 'uas_list':uasList}
+    uacList, uasList = listXmlFiles(xmlDir)
+    context = {
+        'uac_list':uacList, 'uas_list':uasList,
+        'xml_upload_form': xmlUploadF,
+        'upload_msg': uploadMsg if 'uploadMsg' in locals() else False,
+        }
+    
     return render(request, 'xml_list.html', context)

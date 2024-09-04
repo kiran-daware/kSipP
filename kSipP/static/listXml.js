@@ -159,3 +159,30 @@ function renderDiagram(umlText) {
     const diagram = Diagram.parse(umlText);
     diagram.drawSVG('flow-diagram', {theme: 'simple'});
 }
+
+
+// XML Upload modal
+document.addEventListener('DOMContentLoaded', function() {     
+    // Check if modal needs to be opened automatically
+    // Add close functionality
+    var modal = document.getElementById('upload-modal');
+    var span = document.getElementsByClassName('close')[0];
+
+    span.onclick = function() {
+        modal.style.display = 'none';
+    }
+
+    window.onclick = function(event) {
+        if (event.target == modal) {
+            modal.style.display = 'none';
+        }
+    }
+});
+
+// Open modal on button click
+document.addEventListener('click', async (event) => {
+    if (event.target && event.target.id === 'upload-xml-b') {
+        document.getElementById('upload-modal').style.display = 'block';
+    }
+});
+

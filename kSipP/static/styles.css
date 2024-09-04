@@ -171,3 +171,55 @@ ul {
   transform: scale(1.4);
   color: #3b3b3b;
 }
+
+
+#options-container {
+  width: 100%;
+  height: 8px;
+  padding: 8px;
+  background-color: #f0f0f0;
+  justify-content: center;
+  align-items: center;
+  transition: height 0.7s ease-in-out;
+  overflow: hidden;
+}
+#options-container:hover {
+  height: 36px;
+}
+
+#dots {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  opacity: 1;
+  transition: opacity 0.4s ease-in-out;
+}
+#buttons {
+  opacity: 0;
+  pointer-events: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: opacity 0.4s ease-in-out;
+}
+
+.dot {
+  width: 8px;
+  height: 8px;
+  background-color: #333;
+  border-radius: 50%;
+}
+
+#options-container:hover #dots {
+  opacity: 0;
+}
+
+#options-container:hover #buttons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  opacity: 1;
+  pointer-events: auto;
+}
