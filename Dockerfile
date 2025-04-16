@@ -9,7 +9,7 @@ ENV PYTHONDONTWRITEBYTECODE=1 \
 RUN apt-get update && apt-get install -y libcap2-bin nginx
 
 # Expose ports
-EXPOSE 8000
+EXPOSE 8080
 EXPOSE 6061/udp
 EXPOSE 6061
 EXPOSE 6062/udp
@@ -34,6 +34,9 @@ RUN python manage.py collectstatic --noinput
 
 RUN chown -R kuser:kuser /app
 RUN chown -R kuser:kuser /var/lib/nginx /var/log/nginx /run
+
+# Create /app/kSipP/xml/tmp dir for tmp xml modification internally
+RUN mkdir /app/kSipP/xml/tmp
 
 # Grant necessary permissions
 RUN chmod +s /app/kSipP/sipp/sipp
