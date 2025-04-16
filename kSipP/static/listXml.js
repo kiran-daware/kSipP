@@ -115,7 +115,7 @@ function extractMessageType(message) {
 
 function generateUMLText(xmlDoc, fileName) {
     let umlText = `
-participant ${fileName} as thisXml
+participant "${fileName} as thisXml"
 participant farEnd
 `;
     const allElements = xmlDoc.getElementsByTagName("*"); // Get all elements
