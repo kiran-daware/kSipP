@@ -374,6 +374,7 @@ sendFailAck.addEventListener('click',()=>{
   editor.setValue(`${editor.getValue()}\n${footer}`);
   sendFailAck.disabled=true;
   recvCodeI.disabled=true;
+  saveButtonB.style.display='block';
 });
 
 
