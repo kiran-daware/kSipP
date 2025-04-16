@@ -29,14 +29,14 @@ RUN python -m pip install --no-cache-dir -r requirements.txt
 # Copy the application code
 COPY . .
 
+# Create /app/kSipP/xml/tmp dir for tmp xml modification internally
+RUN mkdir /app/kSipP/xml/tmp
+
 # Collect static files
 RUN python manage.py collectstatic --noinput
 
 RUN chown -R kuser:kuser /app
 RUN chown -R kuser:kuser /var/lib/nginx /var/log/nginx /run
-
-# Create /app/kSipP/xml/tmp dir for tmp xml modification internally
-RUN mkdir /app/kSipP/xml/tmp
 
 # Grant necessary permissions
 RUN chmod +s /app/kSipP/sipp/sipp
