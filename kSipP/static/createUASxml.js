@@ -609,7 +609,7 @@ function generateUASAck(includeSDP) {
         To: [$remote_from]
         Call-ID: [call_id]
         Supported: timer,100rel
-        CSeq: ${uasCSeq} ${method}
+        CSeq: ${uasCSeq} ACK
         Contact: sip:sipp@[local_ip]:[local_port]
         Max-Forwards: 70
         Subject: Performance Test
