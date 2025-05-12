@@ -103,13 +103,19 @@
    
    <send>
     <![CDATA[ 
-     ACK [$remote_contact] SIP/2.0
-     Via: SIP/2.0/[transport] [local_ip]:[local_port]
-     From: sipp  <sip:sipp@[local_ip]:[local_port]>;tag=[call_number]
-     To: [$remote_from]
-     [last_Call-ID:]
-     CSeq: 1 ACK
-     Contact: <sip:[local_ip]:[local_port];transport=[transport]>
+
+        ACK sip:[$remote_contact] SIP/2.0
+        Via: SIP/2.0/[transport] [local_ip]:[local_port];branch=[branch]
+        From: sipp <sip:sipp@[local_ip]:[local_port]>;tag=[call_number]
+        To: [$remote_from]
+        Call-ID: [call_id]
+        Supported: timer,100rel
+        CSeq: 1 ACK
+        Contact: sip:sipp@[local_ip]:[local_port]
+        Max-Forwards: 70
+        Subject: Performance Test
+        Content-Length: 0
+
     ]]>
    </send>
 

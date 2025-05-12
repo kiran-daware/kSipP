@@ -168,7 +168,7 @@
     </recv>
     
 
-    <send retrans="500">
+    <send>
       <![CDATA[
 
         ACK sip:[$remote_contact] SIP/2.0
@@ -177,7 +177,7 @@
         To: [$remote_from]
         Call-ID: [call_id]
         Supported: timer,100rel
-        CSeq: 1 INVITE
+        CSeq: 1 ACK
         Contact: sip:sipp@[local_ip]:[local_port]
         Max-Forwards: 70
         Subject: Performance Test
