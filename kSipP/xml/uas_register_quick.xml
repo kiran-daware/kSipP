@@ -14,16 +14,14 @@
 <send>
     <![CDATA[
 
-SIP/2.0 200 OK
-[last_From:]
-[last_To:];tag=[call_number]
-[last_Via:]
-[last_Call-ID:]
-[last_CSeq:]
-[last_Contact:]
-Content-Type: application/sdp
-Content-Length: 0
-
+      SIP/2.0 200 OK
+      [last_From:]
+      [last_To:];tag=[call_number]
+      [last_Via:]
+      [last_Call-ID:]
+      [last_CSeq:]
+      [last_Contact:]
+      Content-Length: 0
 
     ]]>
 </send>

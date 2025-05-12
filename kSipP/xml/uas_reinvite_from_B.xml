@@ -94,7 +94,7 @@
         SIP/2.0 183 Session Progress
         Via:[$1]
         [last_From:]
-        [last_To:];tag=[pid]SIPpTag01[call_number]
+        [last_To:]
         [last_Call-ID:]
         CSeq:[$51] 
         Contact: <sip:[local_ip]:[local_port];transport=[transport]>
