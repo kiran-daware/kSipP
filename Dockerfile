@@ -1,5 +1,5 @@
 # Use an official Python base image with a specific version
-FROM python:3.10-slim
+FROM python:3.13-slim
 
 # Set environment variables
 ENV PYTHONDONTWRITEBYTECODE=1 \
@@ -31,6 +31,8 @@ COPY . .
 
 # Create /app/kSipP/xml/tmp dir for tmp xml modification internally
 RUN mkdir /app/kSipP/xml/tmp
+RUN mkdir /app/kSipP/xml/backup
+COPY kSipP/xml/*.xml /app/kSipP/xml/backup
 
 # Collect static files
 RUN python manage.py collectstatic --noinput
