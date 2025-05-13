@@ -66,7 +66,7 @@ const uasSendByeB=document.getElementById('uas-send-bye');
 
 // Recv INVITE **************************************************************************
 
-let invSeqRel=0, newInvSeq=0, newInv=0;
+let invSeqRel=0, newInvSeq=0, newInv=0, recvReqNo=0;
 
 recvInviteB.addEventListener('click', () => {
   const recvInv = `
@@ -78,6 +78,7 @@ recvInviteB.addEventListener('click', () => {
     `;
   editor.setValue(`${editor.getValue()}\n${recvInv}`);
   newInvSeq++;
+  recvReqNo++;
   newInv=0;
   recvInviteB.disabled=true;
   send1xxD.style.display='block';
@@ -203,6 +204,7 @@ s1xxWsdpB.addEventListener('click',()=>{
 // ********
 let hVia='[last_Via:]';
 let hCSeq='[last_CSeq:]';
+let toTag='';
 let sdpBody=`
         v=0
         o=user1 53655765 3353687637 IN IP[local_ip_type] [local_ip]
@@ -240,6 +242,8 @@ function generateSend1xx(srel,ssdp){
       editor.setValue(modifiedContent);
     };
 
+    const toTag = (recvReqNo === 1) ? ';tag=[pid]SIPpTag01[call_number]' : '';
+
     let sRequire=srel?`
         Require:100rel
         RSeq:${sRseq}`:'';
@@ -257,7 +261,7 @@ function generateSend1xx(srel,ssdp){
         SIP/2.0 ${s1xxCode} ${s1xxTxt}
         ${hVia}
         [last_From:]
-        [last_To:];tag=[pid]SIPpTag01[call_number]
+        [last_To:]${toTag}
         [last_Call-ID:]
         ${hCSeq} ${sRequire}
         Contact: <sip:[local_ip]:[local_port];transport=[transport]>
@@ -275,6 +279,7 @@ recvPrackB.addEventListener('click',()=>{
     <recv request="PRACK" crlf="true">
     </recv>`;
     editor.setValue(`${editor.getValue()}\n${recvPrack}`);
+    recvReqNo++;
     recvPrackB.disabled=true;
     send200pB.style.display='inline-block';
     send200pSdpB.style.display='inline-block';
@@ -347,6 +352,8 @@ send200invB.addEventListener('click',()=>{
 
 /* 200 Ok generation for both PRACK and INVITE */
 function send200Ok(sdp2){
+    const toTag = (recvReqNo === 1) ? ';tag=[pid]SIPpTag01[call_number]' : '';
+
     const sdp=sdp2
     ?`Content-Type: application/sdp
         Content-Length: [len]
@@ -360,7 +367,7 @@ function send200Ok(sdp2){
         SIP/2.0 200 OK
         ${hVia}
         [last_From:]
-        [last_To:]
+        [last_To:]${toTag}
         [last_Call-ID:]
         ${hCSeq}
         [last_Record-Route:]
@@ -402,6 +409,7 @@ uasRecvUpdateB.addEventListener('click',()=>{
     <recv request="UPDATE" crlf="true" rrs="true">
     </recv>`;
     editor.setValue(`${editor.getValue()}\n${recvMidUpdate}`);
+    recvReqNo++;
     uasRecvUpdateB.disabled=true;
     recvInviteB.disabled=true;
     uasSendInviteB.disabled=true;
@@ -460,10 +468,10 @@ function newRequestFromUas(){
     <!-- since SIPp complains about not used variable reference the trach var -->
     <Reference variables="trash"/>`;
     
-  var firstIndex = currentContent.indexOf(originalXML);
+  var lastIndex = currentContent.lastIndexOf(originalXML);
 
-  if (firstIndex !== -1) {
-    var modifiedContent = currentContent.substring(0, firstIndex) + replacementXML + currentContent.substring(firstIndex + originalXML.length);
+  if (lastIndex !== -1) {
+    var modifiedContent = currentContent.substring(0, lastIndex) + replacementXML + currentContent.substring(lastIndex + originalXML.length);
   }
   editor.setValue(modifiedContent);
 };
