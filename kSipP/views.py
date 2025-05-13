@@ -2,16 +2,15 @@ from django.http import HttpResponse
 from django.views.decorators.cache import never_cache
 from django.shortcuts import render, redirect
 from django.conf import settings
-from django.contrib.sessions.models import Session
 from .forms import configForm, xmlForm, modifyHeaderForm, moreSippOptionsForm, modifySelectedHeaderForSipMsgs
 from .forms import xmlUploadForm
 from django.http import HttpResponseBadRequest
 import xml.etree.ElementTree as ET
-import os, time, signal, re, json
+import os, time, signal
 import subprocess, psutil
 from .scripts.ksipp import get_sipp_processes, fetch_config_data, save_config_data, sipp_commands
 from .scripts.kstun import get_ip_info
-from .scripts.modify import modifyHeaderScript, getHeadersFromSipMsgs, tmpXmlBehindNAT, modifynumberxmlpath
+from .scripts.modify import tmpXmlBehindNAT, modifynumberxmlpath
 from .scripts.list import listXmlFiles
 
 
