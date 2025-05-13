@@ -2,7 +2,7 @@ from django.http import HttpResponse
 from django.views.decorators.cache import never_cache
 from django.shortcuts import render, redirect
 from django.conf import settings
-from .forms import configForm, xmlForm, modifyHeaderForm, moreSippOptionsForm, modifySelectedHeaderForSipMsgs
+from .forms import configForm, xmlForm, moreSippOptionsForm
 from .forms import xmlUploadForm
 from django.http import HttpResponseBadRequest
 import xml.etree.ElementTree as ET

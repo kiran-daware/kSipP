@@ -54,35 +54,6 @@ class configForm(forms.Form):
     # Add more fields for other configuration settings as needed
 
 
-
-class modifyHeaderForm(forms.Form):
-    optHeader = [
-        ('From:','From'),
-        ('To:','To'),
-        ('Contact:','Contact'),
-    ]
-    whichHeader = forms.ChoiceField(choices=optHeader, label='Select Header')
-
-
-
-
-class modifySelectedHeaderForSipMsgs(forms.Form):
-    def __init__(self, *args, **kwargs):
-        dictionary = kwargs.pop('hbsm')
-        super(modifySelectedHeaderForSipMsgs, self).__init__(*args, **kwargs)
-
-        for sipMessage, header_value in dictionary.items():
-            self.fields[sipMessage] = forms.CharField(
-                initial='\n'.join(header_value),
-                label=sipMessage,
-                max_length=200,
-                widget=forms.TextInput(attrs={'style': 'width: 500px;'}),
-                required=False,
-                )
-
-
-
-
 class xmlUploadForm(forms.Form):
     file = forms.FileField(label='Select an XML file', help_text='File name should start with "uac" or "uas".',
                            widget=forms.ClearableFileInput(attrs={'accept': '.xml', 'max_upload_size': 102400}))
