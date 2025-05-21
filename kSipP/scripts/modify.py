@@ -5,8 +5,7 @@ import logging
 
 # cwd = os.path.dirname(os.path.abspath(__file__))
 baseDir = xmlPath = str(settings.BASE_DIR)
-modifyPy_log = os.path.join(baseDir, 'modifyHeader.log')
-logging.basicConfig(filename=modifyPy_log, filemode='w', level=logging.DEBUG)
+logger = logging.getLogger(__name__)
 
 
 def tmpXmlBehindNAT(xml, externalIp, externalPort):
@@ -32,33 +31,43 @@ def tmpXmlBehindNAT(xml, externalIp, externalPort):
 
 # code for modifying Calling party number and dialed number if any one is present
 
-def modifynumberxmlpath(xmlPath, calling_number="sipp", dialed_number="[service]"):
-    if not calling_number: calling_number = "sipp"
-    if not dialed_number: dialed_number = "[service]"
-    calling_display=f'"{calling_number}" '
-    dailed_display=f'"{dialed_number}" '
+def modifynumberxmlpath(xmlPath, calling_number, dialed_number):
 
     with open(xmlPath, 'r') as file:
         xml_content = file.read()
     
-    logging.debug("Opened xml for modifying number = %s", xmlPath)
+    logger.info("Modifying numbers in: %s", xmlPath)
+    logger.info(f'CallingNumber = {calling_number} and DialedNumber = {dialed_number}')
 
-    from_pattern = r'(?i)\bFrom\b\:\s*"?(\w*)"?\s*(<?sip:)([^@\:\;\n]+)@'
-    updated_xml = re.sub(from_pattern, lambda m: f'From: {calling_display if m.group(1) else ""}{m.group(2)}{calling_number}@', xml_content)
+    if calling_number:
+        calling_display=f'"{calling_number}" '
 
-    contact_pattern = r'(?i)\bContact\b\:\s*"?(\w*)"?\s*(<?sip:)([^@\:\;\n]+)@'
-    updated_xml = re.sub(contact_pattern, lambda m: f'Contact: {calling_display if m.group(1) else ""}{m.group(2)}{calling_number}@', updated_xml)
+        from_pattern = r'(?i)\bFrom\b\:\s*"?(\w*)"?\s*(<?sip:)([^@\:\;\n]+)@'
+        xml_content = re.sub(from_pattern, lambda m: f'From: {calling_display if m.group(1) else ""}{m.group(2)}{calling_number}@', xml_content)
 
-    ruri_pattern = r'(INVITE|ACK|BYE|CANCEL|OPTIONS|REGISTER)\s*sip:([^@\:\;\n]+)@'
-    updated_xml = re.sub(ruri_pattern, r'\1 sip:'+ dialed_number +'@', updated_xml)
+        contact_pattern = r'(?i)\bContact\b\:\s*"?(\w*)"?\s*(<?sip:)([^@\:\;\n]+)@'
+        xml_content = re.sub(contact_pattern, lambda m: f'Contact: {calling_display if m.group(1) else ""}{m.group(2)}{calling_number}@', xml_content)
 
-    to_pattern = r'(?i)\bTo\b\:\s*(\[|"?)(\w*)(\]|"?)\s*(<?sip:)([^@\:\;\n]+)@'
-    updated_xml = re.sub(to_pattern, lambda m: f'To: {dailed_display if m.group(2) else ""}{m.group(4)}{dialed_number}@', updated_xml)
+    if dialed_number:
+        dialed_display=f'"{dialed_number}" '
+
+        ruri_pattern = r'(INVITE|ACK|BYE|CANCEL|OPTIONS|REGISTER)\s*sip:([^@\:\;\n]+)@'
+        xml_content = re.sub(ruri_pattern, r'\1 sip:'+ dialed_number +'@', xml_content)
+
+        to_pattern = r'(?i)\bTo\b\:\s*(\[|"?)(\w*)(\]|"?)\s*(<?sip:)([^@\:\;\n]+)@'
+        xml_content = re.sub(to_pattern, lambda m: f'To: {dialed_display if m.group(2) else ""}{m.group(4)}{dialed_number}@', xml_content)
     
     xmlName = os.path.basename(xmlPath)
-    tmpXmlPath = str(settings.BASE_DIR / 'kSipP' / 'xml' / 'tmp' / xmlName)
-    
+    tmpDir = str(settings.BASE_DIR / 'kSipP' / 'xml' / 'tmp' )
+
+    if not os.path.exists(tmpDir):
+        os.makedirs(tmpDir, exist_ok=True)
+        logger.warning(f"Temporary directory '{tmpDir}' did not exist. Created now.")
+
+    tmpXmlPath = os.path.join (tmpDir, xmlName)
+     
     with open(tmpXmlPath, 'w') as file:
-        file.write(updated_xml)
-        
+        file.write(xml_content)
+
+    logger.info("Updated XML Path %s", tmpXmlPath)    
     return tmpXmlPath

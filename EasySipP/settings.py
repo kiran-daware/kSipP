@@ -31,29 +31,15 @@ ALLOWED_HOSTS = ['*']
 
 INSTALLED_APPS = [
     'kSipP',
-    # 'django.contrib.admin',
-    'django.contrib.auth',
-    'django.contrib.contenttypes',
-    'django.contrib.sessions',
-    'django.contrib.messages',
     'django.contrib.staticfiles',
 ]
 
 MIDDLEWARE = [
-    'django.middleware.cache.UpdateCacheMiddleware',
     'django.middleware.security.SecurityMiddleware',
-    'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
-    'django.contrib.auth.middleware.AuthenticationMiddleware',
-    'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'django.middleware.cache.FetchFromCacheMiddleware',
 ]
-
-
-CACHE_MIDDLEWARE_SECONDS = 0
-CACHE_MIDDLEWARE_KEY_PREFIX = None
 
 
 ROOT_URLCONF = 'EasySipP.urls'
@@ -67,8 +53,6 @@ TEMPLATES = [
             'context_processors': [
                 'django.template.context_processors.debug',
                 'django.template.context_processors.request',
-                'django.contrib.auth.context_processors.auth',
-                'django.contrib.messages.context_processors.messages',
             ],
         },
     },
@@ -80,43 +64,37 @@ WSGI_APPLICATION = 'EasySipP.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
-}
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': BASE_DIR / 'db.sqlite3',
+#     }
+# }
 
 
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
 
-AUTH_PASSWORD_VALIDATORS = [
-    {
-        'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
-    },
-    {
-        'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
-    },
-    {
-        'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',
-    },
-    {
-        'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
-    },
-]
+# AUTH_PASSWORD_VALIDATORS = [
+#     {
+#         'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
+#     },
+#     {
+#         'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
+#     },
+#     {
+#         'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',
+#     },
+#     {
+#         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
+#     },
+# ]
 
 
 # Internationalization
 # https://docs.djangoproject.com/en/4.2/topics/i18n/
 
 LANGUAGE_CODE = 'en-us'
-
-TIME_ZONE = 'UTC'
-
-USE_I18N = True
-
-USE_TZ = True
 
 
 # Static files (CSS, JavaScript, Images)
@@ -128,10 +106,7 @@ STATIC_ROOT = BASE_DIR / 'collectstatic/'
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
-DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-
-
-
+# DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
 LOGGING = {
@@ -139,31 +114,34 @@ LOGGING = {
     'disable_existing_loggers': False,
     'formatters': {
         'verbose': {
-            'format': '{levelname} {asctime} {module} {message}',
+            'format': '{levelname} {asctime} {filename}:{lineno} {message}',
             'style': '{',
         },
     },
     'handlers': {
         'file': {
-            'level': 'INFO',  # Set the desired logging level (e.g., DEBUG, INFO, WARNING, ERROR, CRITICAL)
-            'class': 'logging.FileHandler',
-            'filename': 'debug.log',  # Set the path and name of the log file
-            'formatter': 'verbose',  # Use the 'verbose' formatter defined above
+            'level': 'DEBUG' if DEBUG else 'WARNING',
+            'class': 'logging.handlers.RotatingFileHandler',
+            'filename': 'debug.log',
+            'formatter': 'verbose',
+            'maxBytes': 5 * 1024 * 1024,  # 5 MB per log file
+            'backupCount': 5,             # keep up to 5 old log files
         },
     },
     'root': {
-        'handlers': ['file'],  # Use the 'file' handler for the root logger
-        'level': 'DEBUG',  # Set the desired logging level for the root logger
+        'handlers': ['file'],
+        'level': 'DEBUG' if DEBUG else 'WARNING',
     },
     'loggers': {
         'django': {
-            'handlers': ['file'],  # Use the 'file' handler for Django core components
-            'level': 'DEBUG',  # Set the desired logging level for Django core components
+            'handlers': ['file'],
+            'level': 'DEBUG' if DEBUG else 'WARNING',
         },
-        # You can add more loggers here for specific apps or modules
-        # 'myapp': {
-        #     'handlers': ['file'],
-        #     'level': 'DEBUG',
-        # },
+        'django.server': {  # This is the effective logger name for basehttp
+        'handlers': ['file'],
+        'level': 'WARNING' if DEBUG else 'ERROR',  # or 'CRITICAL' to hide all
+        'propagate': False,
+    },
     },
 }
+

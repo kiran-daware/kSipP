@@ -12,6 +12,9 @@ from .scripts.ksipp import get_sipp_processes, fetch_config_data, save_config_da
 from .scripts.kstun import get_ip_info
 from .scripts.modify import tmpXmlBehindNAT, modifynumberxmlpath
 from .scripts.list import listXmlFiles
+import logging
+
+logger = logging.getLogger(__name__)
 
 
 ################### Index Page Functions #############################
@@ -115,21 +118,21 @@ def index(request):
                 uacCommand = f"{sipp} -sf {uacXmlPath} {uac_remote} {uacSrc} -m {noOfCalls} -r {cps} -t {protocol_uac}"
                 outputFile = f'{uacXml}.log'
                 uacProc = run_sipp_in_background(uacCommand, outputFile)
-                # uacProc=subprocess.Popen(uacCommand,shell=True)
                 time.sleep(0.4)
                 # Check if Process has immediately exited
                 return_code = uacProc.poll()
+
                 if return_code != 0 and return_code != None:
                     outputFilePath = os.path.join(settings.BASE_DIR, outputFile)
                     with open(outputFilePath, 'r') as file:
                         lines = file.readlines()
-                        # Extract the last 'num_lines' lines from the list
-                        last_lines = lines[-15:]
-                        sipp_error = '*****'.join(last_lines)
+                        last_lines = lines[-2:]
+                        sipp_error = ''.join(last_lines)
+                        logger.error(sipp_error)
 
             except Exception as e:
                 sipp_error = f"Error: {e}"
-                # return HttpResponse(f"Error: {e}")
+                logger.exception('Exception occurred while trying to run sipp')
             
         if scriptName =='UAS':
             try:
@@ -151,12 +154,13 @@ def index(request):
                     with open(outputFilePath, 'r') as file:
                         lines = file.readlines()
                         # Extract the last 'num_lines' lines from the list
-                        last_lines = lines[-15:]
-                        sipp_error = '*****'.join(last_lines)
+                        last_lines = lines[-11:]
+                        sipp_error = ''.join(last_lines)
                         
             except Exception as e:
                 sipp_error = f"Error: {e}"
-                # return HttpResponse(f"Error: {e}")
+                logger.exception('Exception occurred while trying to run sipp')
+
 
     if request.method == 'POST' and 'send_signal' in request.POST:
         send_signal = request.POST.get('send_signal')

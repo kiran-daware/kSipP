@@ -66,9 +66,17 @@
         </form>
         <!-- Error Modal -->
         {% if sipp_error %}
-        <div style="clear: both;" id="sipp_error">
-            <span>{{ sipp_error }}</span>
-        </div>
+
+            <div id="sippErrorModal" class="modal" style="display: block;">
+            <div class="modal-content">
+                <span class="close" onclick="closeModal()">&times;</span>
+                <div>
+                <h3 style="color: darkred;">SIPp Error</h3>
+                <pre style="white-space: pre-wrap; font-family: monospace; color: darkred;">{{ sipp_error }}</pre>
+                </div>
+            </div>
+            </div>
+
         {% endif %}
         <div style="clear: both;"></div>
         <h3>Running SipP Processes:</h3>
@@ -143,7 +151,21 @@
             }
         });
 
-        let kpacketId = 1;
+        let kpacketId = 1; // used in sequence-diagram-kmod2.js
+
+        // Closing modal for sipp error
+        const modal = document.getElementById('sippErrorModal');
+
+        function closeModal() {
+            modal.style.display = 'none';
+        }
+
+        // Close modal when clicking outside the content
+        window.onclick = function(event) {
+            if (event.target === modal) {
+            modal.style.display = 'none';
+            }
+        }
 
       </script>
 
