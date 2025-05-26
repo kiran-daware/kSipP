@@ -608,7 +608,7 @@ function generateUASAck(includeSDP) {
     : 'Content-Length: 0';
 
     const reqMessage=`
-    <send retrans="500">
+    <send>
       <![CDATA[
 
         ACK sip:[$remote_contact] SIP/2.0
