@@ -10,8 +10,9 @@ SOCKFILE=/app/gunicorn.sock
 nginx -g 'daemon on;'
 
 # Start Gunicorn in the foreground bound to the Unix socket
+# Can increase workers to 3 after fixing config.ini issue
 exec gunicorn EasySipP.wsgi:application \
     --bind unix:$SOCKFILE \
-    --workers 3 \
+    --workers 1 \
     --access-logfile - \
     --error-logfile -
