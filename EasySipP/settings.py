@@ -19,9 +19,13 @@ CSRF_TRUSTED_ORIGINS = []  # Empty is fine for HTTP usage only
 # Application definition
 INSTALLED_APPS = [
     'kSipP',
+    'django.contrib.admin',
+    'django.contrib.auth',
+    'django.contrib.contenttypes',
+    'django.contrib.sessions',
+    'django.contrib.messages',
     'django.contrib.staticfiles',
 ]
-
 MIDDLEWARE = [
     'django.middleware.cache.UpdateCacheMiddleware',
     'django.middleware.security.SecurityMiddleware',
