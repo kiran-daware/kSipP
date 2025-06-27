@@ -1,9 +1,17 @@
 #!/bin/sh
 
+set -e  # Exit on error
+
+# Ensure the socket file doesn't exist from previous runs
+SOCKFILE=/app/gunicorn.sock
+[ -e "$SOCKFILE" ] && rm "$SOCKFILE"
+
 # Start Nginx in the background
 nginx -g 'daemon on;'
 
-# Start Gunicorn in the foreground (use --daemon for background)
-# gunicorn EasySipP.wsgi --bind 0.0.0.0:8000 --daemon
-gunicorn EasySipP.wsgi --bind unix:/app/gunicorn.sock
-
+# Start Gunicorn in the foreground bound to the Unix socket
+exec gunicorn EasySipP.wsgi:application \
+    --bind unix:$SOCKFILE \
+    --workers 3 \
+    --access-logfile - \
+    --error-logfile -
