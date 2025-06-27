@@ -22,6 +22,7 @@
       Allow: CANCEL, ACK, INVITE, BYE, OPTIONS, NOTIFY, INFO, REFER, SUBSCRIBE, PRACK, UPDATE, MESSAGE, PUBLISH
       Contact: <sip:12345@[local_ip]:[local_port]>;expires=3600
       Max-Forwards: 70
+      Content-Length: [len]
 
 
    ]]>
