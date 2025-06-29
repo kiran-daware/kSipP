@@ -15,7 +15,6 @@ venv/
 *.sqlite3
 *.log
 *.pid
-migrations/
 collectstatic/
 
 # Git

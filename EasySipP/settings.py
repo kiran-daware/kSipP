@@ -5,7 +5,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # SECURITY WARNING: keep the secret key used in production!
 SECRET_KEY = 'django-insecure-#fs5^#gsc+tuvh+pty=$p^0wq+*ip3*o0ojno&$a&l^pbfoeh%'
 
-DEBUG = False
+DEBUG = True
 
 # Allow any IP for development and image distribution — fine for local use
 ALLOWED_HOSTS = ['*']

@@ -191,16 +191,24 @@
         <button type="button" onclick="submitSaveAs()">Save</button>
       </div>
     </div>
+    {% if xml_name %}
+    Successfully Saved to <b>{{ xml_name }}</b>
+    <script>
+      document.getElementById("createUAC").style.display = "none";
+      document.getElementById("createUAS").style.display = "none";
+      document.getElementById("reset").style.display = "inline-block";
+    </script>
+    {% endif %}
 
   </div> <!-- scenario-creator div end -->
 
-  <div style="float: left; width: 59%;">
+  <div style="float: left; width: 59%;"> 
   
     <form id="scen-creator-ace-form" method="post" action="{% url 'create_scenario_xml' %}">
       {% csrf_token %}
       <input type="hidden" name="xml_content" id="xmlContentInput">
       <input type="hidden" name="file_name" >
-      <div id="xml-editor" style="height: 520px;"></div>
+      <div id="xml-editor" style="height: 520px;">{% if xml_content %}{{ xml_content }}{% endif %}</div>
     </form>
 
   </div>

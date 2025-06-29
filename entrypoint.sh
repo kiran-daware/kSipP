@@ -2,6 +2,9 @@
 
 set -e  # Exit on error
 
+echo "Running migrations..."
+python manage.py migrate --noinput
+
 # Ensure the socket file doesn't exist from previous runs
 SOCKFILE=/app/gunicorn.sock
 [ -e "$SOCKFILE" ] && rm "$SOCKFILE"

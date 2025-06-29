@@ -31,8 +31,7 @@ RUN python -m pip install --no-cache-dir -r requirements.txt
 COPY . .
 
 # Download and install SIPp binary
-RUN mkdir -p kSipP/sipp && \
-    curl -L -o kSipP/sipp ${SIPP_BIN_URL} && \
+RUN curl -L -o kSipP/sipp ${SIPP_BIN_URL} && \
     chmod +x kSipP/sipp && \
     setcap cap_net_raw=ep kSipP/sipp
 

@@ -231,11 +231,11 @@ def serveXmlFile(request, xmlname):
 
 
 def xmlEditor(request):
-    if request.method != 'POST':
+    if request.method == 'GET':
         xmlName=request.GET.get('xml')
         referer=request.GET.get('back', 'index')
         if xmlName is None:
-            return HttpResponse('No xml selected <a href="/xml-list/">Select here!</a>')
+            return HttpResponse('No xml selected <a href="/xml-management/">Select here!</a>')
         xmlPath = str(settings.BASE_DIR / 'kSipP' / 'xml' / xmlName)
         with open(xmlPath, 'r') as file:
             xmlContent = file.read()
@@ -344,8 +344,13 @@ def create_scenario_xml_view(request):
         cleanedFilename = cleanFilename(fileName)
         with open(os.path.join(settings.BASE_DIR, 'kSipP', 'xml', cleanedFilename), 'w', encoding='utf-8') as file:
             file.write(xmlContent)
+    
+    context = {
+        'xml_content':xmlContent if 'xmlContent' in locals() else False,
+        'xml_name':fileName if 'fileName' in locals() else False,
+    }
 
-    return render(request, 'create_scenario_xml.html')
+    return render(request, 'create_scenario_xml.html', context)
 
 
 def xml_mgmt_view(request):

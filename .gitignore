@@ -2,7 +2,6 @@ venv/
 __pycache__/
 *.pyc
 *.log
-migrations/
 collectstatic/
 *.sqlite3
 
