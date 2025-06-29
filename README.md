@@ -27,10 +27,6 @@ docker run -dt --network host --name ksipp krndwr/ksipp
 ```
 Once your container is up and running, open it http://localhost:8080/ (or <your_linux/docker_IP>:8080)
 
-
-![kSipP - Web GUI for SIPp](https://raw.githubusercontent.com/kiran-daware/kSipP/main/screenshot.png)
-
-
 ## ❓ Frequently Asked Questions
 
 ### What is kSipP?
@@ -53,3 +49,15 @@ docker run -dt --network host --name ksipp krndwr/ksipp
 
 ### Disclaimer: 
 This project is a work in progress and is provided "as is" without any warranty, express or implied, of any kind. The project includes the SIPp binary from https://github.com/SIPp/sipp, which is licensed under the GNU General Public License (GPL). Users are responsible for complying with the SIPp license.
+
+
+## 📸 Screenshots
+
+### Main Dashboard & Test Execution
+![kSipP - Web GUI for SIPp](https://raw.githubusercontent.com/kiran-daware/kSipP/main/screenshot-1.png)
+
+### SIP Call Flow Visualization
+![kSipP - XML flow diagram](https://raw.githubusercontent.com/kiran-daware/kSipP/main/screenshot-2.png)
+
+### SIPp XML Scenario Generator
+![kSipP - XML Scenario generator](https://raw.githubusercontent.com/kiran-daware/kSipP/main/screenshot-3.png)
