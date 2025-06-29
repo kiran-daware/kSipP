@@ -1,19 +1,20 @@
-# kSipP - for Everyone!
+# kSipP - Simplify Your SIP Testing. For Everyone.
 
 [SIPp](https://github.com/SIPp/sipp) is a powerful tool for **VoIP SIP testing** in the telecom world, but it often requires command-line expertise. It can be daunting for those unfamiliar with CLI tools. 
-kSipP provides a user-friendly graphical user interface (**Web GUI**) for running **SIPp**.
+kSipP provides a user-friendly graphical user interface (**Web GUI**) that simplifies the entire process of running and managing **SIPp**. Thus, making advanced SIP testing accessible to **everyone**.
 
 ## Features:
-- Simplified Configuration: Easily create and edit **SIPp xml scenarios** without needing to write complex xml manually.
-- Need to create SIPp XML scenarios without the full setup? Check out our online SIPp scenario builder hosted on GitHub Pages: [SIPp xml generator](https://kiran-daware.github.io/sipp-xml/)
-- Intuitive Interface: A well-designed Web GUI streamlines the process of defining SIP messages, call flows, and test parameters.
-- Effortless Execution: Launch your SIPp test calls with a click – no more manual command-line manipulation.
-- Visualized Results: Gain insights into test outcomes through clear and concise visualizations.
+* **Effortless Scenario Creation:** Generate and modify complex **SIPp XML scenarios** directly within your browser, eliminating the need for complex XML coding manually.
+    * *Need to create SIPp XML scenarios without the full setup?* Check out our **online SIPp scenario builder**: [SIPp XML Generator](https://kiran-daware.github.io/sipp-xml/)
+* **Intuitive Test Configuration:** A well-designed Web GUI streamlines the process of defining call flows, and crucial test parameters (like calling party and called party numbers, call rates and concurrent calls etc).
+* **One-Click Execution:** (One-click if you have it pre-configured) Launch your SIPp test calls with a single click – no more tedious command-line manipulation or complex script.
+* **SIPp refreshing Results:** View the results of SIPp processes as they are running just like you could see in your CLI.
+* **Seamless SIPp Integration:** kSipP enhances SIPp's usability without sacrificing its core power, running the original SIPp engine under the hood.
 
 ## Who's it for?
 
-- VoIP Testers: Save time and effort with a streamlined SIPp testing experience.
-- Network Engineers: Quickly validate SIP functionality without extensive command-line knowledge.
+* **VoIP Testers:** Streamline your SIPp testing workflow and save valuable time.
+* **Anyone looking to simplify their SIP testing experience!**
 
 ## How to use?
 
@@ -33,7 +34,7 @@ Once your container is up and running, open it http://localhost:8080/ (or <your_
 ## ❓ Frequently Asked Questions
 
 ### What is kSipP?
-kSipP is a **web-based GUI for [SIPp](https://github.com/SIPp/sipp)**, designed to simplify SIP and VoIP testing. It eliminates the need for complex command-line configurations and provides a more accessible interface for VOIP SIP testers.
+kSipP is a **web-based GUI for [SIPp](https://github.com/SIPp/sipp)**, designed to simplify SIP and VoIP testing. Its primary goal is to simplify complex SIP and VoIP testing by providing an accessible and intuitive platform, eliminating the need for extensive command-line expertise.
 
 ### Who should use kSipP?
 Anyone involved in SIP testing — including VoIP testers, telecom engineers — will benefit from kSipP's user-friendly approach to running and managing SIPp scenarios.
@@ -50,6 +51,5 @@ Just run the following command:
 docker run -dt --network host --name ksipp krndwr/ksipp
 ```
 
-
 ### Disclaimer: 
-This project is a work in progress and is uploaded on git hub as is without any warranty of any kind. The project has included the sipp binary from https://github.com/SIPp/sipp which is licenced under GNU General Public License.
+This project is a work in progress and is provided "as is" without any warranty, express or implied, of any kind. The project includes the SIPp binary from https://github.com/SIPp/sipp, which is licensed under the GNU General Public License (GPL). Users are responsible for complying with the SIPp license.
