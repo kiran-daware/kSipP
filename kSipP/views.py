@@ -9,7 +9,7 @@ from django.http import HttpResponseBadRequest
 import xml.etree.ElementTree as ET
 import os, time, signal
 import subprocess, psutil
-from .scripts.ksipp import get_sipp_processes, sipp_commands
+from .scripts.ksipp import get_sipp_processes, sipp_commands, cleanFilename
 from .scripts.kstun import get_ip_info
 from .scripts.modify import tmpXmlBehindNAT, modifynumberxmlpath
 from .scripts.list import listXmlFiles
@@ -171,7 +171,7 @@ def index(request):
                     with open(outputFilePath, 'r') as file:
                         lines = file.readlines()
                         # Extract the last 'num_lines' lines from the list
-                        last_lines = lines[-12:]
+                        last_lines = lines[-14:]
                         sipp_error = ''.join(last_lines)
                         
             except Exception as e:
@@ -253,6 +253,7 @@ def xmlEditor(request):
         elif save_type == 'save_as': 
             uacuas = 'uac' if xmlName.startswith('uac') else ('uas' if xmlName.startswith('uas') else None)
             savingXmlName = f'{uacuas}_{new_xml_name}.xml'
+            savingXmlName = cleanFilename(savingXmlName)
         else:  return redirect(referer)
 
         with open(os.path.join(settings.BASE_DIR, 'kSipP', 'xml', savingXmlName), 'w', encoding='utf-8') as file:
@@ -336,64 +337,18 @@ def display_sipp_screen(request, pid, xml):
     return render(request, 'sipp_log.html', context)
 
 
-
-
-def xml_management(request):
-    xml_upload_form = xmlUploadForm()
-    xml_dir = os.path.join(settings.BASE_DIR, 'kSipP', 'xml')
-    xml_files = [file for file in os.listdir(xml_dir) if file.endswith(".xml")]
-    xml_list = sorted(xml_files)
-
-    if request.method == 'POST' and 'submitType' in request.POST:
-        submitType = request.POST.get('submitType')
-        if submitType == 'upload':
-            upload_success = False
-            xml_upload_form = xmlUploadForm(request.POST, request.FILES)
-            if xml_upload_form.is_valid():
-                uploaded_file = request.FILES['file']
-                file_path = os.path.join(xml_dir, uploaded_file.name)
-                with open(file_path, 'wb+') as destination:
-                    for chunk in uploaded_file.chunks():
-                        destination.write(chunk)
-                
-                # Validate the uploaded XML file
-                try:
-                    tree = ET.parse(file_path)
-                except ET.ParseError as e:
-                    os.remove(file_path)  # Remove the invalid file
-                    return HttpResponseBadRequest(f"Invalid XML file :** {uploaded_file.name} **: {e} <br><br> <b><a href='/xml-management'>Return to upload</a></b>")
-
-                upload_success = True
-                xml_files = [file for file in os.listdir(xml_dir) if file.endswith(".xml")]
-                xml_list = sorted(xml_files)
-            return render(request, 'xml_management.html', {'xml_upload_form': xml_upload_form,
-                                                           'xml_list': xml_list,
-                                                           'upload_success': upload_success})
-            
-        if submitType == 'delete':
-            xml_name = request.POST.get('xml_name')
-            xml_path = os.path.join(xml_dir, xml_name)
-            if os.path.exists(xml_path):
-                os.remove(xml_path)
-
-            xml_files = [file for file in os.listdir(xml_dir) if file.endswith(".xml")]
-            xml_list = sorted(xml_files)
-
-
-    return render(request, 'xml_management.html', {'xml_upload_form': xml_upload_form, 'xml_list': xml_list})
-
-
 def create_scenario_xml_view(request):
     if request.method == 'POST':
         xmlContent=request.POST.get('xml_content')
         fileName=request.POST.get('file_name')
-        with open(os.path.join(settings.BASE_DIR, 'kSipP', 'xml', fileName), 'w', encoding='utf-8') as file:
+        cleanedFilename = cleanFilename(fileName)
+        with open(os.path.join(settings.BASE_DIR, 'kSipP', 'xml', cleanedFilename), 'w', encoding='utf-8') as file:
             file.write(xmlContent)
 
     return render(request, 'create_scenario_xml.html')
 
 
-def xml_list_view(request):
+def xml_mgmt_view(request):
     xmlDir = os.path.join(settings.BASE_DIR, 'kSipP', 'xml')
     xmlUploadF = xmlUploadForm()
 
@@ -403,7 +358,8 @@ def xml_list_view(request):
             xmlUploadF = xmlUploadForm(request.POST, request.FILES)
             if xmlUploadF.is_valid():
                 uploaded_file = request.FILES['file']
-                file_path = os.path.join(xmlDir, uploaded_file.name)
+                cleaned_filename = cleanFilename(uploaded_file.name)
+                file_path = os.path.join(xmlDir, cleaned_filename)
                 
                 # Validate the uploaded XML file
                 try:
@@ -411,7 +367,7 @@ def xml_list_view(request):
                         for chunk in uploaded_file.chunks():
                             destination.write(chunk)
                     tree = ET.parse(file_path)
-                    uploadMsg = f"File '{uploaded_file.name}' uploaded successfully."
+                    uploadMsg = f"File '{cleaned_filename}' uploaded successfully."
                     
                 except ET.ParseError as e:
                     os.remove(file_path)  # Remove the invalid file
@@ -431,4 +387,4 @@ def xml_list_view(request):
         'upload_msg': uploadMsg if 'uploadMsg' in locals() else False,
         }
     
-    return render(request, 'xml_list.html', context)
+    return render(request, 'xml_management.html', context)

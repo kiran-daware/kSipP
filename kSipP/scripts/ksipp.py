@@ -49,3 +49,10 @@ def get_sipp_processes():
     sorted_sipp_processes = sorted(sipp_processes, key=lambda x: x['pid'], reverse=True)
     return sorted_sipp_processes
 #########################################################################################
+
+def cleanFilename(filename):
+    # Replace spaces with underscores
+    cleaned_filename = filename.replace(' ', '_')
+    # Remove any characters that are not alphanumeric, underscores, hyphens, or periods
+    cleaned_filename = re.sub(r'[^\w\-\.]', '', cleaned_filename)
+    return cleaned_filename

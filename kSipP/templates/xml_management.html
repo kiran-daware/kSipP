@@ -1,49 +1,116 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>File Upload</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>kSipp XML List</title>
     {% load static %}
     <link rel="stylesheet" type="text/css" href="{% static 'styles.css' %}">
 </head>
 <body>
     {% include "header.html" %}
+    <div id="options-container">
+        <div id="dots">
+            <span class="dot"></span>
+            <span class="dot"></span>
+            <span class="dot"></span>
+        </div>
+        <div id="buttons">
+            <button id="upload-xml-b">Upload new XML</button>
+            <button>PCAP media</button>
+            <button>Download all XML files</button>
+            <button>Restore preloaded XMLs</button>
+        </div>
+    </div>
 
-    <h3>Upload new xml</h3>
-    <form method="post" enctype="multipart/form-data">
-        {% csrf_token %}
-        {% if xml_upload_form.file.errors %}
-        <ul class="errorlist">
-            {% for error in xml_upload_form.file.errors %}
-                <li>{{ error }}</li>
-            {% endfor %}
-        </ul>
-        {% endif %}
-        {{ xml_upload_form.file }}
-        <button type="submit" name="submitType" value="upload">Upload</button>
-        (Hint: File name should start with "uac" or "uas".)
-    </form>
-
-    {% if upload_success %}
-        <p class="success-message">File uploaded successfully!</p>
-    {% endif %}
-
-<div>
-
-    <h3>XML List</h3>
-    <ul>
-        {% for xml_name in xml_list %}
-            <li style="padding:5px;">
-                <form method="post">
+    <div id="upload-modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <div id="upload-div">
+                <h3>Upload new xml</h3>
+                <form method="post" enctype="multipart/form-data">
                     {% csrf_token %}
-                    {{ xml_name }} &nbsp;&nbsp;
-                    <input type="hidden" name="xml_name" value="{{ xml_name }}">
-                    <button style="font-size: 10px;" type="submit" name="submitType" value="edit">Edit</button>
-                    <button style="font-size: 10px;" type="submit" name="submitType" value="delete" onclick="return confirm('Are you sure you want to delete this file : {{ xml_name }}?')">Delete</button>
-                </form>
-            </li>
-        {% endfor %}
-    </ul>
+                    <p>{% if upload_msg %}{{ upload_msg }}{% endif %}</p>
+                    {% if xml_upload_form.file.errors %}
+                    <ul class="errorlist">
+                        {% for error in xml_upload_form.file.errors %}
+                            <li>{{ error }}</li>
+                        {% endfor %}
+                    </ul>
+                    {% endif %}
+                    {{ xml_upload_form.file }}
+                    <button type="submit" name="submitType" value="upload">Upload</button>
+                    (Hint: File name should start with "uac" or "uas".)
+                </form>          
+            </div>
+        </div>
+    </div>
 
-</div>
+    <div id="xml-lists">
+        <ul id="uac-list">
+            <!-- The list of UAC XML files will be dynamically inserted here -->
+        </ul>
+        <ul id="uas-list">
+            <!-- The list of UAS XML files will be dynamically inserted here -->
+        </ul>
+    
+        <div id="xml-flow">
+            <div id="flow-diagram"></div>
+        </div> 
+
+    </div>
+
+    {{ uac_list|json_script:"uac-list-json" }}
+    {{ uas_list|json_script:"uas-list-json" }}
+
+        <script>
+            const uacListJson = document.getElementById('uac-list-json')
+            const uacXmlFiles = JSON.parse(uacListJson.textContent);
+            const uasListJson = document.getElementById('uas-list-json')
+            const uasXmlFiles = JSON.parse(uasListJson.textContent);
+            console.log(uasXmlFiles)
+
+            // List of XML files
+            /*const uacXmlFiles=[
+             'uac_basic.xml',
+             'uac_hold_A.xml',
+             'uac_hold_B.xml',
+             'uac_media.xml',
+             'uac_options.xml',
+             'uac_prack.xml',
+             'uac_register_quick.xml',
+             'uac_reinvite_from_B.xml',
+             'uac_send_recv_update.xml'
+            ]*/
+
+            /*const uasXmlFiles=[
+             'uas_basic.xml',
+             'uas_hold_A.xml',
+             'uas_hold_B.xml',
+             'uas_media.xml',
+             'uas_options.xml',
+             'uas_prack.xml',
+             'uas_register_quick.xml',
+             'uas_reinvite_from_B.xml',
+             'uas_send_recv_update.xml'
+            ]*/
+    
+            // used in sequence-diagram-kmod.js
+            let kpacketId = 1;
+            console.log('kiran');
+        </script>
+        <script src="{% static 'sdjs/snap.svg-min.js' %}"></script>
+        <script src="{% static 'sdjs/underscore-min.js' %}"></script>
+        <script src="{% static 'sdjs/sequence-diagram-kmod2.js' %}"></script>
+        <script src="{% static 'listXml.js' %}"></script>  
+
+        {% if upload_msg or xml_upload_form.file.errors %}
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {     
+                document.getElementById('upload-modal').style.display = 'block';
+            });
+        </script>
+        {% endif %}
+    
 </body>
 </html>
