@@ -13,6 +13,6 @@ nginx -g 'daemon on;'
 # Can increase workers to 3 after fixing config.ini issue
 exec gunicorn EasySipP.wsgi:application \
     --bind unix:$SOCKFILE \
-    --workers 1 \
+    --workers 3 \
     --access-logfile - \
     --error-logfile -

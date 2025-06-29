@@ -4,11 +4,12 @@ from django.shortcuts import render, redirect
 from django.conf import settings
 from .forms import configForm, xmlForm, moreSippOptionsForm
 from .forms import xmlUploadForm
+from .models import AppConfig
 from django.http import HttpResponseBadRequest
 import xml.etree.ElementTree as ET
 import os, time, signal
 import subprocess, psutil
-from .scripts.ksipp import get_sipp_processes, fetch_config_data, save_config_data, sipp_commands
+from .scripts.ksipp import get_sipp_processes, sipp_commands
 from .scripts.kstun import get_ip_info
 from .scripts.modify import tmpXmlBehindNAT, modifynumberxmlpath
 from .scripts.list import listXmlFiles
@@ -21,45 +22,61 @@ logger = logging.getLogger(__name__)
 
 @never_cache
 def index(request):
-    config_data = fetch_config_data()    
-    print_uac_command, print_uas_command=sipp_commands(config_data)
+    # Always fetch or create the single config instance
+    config_obj, _ = AppConfig.objects.get_or_create(key='main')
+    def update_config_data(): 
+        config_data = {
+            'select_uac': config_obj.select_uac,
+            'select_uas': config_obj.select_uas,
+            'uac_remote': config_obj.uac_remote,
+            'uac_remote_port': config_obj.uac_remote_port,
+            'uas_remote': config_obj.uas_remote,
+            'uas_remote_port': config_obj.uas_remote_port,
+            'local_addr': config_obj.local_addr,
+            'src_port_uac': config_obj.src_port_uac,
+            'src_port_uas': config_obj.src_port_uas,
+            'protocol_uac': config_obj.protocol_uac,
+            'protocol_uas': config_obj.protocol_uas,
+            'called_party_number': config_obj.called_party_number,
+            'calling_party_number': config_obj.calling_party_number,
+            'total_no_of_calls': config_obj.total_no_of_calls,
+            'cps': config_obj.cps,
+            'stun_server': config_obj.stun_server,
+        }
+        return config_data
 
-    # loading xmlForm and configForm
-    selectXml = xmlForm(initial=config_data)
-    ipConfig = configForm(initial=config_data)
-    moreOptionsForm = moreSippOptionsForm(initial=config_data)
+    # GET request: pre-fill forms with database values
+    selectXml = xmlForm(instance=config_obj)
+    ipConfig = configForm(instance=config_obj)
+    moreOptionsForm = moreSippOptionsForm(instance=config_obj)
+
+    config_data = update_config_data()
+    print_uac_command, print_uas_command=sipp_commands(config_data)
 
     if request.method == 'POST' and 'submitType' in request.POST:
         # submit_type = request.POST['submitType']
         # if submit_type =='config' or submit_type == 'moreOptionsClose' or submit_type == 'moreOptions':
-        selectXml = xmlForm(request.POST)
-        ipConfig = configForm(request.POST)
-        moreOptionsForm = moreSippOptionsForm(request.POST)
+        selectXml = xmlForm(request.POST, instance=config_obj)
+        ipConfig = configForm(request.POST, instance=config_obj)
+        moreOptionsForm = moreSippOptionsForm(request.POST, instance=config_obj)
+
         if selectXml.is_valid() and ipConfig.is_valid() and moreOptionsForm.is_valid():
+            # Save all parts to the same instance
+            if selectXml.is_valid() and ipConfig.is_valid() and moreOptionsForm.is_valid():
+                cd = {
+                    **selectXml.cleaned_data,
+                    **ipConfig.cleaned_data,
+                    **moreOptionsForm.cleaned_data
+                }
+                # Update the config object
+                for key, value in cd.items():
+                    setattr(config_obj, key, value)
+                config_obj.save()
 
-            # update config_data dictionary
-            config_data['select_uac'] = selectXml.cleaned_data['select_uac']
-            config_data['select_uas'] = selectXml.cleaned_data['select_uas']
-            
-            config_data['uac_remote'] = ipConfig.cleaned_data['uac_remote']
-            config_data['uac_remote_port'] = ipConfig.cleaned_data['uac_remote_port']
-            config_data['uas_remote'] = ipConfig.cleaned_data['uas_remote']
-            config_data['uas_remote_port'] = ipConfig.cleaned_data['uas_remote_port']
-            config_data['local_addr'] = ipConfig.cleaned_data['local_addr']
-            config_data['src_port_uac'] = ipConfig.cleaned_data['src_port_uac']
-            config_data['src_port_uas'] = ipConfig.cleaned_data['src_port_uas']
-            config_data['protocol_uac'] = ipConfig.cleaned_data['protocol_uac']
-            config_data['protocol_uas'] = ipConfig.cleaned_data['protocol_uas']
-
-            config_data['called_party_number'] = moreOptionsForm.cleaned_data['called_party_number']
-            config_data['calling_party_number'] = moreOptionsForm.cleaned_data['calling_party_number']
-            config_data['total_no_of_calls'] = moreOptionsForm.cleaned_data['total_no_of_calls']
-            config_data['cps'] = moreOptionsForm.cleaned_data['cps']
-            config_data['stun_server'] = moreOptionsForm.cleaned_data['stun_server']
-            
-            save_config_data(config_data)
-
-            #update script prints on homepage
+            # Reload updated instance from DB
+            config_obj.refresh_from_db()
+            config_data=update_config_data()
+            # Update script prints on homepage
             print_uac_command, print_uas_command=sipp_commands(config_data)
         
         elif not moreOptionsForm.is_valid():
@@ -201,7 +218,6 @@ def index(request):
         }
 
     return render(request, 'index.html', context)
-
 
 
 ######## Index End ############

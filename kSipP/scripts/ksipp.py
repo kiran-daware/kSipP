@@ -1,44 +1,6 @@
-import psutil, os, configparser, re
+import psutil, os, re
 from django.conf import settings
 
-################global variables##########################
-############# function to read initial config data from config file ###############################
-# Read initial data from config file
-config_file = os.path.join(str(settings.BASE_DIR), 'config.ini')
-config = configparser.ConfigParser()
-config.read(config_file)
-configd = config['DEFAULT']
-
-def fetch_config_data():
-    config_data = {
-        'uac_remote': configd.get('uac_remote'),
-        'uac_remote_port': configd.get('uac_remote_port'),
-        'uas_remote': configd.get('uas_remote'),
-        'uas_remote_port': configd.get('uas_remote_port'),
-        'local_addr': configd.get('local_addr'),
-        'src_port_uac': configd.get('src_port_uac'),
-        'src_port_uas': configd.get('src_port_uas'),
-        'protocol_uac':configd.get('protocol_uac'),
-        'protocol_uas':configd.get('protocol_uas'),
-        'called_party_number': configd.get('called_party_number'),
-        'calling_party_number': configd.get('calling_party_number'),
-        'total_no_of_calls': configd.get('total_no_of_calls'),
-        'cps': configd.get('cps'),
-        'select_uac':configd.get('select_uac'),
-        'select_uas':configd.get('select_uas'),
-        'stun_server':configd.get('stun_server'),
-
-    }
-    return config_data
-
-def save_config_data(config_data):
-    for configKey, configValue in config_data.items():
-        config.set('DEFAULT', configKey, str(configValue))
-
-    ConfigFile = os.path.join(settings.BASE_DIR, 'config.ini')
-    with open(ConfigFile, 'w') as configfile:
-        config.write(configfile)
-#########################################################################################
 ############# Get Sipp Commands ######################################
 def sipp_commands(config_data):    
     uacXml = f'{config_data["select_uac"]}'

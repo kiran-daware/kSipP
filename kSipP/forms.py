@@ -4,54 +4,55 @@ import xml.etree.ElementTree as ET
 import os
 from django.core.validators import RegexValidator
 from django.core.exceptions import ValidationError
+from .models import AppConfig
 
+class xmlForm(forms.ModelForm):
+    select_uac = forms.ChoiceField(label='Select UAC')  # override explicitly
+    select_uas = forms.ChoiceField(label='Select UAS')
 
-class xmlForm(forms.Form):
+    class Meta:
+        model = AppConfig
+        fields = ['select_uac', 'select_uas']
 
     xmlPath = str(settings.BASE_DIR / 'kSipP' / 'xml')
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
-        self.fields['select_uac'] = forms.ChoiceField(label='Select UAC', choices=self._get_xml_file_choices('uac'))
-        self.fields['select_uas'] = forms.ChoiceField(label='Select UAS', choices=self._get_xml_file_choices('uas'))
-    
-    def _get_xml_file_choices(self, field_name):
-        # Query the available XML files in the directory and generate choices dynamically
-        choices = []
-        for filename in os.listdir(self.xmlPath):
-            if filename.endswith('.xml'):
-                if field_name == 'uac' and filename.startswith('uac'):
-                    choices.append((filename, filename))
-                elif field_name == 'uas' and filename.startswith('uas'):
-                    choices.append((filename, filename))
+        self.fields['select_uac'].choices = self._get_xml_file_choices('uac')
+        self.fields['select_uas'].choices = self._get_xml_file_choices('uas')
 
-        sorted_choices = sorted(choices, key=lambda choice: choice[1])
-
-        return sorted_choices
+    def _get_xml_file_choices(self, prefix):
+        try:
+            return sorted([
+                (f, f) for f in os.listdir(self.xmlPath)
+                if f.endswith('.xml') and f.startswith(prefix)
+            ])
+        except FileNotFoundError:
+            return []
 
 
-class moreSippOptionsForm(forms.Form):
-    called_party_number = forms.CharField(label='Dialed Number', max_length=30, required=False, initial='1234',
-                                          validators=[RegexValidator(r'^[a-zA-Z0-9]+$','Only alphanumeric characters are allowed.')])
-    calling_party_number = forms.CharField(label='Calling Party Number', max_length=30, required=False, initial='9876',
-                                           validators=[RegexValidator(r'^[a-zA-Z0-9]+$','Only alphanumeric characters are allowed.')] )
-    total_no_of_calls = forms.IntegerField(label='No. of calls to send', min_value=1, max_value=9999, required=True, initial=1)
-    cps = forms.IntegerField(label='Calls Per Second', min_value=1, max_value=100, required=True, initial=1) 
-    stun_server = forms.GenericIPAddressField(label='Stun Server', protocol='IPv4', required=False, initial='')
+class configForm(forms.ModelForm):
+    class Meta:
+        model = AppConfig
+        fields = [
+            'uac_remote', 'uac_remote_port',
+            'uas_remote', 'uas_remote_port',
+            'local_addr', 'src_port_uac', 'src_port_uas',
+            'protocol_uac', 'protocol_uas'
+        ]
 
 
+class moreSippOptionsForm(forms.ModelForm):
+    called_party_number = forms.CharField(
+        required=False,
+        validators=[RegexValidator(r'^[a-zA-Z0-9]+$', 'Only alphanumeric characters are allowed.')])
+    calling_party_number = forms.CharField(
+        required=False,
+        validators=[RegexValidator(r'^[a-zA-Z0-9]+$', 'Only alphanumeric characters are allowed.')])
 
-class configForm(forms.Form):
-    uac_remote = forms.GenericIPAddressField(label='UAC Remote Address', protocol='IPv4')
-    uac_remote_port = forms.IntegerField(label='UAC Remote Port', min_value=1000, max_value=9999, initial=5060)
-    uas_remote = forms.GenericIPAddressField(label='UAS Remote Address', protocol='IPv4')
-    uas_remote_port = forms.IntegerField(label='UAS Remote Port', min_value=1000, max_value=9999, initial=5060)
-    local_addr = forms.GenericIPAddressField(label='Local Address', protocol='IPv4')
-    src_port_uac = forms.IntegerField(label='UAC Src Port', min_value=1000, max_value=9999, initial=5060)
-    src_port_uas = forms.IntegerField(label='UAS Src Port', min_value=1000, max_value=9999, initial=5060)
-    protocol_uac = forms.ChoiceField(label='', choices=[('u1', 'UDP'),('tn', 'TCP')])
-    protocol_uas = forms.ChoiceField(label='', choices=[('u1', 'UDP'),('tn', 'TCP')])
-    # Add more fields for other configuration settings as needed
+    class Meta:
+        model = AppConfig
+        fields = ['called_party_number', 'calling_party_number', 'total_no_of_calls', 'cps', 'stun_server']
 
 
 class xmlUploadForm(forms.Form):
