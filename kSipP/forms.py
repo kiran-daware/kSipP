@@ -32,6 +32,17 @@ class xmlForm(forms.ModelForm):
 
 
 class configForm(forms.ModelForm):
+
+    uac_remote = forms.GenericIPAddressField(label='UAC Remote Address', protocol='IPv4')
+    uac_remote_port = forms.IntegerField(label='UAC Remote Port', min_value=1024, max_value=65535, initial=5060)
+    uas_remote = forms.GenericIPAddressField(label='UAS Remote Address', protocol='IPv4')
+    uas_remote_port = forms.IntegerField(label='UAS Remote Port', min_value=1024, max_value=65535, initial=5060)
+    local_addr = forms.GenericIPAddressField(label='Local Address', protocol='IPv4')
+    src_port_uac = forms.IntegerField(label='UAC Src Port', min_value=1024, max_value=65535, initial=5060)
+    src_port_uas = forms.IntegerField(label='UAS Src Port', min_value=1024, max_value=65535, initial=5060)
+    protocol_uac = forms.ChoiceField(label='', choices=[('u1', 'UDP'),('tn', 'TCP')])
+    protocol_uas = forms.ChoiceField(label='', choices=[('u1', 'UDP'),('tn', 'TCP')])
+
     class Meta:
         model = AppConfig
         fields = [
@@ -43,12 +54,14 @@ class configForm(forms.ModelForm):
 
 
 class moreSippOptionsForm(forms.ModelForm):
-    called_party_number = forms.CharField(
-        required=False,
-        validators=[RegexValidator(r'^[a-zA-Z0-9]+$', 'Only alphanumeric characters are allowed.')])
-    calling_party_number = forms.CharField(
-        required=False,
-        validators=[RegexValidator(r'^[a-zA-Z0-9]+$', 'Only alphanumeric characters are allowed.')])
+
+    called_party_number = forms.CharField(label='Dialed Number', max_length=30, required=False,
+                                          validators=[RegexValidator(r'^[a-zA-Z0-9]+$','Only alphanumeric characters are allowed.')])
+    calling_party_number = forms.CharField(label='Calling Party Number', max_length=30, required=False,
+                                           validators=[RegexValidator(r'^[a-zA-Z0-9]+$','Only alphanumeric characters are allowed.')] )
+    total_no_of_calls = forms.IntegerField(label='No. of calls to send', min_value=1, max_value=19999, required=True, initial=1)
+    cps = forms.IntegerField(label='Calls Per Second', min_value=1, max_value=200, required=True, initial=1) 
+    stun_server = forms.GenericIPAddressField(label='Stun Server', protocol='IPv4', required=False, initial='')
 
     class Meta:
         model = AppConfig
