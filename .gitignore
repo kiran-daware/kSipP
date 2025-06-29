@@ -6,4 +6,4 @@ migrations/
 collectstatic/
 *.sqlite3
 
-kSipP/sipp/sipp
+kSipP/sipp

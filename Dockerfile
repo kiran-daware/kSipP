@@ -32,9 +32,9 @@ COPY . .
 
 # Download and install SIPp binary
 RUN mkdir -p kSipP/sipp && \
-    curl -L -o kSipP/sipp/sipp ${SIPP_BIN_URL} && \
-    chmod +x kSipP/sipp/sipp && \
-    setcap cap_net_raw=ep kSipP/sipp/sipp
+    curl -L -o kSipP/sipp ${SIPP_BIN_URL} && \
+    chmod +x kSipP/sipp && \
+    setcap cap_net_raw=ep kSipP/sipp
 
 # Create /app/kSipP/xml/tmp dir for tmp xml modification internally
 RUN mkdir -p kSipP/xml/tmp kSipP/xml/backup && \

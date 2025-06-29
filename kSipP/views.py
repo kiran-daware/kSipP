@@ -96,7 +96,7 @@ def index(request):
         calling_number = f'{config_data["calling_party_number"]}'
         stun_server = {config_data['stun_server']}
 
-        sipp = str(settings.BASE_DIR / 'kSipP' / 'sipp' / 'sipp')
+        sipp = str(settings.BASE_DIR / 'kSipP' / 'sipp')
         uacXmlPath = str(settings.BASE_DIR / 'kSipP' / 'xml' / uacXml)
         uasXmlPath = str(settings.BASE_DIR / 'kSipP' / 'xml' / uasXml)
         uac_remote=f"{config_data['uac_remote']}:{config_data['uac_remote_port']}"
@@ -171,7 +171,7 @@ def index(request):
                     with open(outputFilePath, 'r') as file:
                         lines = file.readlines()
                         # Extract the last 'num_lines' lines from the list
-                        last_lines = lines[-11:]
+                        last_lines = lines[-12:]
                         sipp_error = ''.join(last_lines)
                         
             except Exception as e:
