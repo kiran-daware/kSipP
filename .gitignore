@@ -4,3 +4,4 @@ __pycache__/
 *.log
 migrations/
 collectstatic/
+*.sqlite3
