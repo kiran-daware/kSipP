@@ -19,6 +19,7 @@ CSRF_TRUSTED_ORIGINS = []  # Empty is fine for HTTP usage only
 # Application definition
 INSTALLED_APPS = [
     'kSipP',
+    'channels',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -59,7 +60,8 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'EasySipP.wsgi.application'
+# WSGI_APPLICATION = 'EasySipP.wsgi.application'
+ASGI_APPLICATION = 'EasySipP.asgi.application'
 
 # Localization
 LANGUAGE_CODE = 'en-us'

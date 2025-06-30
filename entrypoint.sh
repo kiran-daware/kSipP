@@ -5,17 +5,14 @@ set -e  # Exit on error
 echo "Running migrations..."
 python manage.py migrate --noinput
 
-# Ensure the socket file doesn't exist from previous runs
-SOCKFILE=/app/gunicorn.sock
-[ -e "$SOCKFILE" ] && rm "$SOCKFILE"
-
 # Start Nginx in the background
 nginx -g 'daemon on;'
 
-# Start Gunicorn in the foreground bound to the Unix socket
-# Can increase workers to 3 after fixing config.ini issue
-exec gunicorn EasySipP.wsgi:application \
-    --bind unix:$SOCKFILE \
+# Start Uvicorn in the foreground
+# Adjust host and port as needed; no Unix socket by default
+exec uvicorn EasySipP.asgi:application \
+    --host 127.0.0.1 \
+    --port 8000 \
     --workers 3 \
-    --access-logfile - \
-    --error-logfile -
+    --proxy-headers \
+    --forwarded-allow-ips="*"

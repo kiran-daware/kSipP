@@ -6,6 +6,48 @@
     <link rel="stylesheet" type="text/css" href="{% static 'styles.css' %}">
 </head>
 <body>
+
+{{pid}}
+
+
+<pre id="logContainer" style="background:#bebebe; color:rgb(138, 0, 0); height: 400px; overflow-y: scroll;"></pre>
+<script>
+    const pid = "{{ pid }}";
+    const ws = new WebSocket('ws://localhost:8000/ws/sipp_logs/?xml=uac_basic&pid=' + pid);
+
+ws.onopen = () => console.log('WebSocket opened');
+ws.onmessage = (event) => {
+    console.log('Received:', event.data);
+    document.getElementById('logContainer').textContent = event.data;
+};
+ws.onclose = () => console.log('WebSocket closed');
+ws.onerror = (err) => console.error('WebSocket error:', err);
+
+</script>
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+
+
+
+
+
+
+
+
     <h1 class="newpageh1">{{ log_name }}</h3>
 
     {% if pid %}
@@ -44,7 +86,7 @@ function submitCheckSignalForm() {
 
 function startAutoRefresh() {
     // Submit the form every 3 seconds
-    autoRefreshInterval = setInterval(submitCheckSignalForm, 3000);
+    autoRefreshInterval = setInterval(submitCheckSignalForm, 30000);
     updateButtonLabel(); // Update the button label to "Stop Auto Refresh"
 }
 

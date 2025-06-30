@@ -14,6 +14,7 @@ from .scripts.kstun import get_ip_info
 from .scripts.modify import tmpXmlBehindNAT, modifynumberxmlpath
 from .scripts.list import listXmlFiles
 import logging
+import shlex
 
 logger = logging.getLogger(__name__)
 
@@ -116,7 +117,8 @@ def index(request):
         
         def run_sipp_in_background(command, output_file):
             with open(output_file, 'w') as f:
-                process = subprocess.Popen(command, stdout=f, stderr=subprocess.STDOUT,shell=True, text=True)
+                args = shlex.split(command)
+                process = subprocess.Popen(args, stdout=f, stderr=subprocess.STDOUT)
             return process
         
         scriptName = request.POST.get('runScript')
