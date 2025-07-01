@@ -6,6 +6,7 @@ from .forms import configForm, xmlForm, moreSippOptionsForm
 from .forms import xmlUploadForm
 from .models import AppConfig
 from django.http import HttpResponseBadRequest
+from django.urls import reverse
 import xml.etree.ElementTree as ET
 import os, time, signal
 import subprocess, psutil
@@ -14,7 +15,7 @@ from .scripts.kstun import get_ip_info
 from .scripts.modify import tmpXmlBehindNAT, modifynumberxmlpath
 from .scripts.list import listXmlFiles
 import logging
-import shlex
+import shlex, socket
 
 logger = logging.getLogger(__name__)
 
@@ -115,9 +116,23 @@ def index(request):
                 return None
             return newXmlPath
         
+        # get free udp port for controlling sipp through -cp
+        def get_free_control_port(start=8888, end=8948):
+            for port in range(start, end):
+                with socket.socket(socket.AF_INET, socket.SOCK_DGRAM) as s:
+                    try:
+                        s.bind(('', port))
+                        return port
+                    except OSError:
+                        continue
+            raise RuntimeError("No free UDP port available")
+
+        
         def run_sipp_in_background(command, output_file):
             with open(output_file, 'w') as f:
+                cport = get_free_control_port()
                 args = shlex.split(command)
+                args.extend(["-cp", str(cport)])
                 process = subprocess.Popen(args, stdout=f, stderr=subprocess.STDOUT)
             return process
         
@@ -184,26 +199,32 @@ def index(request):
     if request.method == 'POST' and 'send_signal' in request.POST:
         send_signal = request.POST.get('send_signal')
         # Handle the POST request for killing the process here
-        pid_to_kill = request.POST.get('pid_to_kill')
-        script_name = request.POST.get('script_name')
-
-        xml_wo_ext = script_name.rsplit(".", 1)[0]
+        pid = request.POST.get('pid_to_kill')
 
         if send_signal == 'Kill':
             try:
-                process = psutil.Process(int(pid_to_kill))
+                process = psutil.Process(int(pid))
                 process.terminate()  # You can also use process.kill() for a more forceful termination
-            except psutil.NoSuchProcess:
+                process.wait(timeout=2)  # Wait for it to exit
+            except (psutil.NoSuchProcess, psutil.TimeoutExpired):
                 pass  # The process with the given PID doesn't exist or already terminated
         
         elif send_signal == 'CheckOutput':
             try:
-                process = psutil.Process(int(pid_to_kill))
+                script_name = request.POST.get('script_name')
+                xml_wo_ext = script_name.rsplit(".", 1)[0]
+
+                cport = request.POST.get('cport')
+                mcalls = request.POST.get('mcalls')
+                process = psutil.Process(int(pid))
                 os.kill(process.pid, signal.SIGUSR2)
-                return redirect('display_sipp_screen', xml=xml_wo_ext, pid=process.pid)
+                # return redirect('display_sipp_screen', xml=xml_wo_ext, pid=pid, cport=cport)
+                return redirect(f'{reverse("display_sipp_screen", kwargs={"xml": xml_wo_ext, "pid": process.pid})}?cp={cport}&m={mcalls}')
+
+            
 
             except (psutil.NoSuchProcess, ProcessLookupError):
-                return redirect('display_sipp_screen', xml=xml_wo_ext, pid=pid_to_kill)
+                return redirect('display_sipp_screen', xml=xml_wo_ext, pid=pid)
 
     
     sipp_processes = get_sipp_processes()
@@ -273,70 +294,18 @@ def xmlEditor(request):
     return render(request, 'xml_editor.html', context)
 
 
-################### Show Sipp Screen ###############
-
-def read_sipp_screen(file_path):
-    with open(file_path, 'r') as file:
-        lines = file.readlines()
-    return lines
-
-
-def display_sipp_screen(request, pid, xml):
-    sipp_processes = get_sipp_processes()
-    log_name = f"{xml}_{pid}_screen.log"
-    log1 = os.path.join(settings.BASE_DIR, log_name)
-    log2 = os.path.join(settings.BASE_DIR, f'{xml}.xml.log')
-
-    if psutil.pid_exists(pid) & os.path.isfile(log1):
-        file_path=log1
-    else:
-        file_path=log2
-        try:
-            os.remove(log1)
-        except:
-            pass
-
-    # file_path = log1 if os.path.isfile(log1) else log2
-
-    lines = read_sipp_screen(file_path)
-    content = ''.join(lines)
+def sipp_screen(request, pid, xml):
+    cport = request.GET.get('cp')
+    mcalls = request.GET.get('m')
     context = {
-        'content': content, 
-        'sipp_processes':sipp_processes,
         'xml':xml,
         'pid':pid,
-        'file_path':file_path,
-        'log_name':log_name,
+        'cport':cport,
+        'mcalls': mcalls,
         }
+    return render(request, 'sipp_screen.html', context)
 
-    if request.method == 'POST' and 'send_signal' in request.POST:
-        send_signal = request.POST.get('send_signal')
-        # Handle the POST request for killing the process here
-        pid_to_kill = request.POST.get('pid_to_kill')        
-        if send_signal == 'Kill':
-            try:
-                process = psutil.Process(int(pid_to_kill))
-                process.terminate()  # use process.kill() for a more forceful termination
-            except psutil.NoSuchProcess:
-                return HttpResponse("The SipP process with the given PID doesn't exist or already terminated")
-        
-        elif send_signal == 'CheckOutput':
-            try:
-                os.kill(pid, signal.SIGUSR2)
-                time.sleep(0.2)
-
-                lines = read_sipp_screen(file_path)
-                content = ''.join(lines)
-                context['content'] = content
-                return render(request, 'sipp_log.html', context)
-            except (psutil.NoSuchProcess, ProcessLookupError):
-                file_path = os.path.join(settings.BASE_DIR, f'{xml}.xml.log')
-                if file_path:
-                    lines = read_sipp_screen(file_path)
-                    content = ''.join(lines)
     
-
-    return render(request, 'sipp_log.html', context)
 
 
 def create_scenario_xml_view(request):

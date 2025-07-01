@@ -33,19 +33,31 @@ def get_sipp_processes():
     sipp_pattern = r"sipp"  # Regular expression to match "sipp" in the command-line
     shell_name = r"(bash|sh)"  # Regular expression to match shell names
 
+    mcalls = False
+
     for process in psutil.process_iter(['pid', 'cmdline']):
         if process.info['cmdline']:
             cmdline = ' '.join(process.info['cmdline'])
+            cmdraw = process.info['cmdline']
             if re.search(sipp_pattern, cmdline) and not re.search(shell_name, cmdline):
-                sipp = os.path.basename(process.info['cmdline'][0])
                 arguments = ' '.join(os.path.basename(arg) if os.path.isabs(arg) else arg for arg in process.info['cmdline'][1:])
-                uac_uas_arg =''.join(os.path.basename(process.info['cmdline'][2]))
+                # Look for -sf and -cp arguments
+                for i, arg in enumerate(cmdraw):
+                    if arg == "-sf" and i + 1 < len(cmdraw):
+                        script_name = os.path.basename(cmdraw[i + 1])
+                    if arg == "-cp" and i + 1 < len(cmdraw):
+                        control_port = cmdraw[i + 1]
+                    if arg == "-m" and i + 1 < len(cmdraw):
+                        mcalls = int(cmdraw[i + 1])
 
                 sipp_processes.append({
                     'pid': process.info['pid'],
-                    'command_line': f"{sipp} {arguments}",
-                    'script_name' : f"{uac_uas_arg}"
+                    'command_line': f"./sipp {arguments}",
+                    'script_name' : script_name,
+                    'cport' : control_port,
+                    'mcalls' : mcalls,
                 })
+
     sorted_sipp_processes = sorted(sipp_processes, key=lambda x: x['pid'], reverse=True)
     return sorted_sipp_processes
 #########################################################################################

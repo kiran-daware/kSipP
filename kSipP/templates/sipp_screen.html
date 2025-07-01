@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{{ xml }}</title>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'styles.css' %}">
+</head>
+<body>
+
+<h1 class="newpageh1">{{ xml }} - {{ pid }}</h1>
+
+<div>
+    <button onclick="sendKey('p')">Pause (p)</button>
+    {% if not xml|slice:":3" == "uas" %}
+        {% if mcalls and mcalls|add:"0" > 10 %}
+            <button onclick="sendKey('*')">+10 cps (*)</button>
+        {% endif %}
+        {% if mcalls and mcalls|add:"0" > 2 %}
+            <button onclick="sendKey('+')">+1 cps (+)</button>
+            <button onclick="sendKey('-')">-1 cps (-)</button>
+        {% endif %}
+        {% if mcalls and mcalls|add:"0" > 10 %}
+            <button onclick="sendKey('/')">-10 cps (/)</button>
+        {% endif %}
+
+    {% endif %}
+    <button onclick="sendKey('q')"> Quit (graceful)</button>
+    <button onclick="sendKey('kill')">Kill</button>
+</div>
+
+<div id="responseContainer" style="background:#eef; padding: 10px; margin-bottom: 10px; color: #333;"></div>
+<pre id="logContainer"></pre>
+<script>
+    const pid = "{{ pid }}";
+    const xml = "{{ xml }}"
+    const cport = "{{ cport }}"
+    const ws = new WebSocket('ws://localhost:8000/ws/sipp_logs/?xml=' + xml +'&pid=' + pid + '&cp=' + cport);
+
+    ws.onopen = () => console.log('WebSocket opened');
+    ws.onmessage = (event) => {
+        const msg = event.data;
+        if (msg.startsWith("[INFO] SIPp process has exited.")) {
+            document.getElementById('responseContainer').textContent = msg;
+            document.querySelectorAll('button').forEach(btn => btn.disabled = true);
+        } else if (msg.startsWith("[ERROR]") || msg.startsWith("Sent key")) {
+            document.getElementById('responseContainer').textContent = msg;
+        } else {
+            document.getElementById('logContainer').textContent = msg;
+        }
+    };
+    ws.onclose = () => console.log('WebSocket closed');
+    ws.onerror = (err) => console.error('WebSocket error:', err);
+
+    function sendKey(key) {
+        ws.send(JSON.stringify({
+            action: "send_signal",
+            key: key
+        }));
+    }
+
+
+</script>
+
+</body>
+</html>
