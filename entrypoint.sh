@@ -5,6 +5,9 @@ set -e  # Exit on error
 echo "Running migrations..."
 python manage.py migrate --noinput
 
+echo "Loading initial data if needed..."
+python manage.py load_initial_if_empty
+
 # Start Nginx in the background
 nginx -g 'daemon on;'
 
