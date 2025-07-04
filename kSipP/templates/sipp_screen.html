@@ -10,9 +10,9 @@
 <h1 class="newpageh1">{{ xml }} - {{ pid }}</h1>
 
 <div>
-    <button onclick="sendKey('p')">Pause (p)</button>
     {% if not xml|slice:":3" == "uas" %}
         {% if mcalls and mcalls|add:"0" > 10 %}
+            <button onclick="sendKey('p')">Pause/Start (p)</button>
             <button onclick="sendKey('*')">+10 cps (*)</button>
         {% endif %}
         {% if mcalls and mcalls|add:"0" > 2 %}

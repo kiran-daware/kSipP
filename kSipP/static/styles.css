@@ -1,3 +1,6 @@
+*, *::before, *::after {
+  box-sizing: border-box;
+}
 html {
   font-family:sans-serif; color:#49443d; background-color:#f8f6f2; height:100%;
 }
@@ -8,7 +11,7 @@ h1 a {
   color: #ff943f;
   text-decoration: underline #aeaeae;
 }
-.label1 {color: chocolate;
+.label {color: chocolate;
   background-color: beige;
   line-height: 28px;
   font-weight: bold;}
@@ -51,11 +54,10 @@ h1 a {
   color: white;
 }
 
-
 .savebuttons {margin-top:12px; float: left;}
 
 .kbutton {
-  padding: 10px 16px;
+  padding: 4px 16px;
   background-color: #ddd;
   border: 2px solid #71695e;
   color: #3b3b3b;
@@ -91,25 +93,24 @@ h1 a {
 /* Modal Content */
 .modal-content {
   background-color: beige;
-  margin: 50px auto; /* 15% from the top and centered */
+  margin: 50px auto; 
   padding: 20px;
   border: 1px solid #888;
-  width: 80%; /* Could be more or less, depending on screen size */
+  max-width: 80%;
+  width: fit-content;
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 20px; /* Add space between diagrams */
+  gap: 20px;
 }
 
 /* Style for flow diagrams */
 #flow-diagram1, #flow-diagram2 {
-  flex: 1; /* Allow diagrams to grow and fill the available space */
-  max-width: 45%; /* Adjust the maximum width of each diagram */
-  min-width: 200px; /* Ensure a minimum width */
-  height: auto; /* Keep height auto to maintain aspect ratio */
-  border: 1px solid #ddd; /* Optional: add border to diagrams */
-  padding: 10px; /* Optional: add padding to diagrams */
-  box-sizing: border-box; /* Ensure padding does not affect width */
+  flex: 1; 
+  min-width: 200px;
+  height: auto;
+  border: 1px solid #ddd; 
+  padding: 10px;
 }
 
 /* The Close Button */
@@ -160,6 +161,8 @@ ul {
 #xml-flow {min-height: 100vh; background-color: beige;text-align: center; flex:1; margin-left: 5px;}
 .show-flow {cursor: default;}
 #xml-lists li span {padding: 2px 7px 2px 0;}
+
+/* Rename below buttons to  */
 .xml-li-button {
   display: inline-flex;
   align-items: center;
@@ -170,8 +173,19 @@ ul {
 .xml-li-button:hover {
   transform: scale(1.4);
   color: #3b3b3b;
+  cursor: pointer;
 }
 
+.kedit-icon {
+  display: inline-flex;
+  align-items: center;
+  margin-left: 4px;
+  transition: transform .2s;
+}
+.kedit-icon:hover {
+  transform: scale(1.4);
+  cursor: pointer;
+}
 
 #options-container {
   width: 100%;

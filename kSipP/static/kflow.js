@@ -82,7 +82,6 @@ async function fetchXMLFile(fileName) {
 }
 
 // Event listener for View Diagram links
-// Event listener for View Diagram links
 document.addEventListener('click', async (event) => {
     if (event.target && event.target.classList.contains('show-flow')) {
         event.preventDefault();
@@ -108,28 +107,34 @@ document.addEventListener('click', async (event) => {
             }
         };
 
-        // Render both diagrams
-        await renderFile(fileName, container);
-        await renderFile(filename2, container2);
+        // Render diagram(s) conditionally
+        if (fileName) {
+            await renderFile(fileName, container);
+        }
+        if (filename2) {
+            await renderFile(filename2, container2);
+        }
+        if (!filename2) { container2.style.display ="none" }
+
     }
 });
 
 
-
 document.addEventListener('click', async (event) => {
-    if (event.target && event.target.id === 'show-flow-button') {
-        var modal = document.getElementById('flow-modal');
-        var span = document.getElementsByClassName('close')[0];
+    if (event.target && event.target.classList.contains('show-flow')) {
+        const modal = document.getElementById('flow-modal');
+        const span = document.getElementsByClassName('close')[0];
 
-            modal.style.display = 'block';
+        modal.style.display = 'block';
 
-        span.onclick = function() {
+        span.onclick = function () {
             modal.style.display = 'none';
-        }
+        };
 
-        window.onclick = function(event) {
-            if (event.target == modal) {
+        window.onclick = function (event) {
+            if (event.target === modal) {
                 modal.style.display = 'none';
             }
-    }}
+        };
+    }
 });

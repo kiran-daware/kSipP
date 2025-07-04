@@ -28,9 +28,11 @@ class SippLogConsumer(AsyncWebsocketConsumer):
 
     async def stream_logs(self):
         try:
+            # inial reading screen to avoid delay
             with open(self.log_file_path, 'r') as f:
                 content = f.read()
             await self.send(text_data=content)
+            await asyncio.sleep(0.8)
             
             while self.running:
                 try:
@@ -43,7 +45,7 @@ class SippLogConsumer(AsyncWebsocketConsumer):
                             pass
                         self.running = False
                         break
-                    
+
                 except psutil.NoSuchProcess:
                     await self.send(text_data="[INFO] SIPp process has exited.")
                     self.running = False

@@ -2,20 +2,19 @@ from django.http import HttpResponse
 from django.views.decorators.cache import never_cache
 from django.shortcuts import render, redirect
 from django.conf import settings
-from .forms import configForm, xmlForm, moreSippOptionsForm
+from django.contrib import messages
+from .forms import UACForm, UASForm
 from .forms import xmlUploadForm
-from .models import AppConfig
-from django.http import HttpResponseBadRequest
+from .models import UacAppConfig, UasAppConfig
 from django.urls import reverse
 import xml.etree.ElementTree as ET
 import os, time, signal
-import subprocess, psutil
-from .scripts.ksipp import get_sipp_processes, sipp_commands, cleanFilename
-from .scripts.kstun import get_ip_info
-from .scripts.modify import tmpXmlBehindNAT, modifynumberxmlpath
+import psutil
+from .scripts.ksipp import get_sipp_processes, cleanFilename
 from .scripts.list import listXmlFiles
+from .scripts.ksipp import run_uac, run_uas
 import logging
-import shlex, socket
+
 
 logger = logging.getLogger(__name__)
 
@@ -24,233 +23,139 @@ logger = logging.getLogger(__name__)
 
 @never_cache
 def index(request):
-    # Always fetch or create the single config instance
-    config_obj, _ = AppConfig.objects.get_or_create(key='main')
-    def update_config_data(): 
-        config_data = {
-            'select_uac': config_obj.select_uac,
-            'select_uas': config_obj.select_uas,
-            'uac_remote': config_obj.uac_remote,
-            'uac_remote_port': config_obj.uac_remote_port,
-            'uas_remote': config_obj.uas_remote,
-            'uas_remote_port': config_obj.uas_remote_port,
-            'local_addr': config_obj.local_addr,
-            'src_port_uac': config_obj.src_port_uac,
-            'src_port_uas': config_obj.src_port_uas,
-            'protocol_uac': config_obj.protocol_uac,
-            'protocol_uas': config_obj.protocol_uas,
-            'called_party_number': config_obj.called_party_number,
-            'calling_party_number': config_obj.calling_party_number,
-            'total_no_of_calls': config_obj.total_no_of_calls,
-            'cps': config_obj.cps,
-            'stun_server': config_obj.stun_server,
-        }
-        return config_data
+    showMoreOptionsForm = False
+    uac_form = None
+    uas_form = None
 
-    # GET request: pre-fill forms with database values
-    selectXml = xmlForm(instance=config_obj)
-    ipConfig = configForm(instance=config_obj)
-    moreOptionsForm = moreSippOptionsForm(instance=config_obj)
-
-    config_data = update_config_data()
-    print_uac_command, print_uas_command=sipp_commands(config_data)
-
-    if request.method == 'POST' and 'submitType' in request.POST:
-        # submit_type = request.POST['submitType']
-        # if submit_type =='config' or submit_type == 'moreOptionsClose' or submit_type == 'moreOptions':
-        selectXml = xmlForm(request.POST, instance=config_obj)
-        ipConfig = configForm(request.POST, instance=config_obj)
-        moreOptionsForm = moreSippOptionsForm(request.POST, instance=config_obj)
-
-        if selectXml.is_valid() and ipConfig.is_valid() and moreOptionsForm.is_valid():
-            # Save all parts to the same instance
-            if selectXml.is_valid() and ipConfig.is_valid() and moreOptionsForm.is_valid():
-                cd = {
-                    **selectXml.cleaned_data,
-                    **ipConfig.cleaned_data,
-                    **moreOptionsForm.cleaned_data
-                }
-                # Update the config object
-                for key, value in cd.items():
-                    setattr(config_obj, key, value)
-                config_obj.save()
-
-            # Reload updated instance from DB
-            config_obj.refresh_from_db()
-            config_data=update_config_data()
-            # Update script prints on homepage
-            print_uac_command, print_uas_command=sipp_commands(config_data)
-        
-        elif not moreOptionsForm.is_valid():
-            showMoreOptionsForm = True
-
-    if request.method == 'POST' and 'runScript' in request.POST:
-        uacXml = f'{config_data["select_uac"]}'
-        uasXml = f'{config_data["select_uas"]}'
-        uacSrcPort = int(f"{config_data['src_port_uac']}")
-        protocol_uac = f'{config_data["protocol_uac"]}'
-        uasSrcPort = int(f"{config_data['src_port_uas']}")
-        protocol_uas = f'{config_data["protocol_uas"]}'
-        noOfCalls = int(f"{config_data['total_no_of_calls']}")
-        cps = int(f"{config_data['cps']}")
-
-        dialed_number = f'{config_data["called_party_number"]}'
-        calling_number = f'{config_data["calling_party_number"]}'
-        stun_server = {config_data['stun_server']}
-
-        sipp = str(settings.BASE_DIR / 'kSipP' / 'sipp')
-        uacXmlPath = str(settings.BASE_DIR / 'kSipP' / 'xml' / uacXml)
-        uasXmlPath = str(settings.BASE_DIR / 'kSipP' / 'xml' / uasXml)
-        uac_remote=f"{config_data['uac_remote']}:{config_data['uac_remote_port']}"
-        uas_remote=f"{config_data['uas_remote']}:{config_data['uas_remote_port']}"
-        uacSrc=f"-i {config_data['local_addr']} -p {uacSrcPort}"
-        uasSrc=f"-i {config_data['local_addr']} -p {uasSrcPort}"
-
-        ######## For behind NAT sipp
-        def stun4nat(xmlName, srcPort, stunServer):
-            stun_host_str = ''.join(stunServer)
-            nat_type, external_ip, external_port = get_ip_info(stun_host=stun_host_str, source_port=int(srcPort))
-            if external_ip is not None and external_port is not None:
-                newXmlPath = tmpXmlBehindNAT(xmlName, external_ip, external_port)
-            else:
-                return None
-            return newXmlPath
-        
-        # get free udp port for controlling sipp through -cp
-        def get_free_control_port(start=8888, end=8948):
-            for port in range(start, end):
-                with socket.socket(socket.AF_INET, socket.SOCK_DGRAM) as s:
-                    try:
-                        s.bind(('', port))
-                        return port
-                    except OSError:
-                        continue
-            raise RuntimeError("No free UDP port available")
-
-        
-        def run_sipp_in_background(command, output_file):
-            with open(output_file, 'w') as f:
-                cport = get_free_control_port()
-                args = shlex.split(command)
-                args.extend(["-cp", str(cport)])
-                process = subprocess.Popen(args, stdout=f, stderr=subprocess.STDOUT)
-            return process
-        
-        scriptName = request.POST.get('runScript')
-        if scriptName == 'UAC':
+    if request.method == 'POST':
+        if 'selected_key' in request.POST:
+            selected_key = request.POST['selected_key']
+            print(selected_key)
             try:
-                if any(stun_server):
-                    stunnedPath = stun4nat(uacXml, uacSrcPort, stun_server)
-                    if stunnedPath is not None:
-                        uacXmlPath = stunnedPath
+                if selected_key.startswith('uac'):
+                    uac_config = UacAppConfig.objects.get(uac_key=selected_key)
+                    uac_config.is_active_config = True
+                    uac_config.save()
 
-                    else: return HttpResponse(f'Stun server at {stun_server} is not responding!')
-
-                if dialed_number or calling_number:
-                    uacXmlPath = modifynumberxmlpath(uacXmlPath, calling_number, dialed_number)
-
-                uacCommand = f"{sipp} -sf {uacXmlPath} {uac_remote} {uacSrc} -m {noOfCalls} -r {cps} -t {protocol_uac}"
-                outputFile = f'{uacXml}.log'
-                uacProc = run_sipp_in_background(uacCommand, outputFile)
-                time.sleep(0.4)
-                # Check if Process has immediately exited
-                return_code = uacProc.poll()
-
-                if return_code != 0 and return_code != None:
-                    outputFilePath = os.path.join(settings.BASE_DIR, outputFile)
-                    with open(outputFilePath, 'r') as file:
-                        lines = file.readlines()
-                        last_lines = lines[-2:]
-                        sipp_error = ''.join(last_lines)
-                        logger.error(sipp_error)
+                elif selected_key.startswith('uas'):
+                    uas_config = UasAppConfig.objects.get(uas_key=selected_key)
+                    uas_config.is_active_config = True
+                    uas_config.save()
 
             except Exception as e:
-                sipp_error = f"Error: {e}"
-                logger.exception('Exception occurred while trying to run sipp')
+                logger.exception("Unhandled exception:", e)
             
-        if scriptName =='UAS':
-            try:
-                if any(stun_server):                    
-                    stunnedPath = stun4nat(uasXml, uasSrcPort, stun_server)
-                    if stunnedPath is not None:
-                        uasXmlPath = stunnedPath
+            return redirect('index')
 
-                    else: return HttpResponse(f'Stun server at {stun_server} is not responding!')
 
-                uasCommand = f"{sipp} -sf {uasXmlPath} {uas_remote} {uasSrc} -t {protocol_uas}"
-                outputFile = f'{uasXml}.log'
-                uasProc=run_sipp_in_background(uasCommand, outputFile)
-                time.sleep(0.4)
-                # Check if Process has immediately exited
-                return_code = uasProc.poll()
-                if return_code != 0 and return_code != None:
-                    outputFilePath = os.path.join(settings.BASE_DIR, outputFile)
-                    with open(outputFilePath, 'r') as file:
-                        lines = file.readlines()
-                        # Extract the last 'num_lines' lines from the list
-                        last_lines = lines[-14:]
-                        sipp_error = ''.join(last_lines)
+        elif 'save_conf' in request.POST:
+            save_conf = request.POST['save_conf']
+
+            if save_conf in ['save_uac', 'save_run_uac']:
+                selected_uac_key = request.POST.get('uac_key')
+                if selected_uac_key:
+                    uac_config = UacAppConfig.objects.get(uac_key=selected_uac_key)
+                    uac_form = UACForm(request.POST, instance=uac_config)
+                    if uac_form.is_valid():
+                        uac_form.save()
+                        if save_conf == 'save_run_uac':
+                            sipp_error = run_uac(uac_config)
+                            # Only redirect if no error
+                            if sipp_error:
+                                messages.error(request, sipp_error)
+                                return redirect('index')
                         
-            except Exception as e:
-                sipp_error = f"Error: {e}"
-                logger.exception('Exception occurred while trying to run sipp')
+                        return redirect('index')
+
+                    else:
+                        fields_to_check = ['called_party_number', 'calling_party_number', 'stun_server',
+                                           'total_no_of_calls', 'cps']
+                        showMoreOptionsForm = any(field in uac_form.errors for field in fields_to_check)
 
 
-    if request.method == 'POST' and 'send_signal' in request.POST:
-        send_signal = request.POST.get('send_signal')
-        # Handle the POST request for killing the process here
-        pid = request.POST.get('pid_to_kill')
+            elif save_conf in ['save_uas', 'save_run_uas']:
+                selected_uas_key = request.POST.get('uas_key')
+                if selected_uas_key:
+                    uas_config = UasAppConfig.objects.get(uas_key=selected_uas_key)
+                    uas_form = UASForm(request.POST, instance=uas_config)      
+                    if uas_form.is_valid():
+                        uas_form.save()                        
+                        if save_conf == 'save_run_uas':
+                            sipp_error = run_uas(uas_config)
+                            if sipp_error:
+                                messages.error(request, sipp_error)
+                                return redirect('index')
+                        
+                        return redirect('index')
 
-        if send_signal == 'Kill':
-            try:
-                process = psutil.Process(int(pid))
-                process.terminate()  # You can also use process.kill() for a more forceful termination
-                process.wait(timeout=2)  # Wait for it to exit
-            except (psutil.NoSuchProcess, psutil.TimeoutExpired):
-                pass  # The process with the given PID doesn't exist or already terminated
-        
-        elif send_signal == 'CheckOutput':
-            try:
-                script_name = request.POST.get('script_name')
-                xml_wo_ext = script_name.rsplit(".", 1)[0]
 
-                cport = request.POST.get('cport')
-                mcalls = request.POST.get('mcalls')
-                process = psutil.Process(int(pid))
-                os.kill(process.pid, signal.SIGUSR2)
-                # return redirect('display_sipp_screen', xml=xml_wo_ext, pid=pid, cport=cport)
-                return redirect(f'{reverse("display_sipp_screen", kwargs={"xml": xml_wo_ext, "pid": process.pid})}?cp={cport}&m={mcalls}')
+        elif 'send_signal' in request.POST:
+            send_signal = request.POST.get('send_signal')
+            pid = request.POST.get('pid_to_kill')
 
+            if send_signal == 'Kill':
+                try:
+                    process = psutil.Process(int(pid))
+                    process.terminate()  # You can also use process.kill() for a more forceful termination
+                    process.wait(timeout=2)  # Wait for it to exit
+                except (psutil.NoSuchProcess, psutil.TimeoutExpired) as e:
+                    logger.exception(e)
+                    pass  # The process with the given PID doesn't exist or already terminated
             
+            elif send_signal == 'CheckOutput':
+                try:
+                    script_name = request.POST.get('script_name')
+                    xml_wo_ext = script_name.rsplit(".", 1)[0]
 
-            except (psutil.NoSuchProcess, ProcessLookupError):
-                return redirect('display_sipp_screen', xml=xml_wo_ext, pid=pid)
+                    cport = request.POST.get('cport')
+                    mcalls = request.POST.get('mcalls')
+                    process = psutil.Process(int(pid))
+                    os.kill(process.pid, signal.SIGUSR2)
+                    # return redirect('display_sipp_screen', xml=xml_wo_ext, pid=pid, cport=cport)
+                    return redirect(f'{reverse("display_sipp_screen", kwargs={"xml": xml_wo_ext, "pid": process.pid})}?cp={cport}&m={mcalls}')
 
-    
+                
+                except (psutil.NoSuchProcess, ProcessLookupError):
+                    return redirect('display_sipp_screen', xml=xml_wo_ext, pid=pid)
+
+
+    # To make sure to form was not already loaded and avoid refreshing despite form errors
+    if not uac_form:
+        uac_config = UacAppConfig.objects.get(is_active_config=True)
+        uac_form = UACForm(instance=uac_config)
+    if not uas_form:
+        uas_config = UasAppConfig.objects.get(is_active_config=True)
+        uas_form = UASForm(instance=uas_config)
+
+    uac_xml = uac_config.select_uac
+    uas_xml = uas_config.select_uas
+
+    print_uac_command = f""
+    print_uas_command = f""
+
     sipp_processes = get_sipp_processes()
     context = {
-        'config_data': config_data,
+        'uac_xml': uac_xml,
+        'uas_xml': uas_xml,
         'print_uac_command': print_uac_command,
         'print_uas_command': print_uas_command,
-        'selectXml': selectXml,
-        'ipConfig': ipConfig,
-        'moreOptionsForm': moreOptionsForm,
+        'UACForm': uac_form,
+        'UASForm': uas_form,
         'sipp_processes': sipp_processes,
         'showMoreOptionsForm': showMoreOptionsForm if 'showMoreOptionsForm' in locals() else False,
-        'sipp_error':sipp_error if 'sipp_error' in locals() else False
+        'sipp_error': sipp_error if 'sipp_error' in locals() else False
         }
 
     return render(request, 'index.html', context)
 
-
 ######## Index End ############
+
 
 def serveXmlFile(request, xmlname):
     xmlPath = str(settings.BASE_DIR / 'kSipP' / 'xml' / xmlname)
     with open(xmlPath, 'r') as file:
         xmlContent = file.read()
     return HttpResponse(xmlContent, content_type='text/plain')
-
 
 
 def xmlEditor(request):
