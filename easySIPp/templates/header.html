@@ -1,0 +1,28 @@
+<div class="header">
+    <div id="klogo">
+        <a style="text-decoration:none;" href="/">
+        <span style=" font-weight:bold;text-decoration: underline 3px #aeaeae;font-size:25px;"><span style="color: #71695e">easy</span><span style="color:#ff943f;">SIPp</span></span>
+        <br>
+        <span style="color:#49443d; font-size:12px;">Web-GUI for SIPp!</span></a>
+    </div> 
+
+    <div class="menubar">
+        <a class="nav-link" href="/">Home</a>
+        <a class="nav-link" href="/xml-management/">Xml List</a>
+        <a class="nav-link" href="/create-scenario-xml/">Create Xml</a>
+        <!-- <a class="nav-link" href="/modify-xml/">Modify Xml</a> -->
+    </div>
+</div>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const currentLocation = window.location.pathname;
+        const menuLinks = document.querySelectorAll('.menubar .nav-link');
+    
+        menuLinks.forEach(link => {
+            if (link.getAttribute('href') === currentLocation) {
+                link.classList.add('active');
+            }
+        });
+    });    
+</script>

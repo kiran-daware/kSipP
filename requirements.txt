@@ -1,4 +1,8 @@
 django==4.2.21
-gunicorn==23.0.0
+# gunicorn==23.0.0
 lxml==5.4.0
 psutil==7.0.0
+uvicorn[standard]==0.33.0
+channels==4.2.2
+whitenoise==6.7.0
+

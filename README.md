@@ -1,7 +1,7 @@
-# kSipP - Simplify Your SIP Testing. For Everyone.
+# easySIPp - Simplify Your SIP Testing. For Everyone.
 
 [SIPp](https://github.com/SIPp/sipp) is a powerful tool for **VoIP SIP testing** in the telecom world, but it often requires command-line expertise. It can be daunting for those unfamiliar with CLI tools. 
-kSipP provides a user-friendly graphical user interface (**Web GUI**) that simplifies the entire process of running and managing **SIPp**. Thus, making advanced SIP testing accessible to **everyone**.
+easySIPp provides a user-friendly graphical user interface (**Web GUI**) that simplifies the entire process of running and managing **SIPp**. Thus, making advanced SIP testing accessible to **everyone**.
 
 ## Features:
 * **Effortless Scenario Creation:** Generate and modify complex **SIPp XML scenarios** directly within your browser, eliminating the need for complex XML coding manually.
@@ -9,7 +9,7 @@ kSipP provides a user-friendly graphical user interface (**Web GUI**) that simpl
 * **Intuitive Test Configuration:** A well-designed Web GUI streamlines the process of defining call flows, and crucial test parameters (like calling party and called party numbers, call rates and concurrent calls etc).
 * **One-Click Execution:** (One-click if you have it pre-configured) Launch your SIPp test calls with a single click – no more tedious command-line manipulation or complex script.
 * **SIPp refreshing Results:** View the results of SIPp processes as they are running just like you could see in your CLI.
-* **Seamless SIPp Integration:** kSipP enhances SIPp's usability without sacrificing its core power, running the original SIPp engine under the hood.
+* **Seamless SIPp Integration:** easySIPp enhances SIPp's usability without sacrificing its core power, running the original SIPp engine under the hood.
 
 ## Who's it for?
 
@@ -29,19 +29,19 @@ Once your container is up and running, open it http://localhost:8080/ (or <your_
 
 ## ❓ Frequently Asked Questions
 
-### What is kSipP?
-kSipP is a **web-based GUI for [SIPp](https://github.com/SIPp/sipp)**, designed to simplify SIP and VoIP testing. Its primary goal is to simplify complex SIP and VoIP testing by providing an accessible and intuitive platform, eliminating the need for extensive command-line expertise.
+### What is easySIPp?
+easySIPp is a **web-based GUI for [SIPp](https://github.com/SIPp/sipp)**, designed to simplify SIP and VoIP testing. Its primary goal is to simplify complex SIP and VoIP testing by providing an accessible and intuitive platform, eliminating the need for extensive command-line expertise.
 
-### Who should use kSipP?
-Anyone involved in SIP testing — including VoIP testers, telecom engineers — will benefit from kSipP's user-friendly approach to running and managing SIPp scenarios.
+### Who should use easySIPp?
+Anyone involved in SIP testing — including VoIP testers, telecom engineers — will benefit from easySIPp's user-friendly approach to running and managing SIPp scenarios.
 
-### Does kSipP replace the SIPp command-line tool?
-kSipP doesn’t replace SipP — it enhances it. Under the hood, kSipP uses the original SIPp engine, but gives you a GUI to interact with it more easily.
+### Does easySIPp replace the SIPp command-line tool?
+easySIPp doesn’t replace SipP — it enhances it. Under the hood, easySIPp uses the original SIPp engine, but gives you a GUI to interact with it more easily.
 
-### Is kSipP open-source?
-Yes! kSipP is an open-source project. We welcome contributions from the community! Feel free to fork the repository, propose bug fixes, or add new features through pull requests.
+### Is easySIPp open-source?
+Yes! easySIPp is an open-source project. We welcome contributions from the community! Feel free to fork the repository, propose bug fixes, or add new features through pull requests.
 
-### How do I run kSipP using Docker?
+### How do I run easySIPp using Docker?
 Just run the following command:
 ```bash
 docker run -dt --network host --name ksipp krndwr/ksipp
@@ -54,10 +54,10 @@ This project is a work in progress and is provided "as is" without any warranty,
 ## 📸 Screenshots
 
 ### Main Dashboard & Test Execution
-![kSipP - Web GUI for SIPp](https://raw.githubusercontent.com/kiran-daware/kSipP/main/screenshot-1.png)
+![easySIPp - Web GUI for SIPp](https://raw.githubusercontent.com/kiran-daware/easySIPp/main/screenshot-1.png)
 
 ### SIP Call Flow Visualization
-![kSipP - XML flow diagram](https://raw.githubusercontent.com/kiran-daware/kSipP/main/screenshot-2.png)
+![easySIPp - XML flow diagram](https://raw.githubusercontent.com/kiran-daware/easySIPp/main/screenshot-2.png)
 
 ### SIPp XML Scenario Generator
-![kSipP - XML Scenario generator](https://raw.githubusercontent.com/kiran-daware/kSipP/main/screenshot-3.png)
+![easySIPp - XML Scenario generator](https://raw.githubusercontent.com/kiran-daware/easySIPp/main/screenshot-3.png)

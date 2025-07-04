@@ -1,0 +1,178 @@
+[
+  {
+    "model": "easySIPp.uacappconfig",
+    "pk": 1,
+    "fields": {
+      "uac_key": "uac_1",
+      "uac_config_name": "UAC 1",
+      "select_uac": "uac_basic.xml",
+      "uac_remote": "1.1.1.1",
+      "uac_remote_port": 5060,
+      "uac_local_addr": "9.9.9.9",
+      "src_port_uac": 5060,
+      "protocol_uac": "u1",
+      "called_party_number": "",
+      "calling_party_number": "",
+      "total_no_of_calls": 1,
+      "cps": 1,
+      "stun_server": null,
+      "is_active_config": true
+    }
+  },
+  {
+    "model": "easySIPp.uacappconfig",
+    "pk": 2,
+    "fields": {
+      "uac_key": "uac_2",
+      "uac_config_name": "UAC 2",
+      "select_uac": "uac_basic.xml",
+      "uac_remote": "1.1.1.1",
+      "uac_remote_port": 5060,
+      "uac_local_addr": "9.9.9.9",
+      "src_port_uac": 5060,
+      "protocol_uac": "u1",
+      "called_party_number": "",
+      "calling_party_number": "",
+      "total_no_of_calls": 1,
+      "cps": 1,
+      "stun_server": null,
+      "is_active_config": false
+    }
+  },
+  {
+    "model": "easySIPp.uacappconfig",
+    "pk": 3,
+    "fields": {
+      "uac_key": "uac_3",
+      "uac_config_name": "UAC 3",
+      "select_uac": "uac_basic.xml",
+      "uac_remote": "1.1.1.1",
+      "uac_remote_port": 5060,
+      "uac_local_addr": "9.9.9.9",
+      "src_port_uac": 5060,
+      "protocol_uac": "u1",
+      "called_party_number": "",
+      "calling_party_number": "",
+      "total_no_of_calls": 1,
+      "cps": 1,
+      "stun_server": null,
+      "is_active_config": false
+    }
+  },
+  {
+    "model": "easySIPp.uacappconfig",
+    "pk": 4,
+    "fields": {
+      "uac_key": "uac_4",
+      "uac_config_name": "UAC 4",
+      "select_uac": "uac_basic.xml",
+      "uac_remote": "1.1.1.1",
+      "uac_remote_port": 5060,
+      "uac_local_addr": "9.9.9.9",
+      "src_port_uac": 5060,
+      "protocol_uac": "u1",
+      "called_party_number": "",
+      "calling_party_number": "",
+      "total_no_of_calls": 1,
+      "cps": 1,
+      "stun_server": null,
+      "is_active_config": false
+    }
+  },
+  {
+    "model": "easySIPp.uacappconfig",
+    "pk": 5,
+    "fields": {
+      "uac_key": "uac_5",
+      "uac_config_name": "UAC 5",
+      "select_uac": "uac_basic.xml",
+      "uac_remote": "1.1.1.1",
+      "uac_remote_port": 5060,
+      "uac_local_addr": "9.9.9.9",
+      "src_port_uac": 5060,
+      "protocol_uac": "u1",
+      "called_party_number": "",
+      "calling_party_number": "",
+      "total_no_of_calls": 1,
+      "cps": 1,
+      "stun_server": null,
+      "is_active_config": false
+    }
+  },
+  
+  {
+    "model": "easySIPp.uasappconfig",
+    "pk": 1,
+    "fields": {
+      "uas_key": "uas_1",
+      "uas_config_name": "UAS 1",
+      "select_uas": "uas_basic.xml",
+      "uas_remote": "2.2.2.2",
+      "uas_remote_port": 5060,
+      "uas_local_addr": "3.3.3.3",
+      "src_port_uas": 5062,
+      "protocol_uas": "u1",
+      "is_active_config": true
+    }
+  },
+  {
+    "model": "easySIPp.uasappconfig",
+    "pk": 2,
+    "fields": {
+      "uas_key": "uas_2",
+      "uas_config_name": "UAS 2",
+      "select_uas": "uas_basic.xml",
+      "uas_remote": "2.2.2.2",
+      "uas_remote_port": 5060,
+      "uas_local_addr": "3.3.3.3",
+      "src_port_uas": 5062,
+      "protocol_uas": "u1",
+      "is_active_config": false
+    }
+  },
+  {
+    "model": "easySIPp.uasappconfig",
+    "pk": 3,
+    "fields": {
+      "uas_key": "uas_3",
+      "uas_config_name": "UAS 3",
+      "select_uas": "uas_basic.xml",
+      "uas_remote": "2.2.2.2",
+      "uas_remote_port": 5060,
+      "uas_local_addr": "3.3.3.3",
+      "src_port_uas": 5062,
+      "protocol_uas": "u1",
+      "is_active_config": false
+    }
+  },
+  {
+    "model": "easySIPp.uasappconfig",
+    "pk": 4,
+    "fields": {
+      "uas_key": "uas_4",
+      "uas_config_name": "UAS 4",
+      "select_uas": "uas_basic.xml",
+      "uas_remote": "2.2.2.2",
+      "uas_remote_port": 5060,
+      "uas_local_addr": "3.3.3.3",
+      "src_port_uas": 5062,
+      "protocol_uas": "u1",
+      "is_active_config": false
+    }
+  },
+  {
+    "model": "easySIPp.uasappconfig",
+    "pk": 5,
+    "fields": {
+      "uas_key": "uas_5",
+      "uas_config_name": "UAS 5",
+      "select_uas": "uas_basic.xml",
+      "uas_remote": "2.2.2.2",
+      "uas_remote_port": 5060,
+      "uas_local_addr": "3.3.3.3",
+      "src_port_uas": 5062,
+      "protocol_uas": "u1",
+      "is_active_config": false
+    }
+  }
+]

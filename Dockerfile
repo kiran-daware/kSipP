@@ -31,13 +31,13 @@ RUN python -m pip install --no-cache-dir -r requirements.txt
 COPY . .
 
 # Download and install SIPp binary
-RUN curl -L -o kSipP/sipp ${SIPP_BIN_URL} && \
-    chmod +x kSipP/sipp && \
-    setcap cap_net_raw=ep kSipP/sipp
+RUN curl -L -o easySIPp/sipp ${SIPP_BIN_URL} && \
+    chmod +x easySIPp/sipp && \
+    setcap cap_net_raw=ep easySIPp/sipp
 
-# Create /app/kSipP/xml/tmp dir for tmp xml modification internally
-RUN mkdir -p kSipP/xml/tmp kSipP/xml/backup && \
-    cp kSipP/xml/*.xml kSipP/xml/backup
+# Create /app/easySIPp/xml/tmp dir for tmp xml modification internally
+RUN mkdir -p easySIPp/xml/tmp easySIPp/xml/backup && \
+    cp easySIPp/xml/*.xml easySIPp/xml/backup
 
 # Collect static files
 RUN python manage.py collectstatic --noinput
@@ -47,9 +47,9 @@ RUN chown -R kuser:kuser $APP_HOME && \
     chown -R kuser:kuser /var/lib/nginx /var/log/nginx /run
 
 # Nginx configuration
-COPY ksipp-nginx.conf /etc/nginx/sites-available/
+COPY easysipp-nginx.conf /etc/nginx/sites-available/
 RUN rm /etc/nginx/sites-enabled/default && \
-    ln -s /etc/nginx/sites-available/ksipp-nginx.conf /etc/nginx/sites-enabled/
+    ln -s /etc/nginx/sites-available/easysipp-nginx.conf /etc/nginx/sites-enabled/
 
 # Copy the entrypoint script
 COPY entrypoint.sh /entrypoint.sh
