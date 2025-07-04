@@ -10,7 +10,7 @@ nginx -g 'daemon on;'
 
 # Start Uvicorn in the foreground
 # Adjust host and port as needed; no Unix socket by default
-exec uvicorn EasySipP.asgi:application \
+exec uvicorn easySIPp_project.asgi:application \
     --host 127.0.0.1 \
     --port 8000 \
     --workers 3 \

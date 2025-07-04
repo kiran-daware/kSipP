@@ -5,4 +5,4 @@ __pycache__/
 collectstatic/
 *.sqlite3
 
-kSipP/sipp
+easySIPp/sipp
