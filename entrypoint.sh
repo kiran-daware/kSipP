@@ -18,4 +18,5 @@ exec uvicorn easySIPp_project.asgi:application \
     --port 8000 \
     --workers 3 \
     --proxy-headers \
-    --forwarded-allow-ips="*"
+    --forwarded-allow-ips=127.0.0.1
+

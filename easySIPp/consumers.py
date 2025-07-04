@@ -1,3 +1,4 @@
+from django.conf import settings
 import asyncio
 import os, signal, psutil
 from channels.generic.websocket import AsyncWebsocketConsumer
@@ -14,8 +15,8 @@ class SippLogConsumer(AsyncWebsocketConsumer):
         self.pid = query_params.get("pid")[0]
         self.cport = query_params.get("cp")[0]
         self.running = True
-
-        self.log_file_path = f"/home/kiran/kgit/easySIPp/{self.xml}_{self.pid}_screen.log"
+        appdir = str(settings.BASE_DIR)
+        self.log_file_path = f"{appdir}/{self.xml}_{self.pid}_screen.log"
         self.stream_task = asyncio.create_task(self.stream_logs())
 
     async def disconnect(self, close_code):
